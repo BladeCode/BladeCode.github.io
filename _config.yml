@@ -8,7 +8,7 @@ subtitle: Life's a struggle!
 description:
 keywords:
 author: Jerry xu
-language:
+language: zh-CN
 timezone:
 
 # URL
@@ -72,12 +72,38 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+
+# RSS订阅支持
+plugin:
+- hexo-generator-feed
+# Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
+  # - type: leancloud_counter_security_sync
   type: git
   repo: https://github.com/BladeCode/BladeCode.github.io.git
-  branch: master  
+  branch: master
+
+leancloud_counter_security:
+  enable: true
+  app_id: fAWWlD5N0zGklmW8OBweP1kl-gzGzoHsz
+  app_key: 7Jd3g9Ux1jhtWour5UFUPQuV
+  username: incoder      # Will be asked while deploying if is left blank
+  password: coder@root,. # Recommmended to be left blank. Will be asked while deploying if is left blank
+
+# hexo-symbols-count-time
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  
