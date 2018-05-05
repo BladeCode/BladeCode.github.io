@@ -2,7 +2,7 @@
     <a href="https://www.incoder.org">BladeCode</a>
 </h2>
 
-![BladeCode](https://travis-ci.org/BladeCode/BladeCode.github.io.svg?branch=dev)
+![BladeCode](https://travis-ci.com/BladeCode/BladeCode.github.io.svg?branch=dev)
 
 ### Thanks
 1. [Node](https://nodejs.org)

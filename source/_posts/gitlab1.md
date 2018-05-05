@@ -17,7 +17,7 @@ tag: Gitlab
 目的：
 1. 搭建Gitlab服务
 2. 和公司AD域账号关联，用域账号直接登录Gitlab
-3. 挂载Gitlab 仓库到
+3. 挂载Gitlab 仓库到指定存储位置
 
 ## Gitlab安装
 

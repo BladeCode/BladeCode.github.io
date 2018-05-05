@@ -26,7 +26,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: README.md
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -93,6 +93,13 @@ deploy:
   repo: https://github.com/BladeCode/BladeCode.github.io.git
   branch: master
 
+githubEmojis:
+  enable: true
+  className: github-emoji
+  unicode: false
+  styles:
+  localEmojis:
+
 leancloud_counter_security:
   enable: true
   app_id: fAWWlD5N0zGklmW8OBweP1kl-gzGzoHsz
@@ -107,3 +114,8 @@ symbols_count_time:
   total_symbols: true
   total_time: true
   
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
