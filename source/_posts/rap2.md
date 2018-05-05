@@ -98,7 +98,7 @@ npm run check
 >RAP2后端服务已启动，请从前端服务(rap2-dolores)访问。 RAP2 back-end server is started, please visit via front-end service (rap2-dolores).
 
 或者在程序控制台出现如下Log，表示**服务端delos**已经部署成功  
-![delos](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap2-delos-success.png)
+![delos](https://res.cloudinary.com/incoder/image/upload/v1525517437/blog/gitpages-rap2-delos-success.png)
 
 ### 常见问题
 
@@ -167,7 +167,7 @@ npm install
     ```
 
 看到浏览器中出现登录页面，表示部署成功  
-![dolores](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap2-dolores-success.png)
+![dolores](https://res.cloudinary.com/incoder/image/upload/v1525517454/blog/gitpages-rap2-dolores-success.png)
 
 ### 常见问题
 
@@ -195,12 +195,12 @@ npm install
 ## 其他
 ### MySQL 运行问题
 * 错误一  
-![mysql](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap2-mysql.png)  
+![mysql](https://res.cloudinary.com/incoder/image/upload/v1525517475/blog/gitpages-rap2-mysql.png)  
 原因：MySQL 集成命令没有加入系统的环境变量  
 解决方法：将安装的MySQL Service路径加入系统变量
-![path](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap2-mysql-path.png)
+![path](https://res.cloudinary.com/incoder/image/upload/v1525517495/blog/gitpages-rap2-mysql-path.png)
 * 错误二  
-![create](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap2-mysql-create.png)  
+![create](https://res.cloudinary.com/incoder/image/upload/v1525517523/blog/gitpages-rap2-mysql-create.png)  
 原因：没有数据库链接权限  
 解决方法：先登录用root数据库，密码具体看自己数据库当时设置的密码
 

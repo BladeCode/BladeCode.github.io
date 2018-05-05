@@ -102,11 +102,11 @@ cd /opt/gitlab/bin
 
 ### 访问地址
 修改`external_url`为Gitlab对应机器IP所配置的域名
-![gitlab-url](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-gitlab-url.png)
+![gitlab-url](https://res.cloudinary.com/incoder/image/upload/v1525517587/blog/gitpages-gitlab-url.png)
 
 ### LDAP启用
 修改`host`,`port`,`bind_dn`,`password`,`base`参数即可
-![gitlab-ladp](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-gitlab-ldap.png)
+![gitlab-ladp](https://res.cloudinary.com/incoder/image/upload/v1525517612/blog/gitpages-gitlab-ldap.png)
 
 各参数解释：
 * `host` 和 `port` 是 LDAP 服务的主机地址及端口
@@ -117,15 +117,15 @@ cd /opt/gitlab/bin
 
 编译重启后，查看登录是否已经显示LDAP登录入口
 
-![gitlab-ldap-login](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-gitlab-ldap-login.png)
+![gitlab-ldap-login](https://res.cloudinary.com/incoder/image/upload/v1525517639/blog/gitpages-gitlab-ldap-login.png)
 
 为了安全我们需要关闭 GitLab 自己的注册功能，这样新用户只能通过 LDAP 认证的方式进行登陆。
 
-![gitlab-sign-up](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-gitlab-sign-up.png)
+![gitlab-sign-up](https://res.cloudinary.com/incoder/image/upload/v1525517671/blog/gitpages-gitlab-sign-up.png)
 
 ### 存储仓库修改
 默认仓库存储位置：`/var/opt/gitlab/git-data/repositories/`
-![gitlab-dirs](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-gitlab-dirs.png)
+![gitlab-dirs](https://res.cloudinary.com/incoder/image/upload/v1525517697/blog/gitpages-gitlab-dirs.png)
 
 ### Gitlab日志
 默认日志位置： `/var/log/gitlab`
@@ -135,8 +135,8 @@ cd /opt/gitlab/bin
 gitlab-ctl tail -f nginx/gitlab_access.log
 ```
 或者在Gitlab服务的系统设置中查看
-![gitlab-logs](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-gitlab-logs.png)
+![gitlab-logs](https://res.cloudinary.com/incoder/image/upload/v1525517725/blog/gitpages-gitlab-logs.png)
 
 ## 附录
-* [官方安装教程](https://about.gitlab.com/installation/)
+* [官方安装教程](https://about.gitlab.com/installation)
 * [官方配置文件](https://docs.gitlab.com.cn/omnibus/settings/README.html)

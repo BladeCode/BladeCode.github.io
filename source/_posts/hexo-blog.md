@@ -5,7 +5,7 @@ categories: Hexo
 tag: Build
 ---
 
-之前一直纠结用[Jekyll](https://jekyllrb.com)还是[Hexo](https://hexo.io)来搭建[GitHub Page](https://pages.github.com)博客，原本一直想搭建一个[Material Design](https://material.io/guidelines/)主题风格，从[Hexo Themes](https://hexo.io/themes)中寻找到一款不错的主题，[indigo](https://github.com/yscoder/hexo-theme-indigo)是一款支持IE10+，评论，目录导航，分享等功能的轻量Blog主题。
+之前一直纠结用[Jekyll](https://jekyllrb.com)还是[Hexo](https://hexo.io)来搭建[GitHub Page](https://pages.github.com)博客，原本一直想搭建一个[Material Design](https://material.io/guidelines)主题风格，从[Hexo Themes](https://hexo.io/themes)中寻找到一款不错的主题，[indigo](https://github.com/yscoder/hexo-theme-indigo)是一款支持IE10+，评论，目录导航，分享等功能的轻量Blog主题。
 
 简单的修改了该主题之后，本地预览都没有什么问题，但是部署到[Github]()上，样式什么的都无法加载，应该是我的操作姿势不对吧，调整了半天没有解决，烦躁中找到之前star的另一款很受欢迎的[Next](https://github.com/iissnan/hexo-theme-next)主题。
 
@@ -74,7 +74,7 @@ $ hexo d
 ## 自定义域名
 虽然现在blog可以使用Githug提供的项目二级域名来访问，为了个性化以及方便等，配置自己的域名
 1. 登录域名所属的管理网站(这里以阿里云域名服务为例)
-    ![gitpages-domain-manger](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-domain-manger.png)
+    ![gitpages-domain-manger](https://res.cloudinary.com/incoder/image/upload/v1525516603/blog/gitpages-domain-manger.png)
 2. 添加解析
 ``` bash
 $ # 解析一
@@ -98,7 +98,7 @@ $ # 解析三
     > 192.30.252.153是GitHub的地址，你也可以ping你的 http://xxxx.github.io 的ip地址，填入进去
 
 3. 修改Github上项目的domain设置
-    ![gitpages-domain-custom](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-domain-custom.png)
+    ![gitpages-domain-custom](https://res.cloudinary.com/incoder/image/upload/v1525516630/blog/gitpages-domain-custom.png)
 4. 添加CNAME文件
 保存路径：`you blog name`/source
 新增文件：CNAME 文件 (格式要求:`保存成所有文件而不是txt文件`)
@@ -109,26 +109,26 @@ CNAME 文件内容：`incoder.org`
 开启Https 需要借助[Cloudflare](https://www.cloudflare.com)，关于Cloudflare的介绍等不在这里展开
 1. 注册账号
 2. Add website
-    ![site](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-add-site.png)
+    ![site](https://res.cloudinary.com/incoder/image/upload/v1525516650/blog/gitpages-https-add-site.png)
 3. Querying your DNS
-    ![query](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-dns-query.png)
+    ![query](https://res.cloudinary.com/incoder/image/upload/v1525516664/blog/gitpages-https-dns-query.png)
 4. Select Plan
-    ![plan](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-select-plan.png)
+    ![plan](https://res.cloudinary.com/incoder/image/upload/v1525516681/blog/gitpages-https-select-plan.png)
 5. 域名解析记录获取
-    ![continue](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-continue.png)
+    ![continue](https://res.cloudinary.com/incoder/image/upload/v1525516694/blog/gitpages-https-continue.png)
 6. DNS 对比，并修改[Cloudflare]()提供的DNS来解析
-    ![change](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-change-dns.png)
+    ![change](https://res.cloudinary.com/incoder/image/upload/v1525516714/blog/gitpages-https-change-dns.png)
 7. 域名管理后台，修改DNS
-    ![dns](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-wanwang-dns.png)
+    ![dns](https://res.cloudinary.com/incoder/image/upload/v1525516733/blog/gitpages-https-wanwang-dns.png)
     > 阿里云服务相关域名DNS修改帮助[文档](https://help.aliyun.com/knowledge_detail/39844.html)
 8. 成功激活
-    ![active](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-active.png)
+    ![active](https://res.cloudinary.com/incoder/image/upload/v1525516756/blog/gitpages-https-active.png)
 9. SSL证书申请提醒
-    ![cer](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-ssl-cer.png)
+    ![cer](https://res.cloudinary.com/incoder/image/upload/v1525516994/blog/gitpages-https-ssl-cer.png)
 10. 添加强制HTTPS规则
-    ![rule](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-page-rule.png)
+    ![rule](https://res.cloudinary.com/incoder/image/upload/v1525517025/blog/gitpages-https-page-rule.png)
 11. 规则制定
-    ![deploy](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-https-deploy-https.png)
+    ![deploy](https://res.cloudinary.com/incoder/image/upload/v1525517045/blog/gitpages-https-deploy-https.png)
 
 好了剩下的就是等证书颁发，可能要等上一些时间，具体每个人不尽相同，这里就不多做解释了。
 

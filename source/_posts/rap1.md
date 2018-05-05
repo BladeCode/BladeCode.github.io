@@ -28,11 +28,11 @@ API管理工具又很多，选择适合自身需求的就是最好
 
 * 以管理员身份运行安装包`Redis-x64-3.2.100.msi`
     1. 添加环境变量  
-    ![env](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-redis-env-var.png)
+    ![env](https://res.cloudinary.com/incoder/image/upload/v1525517089/blog/gitpages-redis-env-var.png)
     2. 默认`6379`端口  
-    ![port](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-redis-port.png)
+    ![port](https://res.cloudinary.com/incoder/image/upload/v1525517270/blog/gitpages-redis-port.png)
     3. 检查Redis服务，是否已经启动  
-    ![serve](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-redis-serve.png)
+    ![serve](https://res.cloudinary.com/incoder/image/upload/v1525517284/blog/gitpages-redis-serve.png)
 
     >其他默认即可，不要设置Memory Limit
 
@@ -53,16 +53,16 @@ IDEA==>Open==>RAP
 ### 修改配置文件
 文件：RAP\src\main\resources\database\\`config.properties`  
 修改：数据库`用户名`及`密码`  
-![update](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap1-update-database-config.png)
+![update](https://res.cloudinary.com/incoder/image/upload/v1525517302/blog/gitpages-rap1-update-database-config.png)
 ## 启动项目
 1. Edit config  
-![config](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap1-tomcat-config.png)
+![config](https://res.cloudinary.com/incoder/image/upload/v1525517326/blog/gitpages-rap1-tomcat-config.png)
 2. Create Tomcat  
-![create](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap1-tomcat-create.png)
+![create](https://res.cloudinary.com/incoder/image/upload/v1525517350/blog/gitpages-rap1-tomcat-create.png)
 3. Deploy war  
-![deploy](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap1-tomcat-deploy.png)
+![deploy](https://res.cloudinary.com/incoder/image/upload/v1525517364/blog/gitpages-rap1-tomcat-deploy.png)
 4. Deploy success  
-![success](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-rap1-deploy-success.png)
+![success](https://res.cloudinary.com/incoder/image/upload/v1525517384/blog/gitpages-rap1-deploy-success.png)
 
 注意成功部署后，请`注册`新账号登录
 

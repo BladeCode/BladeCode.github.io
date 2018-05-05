@@ -1,10 +1,10 @@
 ---
-title: about
+title: 关于
 date: 2018-05-04 17:50:34
 comments: false
 ---
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=145223&auto=0&height=66"></iframe>
+<!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=145223&auto=0&height=66"></iframe> -->
 
 ## 关于我
 
@@ -18,7 +18,7 @@ comments: false
 
 ## 关于本站
 
-> 本站已开启HTTPS，由于org域名目前无法备案，因此图片部分依旧是HTTP
+> 本站已开启HTTPS
 
 资源：便捷，高效，有趣的工具资源  
 

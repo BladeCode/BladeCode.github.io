@@ -40,12 +40,11 @@ tag: Build
 ### 准备
 1. 使用GitHub账号登录Travis-CI，并确认接受访问
 2. 同步了GitHub存储库，转到您的配置文件页面并启用您想要构建的存储库  
-![enable](https://docs.travis-ci.com/images/enable.png)
 3. 添加 `.travis.yml` 文件到构建部署项目的根目录下
 
 ### Hexo 自动部署
 部署流程
-![部署流程](http://7xoc0z.com1.z0.glb.clouddn.com/gitpages-travis-ci-branch-deploy.png)
+![部署流程](https://res.cloudinary.com/incoder/image/upload/v1525517765/blog/gitpages-travis-ci-branch-deploy.png)
 
 Hexo 部署脚本示例
 ```bash
@@ -93,3 +92,11 @@ env:
 * 文章字符统计 [hexo-symbols-count-time](https://github.com/theme-next/hexo-symbols-count-time)
 * 修复LeanCloud访客计数器中的严重安全漏洞 [hexo-leancloud-counter-security](https://github.com/theme-next/hexo-leancloud-counter-security)
 * 图片灯箱 [theme-next-fancybox3](https://github.com/theme-next/theme-next-fancybox3)
+* 本地检索 [hexo-generator-searchdb](https://github.com/theme-next/hexo-generator-searchdb)
+
+## 其他
+
+### 图床选择
+* [个人网站中的静态文件云存储选择](https://jimmysong.io/posts/static-website-storage)
+* [嗯，图片就交给它了](https://sspai.com/post/40499)
+* [NexT主题无法备份解决方式](https://github.com/iissnan/hexo-theme-next/issues/932)
