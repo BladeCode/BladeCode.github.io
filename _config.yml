@@ -119,3 +119,16 @@ search:
   field: post
   format: html
   limit: 10000
+
+douban:
+  user: incoder
+  book:
+    title: '书中自有黄金屋'
+    quote: '只有学习才能让我快乐~'
+  movie:
+    title: '有人的地方，就有江湖'
+    quote: '时光追忆！'
+  game:
+    title: '那时候太年轻'
+    quote: '游戏可以重来，人生呢？'
+  timeout: 10000 #optional 
