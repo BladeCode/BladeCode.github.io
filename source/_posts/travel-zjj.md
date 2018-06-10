@@ -77,7 +77,7 @@ Day3：玻璃桥-大峡谷
 路线Day4：玻璃栈道-天门山寺-天门洞(坐索道上山顶——走西线——再到天门翻水处坐自动扶梯到天门洞——爬999级阶梯——最终坐环保车返回至市区)
 **自备中午餐**
 
-![天门山景区路线图](https://pic4.zhimg.com/80/v2-a2a1e0165e89d9610dfbfb465bee1765_hd.jpg)
+![天门山景区路线图](https://res.cloudinary.com/incoder/image/upload/v1528189150/blog/gitpages-zjj-tms.png.jpg)
 
 ## 住宿
 现在还未确定路线，个人推荐路线二；其次，16，17，18号需要住宿，要提前预定旅店
