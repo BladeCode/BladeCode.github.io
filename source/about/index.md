@@ -14,7 +14,7 @@ comments: false
 机械制造与自动化专业，14年毕业后投奔于互联网世界  
 16年开始自学Android开发，现从事Android开发工作  
 
-喜欢音乐，电影，coding  
+喜欢Coding，音乐，电影  
 
 ## 关于本站
 

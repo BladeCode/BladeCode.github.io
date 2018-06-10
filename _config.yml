@@ -88,10 +88,10 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
+- type: leancloud_counter_security_sync
   repo: https://github.com/BladeCode/BladeCode.github.io.git
   branch: master
-  # - type: leancloud_counter_security_sync
 
 githubEmojis:
   enable: true
