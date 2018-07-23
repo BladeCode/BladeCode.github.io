@@ -89,7 +89,7 @@ cd /opt/gitlab/bin
 ```
 6. 启动服务
 ```bash
-./gitlab-ctr start
+./gitlab-ctl start
 ```
 
 >* 成功启动服务，默认路径访问：http://localhost:80

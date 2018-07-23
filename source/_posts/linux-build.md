@@ -211,13 +211,6 @@ ln -s /root/node-v8.6.0-linux-x64/bin/node /usr/local/bin/node
 ln -s /root/node-v8.6.0-linux-x64/bin/npm /usr/local/bin/npm
 ```
 
-## Swagger
-
-comming soon~
-
-## Docker
-comming soon~
-
 ## 常用命令
 
 ### 文件查找
