@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 服务端：rap2-delos，客户端：rap2-dolores 同时部署 部署RAP2需要亲具有Node+Linux+MySQL的运维知识，如果亲对此不是很了解，建议用http://rap2.taobao.org 线上版本就可以 由于 客户端：rap2-dolores 是建立在 服务端：rap2-delos 基础上，因此先搭建服务端应用">
+<meta name="keywords" content="RAP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Api 文档管理系统 RAP2环境搭建">
+<meta property="og:url" content="https://www.incoder.org/2018/03/27/rap2/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 服务端：rap2-delos，客户端：rap2-dolores 同时部署 部署RAP2需要亲具有Node+Linux+MySQL的运维知识，如果亲对此不是很了解，建议用http://rap2.taobao.org 线上版本就可以 由于 客户端：rap2-dolores 是建立在 服务端：rap2-delos 基础上，因此先搭建服务端应用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1525517437/blog/gitpages-rap2-delos-success.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1525517454/blog/gitpages-rap2-dolores-success.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1525517475/blog/gitpages-rap2-mysql.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1525517495/blog/gitpages-rap2-mysql-path.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1525517523/blog/gitpages-rap2-mysql-create.png">
+<meta property="og:updated_time" content="2018-08-01T11:57:24.341Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Api 文档管理系统 RAP2环境搭建">
+<meta name="twitter:description" content="RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 服务端：rap2-delos，客户端：rap2-dolores 同时部署 部署RAP2需要亲具有Node+Linux+MySQL的运维知识，如果亲对此不是很了解，建议用http://rap2.taobao.org 线上版本就可以 由于 客户端：rap2-dolores 是建立在 服务端：rap2-delos 基础上，因此先搭建服务端应用">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1525517437/blog/gitpages-rap2-delos-success.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://www.incoder.org/2018/03/27/rap2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Api 文档管理系统 RAP2环境搭建 | BladeCode</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png"
+               alt="BladeCode"/>
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">BladeCode</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Life's a struggle!</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">20</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">12</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">20</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-books">
+    <a href="/books/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br />阅读</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-movies">
+    <a href="/movies" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-film"></i> <br />电影</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.incoder.org/2018/03/27/rap2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Api 文档管理系统 RAP2环境搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-27 10:20:10" itemprop="dateCreated datePublished" datetime="2018-03-27T10:20:10+00:00">2018-03-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Api/" itemprop="url" rel="index"><span itemprop="name">Api</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/27/rap2/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/27/rap2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/27/rap2/" class="leancloud_visitors" data-flag-title="Api 文档管理系统 RAP2环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 <strong>服务端：</strong><a href="https://github.com/thx/rap2-delos" target="_blank" rel="noopener">rap2-delos</a>，<strong>客户端：</strong><a href="https://github.com/thx/rap2-dolores" target="_blank" rel="noopener">rap2-dolores</a> 同时部署</p>
+<p>部署RAP2需要亲具有Node+Linux+MySQL的运维知识，如果亲对此不是很了解，建议用<a href="http://rap2.taobao.org" target="_blank" rel="noopener">http://rap2.taobao.org</a> 线上版本就可以</p>
+<p>由于 <strong>客户端：</strong><a href="https://github.com/thx/rap2-dolores" target="_blank" rel="noopener">rap2-dolores</a> 是建立在 <strong>服务端：</strong><a href="https://github.com/thx/rap2-delos" target="_blank" rel="noopener">rap2-delos</a> 基础上，因此先搭建服务端应用</p>
+<blockquote>
+<ul>
+<li>截至到2018-08-01 delos 并没有发布Tag版本，应该还处于功能开发前期阶段吧。本教程是在CentOS机器上实战部署</li>
+<li>然而安装部署并不是顺利，因此记录踩过的坑（别问我为啥不用Docker，因为我司分配的机器无法满足Docker的最低内核版本），安装环境介绍：Redis，delos，dolores均在一台服务器，MySQL使用已存在的服务</li>
+</ul>
+</blockquote>
+<h2 id="安装基本工具"><a href="#安装基本工具" class="headerlink" title="安装基本工具"></a>安装基本工具</h2><ul>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a></li>
+<li><a href="https://nodejs.org/zh-cn/download" target="_blank" rel="noopener">Node 8.9.4+</a></li>
+<li><a href="https://redis.io/download" target="_blank" rel="noopener">Redis 4.0+</a></li>
+<li><a href="https://www.mysql.com/cn/downloads" target="_blank" rel="noopener">MySQL 5.7+</a></li>
+</ul>
+<p>以上基本工具请根据自身需要，下载对应系统安装包，请自行解决安装配置等问题，这里不做过多说明</p>
+<blockquote>
+<p>Redis 安装可参考<a href="https://incoder.org/2018/05/15/linux-build" target="_blank" rel="noopener">Linux 常用应用安装</a>；<br>Redis 最好用非安全模式启动</p>
+</blockquote>
+<h2 id="服务端delos环境搭建"><a href="#服务端delos环境搭建" class="headerlink" title="服务端delos环境搭建"></a>服务端delos环境搭建</h2><h3 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h3><blockquote>
+<p>构建项目前，请确认Node，Redis，MySQL服务均能正常使用</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/thx/rap2-delos.git</span><br></pre></td></tr></table></figure>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><ul>
+<li><p>Mac or Linux</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -e '<span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> RAP2_DELOS_APP <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> utf8 <span class="keyword">COLLATE</span> utf8_general_ci<span class="string">';</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows 环境</p>
+<p>  进入mysql命令后执行</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> RAP2_DELOS_APP <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> utf8 <span class="keyword">COLLATE</span> utf8_general_ci;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>目录：rap2-delos/src/config<br>文件：<code>config.dev.ts</code>;其中dev，表示开发环境，其他同理<br>修改：<code>config.dev.ts</code>文件中<code>db</code>对象中<code>username</code>，<code>password</code>参数与<strong>本地</strong>或者<strong>开发环境</strong>的数据库信息匹配</p>
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><h4 id="安装项目依赖包"><a href="#安装项目依赖包" class="headerlink" title="安装项目依赖包"></a>安装项目依赖包</h4><p>项目根目录下执行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装项目所需依赖</span></span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 全局安装PM2</span></span><br><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+<h4 id="安装TypeScript编译包"><a href="#安装TypeScript编译包" class="headerlink" title="安装TypeScript编译包"></a>安装TypeScript编译包</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install typescript -g</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果下载缓慢，请使用<a href="https://npm.taobao.org" target="_blank" rel="noopener">淘宝npm镜像</a></p>
+</blockquote>
+<h4 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h4><p>项目根目录下执行(该过程比较慢，耐心等待初始化完成)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run create-db</span><br></pre></td></tr></table></figure>
+<h4 id="编译启动项目"><a href="#编译启动项目" class="headerlink" title="编译启动项目"></a>编译启动项目</h4><p>执行mocha测试用例和js代码规范检查<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run check</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>开发模式<br>启动开发模式的服务器 监视并在发生代码变更时自动重启(第一次运行比较慢，请耐心等待)</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生产模式<br>  启动生产模式服务器</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>看到浏览器中如下提示，表示<strong>服务端delos</strong>已经部署成功</p>
+<blockquote>
+<p>RAP2后端服务已启动，请从前端服务(rap2-dolores)访问。 RAP2 back-end server is started, please visit via front-end service (rap2-dolores).</p>
+</blockquote>
+<p>或者在程序控制台出现如下Log，表示<strong>服务端delos</strong>已经部署成功<br><img src="https://res.cloudinary.com/incoder/image/upload/v1525517437/blog/gitpages-rap2-delos-success.png" alt="delos"></p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="部署问题"><a href="#部署问题" class="headerlink" title="部署问题"></a>部署问题</h4><ol>
+<li><p>Windows下执行<code>npm run build</code>，提示<code>&#39;rm&#39; 不是内部或外部命令，也不是可运行的程序或批处理文件</code></p>
+<p> 原因：<code>rm</code> 是Linux下命令，<br> 解决方法：Windows系统可使用 <code>git bash</code> 打开该项目，执行该命令</p>
+</li>
+<li><p>执行<code>npm run create-db</code>命令，提示<code>Unable to connect to the database:{ SequelizeAccessDeniedError: Access denied for user &#39;root&#39;@&#39;localhost&#39; (using password:NO)}</code></p>
+<p> 原因：未修改<code>rap2-delos/src/config</code>目录下数据库配置文件，或者是与文件中的数据库信息与之连接的数据库信息不匹配<br> 解决方法：修改<code>config.dev.ts</code>文件数据库配置信息</p>
+<blockquote>
+<p>如果修改正确无误后，执行<code>npm run create-db</code>依旧出错，那么查看该项目中是否已经存在<code>dist</code>目录，如果有，请按照如上修改对应的数据库配置信息</p>
+</blockquote>
+</li>
+<li>执行<code>npm run dev</code>命令，提示<code>Error: listen EADDRINUSE :::8080</code><br> 原因：8080端口被占用<br> 解决方法：杀掉占用8080端口的应用</li>
+<li>执行<code>npm install</code> 命令，提示<code>hiredis</code> 编译无法通过<br> 原因：无权限操作<code>rap2-delos/node_modules/hiredis</code>路径<br> 解决方法：<code>sudo npm install</code><blockquote>
+<p>如果提示<code>sudo: npm: command not found</code>，请参考<a href="https://stackoverflow.com/questions/31472755/sudo-npm-command-not-found" target="_blank" rel="noopener">stackoverflow-npm</a>,<a href="https://stackoverflow.com/questions/4976658/on-ec2-sudo-node-command-not-found-but-node-without-sudo-is-ok" target="_blank" rel="noopener">stackoverflow-node</a></p>
+</blockquote>
+</li>
+<li><p>执行<code>npm run dev</code>可以正常启动，<code>npm start</code>命令无法正常启动服务<br> 原因：请使用<code>pm2 logs</code>查看日志具体定位<br> 示例：由于Redis的安全模式，不能正常使用</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ReplyError: Ready check failed: DENIED Redis is running <span class="keyword">in</span> protected mode because protected mode is enabled, no <span class="built_in">bind</span> address was specified, no authentication password is requested to clients. In this mode connections are only accepted from the loopback interface. If you want to connect from external computers to Redis you may adopt one of the following solutions: </span><br><span class="line"></span><br><span class="line">1) Just <span class="built_in">disable</span> protected mode sending the <span class="built_in">command</span> <span class="string">'CONFIG SET protected-mode no'</span> from the loopback interface by connecting to Redis from the same host the server is running, however MAKE SURE Redis is not publicly accessible from internet <span class="keyword">if</span> you <span class="keyword">do</span> so. Use CONFIG REWRITE to make this change permanent. </span><br><span class="line">2) Alternatively you can just <span class="built_in">disable</span> the protected mode by editing the Redis configuration file, and setting the protected mode option to <span class="string">'no'</span>, and <span class="keyword">then</span> restarting the server. </span><br><span class="line">3) If you started the server manually just <span class="keyword">for</span> testing, restart it with the <span class="string">'--protected-mode no'</span> option. </span><br><span class="line">4) Setup a <span class="built_in">bind</span> address or an authentication password. </span><br><span class="line">NOTE: You only need to <span class="keyword">do</span> one of the above things <span class="keyword">in</span> order <span class="keyword">for</span> the server to start accepting connections from the outside.</span><br></pre></td></tr></table></figure>
+<p> 解决方法： 使用<code>--protected-mode no</code>方式启动</p>
+</li>
+</ol>
+<h2 id="客户端dolores环境搭建"><a href="#客户端dolores环境搭建" class="headerlink" title="客户端dolores环境搭建"></a>客户端dolores环境搭建</h2><h3 id="构建项目-1"><a href="#构建项目-1" class="headerlink" title="构建项目"></a>构建项目</h3><h4 id="获取源代码"><a href="#获取源代码" class="headerlink" title="获取源代码"></a>获取源代码</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/thx/rap2-dolores.git</span><br></pre></td></tr></table></figure>
+<h3 id="环境配置-1"><a href="#环境配置-1" class="headerlink" title="环境配置"></a>环境配置</h3><h4 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h4><p>目录：rap2-dolores/src/config<br>文件：<code>config.dev.ts</code>;其中dev，表示开发环境，其他同理<br>修改：<code>config.dev.ts</code>文件，<code>serve</code>地址是 <strong>服务端</strong> <code>rap2-delos</code> 部署成功后的地址，默认：<code>&#39;http://localhost:8080&#39;</code></p>
+<h3 id="启动项目-1"><a href="#启动项目-1" class="headerlink" title="启动项目"></a>启动项目</h3><h4 id="安装项目依赖包-1"><a href="#安装项目依赖包-1" class="headerlink" title="安装项目依赖包"></a>安装项目依赖包</h4><p>项目根目录下执行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果下载缓慢，请使用<a href="https://npm.taobao.org" target="_blank" rel="noopener">淘宝npm镜像</a></p>
+</blockquote>
+<h4 id="编译启动项目-1"><a href="#编译启动项目-1" class="headerlink" title="编译启动项目"></a>编译启动项目</h4><ul>
+<li><p>开发模式<br>自动监视改变后重新编译</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>  备注：测试用例</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生产模式<br>编译React生产包</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>  用serve命令或nginx服务器路由到编译产出的build文件夹作为静态服务器即可</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serve -s ./build -p 80</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>看到浏览器中出现登录页面，表示部署成功<br><img src="https://res.cloudinary.com/incoder/image/upload/v1525517454/blog/gitpages-rap2-dolores-success.png" alt="dolores"></p>
+<h3 id="常见问题-1"><a href="#常见问题-1" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="部署问题-1"><a href="#部署问题-1" class="headerlink" title="部署问题"></a>部署问题</h4><ol>
+<li><p>执行<code>npm run dev</code>，提示</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">return</span> process.dlopen(module,path._makeLong(filename))</span><br><span class="line">...</span><br><span class="line">...node_modules\node-sass\vendor\win32-x64-57\binding.node is not a valid Win32 application...</span><br></pre></td></tr></table></figure>
+<p> 原因：项目依赖包<code>node-sass</code>没有安装完全<br> 解决方法：<code>npm install node-sass</code></p>
+</li>
+<li><p>项目运行起来，但一直停留在加载动画那里</p>
+<p> 浏览器控制台输出：<br> <code>GET http://127.0.0.1:8080/account/info  ==&gt;&gt;
+ Failed to load http://127.0.0.1:8080/account/info</code></p>
+<p> 原因：未修改<code>rap2-delos/src/config</code>目录下服务端连接地址,或者修改结果与<a href="https://github.com/thx/rap2-dolores" target="_blank" rel="noopener">rap2-dolores</a>实际提供服务地址不匹配<br> 解决方法：修改<code>config.dev.ts</code>文件serve配置信息</p>
+<blockquote>
+<p>如果Windows系统修改正确无误后，依旧出错，那么查看hosts(路径：C:\Windows\System32\drivers\etc)中127.0.0.1的IP前是否有<code>#</code>，如果有请取消注释</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="MySQL-运行问题"><a href="#MySQL-运行问题" class="headerlink" title="MySQL 运行问题"></a>MySQL 运行问题</h3><ul>
+<li>错误一<br><img src="https://res.cloudinary.com/incoder/image/upload/v1525517475/blog/gitpages-rap2-mysql.png" alt="mysql"><br>原因：MySQL 集成命令没有加入系统的环境变量<br>解决方法：将安装的MySQL Service路径加入系统变量<br><img src="https://res.cloudinary.com/incoder/image/upload/v1525517495/blog/gitpages-rap2-mysql-path.png" alt="path"></li>
+<li>错误二<br><img src="https://res.cloudinary.com/incoder/image/upload/v1525517523/blog/gitpages-rap2-mysql-create.png" alt="create"><br>原因：没有数据库链接权限<br>解决方法：先登录用root数据库，密码具体看自己数据库当时设置的密码</li>
+</ul>
+<h3 id="如何获取更新"><a href="#如何获取更新" class="headerlink" title="如何获取更新"></a>如何获取更新</h3><p>目前请选择<code>master</code>分支源码，后续其他分支请看相应分支说明文档。在开发环境中git pull来获取最新的源码更新，每一期更新都会有对应的update.md请关注并按照上面的指示进行升级工作。</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
+<li><a href="https://blog.csdn.net/ksdb0468473/article/details/52126009" target="_blank" rel="noopener">redis如何后台启动</a></li>
+<li><a href="http://www.cnblogs.com/ysocean/p/9074787.html" target="_blank" rel="noopener">Redis配置文件介绍</a></li>
+<li><a href="https://www.cnblogs.com/chyingp/p/pm2-documentation.html" target="_blank" rel="noopener">PM2实用入门指南</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Jerry xu</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.incoder.org/2018/03/27/rap2/" title="Api 文档管理系统 RAP2环境搭建">https://www.incoder.org/2018/03/27/rap2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RAP/" rel="tag"># RAP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/27/rap1/" rel="next" title="Api 文档管理系统 RAP1环境搭建">
+                <i class="fa fa-chevron-left"></i> Api 文档管理系统 RAP1环境搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/13/gitignore/" rel="prev" title=".gitignore 基础知识">
+                .gitignore 基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png"
+                alt="Jerry xu" />
+            
+              <p class="site-author-name" itemprop="name">Jerry xu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BladeCode" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:incoder.xu@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/_incoder" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/onblade" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://medium.com/@incoder" target="_blank" title="Medium"><i class="fa fa-fw fa-medium"></i>Medium</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.twodragonlake.com" title="TwoDragonLake" target="_blank">TwoDragonLake</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://rootcluster.github.io" title="RootCluster" target="_blank">RootCluster</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装基本工具"><span class="nav-number">1.</span> <span class="nav-text">安装基本工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端delos环境搭建"><span class="nav-number">2.</span> <span class="nav-text">服务端delos环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建项目"><span class="nav-number">2.1.</span> <span class="nav-text">构建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境配置"><span class="nav-number">2.2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件"><span class="nav-number">2.2.2.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动项目"><span class="nav-number">2.3.</span> <span class="nav-text">启动项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装项目依赖包"><span class="nav-number">2.3.1.</span> <span class="nav-text">安装项目依赖包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装TypeScript编译包"><span class="nav-number">2.3.2.</span> <span class="nav-text">安装TypeScript编译包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化数据库"><span class="nav-number">2.3.3.</span> <span class="nav-text">初始化数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译启动项目"><span class="nav-number">2.3.4.</span> <span class="nav-text">编译启动项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题"><span class="nav-number">2.4.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#部署问题"><span class="nav-number">2.4.1.</span> <span class="nav-text">部署问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端dolores环境搭建"><span class="nav-number">3.</span> <span class="nav-text">客户端dolores环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建项目-1"><span class="nav-number">3.1.</span> <span class="nav-text">构建项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取源代码"><span class="nav-number">3.1.1.</span> <span class="nav-text">获取源代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境配置-1"><span class="nav-number">3.2.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动项目-1"><span class="nav-number">3.3.</span> <span class="nav-text">启动项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装项目依赖包-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">安装项目依赖包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译启动项目-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">编译启动项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问题-1"><span class="nav-number">3.4.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#部署问题-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">部署问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-运行问题"><span class="nav-number">4.1.</span> <span class="nav-text">MySQL 运行问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取更新"><span class="nav-number">4.2.</span> <span class="nav-text">如何获取更新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">52k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:false</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'BladeCode',
+            repo: 'BladeCode.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '97aa93b198112873842f608c0feb14c3740ac491',
+            
+                client_id: '2e3028f6ae11f92b2c38'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("fAWWlD5N0zGklmW8OBweP1kl-gzGzoHsz", "7Jd3g9Ux1jhtWour5UFUPQuV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.3.0"></script>
+
+
+  
+
+  
+
+</body>
+</html>
