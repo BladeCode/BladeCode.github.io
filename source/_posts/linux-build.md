@@ -211,6 +211,41 @@ ln -s /root/node-v8.6.0-linux-x64/bin/node /usr/local/bin/node
 ln -s /root/node-v8.6.0-linux-x64/bin/npm /usr/local/bin/npm
 ```
 
+## Redis
+[官方下载地址](https://redis.io/download)，选择需要的版本下载安装包
+>官方提供了`.gz`格式安装包
+
+### 安装
+```bash
+# 1.下载安装文件
+wget wget http://download.redis.io/releases/redis-4.0.10.tar.gz
+# 2.解压安装文件(解压到当前目录)
+tar xzf redis-4.0.10.tar.gz
+# 3.编译安装
+cd redis-4.0.10
+make
+# 4.启动服务
+src/redis-server
+```
+
+## 配置
+```bash
+# 1.修改redis.conf文件中daemonize属性 为 yes
+vim /you_install_path/redis.conf
+```
+> 其他配置根据自身需要调整修改
+
+## 其他命令
+1. 关闭服务
+```bash
+redis-cli -h 127.0.0.1 -p 6379 shutdown
+```
+2. 非安全模式启动
+```bash
+# 后台以非安全模式启动
+nohup /usr/local/bin/redis-server --protected-mode no &
+```
+
 ## 常用命令
 
 ### 文件查找
@@ -270,5 +305,10 @@ ps -ef | grep httpd
 * 杀死指定进程
 ```bash
 kill -9 pid（逐个都删除）
+```
+* 查看指定端口
+```bash
+# 检测6379端口是否在监听  
+netstat -lntp | grep 6379 
 ```
 >
