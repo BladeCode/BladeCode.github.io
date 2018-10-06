@@ -30,12 +30,12 @@ $ git clone https://github.com/theme-next/hexo-theme-next themes/next
 [hexo-theme-next](https://github.com/theme-next/hexo-theme-next)项目右上角`Fork`按钮即可
 2. Clone Repository
 ```bash
-git clone git@github.com:RootCluster/hexo-theme-next.git
+git clone git@github.com:RootCluster/hexo-theme-test.git
 ```
 3. Add Submodule
 ```bash
 # 进入项目
-cd hexo-theme-next 
+cd hexo-theme-test 
 # 注册next项目是一个submodule，并把数据拷贝到`themes/next`路径
 git submodule add git@github.com:RootCluster/hexo-theme-next.git themes/next
 ```
