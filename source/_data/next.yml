@@ -193,6 +193,7 @@ links_layout: block
 links:
  TwoDragonLake: http://www.twodragonlake.com
  RootCluster: https://rootcluster.github.io
+ 南贺神社: https://1156721874.github.io
 
 # Sidebar Avatar
 avatar:
@@ -276,8 +277,8 @@ auto_excerpt:
 post_meta:
   item_text: true
   created_at: true
-  updated_at:
-    enabled: false
+  updated_at: 
+    enabled: true
     # If true, show updated date label only if `updated date` different from 'created date' (post edited in another day than was created).
     # And if post will edited in same day as created, edited time will show in popup title under created time label.
     # If false show anyway, but if post edited in same day, show only edited time.
@@ -646,8 +647,8 @@ rating:
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
   enable: true
-  app_id: fAWWlD5N0zGklmW8OBweP1kl-gzGzoHsz
-  app_key: 7Jd3g9Ux1jhtWour5UFUPQuV
+  app_id: 3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz
+  app_key: cW8VJrB2yJiIBLtYA0KdE8vW
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in lc counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set the `security` to `false`.

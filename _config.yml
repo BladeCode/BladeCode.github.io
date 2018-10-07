@@ -100,13 +100,6 @@ githubEmojis:
   styles:
   localEmojis:
 
-leancloud_counter_security:
-  enable: true
-  app_id: fAWWlD5N0zGklmW8OBweP1kl-gzGzoHsz
-  app_key: 7Jd3g9Ux1jhtWour5UFUPQuV
-  username: incoder      # Will be asked while deploying if is left blank
-  password: coder@root,. # Recommmended to be left blank. Will be asked while deploying if is left blank
-
 # hexo-symbols-count-time
 symbols_count_time:
   symbols: true
@@ -131,4 +124,4 @@ douban:
   game:
     title: '那时候太年轻'
     quote: '游戏可以重来，人生呢？'
-  timeout: 10000 #optional 
+  timeout: 10000 # optional 

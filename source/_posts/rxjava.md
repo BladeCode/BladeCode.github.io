@@ -184,7 +184,8 @@ Subscriber<String> subscriber = new Subscriber<String>() {
 ```
 实际，在RxJava的subscribe过程中，`Observer`也总是会先被转成一个`Subscriber`再使用。对于使用者来说`Observer`与`Subscriber`的主要区别是：
 1. onStart()：这是`Subscriber`增加的方法。它会再subscribe刚开始，而事件还未发送之前被调用，可以用于做一些准备工作，例如：数据的重置等操作。这是一个可选方法，默认情况下它的实现为空。
->注意：对于准备工作有线程要求，`onStart()`就不适用，因为它总是再subscribe所发生的线程被调用，而不能指定线程。要指定线程来准备工作，可以使用`doOnSubscribe()`方法
+>注意：
+>对于准备工作有线程要求，`onStart()`就不适用，因为它总是再subscribe所发生的线程被调用，而不能指定线程。要指定线程来准备工作，可以使用`doOnSubscribe()`方法
 2. unsubscribe()：`Subscriber`所实现的另一个接口`Subscription`的方法，用于取消订阅。在这个方法被调用后，`Subscriber`将不再接收事件。
 >注意：
 >* 一般需要在调用`unsubscribe()`方法前，需要使用`isUnsubscribed()`先判断状态。
