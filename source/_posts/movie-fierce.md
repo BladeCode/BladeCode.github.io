@@ -7,8 +7,6 @@ tag: 黄山
 
 {% cq %} <h2>怕，你就会输一辈子</h2> {% endcq %}
 
-{% dplayer "url=https://vodkgeyttp8.vod.126.net/vodkgeyttp8/er2FM3CV_126646839_hd.mp4?wsSecret=1e98e23b7864a26fae93a384aad1bd3b&wsTime=1538906004" "pic=http://p1.music.126.net/w0PZ_MfRNkwDvBwWhjiCtQ==/109951163572827164.jpg" "loop=no" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
-
 喜欢其中的一些台词，大伙共勉
 * 其实，我每次上台都很怕的，不过每次我都会跟自己说，我能做到
 * 这场比赛我可能会跌倒，但我一定会站起来
@@ -20,3 +18,5 @@ tag: 黄山
 * 要和自己志同道合，有共同目标的伙伴去互相较劲
 * 从哪里跌倒就要从哪里爬起来
 * 一路跌跌撞撞走下去，中间的酸甜苦辣是最美的味道
+
+{% dplayer "url=https://vodkgeyttp8.vod.126.net/vodkgeyttp8/er2FM3CV_126646839_hd.mp4?wsSecret=1e98e23b7864a26fae93a384aad1bd3b&wsTime=1538906004" "pic=http://p1.music.126.net/w0PZ_MfRNkwDvBwWhjiCtQ==/109951163572827164.jpg" "loop=no" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
