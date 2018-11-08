@@ -41,7 +41,7 @@ git checkout tag_name
 # 查看git commit 历史的
 git log
 # 指定 commit SHA
-git clone commit_sha_value 
+git clone commit_sha_value
 ```
 
 ## git commit
@@ -98,10 +98,18 @@ git tag -d tag_name
 # 删除远程指定tag
 git push origin --delete tag tag_name
 ```
+
 ## git help
 更多命令
 ```sh
 git --help
 ```
+
+## git other
+* 查看当前项目远程仓库地址
+```sh
+git remote -v
+```
+
 ## 附录
 * [Git Docs](https://git-scm.com/docs)
