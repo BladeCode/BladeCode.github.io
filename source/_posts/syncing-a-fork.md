@@ -58,6 +58,45 @@ Fast-forward
  create mode 100644 README.md
 ```
 
+## 同步源仓库branch
+在git中master实质是一个特殊的branch，其它的branch的同步和master同步操作并不一样
+
+```bash
+# 查看项目的所有分支
+git branch -v
+# 当前项目在master分支，origin/HEAD类似指针，表示项目默认分支是origin/master
+# origin/dev，origin/i18n，origin/ivan/feat-custom-lang，origin/master这四个分支是fork项目目前拥有分支
+# upstream/dev，upstream/i18n，upstream/master表示源仓库项目所拥有的分支
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/dev
+  remotes/origin/i18n
+  remotes/origin/ivan/feat-custom-lang
+  remotes/origin/master
+  remotes/upstream/dev
+  remotes/upstream/i18n
+  remotes/upstream/master
+
+# 切换到dev分支，同步源仓库dev分支到fork项目的dev分支
+git checkout -b dev upstream/dev
+# 推送修改到fork项目dev分支
+git push origin dev
+```
+
+> 如果源仓库分支已被删除，那么可以在fork项目中删除源仓库已被删除的分支
+```bash
+# 删除指定分支，并推送到远程仓库
+git push origin --delete branch_name
+```
+
+## 同步源仓库tag
+```bash
+# 获取源仓库的tag
+git fetch upstream --tags
+# 将新的的tag推送到fork项目
+git push --tags
+```
+
 ## 附录
 * [同步你的 Fork 仓库](http://wiki.jikexueyuan.com/project/github-basics/fork-synced.html)
 * [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
