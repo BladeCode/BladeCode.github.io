@@ -381,7 +381,7 @@ public class AudioPlayer {
 * `MediaRecorder`底层的实现也是调用了`AudioRecord`与`Android Framework` 层的`AudioFlinger`进行交互
 
 > 关于音视频相关的资料参差不齐，目前尚未有大量相关专门的书籍来介绍该领域的图书或者易懂视频，很多情况需要根据所处应用场景灵活应变。
-推荐刚刚发行的一本关于音频方面的书记[《Android音视频开发》](https://item.jd.com/35027062396.html)
+推荐刚刚发行的一本关于音频方面的图书[《Android音视频开发》](https://item.jd.com/35027062396.html)
 推荐国内比较专业音视频方面相关的介绍[《雷霄骅的专栏》](http://blog.csdn.net/leixiaohua1020)
 ## 附录
 
