@@ -1,4 +1,4 @@
-<div align="right">Language: :us:
+<div align="right">官方文档: 
 <a title="Chinese" href="docs/zh-CN/README.md">:cn:</a>
 <a title="Russian" href="docs/ru/README.md">:ru:</a></div>
 
@@ -6,133 +6,85 @@
 
 <p align="center">«NexT» is a high quality elegant <a href="http://hexo.io">Hexo</a> theme. It is crafted from scratch, with love.</p>
 
-[![gitter-image]][gitter-url]
-[![riot-image]][riot-url]
-[![t-chat-image]][t-chat-url]
-[![t-news-image]][t-news-url]
-[![lang-image]][lang-url]
-[![travis-image]][travis-url]
-[![rel-image]][releases-url]
-[![hexo-image]][hexo-url]
-[![lic-image]][lic-url]
+<p align="center">
+  <a href="https://www.codacy.com/app/theme-next/hexo-theme-next?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=theme-next/hexo-theme-next&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/72f7fe7609c2438a92069f448e5a341a" title="Project Grade"></a>
+  <a href="https://travis-ci.org/theme-next/hexo-theme-next?branch=master"><img src="https://travis-ci.org/theme-next/hexo-theme-next.svg?branch=master" title="Travis CI [Linux]"></a>
+  <a href="https://crwd.in/theme-next"><img src="https://d322cqt584bo4o.cloudfront.net/theme-next/localized.svg" title="Add or improve translation in few seconds!"></a>
+  <a href="https://github.com/theme-next/hexo-theme-next/releases"><img src="https://badge.fury.io/gh/theme-next%2Fhexo-theme-next.svg"></a>
+  <a href="http://hexo.io"><img src="https://img.shields.io/badge/hexo-%3E%3D%203.5.0-blue.svg"></a>
+  <a href="https://github.com/theme-next/hexo-theme-next/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-%20AGPL-blue.svg"></a>
+</p>
 
-## Live Preview
+## 前言
+这是一个fork项目，在[源项目](https://github.com/theme-next/hexo-theme-next)的基础上，集成了以下第三方常用的工具库
+* [theme-next-algolia-instant-search](https://github.com/theme-next/theme-next-algolia-instant-search)：即时搜索
+* [theme-next-bookmark](https://github.com/theme-next/theme-next-bookmark)：书签，用户可以保存他们的阅读位置
+* [theme-next-fancybox3](https://github.com/theme-next/theme-next-fancybox3)：图片预览
+* [theme-next-reading-progress](https://github.com/theme-next/theme-next-reading-progress)：页面阅读进度加载
+* [theme-next-pace](https://github.com/theme-next/theme-next-pace)：顶部装载栏
+* [theme-next-pangu](https://github.com/theme-next/theme-next-pangu)：字符间空格处理
+* [theme-next-pdf](https://github.com/theme-next/theme-next-pdf)：PDF文件预览支持
 
-* :heart_decoration: Muse scheme: [LEAFERx](https://leaferx.online) | [XiaMo](https://notes.wanghao.work) | [OAwan](https://oawan.me)
-* :six_pointed_star: Mist scheme: [Jeff](https://blog.zzbd.org) | [uchuhimo](http://uchuhimo.me) | [xirong](http://www.ixirong.com)
-* :pisces: Pisces scheme: [Vi](http://notes.iissnan.com) | [Acris](https://acris.me) | [Rainy](https://rainylog.com)
-* :gemini: Gemini scheme: [Ivan.Nginx](https://almostover.ru) | [Raincal](https://raincal.com) | [Dandy](https://dandyxu.me)
+## 使用
 
-More «NexT» examples [here](https://github.com/iissnan/hexo-theme-next/issues/119).
-
-## Installation
-
-Simplest way to install is by cloning whole repository:
-
-   ```sh
-   $ cd hexo
-   $ git clone https://github.com/theme-next/hexo-theme-next themes/next
-   ```
-
-Or you can see [detailed installation instructions][docs-installation-url] if you want any other variant.
-
-## Plugins
-
-In NexT config now you can find dependencies on each module which was moved to external repositories which can be found by [main organization link](https://github.com/theme-next).
-
-For example, you want to use `fancybox` in your site. Go to NexT config and see:
-
-```yml
-# Fancybox
-# Dependencies: https://github.com/theme-next/theme-next-fancybox
-fancybox: false
+### 安装主题
+在你的hexo项目中，安装已集成好的[NexT](https://github.com/RootCluster/hexo-theme-next)主题
+```bash
+# 在你的 blog 根目录下执行
+git clone https://github.com/theme-next/hexo-theme-next themes/next
 ```
 
-Then turn on `fancybox` and go to «Dependencies» link with installation instructions of this module.
+### 个性化配置
+在你的 blog 项目的根目录 `source/_data`中，创建`next.yml`
 
-### Exceptions
+copy`<your blog>/themes/next/`路径下`_config.yml`的内容到`<your blog>/source/_data/`路径的`next.yml`文件中
 
-If you use cdn for any plugins, you need to replace your cdn link.
+以下配置均在`next.yml`文件中
+* algolia-instant-search
+  ```
+  algolia_search:
+    enable: true
+  ```
+* bookmark
+  ```
+  bookmark: true
+  ```
+* fancybox
+  ```
+  fancybox: true
+  ```
+* reading_progress
+  ```
+  reading_progress:
+    enable: true
+    color: "#37c6c0"
+    height: 2px
+  ```
+* pace
+  ```
+  pace: true
+  ```
+* pangu
+  ```
+  pangu: true
+  ```
+* pdf
+  ```
+  # PDF Support
+  pdf:
+    enable: true
 
-For example, you want to use `fancybox` and you configured a cdn link. Go to NexT config and see:
+    # Default(true) will load PDFObject/PDF.js script on demand
+    # That is it only render those page who has 'pdf: true' in Front Matter.
+    # If you set it to false, it will load PDFObject/PDF.js srcipt EVERY PAGE.
+    per_page: true
 
-```yml
-vendors:
-  # ...
-  # Some contents...
-  # ...
-  fancybox: # Set or update fancybox cdn url.
-  fancybox_css: # Set or update fancybox cdn url.
-```
+    height: 500px
 
-Instead of defining [main organization link](https://github.com/theme-next) for updates.
+    pdfobject:
+      # Use 2.1.1 as default, cloudflare as default CDN
+      cdn: //cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js
+  ```
 
-## Update
-
-You can update to latest master branch by the following command:
-
-```sh
-$ cd themes/next
-$ git pull
-```
-
-And if you see any error message during update (something like **«Commit your changes or stash them before you can merge»**), recommended to learn [Hexo data files][docs-data-files-url] feature.\
-Howbeit, you can bypass update errors by `Commit`, `Stash` or `Discard` local changes. See [here](https://stackoverflow.com/a/15745424/5861495) how to do it.
-
-**If you want to update from v5.1.x to v6.0.x, read [here][docs-update-5-1-x-url].**
-
-## Known Bugs
-
-For those who also encounter **«[Error: Cannot find module 'hexo-util'](https://github.com/iissnan/hexo-theme-next/issues/1490)»**, please check your NPM version.
-
-* `> 3`: Still not work? Please remove `node_modules` directory and reinstall using `npm install`.
-* `< 3`: Please add `hexo-util` explicitly via `npm install --save-dev hexo-util` to you site package deps.
-
-## Contributing
-
-Contribution is welcome, feel free to open an issue and fork. Waiting for your pull request.
-
-## Third party applications
-
-* :triangular_flag_on_post: <a title="Hexo Markdown Editor" href="https://github.com/zhuzhuyule/HexoEditor" target="_blank">HexoEditor</a>
-
-[browser-image]: https://img.shields.io/badge/browser-%20chrome%20%7C%20firefox%20%7C%20opera%20%7C%20safari%20%7C%20ie%20%3E%3D%209-lightgrey.svg
-[browser-url]: https://www.browserstack.com
-
-[lang-image]: https://d322cqt584bo4o.cloudfront.net/theme-next/localized.svg "Add or improve translation in few seconds!"
-[lang-url]: https://crwd.in/theme-next
-
-[gitter-image]: https://img.shields.io/badge/gitter-chat-orange.svg "Join to our Gitter room"
-[gitter-url]: https://gitter.im/theme-next
-
-[riot-image]: https://img.shields.io/badge/riot-chat-DCAB08.svg "Join to our Riot room"
-[riot-url]: https://riot.im/app/#/room/#NexT:matrix.org
-
-[t-chat-image]: https://img.shields.io/badge/telegram-chat-BAB210.svg "Join to our Telegram group"
-[t-chat-url]: https://t.me/theme_next
-
-[t-news-image]: https://img.shields.io/badge/telegram-news-98B919.svg "Join to our Telegram news channel"
-[t-news-url]: https://t.me/theme_next_news
-
-[travis-image]: https://travis-ci.org/theme-next/hexo-theme-next.svg?branch=master
-[travis-url]: https://travis-ci.org/theme-next/hexo-theme-next?branch=master "Travis CI [Linux]"
-
-[hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.5.0-blue.svg
-[hexo-url]: http://hexo.io
-
-[lic-image]: https://img.shields.io/badge/license-%20AGPL-blue.svg
-[lic-url]: https://github.com/theme-next/hexo-theme-next/blob/master/LICENSE.md
-
-<!--[rel-image]: https://img.shields.io/github/release/theme-next/hexo-theme-next.svg-->
-[rel-image]: https://badge.fury.io/gh/theme-next%2Fhexo-theme-next.svg
-<!--[mnt-image]: https://img.shields.io/maintenance/yes/2018.svg-->
-
-[download-latest-url]: https://github.com/theme-next/hexo-theme-next/archive/master.zip
-[releases-latest-url]: https://github.com/theme-next/hexo-theme-next/releases/latest
-[releases-url]: https://github.com/theme-next/hexo-theme-next/releases
-[tags-url]: https://github.com/theme-next/hexo-theme-next/tags
-[commits-url]: https://github.com/theme-next/hexo-theme-next/commits/master
-
-[docs-installation-url]: https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md
-[docs-data-files-url]: https://github.com/theme-next/hexo-theme-next/blob/master/docs/DATA-FILES.md
-[docs-update-5-1-x-url]: https://github.com/theme-next/hexo-theme-next/blob/master/docs/UPDATE-FROM-5.1.X.md
+## 更新
+具体操作查看[Git 子仓库管理](https://incoder.org/2018/05/17/git-sub/#git-subtree-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E9%87%8D%E7%82%B9)

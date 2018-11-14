@@ -80,7 +80,18 @@
         </span>
       </div>
     {% endif %}
+	
+    {% if theme.baidushare and theme.baidushare.type === "slide" %}
+      <div>
+        {% include '_partials/share/baidushare.swig' %}
+      </div>
+    {% endif %}
 
+    {% if theme.add_this_id %}
+      <div>
+        {% include '_partials/share/add-this.swig' %}
+      </div>
+    {% endif %}
   </div>
 
   {% include '_scripts/vendors.swig' %}
@@ -98,6 +109,7 @@
   {% include '_third-party/analytics/lean-analytics.swig' %}
   {% include '_third-party/analytics/firestore.swig' %}
   {% include '_third-party/seo/baidu-push.swig' %}
+  {% include '_third-party/schedule.swig' %}
   {% include '_third-party/math/index.swig' %}
   {% include '_third-party/needsharebutton.swig' %}
   {% include '_third-party/rating.swig' %}
