@@ -37,7 +37,7 @@ Google Cloud 特点
 根据需要填写一些信息，由于我的Google账号已是开发者账号，一些信息都是完善的，所以Google直接关联了信息，因此也不会再扣除$1，如果你是新账号，详细步骤可参考附录
 
 ## VM创建
-在创建VM之前，我们先进行网络防火墙的修改，避免后续的麻烦，地址：https://console.cloud.google.com/networking/firewalls/list
+在创建VM之前，我们先进行[网络防火墙修改](https://console.cloud.google.com/networking/firewalls/list)，避免后续的麻烦
 
 ![gcp-firewall-settings](https://res.cloudinary.com/incoder/image/upload/v1542546675/blog/gcp-firewall-settings.png)
 ![gcp-create-firewall](https://res.cloudinary.com/incoder/image/upload/v1542545777/blog/gcp-create-firewall.png)
@@ -74,16 +74,12 @@ Google Cloud 特点
 #### 密钥生成
 1. 新建用户密钥生成向导  
 ![gcp-link-vm-xshell1](https://res.cloudinary.com/incoder/image/upload/v1542547944/blog/gcp-link-vm-xshell1.png)
-
 2. 密钥类型长度设置  
 ![gcp-link-vm-xshell2](https://res.cloudinary.com/incoder/image/upload/v1542548236/blog/gcp-link-vm-xshell2.png)
-
 3. 生成密钥  
 ![gcp-link-vm-xshell3](https://res.cloudinary.com/incoder/image/upload/v1542548733/blog/gcp-link-vm-xshell3.png)
-
 4. 设置密钥名称及密码  
 ![gcp-link-vm-xshell4](https://res.cloudinary.com/incoder/image/upload/v1542548796/blog/gcp-link-vm-xshell4.png)
-
 5. 保存密钥  
 ![gcp-link-vm-xshell5](https://res.cloudinary.com/incoder/image/upload/v1542548832/blog/gcp-link-vm-xshell5.png)
 
@@ -91,7 +87,6 @@ Google Cloud 特点
 
 * 元数据  
 ![gcp-link-vm-settings](https://res.cloudinary.com/incoder/image/upload/v1542549326/blog/gcp-link-vm-settings.png)
-
 * SSH  
 ![gcp-link-vm-ssh](https://res.cloudinary.com/incoder/image/upload/v1542549369/blog/gcp-link-vm-ssh.png)
 * SSH密钥添加  
@@ -101,11 +96,10 @@ Google Cloud 特点
 
 * 配置连接的服务器地址
 ![gcp-link-vm-ssh-ip](https://res.cloudinary.com/incoder/image/upload/v1542554061/blog/gcp-link-vm-ssh-ip.png)
-
 * 配置连接服务器的密钥
 ![gcp-link-vm-ssh-login](https://res.cloudinary.com/incoder/image/upload/v1542554117/blog/gcp-link-vm-ssh-login.png)
 
-## 安装SSR
+## SSR
 通过以上的配置，我们可以使用Xshell进行SSR工具的安装，安装SSR工具前，需要先升级系统内核，按照如下执行命令
 
 ### 内核升级
@@ -153,11 +147,9 @@ chmod +x shadowsocks-all.sh
 ![gcp-link-vm-ssh-install](https://res.cloudinary.com/incoder/image/upload/v1542556264/blog/gcp-link-vm-ssh-install.png)
 
 等待安装完成，提示如下：
-
 ![gcp-link-vm-ssh-finish](https://res.cloudinary.com/incoder/image/upload/v1542556345/blog/gcp-link-vm-ssh-finish.png)
 
-安装提示的信息配置你的SSR客户端即可
-[SSR客户端下载](https://www.mediafire.com/folder/btkdbx7j9lr98/Shadowsocks_%E7%9B%B8%E5%85%B3%E5%AE%A2%E6%88%B7%E7%AB%AF#myfiles)
+根据安装完成后提示的信息配置你的SSR客户端即可
 
 ## 其它
 * 查询余额  
@@ -166,6 +158,7 @@ chmod +x shadowsocks-all.sh
 主机：$5/月.  
 流量：谷歌云服务器出口大陆流量1T以内价格约为0.23$/1G.  
 每个月可用流量：$300-$5*12=$240/12/0.23 ≈ 86G
+* [SSR客户端](https://www.mediafire.com/folder/btkdbx7j9lr98/Shadowsocks_%E7%9B%B8%E5%85%B3%E5%AE%A2%E6%88%B7%E7%AB%AF#myfiles)
 
 ## 附录
 * [Google Cloud Platform免费申请&一键搭建SSR & BBR加速教程](https://www.wmsoho.com/google-cloud-platform-ssr-bbr-tutorial)
