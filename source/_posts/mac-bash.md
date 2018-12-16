@@ -74,6 +74,11 @@ Shell：在计算科学中，指“为用户提供用户界面”的软件，通
 
 我们看看在macOS系统中，bash的startup文件是如何进行加载
 
+>注意：
+>* `/etc/profile`和`/etc/paths`是系统级别，系统启动后就会加载，后面的配置文件是当前用户级的环境变量
+>* 如果`~/.bash_profile`存在，后面几个文件就会忽略不读，不在时，才会以此类推读取后面的文件
+>* `~/.bashrc`没有上述规则，他始终加载，它是在`bash shell`打开的时候载入的
+
 ## 特点
 `bash`的两种属性，即 **“交互”** 与 **“登录”**，按照`bash`是否与用户进行交互，可将其分为 **“交互式”** 与 **“非交互式”**；按照`bash`是否被用户登录，又可将其分为 **“登录shell”** 与 **“非登录shell”**
 
@@ -95,6 +100,49 @@ Shell：在计算科学中，指“为用户提供用户界面”的软件，通
 * **登录shell**和**非登录shell**的主要区别在于启动shell时所执行的startup文件不同；登录shell执行的startup文件为`~/.bash_profile`，而**非登录shell**执行的startup文件为`~/.bashrc`
 
 ## 总结
+
+### Path语法
+```bash
+# 中间使用冒号分隔
+export PATH=$PATH:<PATH 1>:<PATH 2>:<PATH 3>:------:<PATH N>
+```
+
+### 环境变量设置
+
+#### 全局设置
+* `/etc/paths`：全局环境变量设置，建议修改此文件
+* `/etc/profile`：不建议修改此文件，全局配置，不管是哪个用户，登录时都会读取此文件
+* `/etc/bashrc`：一般在这个文件中添加系统级别环境变量，全局配置，bash shell执行时，不管是何种方式，都会读取此文件
+
+#### 单用户设置
+* `~/.bash_profile`：添加用户级环境变量  
+例如：设置`ANDROID_HOME`到PATH
+```bash
+export ANDROID_HOME=/Users/shaoc/Library/Android/sdk
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+```
+* `~/.bashrc` 同上  
+一般重启shell设置就会生效，如果想立刻生效，则可执行下面的语句：
+```bash
+source 相应的文件
+```
+
+#### zsh中配置环境变量
+在安装 `oh my zsh`后，`.bash_profile`文件中的环境变量就无法起到作用，因为终端默认启动的是`zsh`，而不是`shell`，所以无法加载
+
+* 解决方法
+在`~/.zshrc`配置文件中，增加对`.bash_profile`的引用：
+```bash
+source ~/.bash_profile
+```
+
+`.bash_profile`文件示例：  
+```bash
+export ANDROID_HOME=/Users/blade/Library/Android/sdk
+export GRADLE_HOME=/Users/blade/Documents/DevTools/Gradle/gradle-4.6
+export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME/bin:$FLUTTER_HOME/bin:$PATH
+```
 
 ## 附录
 * [原关于“.bash_profile”和“.bashrc”区别的总结](https://blog.csdn.net/sch0120/article/details/70256318)
