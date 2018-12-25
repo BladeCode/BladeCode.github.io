@@ -249,7 +249,7 @@ sidebar:
   b2t: false
 
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
@@ -506,16 +506,16 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
-  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
-  verify: false # Verification code
+  enable: true
+  appid: 3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz # your leancloud application appid
+  appkey: cW8VJrB2yJiIBLtYA0KdE8vW # your leancloud application appkey
+  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: true # Verification code
   placeholder: Just go go # comment box placeholder
   avatar: mm # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
-
+  visitor: true
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
@@ -528,7 +528,7 @@ valine:
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
 gitment:
-  enable: true
+  enable: false
   mint: true # RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway
   count: true # Show comments count in post meta area
   lazy: true # Comments lazy loading with a button
@@ -647,7 +647,7 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: true
+  enable: false
   app_id: 3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz
   app_key: cW8VJrB2yJiIBLtYA0KdE8vW
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
