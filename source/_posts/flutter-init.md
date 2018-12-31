@@ -20,12 +20,12 @@ tag: [flutter]
 1. 解压下载的flutter SDK，并配置环境变量，例如这里配置在`.bash_profile`文件中
 ```bash
 # 打开 .bash_profile文件
-vim ~/.bash_profile
+vim .bash_profile
 # .bash_profile文件中加入flutter sdk路径并保存
 export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
 export PATH=$FLUTTER_HOME/bin:$PATH
 # 重新加载.bash_profile文件
-source ~/.bash_profile
+source .bash_profile
 ```
 2. 检查环境变量是否配置正确，如果有相关命令说明，表示已配置好环境变量
 ```bash
@@ -58,6 +58,28 @@ flutter doctor
 ```
     ![flutter-finish](https://res.cloudinary.com/incoder/image/upload/v1544994676/blog/flutter-finish.png)
 
+## 辅助
+如果你不习惯或者不想使用Android Studio来开发Flutter，那么使用[VS Code](https://code.visualstudio.com)是最佳推荐的文本编辑器，只需要在VS Code中安装[Flutter](https://marketplace.visualstudio.com/items?itemName=dart-code.flutter)插件即可，它已包含所需的[Dart](https://marketplace.visualstudio.com/items?itemName=dart-code.dart-code)语法插件
+
+关于程序的运行，那么模拟器当然少不了，这里介绍下macOS上如何启动Android 模拟器
+* 首先AndroidSDK的环境变量配置少不了
+* 配置emulator
+```bash
+export ANDROID_HOME=/Users/blade/Library/Android/sdk
+export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$FLUTTER_HOME/bin:$PATH
+```
+* 启动
+```bash
+# 查看已创建模拟器清单
+emulator -list-avds
+# 选择需要启动的模拟器，avd_name：表示从上面列表获取到的模拟器名称
+emulator -avd [avd_name]
+```
+>注意：
+>* 不推荐使用[Genymotion](https://www.genymotion.com/)，flutter的运行在此模拟器上有各种灵异bug
+>* PANIC: Missing emulator engine program for 'x86' CPU.解决方式：创建一个x64的模拟器
+
 ## 问题
 
 ### libusbmuxd version error during flutter install
@@ -79,3 +101,5 @@ brew install --HEAD libimobiledevice
 * [flutter docs](https://flutter.io/docs)
 * [Flutter免费视频第一季-环境搭建](http://jspang.com/post/flutter1.html#toc-586)
 * [flutter安装记录过程](https://www.jianshu.com/p/637796e9c0ea)
+* [macOS上搭建Flutter开发环境](https://flutterchina.club/setup-macos/#%E8%AE%BE%E7%BD%AE%E6%82%A8%E7%9A%84android%E8%AE%BE%E5%A4%87)
+* [官方命令行构建您的应用](https://developer.android.google.cn/studio/build/building-cmdline?hl=zh-cn)
