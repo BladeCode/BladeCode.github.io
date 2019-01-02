@@ -2,10 +2,10 @@
 title: 应该知道的系统环境配置文件
 date: 2018-11-24 15:27:20
 categories: Operating Systems
-tag: [OS,Shell]
+tag: [OS, Shell]
 ---
 
-在计算机操作系统中`Shell`是用户与操作系统交互的媒介，而`bash`作为目前`Linux/macOS`系统中最常用的`Shell`，它支持的`startup`文件也并不单一，甚至让人感到费解，以下就是对Shell的学习
+在计算机操作系统中`Shell`是用户与操作系统交互的媒介，而`bash`作为目前`Linux\macOS`系统中最常用的`Shell`，它支持的`startup`文件也并不单一，甚至让人感到费解，以下就是对Shell的学习
 
 Shell：在计算科学中，指“为用户提供用户界面”的软件，通常指的是 **命令行界面** 的解析器。一般来说，`Shell`指操作系统中提供访问内核所提供的服务程序。
 

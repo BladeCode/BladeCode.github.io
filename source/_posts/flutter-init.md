@@ -5,7 +5,7 @@ categories: Android
 tag: [flutter]
 ---
 
-这两年随着前端的高速发展，大前端的趋势下，Native移动应用开发市场在一定程度上被前端瓜分，加之硬件的快速迭代，性能已不存在明显的短板，[React Native](https://facebook.github.io/react-native)，[Vue](https://cn.vuejs.org/index.html)，[Angular](https://angular.io/)等等这些Web框架，对移动端也有了较大的提升，毕竟这样的开发效率会直线上升，并且大大减少了成本。技术的革新真的好快，如果不去学习，很快就会被淘汰，虽然技术学不完，但不能掉队，丢掉饭碗，扯得有点远了
+这两年随着前端的高速发展，大前端的趋势下，Native移动应用开发市场在一定程度上被前端瓜分，加之硬件的快速迭代，性能已不存在明显的短板，[React Native](https://facebook.github.io/react-native)，[Vue](https://cn.vuejs.org/index.html)，[Angular](https://angular.io/)等等这些Web框架，对移动端也有了较大的提升，毕竟这样的开发效率会直线上升，并且大大减少了成本。技术的革新真的好快，如果不去学习，很快就会被淘汰，虽然技术学不完，但不能掉队，丢掉饭碗，扯得有点远了
 
 那就直接进入正题，[flutter](https://flutter.io/)是一站式跨平台解决方案，一次开发，适配整个移动平台，并且是有Google进行主导开发，开源的一个项目，现如今已经迭代到1.0版本，顺着这波契机，自己也开始正式介入到混合全栈式移动开发，嗯，在搞完服务端，可以独当一面了，手动斜眼笑
 
