@@ -17,10 +17,10 @@ API管理工具又很多，选择适合自身需求的就是最好
 
 ## 项目构建
 
-* 安装环境：Windows 10 x64
-* 准备工具：[Git](https://git-scm.com/downloads)，[IDEA](https://www.jetbrains.com/idea/download)，[JDK1.8+](https://www.java.com/zh_CN/download/manual.jsp)，[Tomcat8*](https://tomcat.apache.org/download-80.cgi)，[MySQL](https://www.mysql.com/cn/downloads)，[Redis3+](https://redis.io/download)
+* 系统环境：Windows 10 x64
+* 应用工具：[Git](https://git-scm.com/downloads)，[IDEA](https://www.jetbrains.com/idea/download)，[JDK1.8+](https://www.java.com/zh_CN/download/manual.jsp)，[Tomcat8+](https://tomcat.apache.org/download-80.cgi)，[MySQL](https://www.mysql.com/cn/downloads)，[Redis3+](https://redis.io/download)
 
-这里Git，IDEA，JDK1.8，Tomcat8*，MySQL不再赘述安装步骤以及环境配置
+这里Git，IDEA，JDK1.8，Tomcat8，MySQL不再赘述安装步骤以及环境配置
 
 ### 安装基本工具
 #### Redis

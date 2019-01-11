@@ -147,4 +147,3 @@ export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME/bin:$F
 ## 附录
 * [原关于“.bash_profile”和“.bashrc”区别的总结](https://blog.csdn.net/sch0120/article/details/70256318)
 * [Mac环境变量配置](https://hao5743.github.io/2017/06/28/2017-06-28/)
-

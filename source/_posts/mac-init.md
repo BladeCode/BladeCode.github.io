@@ -1,7 +1,7 @@
 ---
 title: MacBook Pro 初始化
 date: 2018-11-10 09:44:46
-categories: Mac
+categories: macOS
 tag: [Build]
 ---
 

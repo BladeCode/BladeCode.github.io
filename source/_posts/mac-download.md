@@ -1,8 +1,8 @@
 ---
 title: Aria2 之 macOS
 date: 2018-12-12 02:14:59
-categories: Mac
-tag: [download]
+categories: macOS
+tag: [Download]
 ---
 
 ## Aria2 是什么
