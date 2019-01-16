@@ -7,18 +7,18 @@ tag: [OS, Shell]
 
 在计算机操作系统中`Shell`是用户与操作系统交互的媒介，而`bash`作为目前`Linux\macOS`系统中最常用的`Shell`，它支持的`startup`文件也并不单一，甚至让人感到费解，以下就是对Shell的学习
 
-Shell：在计算科学中，指“为用户提供用户界面”的软件，通常指的是 **命令行界面** 的解析器。一般来说，`Shell`指操作系统中提供访问内核所提供的服务程序。
+Shell：在计算机中，值“为用户提供用户界面”的软件，通常指的是 **命令行界面** 的解析器。一般来说，`Shell`指操作系统中提供访问内核所提供的服务程序。
 
 通常将`Shell`分为两类
 * 命令行：提供一个命令行界面（CLI）
 * 图形界面：提供一个图形用户界面（GUI）
 
-![Linux_system](https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_general_structure_of_a_Linux_system.jpeg/250px-The_general_structure_of_a_Linux_system.jpeg)
+![linux_system](https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_general_structure_of_a_Linux_system.jpeg/250px-The_general_structure_of_a_Linux_system.jpeg)
 
-在PC桌面领域，不同的操作系统都有自己的`Shell`，截止2018.10主流的操作系统市场占有率，Windows（78.04%），OS X（13.73%），Unknown（5.44%），Linux（1.64%），Chrome OS（1.15%），数据来源于[statcounter](http://gs.statcounter.com/os-market-share/desktop/worldwide/#monthly-201710-201810)；
+在PC桌面领域，不同的操作系统都有自己的`Shell`，截止2018.10主流的操作系统市场占有率，Windows（78.04%），OS X（13.73%），Unknown（5.44%），Linux（1.64%），Chrome（1.15%），数据来源于[statcounter](http://gs.statcounter.com/os-market-share/desktop/worldwide/#monthly-201710-201810)；
 
 这些操作系统中都有自己独特的`Shell`命令，在不同的系统版本中，命令工具也是不完全相同，例如：
-* Windows：Windows CE、Windows NT常用[`cmd.exe`](https://en.wikipedia.org/wiki/Cmd.exe)；Windows 10中常用 [`PowerShell`](https://zh.wikipedia.org/wiki/Windows_PowerShell)
+* Windows：Windows CE、Windows NT常用[`cmd.exe`](https://en.wikipedia.org/wiki/Cmd.exe)；Windows 10中常用[`PowerShell`](https://zh.wikipedia.org/wiki/Windows_PowerShell)
 * OS X：默认[`bash`](https://zh.wikipedia.org/wiki/Bash)，除此之外还提供了[`tcsh`](https://zh.wikipedia.org/wiki/Tcsh)、[`zsh`](https://zh.wikipedia.org/wiki/Z_shell)和[`ksh`](https://zh.wikipedia.org/wiki/Korn_shell)
 * Linux：`/etc/shells`路径下，`/bin/sh`，`/bin/bash`，`/bin/csh`等应用
 > 更详细的请查阅[维基百科](https://zh.wikipedia.org/wiki/%E6%AE%BC%E5%B1%A4#%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2%EF%BC%88CLI%EF%BC%89%E6%AE%BC%E5%B1%A4)
@@ -59,8 +59,7 @@ Shell：在计算科学中，指“为用户提供用户界面”的软件，通
 
 >更详细的介绍请查阅[维基百科](https://en.wikipedia.org/wiki/Unix_shell#Configuration_files)
 
-关于常用`Shell`，执行流程如下图：
-
+关于常用`Shell`，执行流程如下图：
 ![flow](https://res.cloudinary.com/incoder/image/upload/v1543141362/blog/flow.png)
 
 ## startup文件
