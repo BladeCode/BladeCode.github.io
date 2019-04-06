@@ -40,10 +40,11 @@ sudo rpm -ivh jdk-xxx.rpm
 tar zxvf jdk-xxx.tar.gz -C /usr/java/
 # 3.设置环境变量
 vim /etc/profile
-# JAVA_HOME=/usr/java/jdk1.8.0_172 (修改这里路径，指向jdk安装路径)
-# PATH=$JAVA_HOME/bin:$PATH
-# CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-# export JAVA_HOME PATH CLASSPATH
+# 指定JDK的配置信息(修改这里路径，指向jdk安装路径)
+JAVA_HOME=/usr/java/jdk1.8.0_172
+PATH=$JAVA_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME PATH CLASSPATH
 # 4.编译配置文件，使修改生效
 source /etc/profile
 # 5.验证jdk是否安装成功
@@ -364,3 +365,27 @@ scp -r root@10.10.10.10:/opt/soft/mongodb /opt/soft/
 ```
 
 ### 文件删除
+
+#### 语法
+```bash
+rm [选项] 文件或目录
+```
+
+#### 选项
+```
+-f：强行删除，忽略不存在的文件，不提示确认。(f为force的意思)
+-i：进行交互式删除，即删除时会提示确认。(i为interactive的意思)
+-r：将参数中列出的全部目录和子目录进行递归删除。(r为recursive的意思)
+-v：详细显示删除操作进行的步骤。(v为verbose的意思)
+```
+
+#### 示例
+* 删除一个文件
+```bash
+rm file
+```
+
+* 删除一个目录
+```bash
+rm file/
+```

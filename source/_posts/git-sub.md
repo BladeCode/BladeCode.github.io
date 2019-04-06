@@ -206,6 +206,6 @@ git subtree push  --prefix=<prefix> <repository> <ref>
 git subtree merge --prefix=<prefix> <commit>
 git subtree split --prefix=<prefix> [OPTIONS] [<commit>]
 ```
-> 学习参考附录：
+## 附录
 * [如何使用 Git Submodule](http://linlexus.com/git-submodule-usage)
 * [git subtree教程](https://www.jianshu.com/p/d42d330bfead)

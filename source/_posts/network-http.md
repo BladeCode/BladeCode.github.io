@@ -96,7 +96,7 @@ Response通常包含响应行，响应头，响应内容这三部风组成的响
 
 > HTTP+加密+认证+完整性保护 = HTTPS
 
-![HTTP VS HTTPS](https://res.cloudinary.com/incoder/image/upload/v1529822573/HTTPS.png)
+![HTTP VS HTTPS](https://res.cloudinary.com/incoder/image/upload/v1529822573/blog/HTTPS.png)
 
 ### 通信
 #### SSL/TLS

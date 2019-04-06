@@ -24,7 +24,7 @@ RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 **服务
 以上基本工具请根据自身需要，下载对应系统安装包，请自行解决安装配置等问题，这里不做过多说明
 
 > Redis 安装可参考[Linux 常用应用安装](https://incoder.org/2018/05/15/linux-build)；
-Redis 最好用非安全模式启动
+Redis 最好用**非安全**模式启动
 
 ## 服务端delos环境搭建
 
@@ -233,6 +233,6 @@ npm install
 目前请选择`master`分支源码，后续其他分支请看相应分支说明文档。在开发环境中git pull来获取最新的源码更新，每一期更新都会有对应的update.md请关注并按照上面的指示进行升级工作。
 
 ## 附录
-* [redis如何后台启动](https://blog.csdn.net/ksdb0468473/article/details/52126009)
+* [Redis如何后台启动](https://blog.csdn.net/ksdb0468473/article/details/52126009)
 * [Redis配置文件介绍](http://www.cnblogs.com/ysocean/p/9074787.html)
 * [PM2实用入门指南](https://www.cnblogs.com/chyingp/p/pm2-documentation.html)

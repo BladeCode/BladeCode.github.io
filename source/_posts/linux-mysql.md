@@ -95,7 +95,6 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'your_password';
 ```
 
 ## 附录
-* [安装过程Pdf]()
 * [How To Install MySQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-centos-7)
 * [ERROR 1130](https://blog.csdn.net/nyist327/article/details/45074559)
 * [ERROR 2059](https://blog.csdn.net/airt_xiang/article/details/80261674)

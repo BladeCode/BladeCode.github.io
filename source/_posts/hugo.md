@@ -5,7 +5,7 @@ categories: Hugo
 tag: Build
 ---
 
-个人博客使用[Hexo](https://hexo.io/zh-cn/index.html)搭建，使用效果很不错，在Github上创建组织[RootCluster](https://github.com/RootCluster)，该组织主要存放自己新技术的学习和一些Demo实验。组织同样也可以使用Github pages服务，因此给RootCluster构建一个静态页面，可用直观清晰的看自己的项目，加之之前已用Hexo，所以这次的静态页面构建选择了新的一个静态页面生成工具，[Hugo](https://gohugo.io)是一款使用Go语言开发的静态页面生成框架。
+个人博客使用[Hexo](https://hexo.io/zh-cn/index.html)搭建，使用效果很不错，[RootCluster](https://github.com/RootCluster)组织主要存放自己新技术的学习和一些Demo实验。该组织同样也可以使用Github pages服务，因此也需要给RootCluster构建一个静态页面，可用直观清晰的看自己的项目，虽然之前已使用Hexo构建，为了了解其他的静态页面构建，所以这次选择了[Hugo](https://gohugo.io)。
 
 [Hugo](https://gohugo.io)是世界上最快的静态网站引擎。它是用[Go](https://golang.org)（aka Golang）编写的，由[bep](https://github.com/bep)，[spf13](https://github.com/spf13)和[朋友](https://github.com/gohugoio/hugo/graphs/contributors)开发
 

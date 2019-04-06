@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://www.incoder.org
+url: https://incoder.org
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -113,8 +113,10 @@ search:
   format: html
   limit: 10000
 
+# https://github.com/mythsman/hexo-douban
 douban:
   user: incoder
+  builtin: true
   book:
     title: '书中自有黄金屋'
     quote: '只有学习才能让我快乐~'

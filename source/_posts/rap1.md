@@ -5,9 +5,9 @@ categories: Api
 tag: RAP
 ---
 
-前后端分离的路上，一款强大的API管理工具，可以降低沟通成本，大大提高开发效率，节省的时间，我们来做更有意义的事情。
+前后端分离的路上，一款强大的API管理工具，可以降低沟通成本，大大提高开发效率，节省的时间，让我们去做更有意义的事情。
 
-API管理工具又很多，选择适合自身需求的就是最好
+API管理工具有很多，选择适合自身需求的就是最好
 
 这里以[阿里妈妈](https://thx.github.io)出品的[RAP](https://thx.github.io/RAP)产品；目前RAP分为： ~~[RAP1](https://github.com/thx/RAP)~~，[RAP2](https://github.com/thx/rap2-delos)
 

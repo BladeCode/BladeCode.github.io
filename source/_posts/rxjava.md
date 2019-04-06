@@ -5,7 +5,7 @@ categories: RxJava
 tag: [RxJava]
 ---
 
-RxJava – Reactive Extensions for the JVM – a library for composing **asynchronous** and **event-based** programs using **observable** sequences for the Java VM.（一个在 Java VM 上使用可观测的序列( **观察者模式** )来组成 **异步** 的、**基于事件**的程序的库）.
+RxJava – Reactive Extensions for the JVM – a library for composing **asynchronous** and **event-based** programs using **observable** sequences for the Java VM.（一个在 Java VM 上使用{% label info@可观测 %}的序列( **观察者模式** )来组成{% label info@异步 %}的、{% label info@基于事件 %}的程序的库）.
 
 在实际开发过程中，RxJava已是一个不可或缺的组件，因此对于RxJava的学习和思考，记录分享是很重要的一个环节  
 
