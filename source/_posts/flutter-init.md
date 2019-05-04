@@ -5,11 +5,11 @@ categories: Android
 tag: [flutter]
 ---
 
-这两年随着前端的高速发展，大前端的趋势下，Native移动应用开发市场在一定程度上被前端瓜分，加之硬件的快速迭代，性能已不存在明显的短板，[React Native](https://facebook.github.io/react-native)，[Vue](https://cn.vuejs.org/index.html)，[Angular](https://angular.io/)等等这些Web框架，对移动端也有了较大的提升，毕竟这样的开发效率会直线上升，并且大大减少了成本。技术的革新真的好快，如果不去学习，很快就会被淘汰，虽然技术学不完，但不能掉队，丢掉饭碗，扯得有点远了
+这两年随着前端的高速发展，大前端的趋势下，Native移动应用开发市场在一定程度上被前端瓜分，加之硬件的快速迭代，性能已不存在明显的短板，[React Native](https://facebook.github.io/react-native)，[Vue](https://cn.vuejs.org/index.html)，[Angular](https://angular.io/)等等这些Web框架，对移动端也有了较大的提升，毕竟这样的开发效率会直线上升，并且大大减少了成本。技术的革新真的好快，如果不去学习，很快就会被淘汰
 
-那就直接进入正题，[flutter](https://flutter.io/)是一站式跨平台解决方案，一次开发，适配整个移动平台，并且是有Google进行主导开发，开源的一个项目，现如今已经迭代到1.0版本，顺着这波契机，自己也开始正式介入到混合全栈式移动开发，嗯，在搞完服务端，可以独当一面了，手动斜眼笑
+那就直接进入正题，[flutter](https://flutter.io/)是一站式跨平台解决方案，一次开发，适配整个移动平台，并且是由Google进行主导开发，开源的一个项目，现如今已经迭代到1.0版本
 
-本篇文章主要记录在macOS系统上搭建flutter开发环境的过程，Windows也级别套路一致
+本篇文章主要记录在macOS系统上搭建flutter开发环境的过程
 
 ## 准备
 * Android Studio开发环境（JDK，AndroidSDK，Gradle等等，这里不再赘述）
@@ -37,7 +37,7 @@ flutter doctor
 ```
     ![flutter-doctor](https://res.cloudinary.com/incoder/image/upload/v1544994568/blog/flutter-doctor.png)
 其实不难，看出我们需要安装一下其他辅助工具等
-4. 解决问题，按照如下命令，一步步执行，大概得1个小时左右
+4. 解决问题，按照如下命令，一步步执行，大概得1个小时左右（取决于你的网络情况）
 ```bash
 # 允许协议（android-licenses
 flutter doctor --android-licenses

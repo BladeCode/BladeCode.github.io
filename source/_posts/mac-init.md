@@ -5,7 +5,7 @@ categories: macOS
 tag: [Build]
 ---
 
-今天拿到了一辆跑车 MBP，虽然不是顶配，也能算上中等吧，废话不啰嗦，上来就是一顿操作猛如虎，最终效果就是唬 (●ﾟωﾟ●)
+今天拿到了一辆跑车 MBP，虽然不是顶配，也能算上中等吧，废话不啰嗦，上来就是一顿操作猛如虎，最终效果就是唬
 
 跑车的一些零配件来源地[Awesome Mac](https://github.com/jaywcjlove/awesome-mac/blob/master/README-zh.md)
 
@@ -60,7 +60,7 @@ ssh-keygen -t rsa -C "github"
 cat ~/.ssh/id_rsa.pub
 # 复制公钥添加到GitHub的SSH设置中，这里省略操作截图步骤
 ```
-![mac-github-config](https://res.cloudinary.com/incoder/image/upload/v1542034940/mac-github-config.png)
+![mac-github-config](https://res.cloudinary.com/incoder/image/upload/v1542034940/blog/mac-github-config.png)
 
 ## iTerm2
 iTerm2是一款优秀强大的第三方终端，这里主要介绍如何进行对终端主题个性化的配置
