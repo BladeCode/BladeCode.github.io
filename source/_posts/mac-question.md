@@ -40,3 +40,8 @@ java    72612 blade   18u  IPv6 0x21ccddb0352361e5      0t0  TCP *:radan-http (L
 # kill指定进程
 kill -9 72612
 ```
+
+### 免密登录服务器
+一图胜千言，请看图
+
+![ssh-login](https://res.cloudinary.com/incoder/image/upload/v1559382897/blog/ssh-login.png)
