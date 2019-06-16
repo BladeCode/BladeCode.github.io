@@ -128,6 +128,13 @@ douban:
     quote: '游戏可以重来，人生呢？'
   timeout: 10000 # optional 
 
+leancloud_counter_security:
+  enable_sync: true
+  app_id: 3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz
+  app_key: cW8VJrB2yJiIBLtYA0KdE8vW
+  username: Blade # Will be asked while deploying if is left blank
+  password: bladecode # Recommmended to be left blank. Will be asked while deploying if is left blank
+
 # Markdown-it config
 ## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
 markdown:
