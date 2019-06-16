@@ -94,6 +94,7 @@ env:
 * 修复LeanCloud访客计数器中的严重安全漏洞 [hexo-leancloud-counter-security](https://github.com/theme-next/hexo-leancloud-counter-security)
 * 图片灯箱 [theme-next-fancybox3](https://github.com/theme-next/theme-next-fancybox3)
 * 本地检索 [hexo-generator-searchdb](https://github.com/theme-next/hexo-generator-searchdb)
+* 注脚 [hexo-renderer-markdown-it-plus](https://github.com/CHENXCHEN/hexo-renderer-markdown-it-plus)
 
 ## 其他
 
