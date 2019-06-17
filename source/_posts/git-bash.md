@@ -8,16 +8,37 @@ tag: [git bash]
 记录 Git 日常操作常用命令
 
 ## git config
-Git级别：system() < global(当前用户) < local(当前仓库)
+Git级别：system(系统所有用户) < global(当前用户) < local(当前仓库)
+* 查看配置信息
+```
+# 查看对应 Git 级别（--local；--global；--system）的配置信息
+git config --list --local
+```
 * 新增或修改
 ```sh
 git config --global user.name xxxxx
 git config --global user.email xxx@xxxx.com
 ```
-* 删除用品配置信息
+* 删除用户配置信息
 ```sh
 # 如果当前只有一个用户，就不用加入xxxx
 git config --global --unset user.name xxxx
+```
+
+## git init
+1. 把已有项目代码纳入 Git 管理
+```sh
+# 进入项目根路径
+cd project_dir
+# 进行项目 Git 初始化
+git init
+```
+2. 新建项目直接使用 Git 管理
+```sh
+# 在当前路径下创建项目并使用 Git 初始化项目
+git init project_name
+# 进入项目根路径
+cd project_name
 ```
 
 ## git clone
@@ -97,6 +118,19 @@ git tag -l
 git tag -d tag_name
 # 删除远程指定tag
 git push origin --delete tag tag_name
+```
+
+## git mv
+* 重命名文件
+```sh
+git mv old_file_name new_file_name
+```
+
+## git log
+* 查看仓库 commit 历史日志
+```sh
+# 下面参数可任意组合
+git log --oneline(简洁查看) --all(所有分支) -n4(最近 4 次记录) --graph(图形化展示)
 ```
 
 ## git help
