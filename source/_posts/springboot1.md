@@ -32,23 +32,48 @@ tag: [SpringBoot]
 ### IDEA Init
 
 
-## jar 分析
+## Spring 运行
+
+### 命令
+
+#### Mac or Linux
+
+```bash
+# 项目路径下(spring-start)
+gradle bootRun
+```
+
+#### Windows
+
+```bash
+# 项目路径下(spring-start)
+./gradle bootRun
+```
+
+### 运行说明
+
+![spring-running-logo](https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png)
+
+
+## Spring 打包
+
+### jar 分析
 
 ![springboot-deploy-jar-unzip](https://res.cloudinary.com/incoder/image/upload/v1561259381/blog/springboot-deploy-jar-unzip.png)
 
 目录说明
 ```
 project/
-├── BOOT-INF/
-│   ├── classes
-│   │   │   └── application.properties
-│   │   ├── org/
-│   │   ├── static/
-│   │   └── templates/
-│   └── lib
-├── META-INF/
-│   └── MANIFEST.MF
-└── org/springframework/boot/loader/
+├── BOOT-INF/                                                                   
+│   ├── classes                                                                 # 当前项目结果文件放置在 classes 路径下
+│   │   │   └── application.properties                                          # 项目中配置文件
+│   │   ├── org/                                                                # 项目中 java 路径下，编译成 class 文件路径
+│   │   ├── static/                                                             # 项目中 resources 路径下的静态文件夹
+│   │   └── templates/                                                          # 项目中 resources 路径下的模板文件夹
+│   └── lib/                                                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）
+├── META-INF/                                                                   
+│   └── MANIFEST.MF                                                             # 清单文件，用于描述可执行 jar 的一些基本信息
+└── org/springframework/boot/loader/                                            # 
     ├── archive/
     ├── data
     ├── ExectableArchiveLauncher.class
@@ -65,4 +90,49 @@ project/
     ├── PropertiesLauncher$ArchiveEntryFilter.class
     ├── util/
     └── WarLauncher.class
+```
+
+#### MANIFEST.MF
+
+```jar
+Manifest-Version: 1.0                                               # 清单版本号
+Start-Class: org.incoder.start.SpringbootStartApplication           # 项目 main 方法所在的类
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Spring-Boot-Version: 2.1.6.RELEASE
+Main-Class: org.springframework.boot.loader.JarLauncher             # 当前 jar 文件的执行入口类（main 方法所在的类）
+回车换行（在清单文件中，必须有，否则会出错）
+```
+
+## Spring 其他
+
+### 配置文件格式
+
+* [properties](https://en.wikipedia.org/wiki/.properties)
+* **推荐** [yml](https://en.wikipedia.org/wiki/YAML)
+
+### 常用命令
+
+#### gradle tasks
+
+表示获取当前工程可用的 gradle tasks命令
+
+##### Application tasks
+
+* bootRun：Runs this project as a Spring Boot application.（以 SpringBoot 的形式运行当前项目）
+
+##### Build tasks
+
+* bootJar：Assembles an executable jar archive containing the main classes and their dependencies.（装配一个可执行的 jar（自包含的 jar 包，不依赖其他容器） 归档，这个归档 jar 中包含了所需的依赖以及主类等）
+
+##### Run jar
+
+```bash
+java -jar jar-name.jar
+```
+
+##### Other
+```
+# 解压 jar 到当前 start 目录下
+unzip start-0.0.1-SNAPSHOT.jar -d ./start
 ```
