@@ -54,20 +54,20 @@ rc-springboot-docker
     ![idea-select-maven](https://res.cloudinary.com/incoder/image/upload/v1547062782/blog/idea-select-maven.png)
 * 修改忽略文件及隐藏忽略文件
     ![idea-ignore-settings](https://res.cloudinary.com/incoder/image/upload/v1547062781/blog/idea-ignore-settings.png)
-```
-# IntelliJ project files
-.DS_Store
-.idea/
-*.iml
-out
-gen
+    ```
+    # IntelliJ project files
+    .DS_Store
+    .idea/
+    *.iml
+    out
+    gen
 
-# eclipse
-*.classpath
-*.project
-*.springBeans
-```
->关于ignore文件的写法，可以参考[.gitignore 基础知识](https://incoder.org/2018/04/13/gitignore/)
+    # eclipse
+    *.classpath
+    *.project
+    *.springBeans
+    ```
+    >关于ignore文件的写法，可以参考[.gitignore 基础知识](https://incoder.org/2018/04/13/gitignore/)
 
 ### Module Project
 在module中有两类，一类是maven项目，还有一类是需要启动的springboot项目

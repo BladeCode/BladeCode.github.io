@@ -70,30 +70,30 @@ cd /usr/local/tomcat/bin
 
 ### 配置Web管理账号
 * 修改文件conf/tomcat-users.xml，在元素中添加帐号密码，需要指定角色
-```bash
-vim /usr/local/tomcat/conf/tomcat-users.xml
-#   <tomcat-users>
-#       <user name="admin" password="admin" roles="admin-gui,manager-gui" />
-#   </tomcat-users>
-```
+    ```bash
+    vim /usr/local/tomcat/conf/tomcat-users.xml
+    #   <tomcat-users>
+    #       <user name="admin" password="admin" roles="admin-gui,manager-gui" />
+    #   </tomcat-users>
+    ```
 
 ### 配置端口
 * 可以修改conf目录下的文件server.xml，修改Connector元素(Tomcat的默认端口是8080)，需要重新启动Tomcat服务生效
-```bash
-vim /usr/local/tomcat/conf/server.xml
-# <Connector port="9999" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" /> 
-```
+    ```bash
+    vim /usr/local/tomcat/conf/server.xml
+    # <Connector port="9999" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" /> 
+    ```
 
 ### 应用部署
 * 放置需部署包到容器中`webapps`路径
-```bash
-cd /usr/local/tomcat/webapps
-```
+    ```bash
+    cd /usr/local/tomcat/webapps
+    ```
 * 启动服务
-```bash
-cd /usr/local/tomcat/bin
-./startup.sh
-```
+    ```bash
+    cd /usr/local/tomcat/bin
+    ./startup.sh
+    ```
 
 ## Apache
 一般系统中以及包含apache应用  
@@ -107,18 +107,18 @@ rpm -qa | grep httpd 或 yum list | grep httpd
 ```
 
 * 方式一
-```bash
-# 1.下载需要的版本文件
-wget http://apache.claz.org//httpd/httpd-2.4.33.tar.gz
-# 2.解压安装文件(解压到指定目录，常存放`/usr/local/httpd/`路径)
-tar -zxvf httpd-2.4.33.tar.gz -C /usr/local/httpd/
-```
+    ```bash
+    # 1.下载需要的版本文件
+    wget http://apache.claz.org//httpd/httpd-2.4.33.tar.gz
+    # 2.解压安装文件(解压到指定目录，常存放`/usr/local/httpd/`路径)
+    tar -zxvf httpd-2.4.33.tar.gz -C /usr/local/httpd/
+    ```
 
 * 方式二(推荐)
-```bash
-# 1.下载安装httpd
-yum install httpd
-```
+    ```bash
+    # 1.下载安装httpd
+    yum install httpd
+    ```
 
 ### 卸载
 ```bash
@@ -152,49 +152,49 @@ RPM默认安装路径：
 ### 安装
 
 * 方式一
-```bash
-# 1.下载安装文件
-wget http://nginx.org/download/nginx-1.14.0.tar.gz
-# 2.解压安装文件(解压到指定目录，常存放`/usr/local/`路径)
-tar -zxvf nginx-1.14.0.tar.gz -C /usr/local/
-# 3. 编译安装依赖库
-cd /usr/local/nginx/
-./configure
-```
+    ```bash
+    # 1.下载安装文件
+    wget http://nginx.org/download/nginx-1.14.0.tar.gz
+    # 2.解压安装文件(解压到指定目录，常存放`/usr/local/`路径)
+    tar -zxvf nginx-1.14.0.tar.gz -C /usr/local/
+    # 3. 编译安装依赖库
+    cd /usr/local/nginx/
+    ./configure
+    ```
 
 * 方式二
-```bash
-# 默认安装路径/etc/nginx/
-yum install nginx
-```
+    ```bash
+    # 默认安装路径/etc/nginx/
+    yum install nginx
+    ```
 
 ### 常用命令
 * 加压文件安装常用命令
-```bash
-# 停止ngix
-/usr/local/nginx/sbin/nginx -s quit
-# 重新载入nginx(当配置信息发生修改时)       
-/usr/local/nginx/sbin/nginx -s reload
-# 查看版本     
-/usr/local/nginx/sbin/nginx -v
-# 查看nginx的配置文件的目录            
-/usr/local/nginx/sbin/nginx -t
-# 查看帮助信息            
-/usr/local/nginx/sbin/nginx -h            
-```
+    ```bash
+    # 停止ngix
+    /usr/local/nginx/sbin/nginx -s quit
+    # 重新载入nginx(当配置信息发生修改时)       
+    /usr/local/nginx/sbin/nginx -s reload
+    # 查看版本     
+    /usr/local/nginx/sbin/nginx -v
+    # 查看nginx的配置文件的目录            
+    /usr/local/nginx/sbin/nginx -t
+    # 查看帮助信息            
+    /usr/local/nginx/sbin/nginx -h            
+    ```
 * yum安装常用命令
-```bash
-# 启动
-systemctl start nginx
-# 停止 
-systemctl stop nginx
-# 重启 
-systemctl restart nginx
-# 查看运行状态 
-systemctl status nginx
-# 开机启动 
-systemctl enable nginx 
-```
+    ```bash
+    # 启动
+    systemctl start nginx
+    # 停止 
+    systemctl stop nginx
+    # 重启 
+    systemctl restart nginx
+    # 查看运行状态 
+    systemctl status nginx
+    # 开机启动 
+    systemctl enable nginx 
+    ```
 
 ## Node
 一般系统中以及包含apache应用  
@@ -238,14 +238,14 @@ vim /you_install_path/redis.conf
 
 ## 其他命令
 1. 关闭服务
-```bash
-redis-cli -h 127.0.0.1 -p 6379 shutdown
-```
+    ```bash
+    redis-cli -h 127.0.0.1 -p 6379 shutdown
+    ```
 2. 非安全模式启动
-```bash
-# 后台以非安全模式启动
-nohup /usr/local/bin/redis-server --protected-mode no &
-```
+    ```bash
+    # 后台以非安全模式启动
+    nohup /usr/local/bin/redis-server --protected-mode no &
+    ```
 
 ## 常用命令
 
@@ -304,14 +304,14 @@ ps -ef | grep httpd
     {% endnote %}
 
 * 杀死指定进程
-```bash
-kill -9 pid（逐个都删除）
-```
+    ```bash
+    kill -9 pid（逐个都删除）
+    ```
 * 查看指定端口
-```bash
-# 检测6379端口是否在监听  
-netstat -lntp | grep 6379 
-```
+    ```bash
+    # 检测6379端口是否在监听  
+    netstat -lntp | grep 6379 
+    ```
 
 ### 文件复制
 
@@ -343,26 +343,26 @@ scp(选项)(参数)
 
 #### 示例
 * 上传本地文件到远程机器指定目录
-```
-scp /opt/soft/nginx-0.5.38.tar.gz root@10.10.10.10:/opt/soft/scptest
-# 指定端口 2222
-scp -rp -P 2222 /opt/soft/nginx-0.5.38.tar.gz root@10.10.10.10:/opt/soft/scptest
-```
+    ```
+    scp /opt/soft/nginx-0.5.38.tar.gz root@10.10.10.10:/opt/soft/scptest
+    # 指定端口 2222
+    scp -rp -P 2222 /opt/soft/nginx-0.5.38.tar.gz root@10.10.10.10:/opt/soft/scptest
+    ```
 
 * 上传本地目录到远程机器指定目录
-```
-scp -r /opt/soft/mongodb root@10.10.10.10:/opt/soft/scptest
-```
+    ```
+    scp -r /opt/soft/mongodb root@10.10.10.10:/opt/soft/scptest
+    ```
 
 * 从远程机器复制文件到本地
-```
-scp root@10.10.10.10:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/
-```
+    ```
+    scp root@10.10.10.10:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/
+    ```
 
 * 从远程机器复制文件（含目录）到本地
-```
-scp -r root@10.10.10.10:/opt/soft/mongodb /opt/soft/
-```
+    ```
+    scp -r root@10.10.10.10:/opt/soft/mongodb /opt/soft/
+    ```
 
 ### 文件删除
 
@@ -381,11 +381,11 @@ rm [选项] 文件或目录
 
 #### 示例
 * 删除一个文件
-```bash
-rm file
-```
+    ```bash
+    rm file
+    ```
 
 * 删除一个目录
-```bash
-rm file/
-```
+    ```bash
+    rm file/
+    ```

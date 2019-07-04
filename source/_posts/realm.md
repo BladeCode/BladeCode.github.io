@@ -25,58 +25,58 @@ Android 供了多种选项来保存永久性应用数据。
 ### 集成
 
 * 在项目的 build.gradle 文件中添加如下 class path 依赖
-```groovy
-buildscript {
-    repositories {
-        jcenter()
+    ```groovy
+    buildscript {
+        repositories {
+            jcenter()
+        }
+        dependencies {
+            classpath "io.realm:realm-gradle-plugin:5.0.0"
+        }
     }
-    dependencies {
-        classpath "io.realm:realm-gradle-plugin:5.0.0"
-    }
-}
-```
+    ```
 * 在 app 的 build.gradle 文件中应用 realm-android 插件
-```groovy
-apply plugin: 'realm-android'
-```
+    ```groovy
+    apply plugin: 'realm-android'
+    ```
 
 ### 初始化
 * 默认初始化
-```java
-public class MyApplication extends Application {
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    // 默认Realm的配置文件
-    Realm.init(this);
-  }
-}
-```
+    ```java
+    public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // 默认Realm的配置文件
+        Realm.init(this);
+    }
+    }
+    ```
 * 自定义初始化
-```java
-public class MyApplication extends Application {
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    // 自定义配置Realm
-    initRealm();
-  }
+    ```java
+    public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // 自定义配置Realm
+        initRealm();
+    }
 
-  private void initRealm() {
-    RealmConfiguration config = new RealmConfiguration.Builder()
-        .name("myrealm.realm")          // 命名文件名：myrealm.realm
-        .inMemory()                     // 一个非持久化的、存在于内存中的 Realm 实例
-        .encryptionKey(getKey())        // 数据库加密key
-        .schemaVersion(2)               // 数据库结构版本号
-        .modules(new MySchemaModule())  // 数据库结构对象
-        .migration(new MyMigration())   // 数据库迁移
-        .build();
-    Realm.setDefaultConfiguration(config);
-  }
-}
-```
-> 1. Realm 实例是线程单例化的，也就是说多次在同一线程调用静态构建器会返回同一 Realm 实例
-2. 使用同样的名称同时创建“内存中的”Realm 和常规的（持久化）Realm 是不允许的
+    private void initRealm() {
+        RealmConfiguration config = new RealmConfiguration.Builder()
+            .name("myrealm.realm")          // 命名文件名：myrealm.realm
+            .inMemory()                     // 一个非持久化的、存在于内存中的 Realm 实例
+            .encryptionKey(getKey())        // 数据库加密key
+            .schemaVersion(2)               // 数据库结构版本号
+            .modules(new MySchemaModule())  // 数据库结构对象
+            .migration(new MyMigration())   // 数据库迁移
+            .build();
+        Realm.setDefaultConfiguration(config);
+    }
+    }
+    ```
+    >1. Realm 实例是线程单例化的，也就是说多次在同一线程调用静态构建器会返回同一 Realm 实例
+    >2. 使用同样的名称同时创建“内存中的”Realm 和常规的（持久化）Realm 是不允许的
 
 ### 字段类型
 Realm 支持以下字段类型：`boolean`、`byte`、`short`、`int`、`long`、`float`、`double`、`String`、`Date`和`byte []`。整数类型 `short`、`int` 和 `long` 都被映射到 Realm 内的相同类型（实际上为 `long` ）。
@@ -145,43 +145,43 @@ public class Email extends RealmObject {
 * 益于 Realm 的 MVCC 架构，当正在进行一个写入事务时读取操作并不会被阻塞！这意味着，除非你需要从多个线程进行并发写入操作，否则，你可以尽量使用更大的写入事务来做更多的事情而不是使用多个更小的写入事务。
 
 #### 增
-* 
-* 事务执行
-```java
-Realm realm = Realm.getDefaultInstance();
-realm.executeTransaction(new Realm.Transaction() {
-	@Override
-	public void execute(Realm realm) {
-		User user = realm.createObject(User.class);
-		user.setName("John");
-		user.setEmail("john@corporation.com");
-	}
-});
-```
-* 异步事务
-```java
-Realm realm = Realm.getDefaultInstance();
-realm.executeTransactionAsync(new Realm.Transaction() {
-    @Override
-    public void execute(Realm bgRealm) {
-        User user = bgRealm.createObject(User.class);
-        user.setName("John");
-        user.setEmail("john@corporation.com");
-    }
-}, new Realm.Transaction.OnSuccess() {
-    @Override
-    public void onSuccess() {
-        // Transaction was a success.
-    }
-}, new Realm.Transaction.OnError() {
-    @Override
-    public void onError(Throwable error) {
-        // Transaction failed and was automatically canceled.
-    }
-});
-```
 
->OnSuccess 和 OnError 并不是必须重载的，重载了的回调函数会在事务成功或者失败时在被调用发生的线程执行。
+* 事务执行
+    ```java
+    Realm realm = Realm.getDefaultInstance();
+    realm.executeTransaction(new Realm.Transaction() {
+        @Override
+        public void execute(Realm realm) {
+            User user = realm.createObject(User.class);
+            user.setName("John");
+            user.setEmail("john@corporation.com");
+        }
+    });
+    ```
+* 异步事务
+    ```java
+    Realm realm = Realm.getDefaultInstance();
+    realm.executeTransactionAsync(new Realm.Transaction() {
+        @Override
+        public void execute(Realm bgRealm) {
+            User user = bgRealm.createObject(User.class);
+            user.setName("John");
+            user.setEmail("john@corporation.com");
+        }
+    }, new Realm.Transaction.OnSuccess() {
+        @Override
+        public void onSuccess() {
+            // Transaction was a success.
+        }
+    }, new Realm.Transaction.OnError() {
+        @Override
+        public void onError(Throwable error) {
+            // Transaction failed and was automatically canceled.
+        }
+    });
+    ```
+
+    >OnSuccess 和 OnError 并不是必须重载的，重载了的回调函数会在事务成功或者失败时在被调用发生的线程执行。
 #### 删
 
 #### 改

@@ -23,9 +23,9 @@ tag: ignore
 ### 全局ignore设置
 * 在用户账户文件夹（C:\Users\<'YourName'>）路径下新建一个命名为`.gitignore_global`的文件
 * 使用Git Bash(需要切换路径到C:\Users\<'YourName'>)或者Git CMD命令行工具输入：
-``` bash
-git config --global core.excludesfile ~/.gitignore_global
-```
+    ``` bash
+    git config --global core.excludesfile ~/.gitignore_global
+    ```
 * 此时全局ignore已经设置完成，你只需要修改`.gitignore_global`文件内需要忽略的文件类型就可以全局控制忽略不需要纳入版本控制的文件或文件夹
 * 不难发现，其实是往 `.gitconfig`中加入如下内容来指名Git忽略不纳入版本控制的文件，当然如果你不想用命令行完成全局设置，你也可以直接在`.gitconfig`文件中加入`[core] excludesfile= ~/.gitignore_global`内容即可
 

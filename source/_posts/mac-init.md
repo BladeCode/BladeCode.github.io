@@ -88,14 +88,14 @@ MenuBar -> iTerm2 -> preference -> Keys -> Show/hide iTerm2 with a system-wide h
 
 ### 安装Oh my zsh
 * 方式一：crul
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
+    ```bash
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    ```
 * 方式二：wget
-```bash
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-```
-![zsh-install](https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-zsh-install.png)
+    ```bash
+    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    ```
+    ![zsh-install](https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-zsh-install.png)
 
 #### PowerLine
 ```bash
@@ -146,51 +146,51 @@ ZSH_THEME="agnoster"
 
 #### 辅助
 * 高亮插件
-```bash
-cd ~/.oh-my-zsh/custom/plugins/
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-vim ~/.zshrc
-# 添加zsh-syntax-highlighting到plugins中，放在git后面
-plugins=(
-    git
-    zsh-syntax-highlighting
-)
-# 文件最后添加，然后保存并退出
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-```
-最后，对配置文件进行生效处理
-```bash
-source ~/.zshrc
-```
+    ```bash
+    cd ~/.oh-my-zsh/custom/plugins/
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    vim ~/.zshrc
+    # 添加zsh-syntax-highlighting到plugins中，放在git后面
+    plugins=(
+        git
+        zsh-syntax-highlighting
+    )
+    # 文件最后添加，然后保存并退出
+    source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ```
+    最后，对配置文件进行生效处理
+    ```bash
+    source ~/.zshrc
+    ```
 * 命令补全
 安装步骤和上面的高亮插件一致
-```bash
-cd ~/.oh-my-zsh/custom/plugins/
+    ```bash
+    cd ~/.oh-my-zsh/custom/plugins/
 
-git clone https://github.com/zsh-users/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions
 
-vi ~/.zshrc
-```
+    vi ~/.zshrc
+    ```
 * 设置背景图
 iTerm2 -> Preferences -> Profiles -> Window -> BackGround Image
 
 ## Gradle配置
 * 下载地址：[官网](http://services.gradle.org/distributions)，下载-all版本
 * 设置GRADLE_HOME路径
-```bash
-# 打开.bash_profile文件
-open -e .bash_profile
-# Gradle_HOME环境设置，并保存
-GRADLE_HOME=/Users/blade/Documents/DevTools/Gradle/gradle-4.6
-export GRADLE_HOME
-export PATH=$PATH:$GRADLE_HOME/bin
-# 配置文件生效
-source ~/.bash_profile
-# 验证配置
-gradle -version
-```
->如果提示The file /Users/blade/.bash_profile does not exist.则在根路径下创建`.bash_profile`文件
-```bash
-touch .bash_profilesss
-```
-![gradle-config](https://res.cloudinary.com/incoder/image/upload/v1541968116/blog/mac-gradle-config.png)
+    ```bash
+    # 打开.bash_profile文件
+    open -e .bash_profile
+    # Gradle_HOME环境设置，并保存
+    GRADLE_HOME=/Users/blade/Documents/DevTools/Gradle/gradle-4.6
+    export GRADLE_HOME
+    export PATH=$PATH:$GRADLE_HOME/bin
+    # 配置文件生效
+    source ~/.bash_profile
+    # 验证配置
+    gradle -version
+    ```
+
+    >如果提示The file /Users/blade/.bash_profile does not exist.则在根路径下创建`.bash_profile`文件
+    >执行命令`touch .bash_profilesss`
+
+    ![gradle-config](https://res.cloudinary.com/incoder/image/upload/v1541968116/blog/mac-gradle-config.png)

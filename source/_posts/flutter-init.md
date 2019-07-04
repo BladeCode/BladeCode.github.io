@@ -18,44 +18,45 @@ tag: [flutter]
 
 ## 步骤
 1. 解压下载的flutter SDK，并配置环境变量，例如这里配置在`.bash_profile`文件中
-```bash
-# 打开 .bash_profile文件
-vim .bash_profile
-# .bash_profile文件中加入flutter sdk路径并保存
-export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
-export PATH=$FLUTTER_HOME/bin:$PATH
-# 重新加载.bash_profile文件
-source .bash_profile
-```
+    ```bash
+    # 打开 .bash_profile文件
+    vim .bash_profile
+    # .bash_profile文件中加入flutter sdk路径并保存
+    export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
+    export PATH=$FLUTTER_HOME/bin:$PATH
+    # 重新加载.bash_profile文件
+    source .bash_profile
+    ```
 2. 检查环境变量是否配置正确，如果有相关命令说明，表示已配置好环境变量
-```bash
-flutter -h
-```
+    ```bash
+    flutter -h
+    ```
 3. 检查开发环境，第一次执行，应该提示如下图所示说明
-```bash
-flutter doctor
-```
+    ```bash
+    flutter doctor
+    ```
     ![flutter-doctor](https://res.cloudinary.com/incoder/image/upload/v1544994568/blog/flutter-doctor.png)
-其实不难，看出我们需要安装一下其他辅助工具等
+    其实不难，看出我们需要安装一下其他辅助工具等
 4. 解决问题，按照如下命令，一步步执行，大概得1个小时左右（取决于你的网络情况）
-```bash
-# 允许协议（android-licenses
-flutter doctor --android-licenses
-# 安装libimobiledevice
-brew install --HEAD libimobiledevice
-# 安装ideviceinstaller
-brew install ideviceinstaller
-# 安装ios-deploy
-brew install ios-deploy
-# 安装cocoapods
-brew install cocoapods
-# cocoapods 初始化，这一步比较耗时，需要下载文件大致547M，需要耐心等待
-pod setup
-```
+    ```bash
+    # 允许协议（android-licenses
+    flutter doctor --android-licenses
+    # 安装libimobiledevice
+    brew install --HEAD libimobiledevice
+    # 安装ideviceinstaller
+    brew install ideviceinstaller
+    # 安装ios-deploy
+    brew install ios-deploy
+    # 安装cocoapods
+    brew install cocoapods
+    # cocoapods 初始化，这一步比较耗时，需要下载文件大致547M，需要耐心等待
+    pod setup
+    ```
 5. 以上步骤都正常运行后，再次检查环境，如下图所示结果，表示已完成flutter环境搭建
-```bash
-flutter doctor
-```
+    ```bash
+    flutter doctor
+    ```
+
     ![flutter-finish](https://res.cloudinary.com/incoder/image/upload/v1544994676/blog/flutter-finish.png)
 
 ## 辅助
@@ -64,18 +65,18 @@ flutter doctor
 关于程序的运行，那么模拟器当然少不了，这里介绍下macOS上如何启动Android 模拟器
 * 首先AndroidSDK的环境变量配置少不了
 * 配置emulator
-```bash
-export ANDROID_HOME=/Users/blade/Library/Android/sdk
-export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
-export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$FLUTTER_HOME/bin:$PATH
-```
+    ```bash
+    export ANDROID_HOME=/Users/blade/Library/Android/sdk
+    export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
+    export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$FLUTTER_HOME/bin:$PATH
+    ```
 * 启动
-```bash
-# 查看已创建模拟器清单
-emulator -list-avds
-# 选择需要启动的模拟器，avd_name：表示从上面列表获取到的模拟器名称
-emulator -avd [avd_name]
-```
+    ```bash
+    # 查看已创建模拟器清单
+    emulator -list-avds
+    # 选择需要启动的模拟器，avd_name：表示从上面列表获取到的模拟器名称
+    emulator -avd [avd_name]
+    ```
 >注意：
 >* 不推荐使用[Genymotion](https://www.genymotion.com/)，flutter的运行在此模拟器上有各种灵异bug
 >* PANIC: Missing emulator engine program for 'x86' CPU.解决方式：创建一个x64的模拟器

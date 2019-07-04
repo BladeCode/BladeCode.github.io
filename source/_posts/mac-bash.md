@@ -116,32 +116,32 @@ export PATH=$PATH:<PATH 1>:<PATH 2>:<PATH 3>:------:<PATH N>
 #### 单用户设置
 * `~/.bash_profile`：添加用户级环境变量  
 例如：设置`ANDROID_HOME`到PATH
-```bash
-export ANDROID_HOME=/Users/shaoc/Library/Android/sdk
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
-```
+    ```bash
+    export ANDROID_HOME=/Users/shaoc/Library/Android/sdk
+    export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+    ```
 * `~/.bashrc` 同上  
 一般重启shell设置就会生效，如果想立刻生效，则可执行下面的语句：
-```bash
-source 相应的文件
-```
+    ```bash
+    source 相应的文件
+    ```
 
 #### zsh中配置环境变量
 在安装 `oh my zsh`后，`.bash_profile`文件中的环境变量就无法起到作用，因为终端默认启动的是`zsh`，而不是`shell`，所以无法加载
 
 * 解决方法
 在`~/.zshrc`配置文件中，增加对`.bash_profile`的引用：
-```bash
-source ~/.bash_profile
-```
+    ```bash
+    source ~/.bash_profile
+    ```
 
-`.bash_profile`文件示例：  
-```bash
-export ANDROID_HOME=/Users/blade/Library/Android/sdk
-export GRADLE_HOME=/Users/blade/Documents/DevTools/Gradle/gradle-4.6
-export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME/bin:$FLUTTER_HOME/bin:$PATH
-```
+    `.bash_profile`文件示例：  
+    ```bash
+    export ANDROID_HOME=/Users/blade/Library/Android/sdk
+    export GRADLE_HOME=/Users/blade/Documents/DevTools/Gradle/gradle-4.6
+    export FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter
+    export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME/bin:$FLUTTER_HOME/bin:$PATH
+    ```
 
 ## 附录
 * [原关于“.bash_profile”和“.bashrc”区别的总结](https://blog.csdn.net/sch0120/article/details/70256318)

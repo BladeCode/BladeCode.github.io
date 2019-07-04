@@ -33,30 +33,29 @@ tag: Gitlab
 
 ### Gitlab部署
 1. 系统防火墙中打开HTTP和SSH访问
-```bash
-sudo yum install -y curl policycoreutils-python openssh-server
-sudo systemctl enable sshd
-sudo systemctl start sshd
+    ```bash
+    sudo yum install -y curl policycoreutils-python openssh-server
+    sudo systemctl enable sshd
+    sudo systemctl start sshd
 
-sudo firewall-cmd --permanent --add-service=http
-sudo systemctl reload firewalld
-
-```
+    sudo firewall-cmd --permanent --add-service=http
+    sudo systemctl reload firewalld
+    ```
 2. 安装Postfix发送通知邮件。如果您想使用其他解决方案发送电子邮件，请跳过此步骤并在安装GitLab后配置外部SMTP服务器
-```bash
-sudo yum install postfix
-sudo systemctl enable postfix
-sudo systemctl start postfix
-
-```
+    ```bash
+    sudo yum install postfix
+    sudo systemctl enable postfix
+    sudo systemctl start postfix
+    ```
 3. 添加GitLab软件包存储库
-```bash
-curl -LJO https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm
-```
+    ```bash
+    curl -LJO https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm
+    ```
 4. 安装软件包
-```bash
-rpm -i gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm
-```
+    ```bash
+    rpm -i gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm
+    ```
+
     完成安装如下日志显示：
 
     ```
@@ -83,19 +82,19 @@ rpm -i gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm
 
     ```
 5. 编译配置文件
-```bash
-cd /opt/gitlab/bin
-./gitlab-ctr reconfigure
-```
+    ```bash
+    cd /opt/gitlab/bin
+    ./gitlab-ctr reconfigure
+    ```
 6. 启动服务
-```bash
-./gitlab-ctl start
-```
-
->* 成功启动服务，默认路径访问：http://localhost:80
-* 默认安装位置 `/opt/gitlab/`
-* 配置文件默认路径 `/etc/gitlab/gitlab.rb`
-* 默认账号：root，密码：5iveL!fe
+    ```bash
+    ./gitlab-ctl start
+    ```
+    >
+    * 成功启动服务，默认路径访问：http://localhost:80
+    * 默认安装位置 `/opt/gitlab/`
+    * 配置文件默认路径 `/etc/gitlab/gitlab.rb`
+    * 默认账号：root，密码：5iveL!fe
 
 ## 常用配置项修改
 以下配置项的修改，完成后**均需要重新编译**文件（配置文件默认路径 `/etc/gitlab/gitlab.rb`），默认，**并重启Gitlab**服务

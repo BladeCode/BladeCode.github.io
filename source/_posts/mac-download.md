@@ -94,32 +94,32 @@ aria2c --conf-path="/Users/xxx/.aria2/aria2.conf" -D
 
 ### Aria2 开机自启
 1. 创建`aria2.plist`文件
-```bash
-cd ~/Library/LaunchAgents
-touch aria2.plist
-```
+    ```bash
+    cd ~/Library/LaunchAgents
+    touch aria2.plist
+    ```
 2. 修改`aria2.plist`文件内容，其中`<array></array>`中的值改为自己电脑上 aria2c 命令的路径，可以在终端输入which aria2c查看，将WorkingDirectory后面的`<string></string>`中的值改为自己的下载路径
-```bash
-<?xml version="1.0"encoding="utf-8"?>
-<!DOCTYPE plist PUBLIC"-//Apple//DTD PLIST 1.0//EN"
-"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-    <dict>
-        <key>KeepAlive</key>
-        <true />
-        <key>RunAtLoad</key>
-        <true />
-        <key>Label</key>
-        <string>aria2</string>
-        <key>ProgramArguments</key>
-        <array>
-            <string>/usr/local/bin/aria2c</string>
-        </array>
-        <key>WorkingDirectory</key>
-        <string>/Users/blade/Downloads</string>
-    </dict>
-</plist>
-```
+    ```bash
+    <?xml version="1.0"encoding="utf-8"?>
+    <!DOCTYPE plist PUBLIC"-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+        <dict>
+            <key>KeepAlive</key>
+            <true />
+            <key>RunAtLoad</key>
+            <true />
+            <key>Label</key>
+            <string>aria2</string>
+            <key>ProgramArguments</key>
+            <array>
+                <string>/usr/local/bin/aria2c</string>
+            </array>
+            <key>WorkingDirectory</key>
+            <string>/Users/blade/Downloads</string>
+        </dict>
+    </plist>
+    ```
 
 ### 启用Web
 其实，如果你喜欢使用命令来操作，那么此步可跳过

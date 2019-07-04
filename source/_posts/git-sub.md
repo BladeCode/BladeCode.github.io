@@ -26,61 +26,60 @@ $ git clone https://github.com/theme-next/hexo-theme-next themes/next
 [Git Submodule](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97)功能官方操作指引
 
 ### add 一个submodule
-1. Fork Repository
-[hexo-theme-next](https://github.com/theme-next/hexo-theme-next)项目右上角`Fork`按钮即可
-2. Clone Repository
-```bash
-git clone git@github.com:RootCluster/hexo-theme-test.git
-```
-3. Add Submodule
-```bash
-# 进入项目
-cd hexo-theme-test 
-# 注册next项目是一个submodule，并把数据拷贝到`themes/next`路径
-git submodule add git@github.com:RootCluster/hexo-theme-next.git themes/next
-```
-4. status
-```bash
-# 当前submodule已被注册并指向了某个commit
-git submodule status
- 1f5643061ec5257269673bd6159403c24015c53d themes/next (v6.3.0)
-```
 
+1. Fork Repository
+  [hexo-theme-next](https://github.com/theme-next/hexo-theme-next)项目右上角`Fork`按钮即可
+2. Clone Repository
     ```bash
+    git clone git@github.com:RootCluster/hexo-theme-test.git
+    ```
+3. Add Submodule
+    ```bash
+    # 进入项目
+    cd hexo-theme-test 
+    # 注册next项目是一个submodule，并把数据拷贝到`themes/next`路径
+    git submodule add git@github.com:RootCluster/hexo-theme-next.git themes/next
+    ```
+4. status
+    ```bash
+    # 当前submodule已被注册并指向了某个commit
+    git submodule status
+    1f5643061ec5257269673bd6159403c24015c53d themes/next (v6.3.0)
     # 查看在父仓库中有哪些变化被注册
     git status
     On branch submodule
     Changes to be committed:
     (use "git reset HEAD <file>..." to unstage)
-
-            new file:   .gitmodules
-            new file:   themes/next
+          new file:   .gitmodules
+          new file:   themes/next
     ```
-    有2个文件被修改过：`.gitmodules`,`themes/next`，当在父仓库时，Git不会跟踪submodule中的文件，Git只把它当成一个单一的文件
-  * `.gitmodules`:存有submodule的信息
-  * `themes/next`:submodule它自己
+
+    >有2个文件被修改过：`.gitmodules`,`themes/next`，当在父仓库时，Git不会跟踪submodule中的文件，Git只把它当成一个单一的文件
+
+    * `.gitmodules`:存有submodule的信息
+    * `themes/next`:submodule它自己
 
 5. commint
-```bash
-# 推送到远程submodule分支
-git commit -am "add next submodule"
-[submodule a5a612b] add next submodule
- 2 files changed, 4 insertions(+)
- create mode 100644 .gitmodules
- create mode 160000 themes/next
-```
+    ```bash
+    # 推送到远程submodule分支
+    git commit -am "add next submodule"
+    [submodule a5a612b] add next submodule
+    2 files changed, 4 insertions(+)
+    create mode 100644 .gitmodules
+    create mode 160000 themes/next
+    ```
 6. push
-```bash
-git push origin submodule
-Counting objects: 4, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 451 bytes | 451.00 KiB/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To github.com:RootCluster/hexo-themes-test.git
-   71879a8..a5a612b  submodule -> submodule
-```
+    ```bash
+    git push origin submodule
+    Counting objects: 4, done.
+    Delta compression using up to 4 threads.
+    Compressing objects: 100% (4/4), done.
+    Writing objects: 100% (4/4), 451 bytes | 451.00 KiB/s, done.
+    Total 4 (delta 1), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+    To github.com:RootCluster/hexo-themes-test.git
+      71879a8..a5a612b  submodule -> submodule
+    ```
 查看Github上的仓库，发现父仓库里有一个指向submodule的链接，表示你已经成功添加了一个submodule
 
 ### clone 带 submodule的项目
@@ -121,63 +120,63 @@ git commit -am "set next version to 6.2.0"
 
 ### remove 项目中的 submodule
 * 项目的根目录下(不是 submodule 的目录)，编辑 .gitmodules 文件，删除submodule配置
-```bash
-[submodule "themes/next"]
-    path = themes/next
-    url = https://github.com/RootCluster/hexo-theme-next.git
-```
+  ```bash
+  [submodule "themes/next"]
+      path = themes/next
+      url = https://github.com/RootCluster/hexo-theme-next.git
+  ```
 * 项目根目录下，编辑`.git`文件夹下`config`文件，删除submodule配置
-```bash
-[submodule "themes/next"]
-    url = https://github.com/RootCluster/hexo-theme-next.git
-```
+  ```bash
+  [submodule "themes/next"]
+      url = https://github.com/RootCluster/hexo-theme-next.git
+  ```
 * 清除submodule缓存
-```bash
-git rm --cached themes/next
-```
+  ```bash
+  git rm --cached themes/next
+  ```
 
 ## git subtree 常用操作(重点)
 
 ### add一个subtree
 * 在父仓库中新增子仓库
-```bash
-# 添加子仓库
-git subtree add --prefix=themes/next https://github.com/RootCluster/hexo-theme-next.git master --squash
-git fetch https://github.com/RootCluster/hexo-theme-next.git master
-warning: no common commits
-remote: Counting objects: 3407, done.
-remote: Total 3407 (delta 0), reused 0 (delta 0), pack-reused 3406
-Receiving objects: 100% (3407/3407), 1.21 MiB | 36.00 KiB/s, done.
-Resolving deltas: 100% (2192/2192), done.
-From https://github.com/RootCluster/hexo-theme-next
- * branch            master     -> FETCH_HEAD
-Added dir 'themes/next'
-```
->`--squash`参数表示不拉取历史信息，而只生成一条commit信息
+  ```bash
+  # 添加子仓库
+  git subtree add --prefix=themes/next https://github.com/RootCluster/hexo-theme-next.git master --squash
+  git fetch https://github.com/RootCluster/hexo-theme-next.git master
+  warning: no common commits
+  remote: Counting objects: 3407, done.
+  remote: Total 3407 (delta 0), reused 0 (delta 0), pack-reused 3406
+  Receiving objects: 100% (3407/3407), 1.21 MiB | 36.00 KiB/s, done.
+  Resolving deltas: 100% (2192/2192), done.
+  From https://github.com/RootCluster/hexo-theme-next
+  * branch            master     -> FETCH_HEAD
+  Added dir 'themes/next'
+  ```
+  >`--squash`参数表示不拉取历史信息，而只生成一条commit信息
 
 * 查看项目状态
-```bash
-# 查看项目状态
-git status
-On branch subtree
-Your branch is ahead of 'origin/subtree' by 2 commits.
-  (use "git push" to publish your local commits)
+  ```bash
+  # 查看项目状态
+  git status
+  On branch subtree
+  Your branch is ahead of 'origin/subtree' by 2 commits.
+    (use "git push" to publish your local commits)
 
-nothing to commit, working tree clean
-```
+  nothing to commit, working tree clean
+  ```
 
 * 推送更改到远程仓库
-```bash
-git push origin subtree
-Counting objects: 381, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (334/334), done.
-Writing objects: 100% (381/381), 650.26 KiB | 34.22 MiB/s, done.
-Total 381 (delta 23), reused 225 (delta 19)
-remote: Resolving deltas: 100% (23/23), completed with 1 local object.
-To https://github.com/RootCluster/hexo-themes-test.git
-   8ed2e2e..405af42  subtree -> subtree
-```
+  ```bash
+  git push origin subtree
+  Counting objects: 381, done.
+  Delta compression using up to 4 threads.
+  Compressing objects: 100% (334/334), done.
+  Writing objects: 100% (381/381), 650.26 KiB | 34.22 MiB/s, done.
+  Total 381 (delta 23), reused 225 (delta 19)
+  remote: Resolving deltas: 100% (23/23), completed with 1 local object.
+  To https://github.com/RootCluster/hexo-themes-test.git
+    8ed2e2e..405af42  subtree -> subtree
+  ```
 
 ### pull 子仓库更新
 ```bash
@@ -192,10 +191,10 @@ Subtree is already at commit 1f5643061ec5257269673bd6159403c24015c53d.
 在引用子仓库的项目中修改了子仓库的相关代码，推送修改到源仓库
 * commit 修改记录
 * push 到源仓库
-```bash
-# 推送子仓库修改到源仓库master分支
-git subtree push --prefix=themes/next https://github.com/RootCluster/hexo-theme-next.git master
-```
+  ```bash
+  # 推送子仓库修改到源仓库master分支
+  git subtree push --prefix=themes/next https://github.com/RootCluster/hexo-theme-next.git master
+  ```
 
 ### subtree 常用命令
 ```bash

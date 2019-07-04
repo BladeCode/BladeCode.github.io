@@ -22,28 +22,28 @@ tag: Build
 
 ### Hexo
 1. Hexo 安装
-``` bash
-$ npm install hexo-cli -g
-```
+    ``` bash
+    $ npm install hexo-cli -g
+    ```
 2. 初始化
-``` bash
-$ hexo init <your blog name>
-```
+    ``` bash
+    $ hexo init <your blog name>
+    ```
 3. 安装依赖包
-``` bash
-$ cd <you blog name>
-$ npm install
-```
+    ``` bash
+    $ cd <you blog name>
+    $ npm install
+    ```
 4. 启动服务预览
-``` bash
-$ hexo serve
-```
+    ``` bash
+    $ hexo serve
+    ```
 
 ### Next
 1. 安装Next 主题
-``` bash
-$ git clone https://github.com/theme-next/hexo-theme-next themes/next
-```
+    ``` bash
+    $ git clone https://github.com/theme-next/hexo-theme-next themes/next
+    ```
     > 当前操作在 `blog`的根目录下执行
 
 2. 修改Blog 配置
@@ -51,12 +51,12 @@ $ git clone https://github.com/theme-next/hexo-theme-next themes/next
     * theme: 由原来默认`landscape`更改位`next`(大约：76行)
     * 其他配置项，根据自己的需求进行更改，我这里更改了`title`,`subtitle`,`author`,`language`,`url`配置，其中`language`如果没有修改，默认为英文语言，在V6.0系列由原来`zh-Hans`更新为`zh-CN`
     * 添加部署到Github配置
-``` bash
-deploy:
-  type: git
-  repo: https://github.com/BladeCode/BladeCode.github.io.git # 用户名仓库
-  branch: master # 用户名仓库的分支应该指定master，master分支也可以不用写
-```
+    ``` bash
+    deploy:
+    type: git
+    repo: https://github.com/BladeCode/BladeCode.github.io.git # 用户名仓库
+    branch: master # 用户名仓库的分支应该指定master，master分支也可以不用写
+    ```
 
 3. 修改Theme 配置
 路径：`you blog name`/Themes/next/_config.yml
@@ -76,25 +76,25 @@ $ hexo d
 1. 登录域名所属的管理网站(这里以阿里云域名服务为例)
     ![gitpages-domain-manger](https://res.cloudinary.com/incoder/image/upload/v1525516603/blog/gitpages-domain-manger.png)
 2. 添加解析
-``` bash
-$ # 解析一
-记录类型：CNAME
-主机记录：www
-记录值：bladecode.github.io
-解析路线：default
+    ``` bash
+    $ # 解析一
+    记录类型：CNAME
+    主机记录：www
+    记录值：bladecode.github.io
+    解析路线：default
 
-$ # 解析二
-记录类型：A
-主机记录：@
-记录值：192.30.252.153
-解析路线：default
+    $ # 解析二
+    记录类型：A
+    主机记录：@
+    记录值：192.30.252.153
+    解析路线：default
 
-$ # 解析三
-记录类型：A
-主机记录：@
-记录值：192.30.252.154
-解析路线：default
-```
+    $ # 解析三
+    记录类型：A
+    主机记录：@
+    记录值：192.30.252.154
+    解析路线：default
+    ```
     > 192.30.252.153是GitHub的地址，你也可以ping你的 http://xxxx.github.io 的ip地址，填入进去
 
 3. 修改Github上项目的domain设置

@@ -17,18 +17,16 @@ iTerm2对应的配置文件：`.zshrc`，Terminal对于的配置文件：`.bash_
 * 问题：iTerm2查看本地文件，能正常显示，无乱码，但查看服务器上文件，出现乱码
 * 原因：本地iTerm2终端和服务器字符集不一致，造成乱码，macOS默认Terminal应用是`utf-8`，而iTerm2默认没有设置`utf-8`编码
 * 解决办法：给本地的`.zshrc`设置字符集编码
-
-```bash
-# 使用vim打开.zshrc文件
-vim ~/.zshrc
-# 在文本内容末尾添加以下两行内容进行字符编码设置
-export LC_ALL=en_US.UTF-8  
-export LANG=en_US.UTF-8
-# 保存文件内容，退出vim模式，并使刚刚设置的内容生效
-source ~/.zshrc
-```
-
->帮助：可以在本地和服务器上分别使用`locale`命令来查看，本地和服务器的字符编码是否一致
+    ```bash
+    # 使用vim打开.zshrc文件
+    vim ~/.zshrc
+    # 在文本内容末尾添加以下两行内容进行字符编码设置
+    export LC_ALL=en_US.UTF-8  
+    export LANG=en_US.UTF-8
+    # 保存文件内容，退出vim模式，并使刚刚设置的内容生效
+    source ~/.zshrc
+    ```
+    >帮助：可以在本地和服务器上分别使用`locale`命令来查看，本地和服务器的字符编码是否一致
 
 ### 结束指定进程
 

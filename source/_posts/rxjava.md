@@ -85,25 +85,26 @@ Observable<String> observable = Observable.create(new ObservableOnSubscribe<Stri
 });
 ```
 `unsafeCreate()/create()`方法是RxJava最基本创建时间序列的方法。基于这个方法，RxJava还提供了一些方法来快捷创建事件队列
+
 * just(T...)：将传入的参数依次发送出来
-```java
-Observable observable = Observable.just("Hello", "World", "RxJava");
-// 将会依次调用：
-// onNext("Hello");
-// onNext("World");
-// onNext("RxJava");
-// onCompleted();
-```
+    ```java
+    Observable observable = Observable.just("Hello", "World", "RxJava");
+    // 将会依次调用：
+    // onNext("Hello");
+    // onNext("World");
+    // onNext("RxJava");
+    // onCompleted();
+    ```
 * from(T[])/from(Iierabble<? extends T>)：将传入的数组或Iterable拆分成具体对象后，依次发送出来
-```java
-String[] words = {"Hello", "World", "RxJava"};
-Observable observable = Observable.from(words);
-// 将会依次调用：
-// onNext("Hello");
-// onNext("World");
-// onNext("RxJava");
-// onCompleted();
-```
+    ```java
+    String[] words = {"Hello", "World", "RxJava"};
+    Observable observable = Observable.from(words);
+    // 将会依次调用：
+    // onNext("Hello");
+    // onNext("World");
+    // onNext("RxJava");
+    // onCompleted();
+    ```
 
 ##### Flowable
 Flowable是RxJava2中新增的类，专门应对背压（Backpressure）问题，但这个概念并不是RxJava2中引入的概念。
@@ -329,28 +330,28 @@ Scheduler相当于线程控制器，RxJava通过它指定代码应该运行在�
 * subscribeOn()：指定subscribe()所发生的线程，即Observable.OnSubscribe被激活时所处的线程，或者叫做事件的产生的线程
 * observeOn()：指定Subscriber所运行的线程。或者叫做事件的消费线程
 
-```java
-// RxJava2
-Observable.create(new ObservableOnSubscribe<String>() {
-    @Override
-    public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-        emitter.onNext("Hello");
-        emitter.onNext("World");
-        emitter.onNext("RxJava2");
-        emitter.onComplete();
-    }
-})
-        // 指定 subscribe() 发生在 IO 线程
-        .subscribeOn(Schedulers.io())
-        // 指定 Subscriber 的回调发生在主线程
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Consumer<String>() {
-            @Override
-            public void accept(String s) throws Exception {
-                System.out.println(s);
-            }
-        });
-```
+    ```java
+    // RxJava2
+    Observable.create(new ObservableOnSubscribe<String>() {
+        @Override
+        public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+            emitter.onNext("Hello");
+            emitter.onNext("World");
+            emitter.onNext("RxJava2");
+            emitter.onComplete();
+        }
+    })
+            // 指定 subscribe() 发生在 IO 线程
+            .subscribeOn(Schedulers.io())
+            // 指定 Subscriber 的回调发生在主线程
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Consumer<String>() {
+                @Override
+                public void accept(String s) throws Exception {
+                    System.out.println(s);
+                }
+            });
+    ```
 
 ## 操作符
 说RxJava好用，还有一个原因是RxJava提供了大量的操作符，这些操作符保证了在面都复杂的逻辑下，依旧可以是逻辑清晰的链式调用

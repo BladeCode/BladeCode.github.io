@@ -8,7 +8,7 @@ tag: [Http,Https]
 ### 请求报文
 客户端发送一个HTTP请求到服务器的请求消息包括以下格式：  
 请求行（request line）、请求头（header）、请求内容组成，如下请求报文的一般格式。
-![请求报文](https://user-gold-cdn.xitu.io/2018/4/16/162cdac93015af8f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![请求报文](https://res.cloudinary.com/incoder/image/upload/v1562212437/blog/newwork-request.webp)
 
 #### 请求行
 1. 方法：
