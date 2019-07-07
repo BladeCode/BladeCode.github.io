@@ -73,7 +73,7 @@ project/
 │   └── lib/                                                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）
 ├── META-INF/                                                                   
 │   └── MANIFEST.MF                                                             # 清单文件，用于描述可执行 jar 的一些基本信息
-└── org/springframework/boot/loader/                                            # 
+└── org/springframework/boot/loader/                                            # jar 包启动相关的引导
     ├── archive/
     ├── data
     ├── ExectableArchiveLauncher.class
@@ -97,12 +97,22 @@ project/
 ```jar
 Manifest-Version: 1.0                                               # 清单版本号
 Start-Class: org.incoder.start.SpringbootStartApplication           # 项目 main 方法所在的类
-Spring-Boot-Classes: BOOT-INF/classes/
-Spring-Boot-Lib: BOOT-INF/lib/
-Spring-Boot-Version: 2.1.6.RELEASE
+Spring-Boot-Classes: BOOT-INF/classes/                              # 项目相关代码在打包后 jar 中的路径
+Spring-Boot-Lib: BOOT-INF/lib/                                      # 项目中所依赖的第三方 jar 在打包后 jar 中的路径
+Spring-Boot-Version: 2.1.6.RELEASE                                  # 项目  SpringBoot 版本
 Main-Class: org.springframework.boot.loader.JarLauncher             # 当前 jar 文件的执行入口类（main 方法所在的类）
 回车换行（在清单文件中，必须有，否则会出错）
 ```
+
+#### org/springframework/……目录
+项目中引入的第三方 jar 中并不包含`org/springframework/boot/loader`内容，那这个目录是从哪里来的呢？
+
+寻找最终发现是项目中我们的`build.gradle`文件中，引入的`org.springframework.boot:spring-boot-gradle-plugin`依赖，而这个依赖位于`classpath`下，说明引入的这个插件 **仅仅** 是在项目构建时才起作用，当项目进行打包后，并不会把插件包打入到项目的依赖库中，也就是`BOOT-INF/lib/`路径下
+
+如何去研究在`org/springframework/boot/loader`下的源码内容呢？
+最好的方式是在项目的依赖中导入`org.springframework.boot:spring-boot-loader`依赖
+
+>原则上，在项目开发过程中是不需要引入`org.springframework.boot:spring-boot-loader`依赖，这里只是为了方便阅读源码进行学习
 
 ## Spring 其他
 
