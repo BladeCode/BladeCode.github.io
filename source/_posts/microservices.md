@@ -1,7 +1,9 @@
 ---
 title: 【译】• 微服务
 date: 2019-06-01 10:00:00
-categories: Translation
+categories: 
+  - [Translation]
+  - [SpringBoot]
 tag: [SpringBoot]
 ---
 

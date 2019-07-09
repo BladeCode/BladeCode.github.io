@@ -354,6 +354,28 @@ public class MainMethodRunner {
 ## 总结
 ![summary-jarlauncher](https://res.cloudinary.com/incoder/image/upload/v1562509446/blog/summary-jarlauncher.jpg)
 
+从 jar 规范的角度出发，我们深入分析了 springboot 项目启动的整个过程，这个过程到底对不对，我们口说无凭，需要实际检验我们分析  
+首先，我们先思考，项目的应用启动入口是不是必须是 {% label success@main.class %} 方法，以及为什么要默认这么做？
+其次，我们再思考，在编辑器中通过图标运行启动程序（或者是通过命令启动程序），比较将程序编译成 jar 包，然后通过命令启动程序他们之间是否相同，如果不同请解释为什么？
+
+### 问题一
+项目的应用启动入口可以不是 {% label success@main.class %} 方法，只是为什么会默认为 {% label success@main.class %} 方法，原因是在 springboot 的 MainMethodRunner类的 run 方法中，是固定写死的 `main`，为什么要这么写，答案是，我们可以在编辑器中已右键或其他图标启动的方式快速启动 springboot 项目（就像是在运行一个 Java 的 main 方法一样，不再向之前需要乱七八糟各种的配置）。
+
+### 问题二
+答案是不相同，我们可以在项目的应用启动 {% label success@main.class %} 方法中，打印出加载类`System.out.println("项目启动加载类" + SpringbootStartApplication.class.getClassLoader());`，这样就可以检验我们的分析是否正确。分别使用两种不同的方式
+* 方式一：在编辑器中之间运行（右键，或者控制台输入命令`gradle bootRun`）或者使用 IDEA 上的运行应用运行按钮，结果如下
+    ```java
+    项目启动加载类sun.misc.Launcher$AppClassLoader@18b4aac2
+    ```
+* 方式二：先编译成 jar 包，然后通过`java -jar build-name.jar`命令运行
+    ```java
+    项目启动加载类org.springframework.boot.loader.LaunchedURLClassLoader@439f5b3d
+    ```
+
+通过打印出来的信息，可以验证我们的分析，方式一的运行，实际上是应用类加载器启动，而方式二是`spring-boot-loader`包中自定义的`LaunchedURLClassLoader`来启动项目
+
+在实际的生产开发中，有时我们的分析需要进行验证（或者找问题），而此时服务又部署在生成环境或者非本机上，通常用的方式是看应用的日志输出，在日志中去定位问题，而有时我们需要断点的方式去找问题，那该如何去操作呢？对于这个问题，在实际开发中是有方法去处理，请看下篇[《SpringBoot（三） JDWP远程调用》](/springboot3.md)
+
 ## 附录
 * [spring_boot_cloud(2)Spring_Boot打包文件结构深入分析源码讲解](https://1156721874.github.io/2019/06/07/spring_boot_and_cloud/spring_boot_cloud(2)Spring_Boot%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90%E6%BA%90%E7%A0%81%E8%AE%B2%E8%A7%A3/)
 * [校验者•CeaserWang](https://1156721874.github.io)

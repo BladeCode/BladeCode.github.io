@@ -1,7 +1,9 @@
 ---
 title: 【译】• 面向服务的架构
 date: 2019-06-19 21:20:40
-categories: Translation
+categories: 
+  - [Translation]
+  - [SpringBoot]
 tag: [SOA,SpringBoot]
 ---
 
