@@ -163,6 +163,8 @@ menu:
   archives: /archives/ || archive
   books: /books/ || book
   movies: /movies || film
+  java: https://java.incoder.org/ || globe
+  mobile: https://mobile.incoder.org/ || paper-plane-o
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
