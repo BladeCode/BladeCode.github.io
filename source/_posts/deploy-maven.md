@@ -40,6 +40,7 @@ Sonatype 账号注册地址：[https://issues.sonatype.org/secure/Signup!default
 * Group Id
   * 无自己的域名：可以使用 Github，比如我的 GitHub 用户名是 BladeCode（也可以用你的组织名，如这里：twodragonlake），那么这里的Group Id应该填写 com.github.BladeCode，也可以使用 io.github.BladeCode
   * 有自己的域名：按照要求添加一条 TXT 的 DNS 解析，用来验证你的 `Group Id`
+    ![ossrh-domain](https://res.cloudinary.com/incoder/image/upload/v1563762211/blog/ossrh-domain.png)
 * 可参考：[OSSRH-45597](https://issues.sonatype.org/browse/OSSRH-45597)
 
 ### 验证 Group Id
@@ -148,7 +149,6 @@ gpg --list-keys
             <id>release</id>
             <build>
                 <pluginManagement>
-                    <!-- 这个pluginManagement里的是我一把梭复制的， 各位dalao懂的就自己按实际整把==这里我实在不懂 -->
                     <plugins>
                         <plugin>
                             <artifactId>maven-clean-plugin</artifactId>
@@ -211,11 +211,16 @@ gpg --list-keys
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- 这个是必须要的，不如提交到官方仓库的时候会不通过 -->
+                    <!-- Javadoc -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>2.9.1</version>
+                        <!-- Skip javadoc error -->
+			            <!-- <configuration>
+				            <failOnError>false</failOnError>
+				            <doclint>none</doclint>
+			            </configuration> -->
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -225,7 +230,7 @@ gpg --list-keys
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- 这个是必须要的，我就是因为漏了这个，折腾了好久 -->
+                    <!-- Gpg Signature -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -270,7 +275,7 @@ mvn clean deploy -P release -Dmaven.test.skip=true
 ### 编译构建验签
 
 部署成功后，使用`Sonatype`登录 [https://oss.sonatype.org](https://oss.sonatype.org/#stagingRepositories)网站，进行发布，在`Build Promotion`中选择`Staging Repositories`，然后选择对应你的`groud id`的`Repository`，进行 close，这里的`Close`其实就是进行自动构建，进行验证
-![]()
+![ossrh-close](https://res.cloudinary.com/incoder/image/upload/v1563725940/blog/ossrh-close.png)
 
 参看是自动化运行过程否有错误，正确如下截图没有错误提示，如果有错误提示，就按照提示内容进行处理
 ![ossrh-build](https://res.cloudinary.com/incoder/image/upload/v1563726108/blog/ossrh-build.png)

@@ -93,13 +93,6 @@ deploy:
   repo: https://github.com/BladeCode/BladeCode.github.io.git
   branch: master
 
-githubEmojis:
-  enable: true
-  className: github-emoji
-  unicode: false
-  styles:
-  localEmojis:
-
 # hexo-symbols-count-time
 symbols_count_time:
   symbols: true
