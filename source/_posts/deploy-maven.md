@@ -217,10 +217,10 @@ gpg --list-keys
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>2.9.1</version>
                         <!-- Skip javadoc error -->
-			            <!-- <configuration>
-				            <failOnError>false</failOnError>
-				            <doclint>none</doclint>
-			            </configuration> -->
+                        <!-- <configuration>
+                            <failOnError>false</failOnError>
+                            <doclint>none</doclint>
+                        </configuration> -->
                         <executions>
                             <execution>
                                 <phase>package</phase>
