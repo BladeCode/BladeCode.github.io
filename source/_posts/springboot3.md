@@ -6,6 +6,9 @@ tag: [SpringBoot]
 ---
 
 在 SpringBoot 系列的第二篇文章中，已经详细分析了 SpringBoot 的启动过程，那么这篇文章，我们通过源码调试的方式来验证我们的分析，首先我们在控制台中输入 `java` 命令，可用输出 JDK 给我们提供了一些命令，其中`-agentlib`命令就是本篇文章所介绍，用于我们进行源码调试
+
+<!-- more -->
+
 ![springboot-java-agentlib](https://res.cloudinary.com/incoder/image/upload/v1562858657/blog/springboot-java-agentlib.png)  
 我们继续查看`-agentlib`详细的命令说明，输入`java -agentlib:jdwp=help` 查看帮助文档
 ![springboot-java-agentlib-help](https://res.cloudinary.com/incoder/image/upload/v1562859131/blog/springboot-java-agentlib-help.png)
