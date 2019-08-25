@@ -96,7 +96,7 @@ cd /usr/local/tomcat/bin
     ```
 
 ## Apache
-一般系统中以及包含apache应用  
+一般系统中已经包含apache应用  
 [官方下载地址](http://httpd.apache.org/download.cgi)，选择需要的版本下载安装包
 >官方提供了`.bz2`,`.gz`两种格式安装包
 
@@ -197,7 +197,7 @@ RPM默认安装路径：
     ```
 
 ## Node
-一般系统中以及包含apache应用  
+
 [官方下载地址](https://nodejs.org)，选择需要的版本下载安装包
 >官方提供了`.gz`,`.7z`,`zip`等多种格式安装包
 
@@ -285,13 +285,15 @@ find expression
     grep 'test' d*
 
 ### 进程相关
+
 * 查看指定服务进程
-```bash
-# 查看httpd服务进程
-ps -ef | grep httpd
-# UID        PID  PPID  C STIME TTY          TIME CMD
-# root      7192  7103  0 19:59 pts/3    00:00:00 grep --color=auto httpd
-```
+    ```bash
+    # 查看httpd服务进程
+    ps -ef | grep httpd
+    # UID        PID  PPID  C STIME TTY          TIME CMD
+    # root      7192  7103  0 19:59 pts/3    00:00:00 grep --color=auto httpd
+    ```
+
     {% note info %} 
     * UID：用户ID 
     * PID：进程ID 

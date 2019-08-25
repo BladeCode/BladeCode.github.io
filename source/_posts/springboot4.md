@@ -5,11 +5,11 @@ categories: SpringBoot
 tag: [SpringBoot]
 ---
 
-关于 springboot 配置文件，在之前的文章中已经提到[配置文件格式](https://incoder.org/2019/06/23/springboot1/#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F)，主要是两个格式的配置，这里并没有哪个配置写法一定优于另一种写法，对于配置文件名（application.yml 或者 application.properties），可以更改，为了减少不必要的麻烦，不建议修改，本篇文章以 yml 文件作为示例
+关于 SpringBoot 配置文件，在之前的文章中已经提到[配置文件格式](https://incoder.org/2019/06/23/springboot1/#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F)，主要是两种格式的配置，这里并没有哪个配置写法一定优于另一种写法，对于配置文件名（application.yml 或者 application.properties），可以更改，为了减少不必要的麻烦，不建议修改，本篇文章以 yml 文件作为示例
 
 ## YAML
 
-YAML是JSON的超集，因此是用于指定分层配置数据的便捷格式。只要在类路径上有SnakeYAML库，SpringApplication类就会自动支持YAML作为属性的替代 。
+[YAML](https://en.wikipedia.org/wiki/YAML)是JSON的超集，因此是用于指定分层配置数据的便捷格式。只要在类路径上有SnakeYAML库，SpringApplication类就会自动支持YAML作为属性的替代 。
 
 ### 语法规则
 
@@ -19,7 +19,7 @@ YAML是JSON的超集，因此是用于指定分层配置数据的便捷格式。
 
 ### 数据结构
 
-1. 变量，不可再分的单个值，如数组，字符串等
+1. 变量，不可再分的单个的值，如数字，字符串等。
     ```yml
     name: Jerry
     age: 20
@@ -29,6 +29,16 @@ YAML是JSON的超集，因此是用于指定分层配置数据的便捷格式。
     # + 表示保留文字块末尾的换行，- 表示删除字符串末尾的换行
     message: |-
       hello world
+    # 双引号
+    # 不会转义字符串里面的特殊字符，特殊字符会作为本身想表示的意思
+    # 输出：
+    # A
+    # B
+    name1: "A n B"
+    # 单引号  
+    # 会转义特殊字符，特殊字符最终只是一个普通的字符串数据
+    name2: A n B
+
     ```
 2. 数组，一组按次序排列的值
    ```yml
@@ -50,12 +60,10 @@ YAML是JSON的超集，因此是用于指定分层配置数据的便捷格式。
 4. 随机数
     ```yml
     bootapp
-      secret: $ {random.value}
-      number: $ {random.int}
-      bignumber: $ {random.long}
-      uuid: $ {random.uuid}
-      number.less.than.ten: $ {random.int（10）}
-      number.in.range: $ {random.int [1024,65536]}
+      secret: ${random.value}
+      number: ${random.int}
+      bignumber: ${random.long}
+      uuid: ${random.uuid}
     ```
 5. 默认值，占位符获取之前配置的值，如果没有可以是用:指定默认值
    ```yml
@@ -67,24 +75,74 @@ YAML是JSON的超集，因此是用于指定分层配置数据的便捷格式。
 
 ## 配置
 
-### 默认配置
+为了在配置自定义属性时，向配置 springboot 属性自动提示的功能，导入如下的包
+```xml
+<!--导入配置文件处理器，配置文件进行绑定就会有提示-->
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-configuration-processor</artifactId>
+  <optional>true</optional>
+</dependency>
+```
+或者在 gradle 配置文件中添加依赖
+```gradle
+implementation 'org.springframework.boot:spring-boot-configuration-processor'
+```
+如果任然无法自动提示，请查看你的编辑器 IDEA 中是否开启了 `Annonation Processing`
+![idea-annotation-processors](https://res.cloudinary.com/incoder/image/upload/v1566701581/blog/idea-annotation-processors.png)
 
-### 自定义配置
+### 定义配置
 
-1. 首先在 application.yml 文件中进行自定义字段的声明，如下写法
-    ```yml
-    myConfig:
-    myObject:
-        myName: zhangsan
-        myAge: 20
-    ```
+#### 默认配置
 
+[Common application properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)，是 SpringBoot 官方提供的一些默认配置属性说明，如果需要更改，只需要在 application.yml 文件中重写该属性即可，比如重新设置服务的启动端口为 9090
+```yml
+server:
+  port: 9090
+```
+
+#### 自定义配置
+首先在 application.yml 文件中根据上面所述的规则写法进行自定义字段的声明
+```yml
+myConfig:
+  maps:
+    key: value
+```
+
+### 配置的使用
+
+#### ConfigurationProperties
+
+`@ConfigurationProperties` 注解是 SpringBoot提供的一种使用属性的注入方法，不仅可以方便的把配置文件中属性值与所注解类绑定，还支持松散绑定，JSR-303 数据校验等功能
+
+#### Value
+
+`@Value` 注解支持直接从配置文件中读取值，同时支持 SpEL表达式，但是不支持复杂数据类型和数据验证
+
+#### PropertySource
+
+`@PropertySource` 注解加载自定义配置文件，由于 `@PropertySource` 指定的文件会优先加载，所以如果在 `applocation.properties` 文件中存在相同的属性配置，会覆盖前者中对应的值，且 `@PropertySource` 不支持 yml 文件注入
+
+### 对比
+
+| 注解                   | @ConfigurationProperties | @Value       | @PropertySource |
+| ---------------------- | ------------------------ | ------------ | --------------- |
+| 支持文件类型           |                          |              |                 |
+| 功能                   | 批量注入配置文件属性     | 一个一个注入 |                 |
+| 松散绑定（松散的语法） | 支持                     | 不支持       |                 |
+| SpEL                   | 不支持                   | 支持         |                 |
+| JSR-303 数据校验       | 支持                     | 不支持       |                 |
+| 复杂类型               | 支持                     | 不支持       |                 |
+| 应用场景               |                          |              |                 |
 
 ### 多环境配置
 
+在实际的开发中，不同环境对应不同的配置，因此我们需要根据环境来配置不同的项目配置信息，SpringBoot 也是支持我们进行多环境的配置，通常情况下，我们命名为 `application-{profile}.properties/yml` ，其中
+`{profile}`表示不同的环境，比如：dev（开发），release（线上） 等
+
 ## 配置文件加载顺序
 
-Spring Boot 启动会扫描以下位置的配置文件（application.properties application.yml） 作为Spring Boot 的默认配置文件
+Spring Boot 启动会扫描以下位置的配置文件（application.properties 或 application.yml） 作为Spring Boot 的默认配置文件
 
 * -file:./config/
 * -file:./
@@ -92,8 +150,6 @@ Spring Boot 启动会扫描以下位置的配置文件（application.properties 
 * -classpath:/
 
 优先级从高到低，高优先级的配置会覆盖低优先级的配置
-
-
 
 ## 附录
 * [Spring Boot 配置文件](https://www.codingme.net/2019/01/springboot/springboot02-config/)

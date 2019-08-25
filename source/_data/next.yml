@@ -186,7 +186,7 @@ scheme: Muse
 # ---------------------------------------------------------------
 
 # Posts / Categories / Tags in sidebar.
-site_state: true
+site_state: false
 
 # Social Links
 # Usage: `Key: permalink || icon`
@@ -566,7 +566,7 @@ fancybox: true
 # Do not enable both `fancybox` and `mediumzoom`.
 # Dependencies: https://github.com/theme-next/theme-next-mediumzoom
 # For more information: https://github.com/francoischalifour/medium-zoom
-mediumzoom: true
+mediumzoom: false
 
 # Vanilla JavaScript plugin for lazyloading images.
 # Dependencies: https://github.com/theme-next/theme-next-lazyload
