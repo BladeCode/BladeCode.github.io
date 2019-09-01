@@ -12,7 +12,9 @@ Never write another getter or equals method again, with one annotation your clas
 
 ## 安装集成
 
-* 编辑器（IDEA or Android Studio）安装 Lombok 插件，`File` -> `Settings...` -> `Plugins`
+* 编辑器（IDEA or Android Studio）安装 Lombok 插件，`File` -> `Settings...` -> `Plugins` -> `搜索 Lombok 并安装`
+* 开启编辑器 Annotation Processors
+    ![](https://res.cloudinary.com/incoder/image/upload/v1566701581/blog/idea-annotation-processors.png)
 * 项目集成Lombok依赖，项目按照不同的包管理， 按照对应方式添加包依赖
     ```xml
     <!-- gradle 集成 -->
@@ -120,7 +122,7 @@ private String name;
 
 ### @ToString
 
-任何 **类** 定义都可以用 @ToString 注释，让lombok生成toString（）方法的实现。默认情况下，它会按顺序打印您的类名以及每个字段，并以逗号分隔
+任何 **类** 定义都可以用 @ToString 注释，让lombok生成 toString() 方法的实现。默认情况下，它会按顺序打印您的类名以及每个字段，并以逗号分隔
 
 * includeFieldNames，默认true：打印时包括每个字段的名称
 * callSuper，默认false：在输出中包含超类的实现的结果
@@ -151,18 +153,22 @@ private int id;
 按照定制生成构造函数
 
 * @NoArgsConstructor：生成不带参数的构造函数
-* @RequiredArgsConstructor：生成带有必需参数的构造函数。必需参数是具有约束的最终字段和字段，例如@NonNull
-* @AllArgsConstructor：生成一个全参构造函数。
+* @RequiredArgsConstructor：生成带有必需参数的构造函数。参数是final字段和字段是具有约束的，例如@NonNull
+* @AllArgsConstructor：生成一个全参构造函数
 
 > 官方示例[Constructor](https://projectlombok.org/features/constructor)
 
 ### @Data
 
-生成所有字段的getter，一个有用的toString方法，以及检查所有非瞬态字段的hashCode和equals实现。还将为所有非最终字段以及构造函数生成setter
+生成所有字段的 getter，一个有用的 toString 方法，以及检查所有 `non-transient` 字段的 hashCode 和 equals 实现。还将为所有 `non-final` 字段以及构造函数生成setter
 
 > 官方示例[@Data](https://projectlombok.org/features/Data)
 
 ### @Value
+
+@Value 是 @Data 的变体版，默认情况下，所有字段都是 `private` 和 `final` 的，并且不会生成setter，默认情况下，`class` 本身也是 `final` 的，因为不可变性不是可以强制进入子类的东西
+
+* 0.12.0版本加入稳定的该功能
 
 > 官方示例[@Value](https://projectlombok.org/features/Value)
 
@@ -204,3 +210,25 @@ Lombok提供实验性注解，请根据实际情况取舍，`org.projectlombok.l
 ## 进阶配置
 
 [Configuration system](https://projectlombok.org/features/configuration)
+
+## 其他
+
+如果在对Android项目进行升级使用 Lombok 代替原来的写法，在很大程度上还是会遇到如下截图问题
+![lombok-error](https://res.cloudinary.com/incoder/image/upload/v1567324868/blog/lombok-error.png)
+根据提示项目已经开启了 Annotation Processors，但是在每次打开项目都会提示错误信息
+
+### 解决方法
+
+Setting for all projects
+
+1. File -> Other Settings -> Settings for new projects -> Build, Execution, Deployment -> Compiler ->Annotation Processors
+2. Enable Annotation Processing
+3. Click Apply
+4. Restart Your Android studio
+
+一些旧项目还需要额外的一些操作
+
+1. 删除项目根路径下的 `yourProject.iml` 文件以及 `.idea` 目录 或者你可以 File -> Invalidate Caches / Restart... 操作
+2. 重新打开项目
+
+>参考[issues264](https://github.com/mplushnikov/lombok-intellij-plugin/issues/264)
