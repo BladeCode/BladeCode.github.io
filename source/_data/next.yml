@@ -84,6 +84,12 @@ footer:
   beian:
     enable: false
     icp:
+    # The digit in the num of gongan beian.
+    gongan_id:
+    # The full num of gongan beian.
+    gongan_num:
+    # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
+    gongan_icon_url:
 
 # Creative Commons 4.0 International License.
 # See: https://creativecommons.org/share-your-work/licensing-types-examples
@@ -213,10 +219,12 @@ social_icons:
   transition: false
 
 # Blog rolls
-links_icon: link
-links_title: Links
-links_layout: block
-#links_layout: inline
+links_settings:
+  icon: link
+  title: Links
+  # Available values: block | inline
+  layout: block
+
 links:
   TwoDragonLake: https://twodragonlake.com
   RootCluster: https://rootcluster.github.io
@@ -305,7 +313,7 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: true
+    enable: false
     another_day: true
   categories: true
 
@@ -555,31 +563,24 @@ math:
 # For moreinformation: https://github.com/MoOx/pjax
 pjax: false
 
-# Fancybox. There is support for old version 2 and new version 3.
-# Choose only one variant, do not need to install both.
-# To install 2.x: https://github.com/theme-next/theme-next-fancybox
-# To install 3.x: https://github.com/theme-next/theme-next-fancybox3
+# FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
 # For more information: https://fancyapps.com/fancybox
 fancybox: true
 
 # A JavaScript library for zooming images like Medium.
 # Do not enable both `fancybox` and `mediumzoom`.
-# Dependencies: https://github.com/theme-next/theme-next-mediumzoom
 # For more information: https://github.com/francoischalifour/medium-zoom
 mediumzoom: false
 
 # Vanilla JavaScript plugin for lazyloading images.
-# Dependencies: https://github.com/theme-next/theme-next-lazyload
 # For more information: https://github.com/ApoorvSaxena/lozad.js
 lazyload: true
 
 # Pangu Support
-# Dependencies: https://github.com/theme-next/theme-next-pangu
 # For more information: https://github.com/vinta/pangu.js
 pangu: false
 
 # Quicklink Support
-# Dependencies: https://github.com/theme-next/theme-next-quicklink
 # For more information: https://github.com/GoogleChromeLabs/quicklink
 quicklink:
   enable: false
@@ -618,9 +619,13 @@ comments:
   storage: true
   # Modify icons and texts for any style, here are some examples.
   nav:
-    #disqus: disqus
-    #facebook_comments_plugin: <i class="fa fa-facebook-official" aria-hidden="true"></i> facebook
-    #gitalk: Load Gitalk
+    #disqus:
+    #  text: Load Disqus
+    #  order: -1
+    #facebook_comments_plugin:
+    #  text: <i class="fa fa-facebook-official" aria-hidden="true"></i> facebook
+    #gitalk:
+    #  order: -2
 
 # Disqus
 disqus:
@@ -628,6 +633,7 @@ disqus:
   shortname:
   count: true
   lazyload: false
+  #post_meta_order: 0
 
 # DisqusJS
 # Alternative Disqus - Render comment component using Disqus API.
@@ -649,6 +655,7 @@ changyan:
   enable: false
   appid:
   appkey:
+  #post_meta_order: 0
 
 # Valine
 # You can get your appid and appkey from https://leancloud.cn
@@ -666,6 +673,7 @@ valine:
   language: # Language, available values: en, zh-cn
   visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
   comment_count: true # If false, comment count will only be displayed in post page, not in home page
+  #post_meta_order: 0
 
 # LiveRe comments system
 # You can get your uid from https://livere.com/insight/myCode (General web site)
@@ -709,6 +717,7 @@ facebook_comments_plugin:
   num_of_posts: 10    # Minimum posts num is 1
   width:        100%  # Default width is 550px
   scheme:       light # Default scheme is light (light or dark)
+  #post_meta_order: 0
 
 # VKontakte API Support
 # To get your AppID visit https://vk.com/editapp?act=create
@@ -971,11 +980,10 @@ vendors:
   # Internal path prefix. Please do not edit it.
   _internal: lib
 
-  # Internal version: 3.4.1
+  # Internal version: 3.1.0
   # Example:
-  # jquery: //cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
-  # jquery: //cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js
-  jquery:
+  # anime: //cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js
+  anime:
 
   # Internal version: 4.7.0
   # Example:
@@ -1009,10 +1017,10 @@ vendors:
 
   # FancyBox
   # Example:
+  # jquery: //cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
   # fancybox: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js
-  # fancybox: //cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js
   # fancybox_css: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css
-  # fancybox_css: //cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css
+  jquery:
   fancybox:
   fancybox_css:
 

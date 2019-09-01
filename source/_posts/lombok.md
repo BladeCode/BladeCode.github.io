@@ -174,21 +174,89 @@ private int id;
 
 ### @Builder
 
+* 对成员注解，则它必须是构造函数或方法
+* 对类（class）注解，那么将生成一个私有构造函数，所有字段都作为参数(就好像类上有@AllArgsConstructor(access = AccessLevel.PRIVATE))，并且这个构造函数已经被@Builder注释了
+
+>注意，只有当您没有编写任何构造函数，也没有添加任何显式的@XArgsConstructor注释时，才会生成这个构造函数。在这些情况下，lombok将假定存在一个all-args构造函数，并生成使用它的代码;这意味着如果没有这个构造函数，就会出现编译器错误。
+
 > 官方示例[@Builder](https://projectlombok.org/features/Builder)
 
 ### @SneakyThrows
+
+* 捕获或抛出方法主体中语句声明它们生成的任何已检查异常
+* SneakyThrows不会下沉，封装到RuntimeException中，或者以其他方式修改列出的已检查异常类型的任何异常
+
+```java
+// lombok 写法
+@SneakyThrows(UnsupportedEncodingException.class)
+public void utf8ToString(byte[] bytes) {
+    return new String(bytes, "UTF-8");
+}
+
+// 等价于下面写法
+public void utf8ToString(byte[] bytes) {
+    try {
+           return new String(bytes, "UTF-8");
+       } catch (UnsupportedEncodingException $uniqueName) {
+           throw useMagicTrickeryToHideThisFromTheCompiler($uniqueName);
+           // This trickery involves a bytecode transformer run automatically during the final stages of compilation;
+           // there is no runtime dependency on lombok.
+       }
+}
+```
 
 > 官方示例[@SneakyThrows](https://projectlombok.org/features/SneakyThrows)
 
 ### @Synchronized
 
+@Synchronized几乎与将“synchronized”关键字放在方法上完全一样，只不过它将同步到一个私有内部对象上，这样其他不在您控制之下的代码就不会通过锁定自己的实例来干扰线程管理  
+* 对于 **非静态** 方法，使用一个名为 `$lock` 的字段  
+* 对于 **静态** 方法，则注释会锁定名为 `$LOCK` 的静态字段 
+
 > 官方示例[@Synchronized](https://projectlombok.org/features/Synchronized)
 
 ### @Getter(lazy=true)
 
+适用于那些计算占用大量 CPU，或者占用较大内存时，该注解很有用
+
 > 官方示例[@GetterLazy](https://projectlombok.org/features/GetterLazy)
 
 ### @Log
+
+注解路径`lombok.extern.java`路径下，相关的 Log 有已下几种
+
+* @CommonsLog
+    ```java
+    private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(LogExample.class);
+    ```
+* @Flogger
+    ```java
+    private static final com.google.common.flogger.FluentLogger log = com.google.common.flogger.FluentLogger.forEnclosingClass();
+    ```
+* @JBossLog
+    ```java
+    private static final org.jboss.logging.Logger log = org.jboss.logging.Logger.getLogger(LogExample.class);
+    ```
+* @Log
+    ```java
+    private static final java.util.logging.Logger log = java.util.logging.Logger.getLogger(LogExample.class.getName());
+    ```
+* @Log4j
+    ```java
+    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LogExample.class);
+    ```
+* @Log4j2
+    ```java
+    private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(LogExample.class);
+    ```
+* @Slf4j
+    ```java
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LogExample.class);
+    ```
+* @XSlf4j
+    ```java
+    private static final org.slf4j.ext.XLogger log = org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);
+    ```
 
 > 官方示例[@log](https://projectlombok.org/features/log)
 
@@ -197,15 +265,46 @@ private int id;
 Lombok提供实验性注解，请根据实际情况取舍，`org.projectlombok.lombok`包 `lombok.experimental`路径下
 
 ### @Accessors
+
+
+
 ### @ExtensionMethod
+
+
+
 ### @FieldDefaults
+
+
+
 ### @Delegate
+
+
+
 ### @Wither
-### onMethod= / onConstructor= / onParam=
+
+
+
+### onX
+
+* onMethod
+* onConstructor 
+* onParam
+
 ### UtilityClass
+
+
+
 ### Helper
+
+
+
 ### FieldNameConstants
+
+
+
 ### SuperBuilder
+
+
 
 ## 进阶配置
 
