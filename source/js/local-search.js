@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   // Merge hits into slices
-  const mergeIntoSlice = (text, start, end, index, searchText) => {
+  const mergeIntoSlice = (start, end, index, searchText) => {
     let item = index[index.length - 1];
     let position = item.position;
     let word = item.word;
@@ -150,7 +150,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           let slicesOfTitle = [];
           if (indexOfTitle.length !== 0) {
-            let tmp = mergeIntoSlice(title, 0, title.length, indexOfTitle, searchText);
+            let tmp = mergeIntoSlice(0, title.length, indexOfTitle, searchText);
             searchTextCount += tmp.searchTextCountInSlice;
             slicesOfTitle.push(tmp);
           }
@@ -172,7 +172,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (end > content.length) {
               end = content.length;
             }
-            let tmp = mergeIntoSlice(content, start, end, indexOfContent, searchText);
+            let tmp = mergeIntoSlice(start, end, indexOfContent, searchText);
             searchTextCount += tmp.searchTextCountInSlice;
             slicesOfContent.push(tmp);
           }
@@ -244,13 +244,13 @@ window.addEventListener('DOMContentLoaded', () => {
       .then(res => {
         // Get the contents from search data
         isfetched = true;
-        datas = isXml ? $('entry', res).map((i, e) => {
+        datas = isXml ? [...new DOMParser().parseFromString(res, 'text/xml').querySelectorAll('entry')].map(item => {
           return {
-            title  : $('title', e).text(),
-            content: $('content', e).text(),
-            url    : $('url', e).text()
+            title  : item.querySelector('title').innerHTML,
+            content: item.querySelector('content').innerHTML,
+            url    : item.querySelector('url').innerHTML
           };
-        }).get() : JSON.parse(res);
+        }) : JSON.parse(res);
 
         // Remove loading animation
         document.querySelector('.search-pop-overlay').innerHTML = '';
@@ -276,11 +276,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Search function
   const searchFunc = () => {
     document.querySelector('.search-pop-overlay').style.display = '';
-    document.querySelector('.search-pop-overlay').innerHTML = '<div id="search-loading-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>';
-    document.querySelector('#search-loading-icon').css({
-      margin      : '20% auto 0 auto',
-      'text-align': 'center'
-    });
+    document.querySelector('.search-pop-overlay').innerHTML = '<div class="search-loading-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>';
     fetchData(proceedSearch);
   };
 
@@ -316,8 +312,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.popup-btn-close').addEventListener('click', onPopupClose);
   window.addEventListener('pjax:success', onPopupClose);
   window.addEventListener('keyup', event => {
-    let shouldDismissSearchPopup = event.which === 27 && document.querySelector('.popup').isVisible();
-    if (shouldDismissSearchPopup) {
+    if (event.which === 27) {
       onPopupClose();
     }
   });
