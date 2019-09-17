@@ -145,6 +145,15 @@ git commit -m "注释"
     ```sh
     git remote -v
     ```
+* 修改仓库地址
+    ```sh
+    # 方式一：直接修改
+    git remote set-url origin [url]
+    # 方式二：先删后加
+    git remote rm origin
+    git remote add origin [url]
+    # 方式三：直接修改config文件
+    ```
 
 ## 附录
 * [Git Docs](https://git-scm.com/docs)
