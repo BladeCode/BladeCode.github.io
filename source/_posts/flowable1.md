@@ -37,7 +37,8 @@ Flowable是一个使用Java编写的轻量级业务流程引擎。Flowable流程
 4. 第一次启动，Tomcat控制台应该会出错，因为`flowable-admin.war`数据库配置默认使用H2数据库，我们需要修改数据库配置连接等信息
     ![flowable-mysql-config](https://res.cloudinary.com/incoder/image/upload/v1569555241/blog/flowable-mysql-config.png)
     >* 文件地址：`<your tomcat path>/webapps/flowable-admin/WEB-INF/classes`路径，`flowable-default.properties`文件及`application-dev.properties`文件
-    >* MySQL中需要一个名为 **flowable** 的数据库，没用请创建一个`CREATE DATABASE flowable`
+    >* MySQL中需要一个名为 **flowable** 的数据库，没有请创建一个`CREATE DATABASE flowable`
+    >* 由于我使用的是 MySQL8 ，Tomcat 中不包含此驱动 jar 包，因此需要手动下载[mysql-connector-java-8.x.x(和你数据库匹配版本).zip](http://ftp.jaist.ac.jp/pub/mysql/Downloads/Connector-J/)文件进行解压，拷贝`mysql-connector-java-8.x.x.jar`文件到 `<your tomcat path>/lib`路径下
 5. 重新在命令行中执行`startup.bat`命令，或执行Tomcat的`bin`路径下，启动`startup.bat`文件
 6. 正常情况到此等待服务器启动完成，如果不能正常启动，请查看Tomcat控制台是否有错误，按照提示解决错误，直到Tomcat不再有错误提示即可
 
@@ -55,6 +56,7 @@ Flowable是一个使用Java编写的轻量级业务流程引擎。Flowable流程
 
 >这里所说的"**集成运行**"，是指通过Flowable官方提供的jar文件，集成到我们的项目中运行的方式
 
+## Flowable 使用
 
 ## 其他
 
