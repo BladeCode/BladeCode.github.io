@@ -19,12 +19,12 @@
 
 ## 前言
 这是一个fork项目，在[源项目](https://github.com/theme-next/hexo-theme-next)的基础上，集成了以下第三方常用的工具库
-* [theme-next-algolia-instant-search](https://github.com/theme-next/theme-next-algolia-instant-search)：即时搜索
-* [theme-next-bookmark](https://github.com/theme-next/theme-next-bookmark)：书签，用户可以保存他们的阅读位置
-* [theme-next-fancybox3](https://github.com/theme-next/theme-next-fancybox3)：图片预览
-* [theme-next-reading-progress](https://github.com/theme-next/theme-next-reading-progress)：页面阅读进度加载
-* [theme-next-pace](https://github.com/theme-next/theme-next-pace)：顶部装载栏
-* [theme-next-pangu](https://github.com/theme-next/theme-next-pangu)：字符间空格处理
+* ~~[theme-next-algolia-instant-search](https://github.com/theme-next/theme-next-algolia-instant-search)：即时搜索~~
+* ~~[theme-next-bookmark](https://github.com/theme-next/theme-next-bookmark)：书签，用户可以保存他们的阅读位置~~
+* ~~[theme-next-fancybox3](https://github.com/theme-next/theme-next-fancybox3)：图片预览~~
+* ~~[theme-next-reading-progress](https://github.com/theme-next/theme-next-reading-progress)：页面阅读进度加载~~
+* ~~[theme-next-pace](https://github.com/theme-next/theme-next-pace)：顶部装载栏~~
+* ~~[theme-next-pangu](https://github.com/theme-next/theme-next-pangu)：字符间空格处理~~
 * [theme-next-pdf](https://github.com/theme-next/theme-next-pdf)：PDF文件预览支持
 
 ## 使用
