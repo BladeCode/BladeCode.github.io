@@ -9,7 +9,9 @@ tag: 黄山
 
 五岳未归，先品黄山。以前看黄山还是小学课本《黄山》一文介绍黄山的美，黄山的秀丽，黄山的与众不同，这次是亲身去体验黄山的姿态；趁着五一，趁着年轻，趁着...。废话不多讲，先看黄山日出美景
 
-{% dplayer "url=https://res.cloudinary.com/incoder/video/upload/v1528018149/blog/video/HuangShan-Sunrise.mp4" "pic=https://res.cloudinary.com/incoder/image/upload/v1528024134/blog/travel/travel-huangshan-back.jpg" "loop=no" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
+<!-- more -->
+
+<iframe src="//player.bilibili.com/player.html?aid=54267769&cid=94930576&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 >别问我为啥抖，没有支撑点，全程手持...逃
 
