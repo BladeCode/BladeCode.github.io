@@ -10,21 +10,27 @@ tag: [Fiddler]
 本节主要讲解Fiddler的相关配置及简单使用
 
 ## 资源
+
 * Windows 10
 * Fiddler
 
 ## 配置
+
 需要使手机连接WiFi和电脑WiFi是使用同一个网络
+
 ### Fiddler 初始化
+
 ![fiddler-config](https://res.cloudinary.com/incoder/image/upload/v1540742306/blog/fiddler-config.png)
 >默认端口：8888
 
 ### 网络地址
+
 获取电脑所连接的网络IP地址
 ![fiddler-ip](https://res.cloudinary.com/incoder/image/upload/v1540742723/blog/fiddler-ip.png)
 这里获取的IP地址，将用于手机连接网络的代理
 
 ### 手机配置
+
 关于手机相关的配置操作，步骤已经通过下面的视频展现。
 1. 连接与电脑相同的WiFi
 2. 修改网络代理
@@ -32,9 +38,8 @@ tag: [Fiddler]
 4. 网络连接刷新
 5. 获取并下载安装Fiddler证书
 
-{% dplayer "url=https://res.cloudinary.com/incoder/video/upload/v1540740276/blog/video/fiddler-content.mp4" "pic=https://res.cloudinary.com/incoder/image/upload/v1540743876/blog/fiddler.jpg" "loop=no" "theme=#FADFA3" "autoplay=false" "token=tokendemo" "width=350px" "height=680px" %}
-
 ## 其它
+
 通过以上操作，现在可以在电脑端Fiddler工具中，拦截获取经过的所有网络信息。而我们一般是查看或者是分析某一款应用的数据信息，这样在查看起来就比较费力，那么我们就借助Fiddler提供的过滤功能
 ![fiddler-filter](https://res.cloudinary.com/incoder/image/upload/v1540743106/blog/fiddler-filter.png)
 
