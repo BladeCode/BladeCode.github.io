@@ -50,7 +50,7 @@ Flowable是一个使用Java编写的轻量级业务流程引擎。Flowable流程
 2. 访问[http://localhost:8080/flowable-admin](http://localhost:8080/flowable-admin)，后台管理
 3. 访问[http://localhost:8080/flowable-modeler](http://localhost:8080/flowable-modeler)，流程定义管理
 4. 访问[http://localhost:8080/flowable-task](http://localhost:8080/flowable-task)，用户任务管理
-5. 访问[http://localhost:8080/flowable-rest](http://localhost:8080/flowable-rest)，流程引擎对外提供的API接口
+5. 访问[http://localhost:8080/flowable-rest/docs](http://localhost:8080/flowable-rest/docs)，流程引擎对外提供的API接口
 
 ## Flowable 集成运行
 
