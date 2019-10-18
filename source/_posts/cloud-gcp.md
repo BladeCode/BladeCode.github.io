@@ -67,9 +67,9 @@ Google Cloud 特点
 当然，你可以使用浏览器打开连接VM
 ![gcp-link-vm-chrome](https://res.cloudinary.com/incoder/image/upload/v1542547502/blog/gcp-link-vm-chrome.png)
 
-### 使用Xshell 
+经过实际操作，你会发现，在浏览器中操作延迟很高，因此我们就采用其它客户端去连接刚刚创建的这台服务器，下面分别以 [Xshell（Windows）](https://www.netsarang.com/products/xsh_overview.html) 和 [iTerm（macOS）](https://www.iterm2.com)来演示如何与 GCP 建立连接
 
-经过实际操作，你会发现，在浏览器中操作延迟很高，因此我们就采用其它客户端去连接刚刚创建的这台服务器，这里以[Xshell](https://www.netsarang.com/products/xsh_overview.html)为例，其它同理
+### 使用Xshell 
 
 #### 密钥生成
 1. 新建用户密钥生成向导  
@@ -99,8 +99,11 @@ Google Cloud 特点
 * 配置连接服务器的密钥
 ![gcp-link-vm-ssh-login](https://res.cloudinary.com/incoder/image/upload/v1542554117/blog/gcp-link-vm-ssh-login.png)
 
-## SSR
-通过以上的配置，我们可以使用Xshell进行SSR工具的安装，安装SSR工具前，需要先升级系统内核，按照如下执行命令
+### 使用 iTerm
+
+稍后补充
+
+## 准备工作
 
 ### 内核升级
 ```bash
@@ -124,6 +127,14 @@ sudo -i
 # 查看内核（版本大于4.13或以上版本，就表示OK）
 uname -r
 ```
+
+### 选择安装服务
+
+对于 SSR 和 v2ray **都**可以提供不可描述的服务，由于v2ray 功能更加强大，并且更加隐蔽，不易被发现，因此<font color=red>极力推荐使用 v2ray </font>方式
+
+## SSR
+
+通过以上的配置，我们可以使用Xshell进行SSR工具的安装，安装SSR工具前，需要先升级系统内核，按照如下执行命令
 
 ### 安装SSR
 ```bash
@@ -151,6 +162,74 @@ chmod +x shadowsocks-all.sh
 
 根据安装完成后提示的信息配置你的SSR客户端即可
 
+### <span id = "修改SSR配置">修改 SSR 配置</span>
+
+在实际过程中，我们安装完成后，可能根据实际环境，需要修改配置，那么我们该怎么去修改呢，直接看下面命令
+```bash
+# shadowsocks-r 默认路径是 /etc/shadowsocks-r
+vim /etc/shadowsocks-r/config.json
+# 安装实际需要，更改后保存配置，然后重启shadowsocks-r 服务
+/etc/init.d/shadowsocks-r restart
+# 记得更新你客户端相关的配置
+```
+
+### 卸载 SSR
+
+```bash
+# 切换到root用户
+sudo -i
+# 进入脚本目录（可省略）
+cd /home/<user-name>/
+# 使用 help 查看指令（可省略）
+./shadowsocks-all.sh -help
+# 执行卸载
+./shadowsocks-all.sh uninstall
+```
+
+>当你不知道该应用拥有什么命令时，多用 help 来获取相关的指令
+
+### SSR 常用命令
+
+```bash
+# 启动SSR
+/etc/init.d/shadowsocks-r start
+# 退出SSR
+/etc/init.d/shadowsocks-r stop
+# 重启SSR
+/etc/init.d/shadowsocks-r restart
+# SSR状态
+/etc/init.d/shadowsocks-r status
+# 卸载SSR，默认目录 /home/<user-name>/
+./shadowsocks-all.sh uninstall
+```
+
+## <span id = "v2ray">v2ray</span>
+
+稍后补充
+
+## 问题排查
+
+每到敏感时期，一大批服务都会被封，这次我的服务也不理外，这里就讲一讲我是如何排除问题。
+
+>所处环境说明：
+>0. VPS 上安装的 SSR 服务
+>1. 可以使用 SSH 工具（比如：Xshell）可以连接 VPS 机器
+>2. 在 VPS 中 `ping google.com` 是可以的
+>3. 连接 VPS 的客户端，无法正常访问国外网站
+
+出现以上情况，大概率是当前的 SSR 服务端口被封了，可以通过以下方式来验证
+
+1. 使用国内站长工具端口扫描检查下 VPS 的端口是否可以正常访问，地址：[http://tool.chinaz.com/port](http://tool.chinaz.com/port/)
+   * 如果提示**关闭**，说明国内无法访问该 VPS 对应的端口服务
+   * 如果提示**开启**，说明访问正常
+
+2. 使用用国外端口扫描网站进行检查你的 VPS 服务是否可以正常访问，地址：[https://www.yougetsignal.com/tools/open-ports](https://www.yougetsignal.com/tools/open-ports/)
+   * 如果检查结果为**open**，说明国外可以正常访问你的 VPS 对应端口的服务
+   * 如果检查结果为**close**，说明国外无法访问
+
+经过上面的两部，可以快速定位到问题，如果你检查出来的结果一样，则可以更改 VPS 上的 SSR 服务端口，重新启动 SSR 服务即可，在上面已经讲到了如何[修改 SSR 配置](#修改SSR配置)，切记一起连**加密方式**，
+**协议**，**混淆方式**这些配置一并改掉，然后重启 SSR 服务，并修改连接 SSR 服务的**客户端配置**，其实这只是一个暂时的解决方法，我们可以使用更加隐蔽的 [<font color=red>v2ray</font>](#v2ray) 服务
+
 ## 其它
 * 查询余额  
 进入结算概览页面: https://console.cloud.google.com/billing/
@@ -164,3 +243,6 @@ chmod +x shadowsocks-all.sh
 * [Google Cloud Platform免费申请&一键搭建SSR & BBR加速教程](https://www.wmsoho.com/google-cloud-platform-ssr-bbr-tutorial)
 * [Google Cloud使用VM虚拟机详细操作指南](https://www.rultr.com/tutorials/vps/2303.html)
 * [ShadowsocksR客户端 各种隐藏使用技巧说明](https://www.wmsoho.com/how-to-use-shadowsocksr)
+* v2ray社区：~~[https://www.v2ray.com](https://www.v2ray.com)已被墙~~，[https://www.v2fly.org](https://www.v2fly.org)
+* [自建v2ray服务器教程](https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAv2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B)
+* [v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)

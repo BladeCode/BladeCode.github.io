@@ -12,6 +12,9 @@ tag: DevTool
 [官方下载地址](https://www.oracle.com/technetwork/java/javase/downloads/index.html)，选择需要的版本下载安装包
 
 安装完成，设置环境变量，右击`我的电脑`-->`属性`-->`高级系统设置`-->`高级`-->`环境变量`
+
+<!-- more -->
+
 1. 在系统变量里新建 **`JAVA_HOME`** 变量，变量值为你的JDK的安装路径，比如：C:\Program Files\Java\jdk1.8.0_60
 2. 在系统变量里新建 **`CLASSPATH`** 变量
     ```bash
