@@ -101,7 +101,20 @@ Google Cloud 特点
 
 ### 使用 iTerm
 
-稍后补充
+```bash
+# 进入.ssh 目录
+cd ~/.ssh
+# 生成秘钥（如果你不想生成新的秘钥，可以直接使用 .ssh 目录下已有的秘钥）可省略
+ssh-keygen -t rsa
+# 查看公钥，刚刚你生成的秘钥文件名，或者是 .ssh 目录下的公钥文件
+cat rsa-name.pub
+# 复制秘钥内容添加到 GCP 的元数据-SSH秘钥类别下
+
+# 使用 iTerm 连接，name 表示添加到元数据-SSH秘钥时的用户名
+ssh -i ~/.ssh/rsa-name name@xx.xxx.xx.xx
+```
+
+>[使用第三方工具进行连接](https://cloud.google.com/compute/docs/instances/connecting-advanced#thirdpartytools)
 
 ## 准备工作
 
