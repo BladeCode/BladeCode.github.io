@@ -1,18 +1,30 @@
-language: node_js
-#node_js: node
-node_js: lts/*
-
+language: node_js   # 设置语言
+node_js: stable     # 设置相应的版本
 cache:
-  directories:
-    - node_modules
-
-install: npm install
-
+    directories:
+        - node_modules    # 据说可以减少travis构建时间
+before_install:
+  - npm install -g hexo
+  - npm install -g hexo-cli
+install:
+  - npm install   # 安装hexo及插件
 before_script:
-  - npm install -g gulp
-
-addons:
-  browserstack:
-    username: "ivannginx1"
-    access_key:
-      secure: "NutOhdgtUdBUXMPZhy8X1F1Jq+tan1LeNOV0FArBt15SNlxtNArqhiyTi4XnG9MPruX4306aGF2RBrKso+OiGNRdGtRGngH613Q0GWNtlC/boMqnI7fHqLIyCs6S12y2uA8PK4Ifxg9bZ0VtCTYYbMy+p1KvBM//L12vmtfdnby8z5Qvex3tB3dLoPOR50CKkINHJVDLm+iVRFrdz4/83oDsulZSRRGIaxu5taDWPIcp3fYZtre2Nc+RXcsyFDyjN7U0Hvr5tKBbloJxXEQEBv2xLkMOtp85nmCPD06s1Il8Wus1ux3raVsfUyaW5FpNX37Jeb5e00RQUM1wgU5m75H6qiGwDvQswbugJG0i/a2nNfsgVmbrSZdMnkHcx2Uxmrw4ejyEP5NSrJSBi05Ck1fQ4UsZ4Qkdf1fd04SI0LpLWt43eoNO/7rHKsQoP4LCX9gxKUuC075NEBLODyJ529RYfA6dKKwwH6o0ZbOgASmCoAWaM65g4+FHRnJcKL/Kj9ZWklQtRa7/ynlHaA65jefFS2lB8Ut6d3rXDDBih9mIrwV1uUaEH96xgAN42bgU/vY6FGzNkDOYZqj4YfsepDM0wbOsslFie7JZq7iFjsYvrXqLvYUMk37AZwQ2Sb6uH4tIT4Qw/4oZfDzA1En3/8HdZJ28nKW/lzjwMSqheIY="
+  - npm install -g mocha
+  - git clone --branch master https://github.com/BladeCode/BladeCode.github.io.git public
+script:
+  - hexo cl  # 清除
+  - hexo g   # 生成
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "BladeCode"   # 修改成自己的github用户名
+  - git config user.email "Jerry.x@outlook.com"   # 修改成自己的GitHub邮箱
+  - git add .
+  - git commit -m "update by Travis-CI"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master # GH_token就是在travis中设置的token
+branches:
+  only:
+  - dev  # 只监测这个分支，一有动静就开始构建
+env:
+    global:
+        - GH_REF: github.com/BladeCode/BladeCode.github.io.git
