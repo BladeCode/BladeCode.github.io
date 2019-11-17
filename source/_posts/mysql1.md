@@ -5,6 +5,10 @@ categories: MySQL
 tag: [MySQL]
 ---
 
+![](https://res.cloudinary.com/incoder/image/upload/v1573002782/blog/mysql-skill.png)
+
+<!-- more -->
+
 ## 锁表处理
 
 ### 方法一
