@@ -36,3 +36,7 @@ tag: [MySQL]
    ```sql
    kill trx_mysql_thread_id
    ```
+
+## MySQL 用户分配
+
+![mysql-account](https://res.cloudinary.com/incoder/image/upload/v1574820841/blog/mysql-account.png)

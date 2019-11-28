@@ -39,7 +39,7 @@ Google Cloud 特点
 ## VM创建
 在创建VM之前，我们先进行[网络防火墙修改](https://console.cloud.google.com/networking/firewalls/list)，避免后续的麻烦
 
-![gcp-firewall-settings](https://res.cloudinary.com/incoder/image/upload/v1542546675/blog/gcp-firewall-settings.png)
+![gcp-firewall-settings](https://res.cloudinary.com/incoder/image/upload/v1574522003/blog/gcp-firewall-settings.png)
 ![gcp-create-firewall](https://res.cloudinary.com/incoder/image/upload/v1542545777/blog/gcp-create-firewall.png)
 规则设置如下：
 ![gcp-firewall-rule](https://res.cloudinary.com/incoder/image/upload/v1542546500/blog/gcp-firewall-rule.png)
@@ -101,7 +101,12 @@ Google Cloud 特点
 
 ### 使用 iTerm
 
-稍后补充
+1. 添加公钥到 SSH 管理
+2. 使用 SSH 命令进行连接
+
+![gcp-item2-ssh](https://res.cloudinary.com/incoder/image/upload/v1574527300/blog/gcp-item2-ssh.png)
+
+>如果你本地没有已有秘钥，或者你需要生产一对 RSA 新秘钥，可参考[MacBook Pro 疑难杂症](https://incoder.org/2019/01/10/mac-question/)文章的 **免密登录服务器** 的前半部分内容
 
 ## 准备工作
 
@@ -118,6 +123,10 @@ chmod +x bbr.sh
 # 启动bbr.sh脚本
 ./bbr.sh
 ```
+
+执行`./bbr.sh`安装过程如下
+![gcp-centos-bbr](https://res.cloudinary.com/incoder/image/upload/v1574528726/blog/gcp-centos-bbr.png)
+
 执行完成后，会提示，输入`y`并`回车`后重启，这时需要等待几分钟
 
 重启完成后，重新连接服务器
@@ -205,7 +214,47 @@ cd /home/<user-name>/
 
 ## <span id = "v2ray">v2ray</span>
 
-稍后补充
+### 时间校准
+
+对于 v2ray，它的验证方式包含时间，就算是配置没有任何问题，如果时间不正确，也无法连接 v2ray 服务器的，服务器会认为你这是不合法的请求。所以系统时间一定要正确，只要保证时间误差在90秒之内就没问题
+
+```bash
+# 查看 VPS 时间
+date -R
+# +0000表示时区
+Sat, 23 Nov 2019 17:21:50 +0000
+# 将系统服务时间设置成本地时间
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# 检查服务器系统时间是否和本地时间一样
+date -R
+```
+
+### 安装 v2ray
+
+```bash
+# 安装脚本
+bash <(curl -L -s https://install.direct/go.sh)
+# 安装完成，v2ray 并不会自动运行，因此需要手动启动服务
+sudo systemctl start v2ray
+# 查看 v2ray 运行状态
+service v2ray status
+```
+
+基本文件安装路径地址
+* /usr/bin/v2ray/v2ray：V2Ray 程序；
+* /usr/bin/v2ray/v2ctl：V2Ray 工具；
+* /etc/v2ray/config.json：配置文件；
+* /usr/bin/v2ray/geoip.dat：IP 数据文件
+* /usr/bin/v2ray/geosite.dat：域名数据文件
+
+安装过程截图如下
+![gcp-v2ray-install](https://res.cloudinary.com/incoder/image/upload/v1574530585/blog/gcp-v2ray-install.png)
+
+### 配置修改
+
+
+### 客户端连接
+
 
 ## 问题排查
 
