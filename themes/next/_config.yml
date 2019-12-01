@@ -47,10 +47,6 @@ favicon:
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
-# hexo-generator-feed required for rss support. Leave rss as blank to use site's feed link.
-# Set rss to false to disable feed link. Set rss to specific value if you have burned your feed already.
-rss:
-
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.
   #since: 2015
@@ -121,7 +117,7 @@ scheme: Muse
 # Usage: `Key: /link/ || icon`
 # Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-senstive.
 # Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.
-# When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash from link value (/archives -> archives).
+# When running the site in a subdirectory (e.g. yoursite.com/blog), remove the leading slash from link value (/archives -> archives).
 # External url should start with http:// or https://
 menu:
   home: / || home
@@ -161,6 +157,8 @@ sidebar:
   #  - remove  totally remove sidebar including sidebar toggle.
   display: post
 
+  # Sidebar padding in pixels.
+  padding: 18
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
   offset: 12
   # Enable sidebar on narrow view (only for Muse | Mist).
@@ -170,9 +168,9 @@ sidebar:
 avatar:
   # Replace the default image and set the url here.
   url: #/images/avatar.gif
-  # If true, the avatar would be dispalyed in circle.
+  # If true, the avatar will be dispalyed in circle.
   rounded: false
-  # If true, the avatar would be rotated with the cursor.
+  # If true, the avatar will be rotated with the cursor.
   rotated: false
 
 # Posts / Categories / Tags in sidebar.
@@ -189,11 +187,11 @@ social:
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
-  #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
   #YouTube: https://youtube.com/yourname || youtube
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
+  #RSS: /atom.xml || rss
 
 social_icons:
   enable: true
@@ -208,9 +206,10 @@ links_settings:
   layout: block
 
 links:
-  #Title: http://example.com
+  #Title: http://yoursite.com
 
 # Table of Contents in the Sidebar
+# Front-matter variable (unsupport wrap expand_all).
 toc:
   enable: true
   # Automatically add list number to toc.
@@ -219,7 +218,7 @@ toc:
   wrap: false
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
   expand_all: false
-  # Maximum heading depth of generated toc. You can set it in one post through `toc_max_depth` in Front-matter.
+  # Maximum heading depth of generated toc.
   max_depth: 6
 
 # A button to open designated chat widget in sidebar.
@@ -240,14 +239,8 @@ chat:
 # Automatically excerpt description in homepage as preamble text.
 excerpt_description: true
 
-# Automatically excerpt (Not recommend).
-# Use <!-- more --> in the post to control excerpt accurately.
-auto_excerpt:
-  enable: false
-  length: 150
-
 # Read more button
-# If true, the read more button would be displayed in excerpt section.
+# If true, the read more button will be displayed in excerpt section.
 read_more_btn: true
 
 # Post meta display settings
@@ -272,9 +265,9 @@ symbols_count_time:
 tag_icon: false
 
 # Reward (Donate)
+# Front-matter variable (unsupport animation).
 reward_settings:
-  # If true, reward would be displayed in every article by default.
-  # You can show or hide reward in a specific article throuth `reward: true | false` in Front-matter.
+  # If true, reward will be displayed in every article by default.
   enable: false
   animation: false
   #comment: Donate comment here.
@@ -304,14 +297,15 @@ post_edit:
   url: https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name # Link for view source
   #url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name # Link for fork & edit
 
+# Show previous post and next post in post footer if exists
+# Available values: left | right | false
+post_navigation: left
+
 
 # ---------------------------------------------------------------
 # Custom Page Settings
 # See: https://theme-next.org/docs/theme-settings/custom-pages
 # ---------------------------------------------------------------
-
-# Enable "cheers" for archive page.
-cheers: true
 
 # TagCloud settings for tags page.
 tagcloud:
@@ -461,15 +455,15 @@ font:
 # Disable Baidu transformation on mobile devices.
 disable_baidu_transformation: false
 
-# Set a canonical link tag in your hexo, you could use it for your SEO of blog.
+# Set a canonical link tag for your Hexo site.
 # See: https://support.google.com/webmasters/answer/139066
-# Remember to set up your URL in Hexo `_config.yml` (e.g. url: http://yourdomain.com)
+# Remember to set up your URL in Hexo `_config.yml` (e.g. url: http://yoursite.com)
 canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post / page titles for better SEO-optimization.
 seo: false
 
-# If true, will add site-subtitle to index page.
+# If true, site-subtitle will be added to index page.
 # Remember to set up your site-subtitle in Hexo `_config.yml` (e.g. subtitle: Subtitle)
 index_with_subtitle: false
 
@@ -526,7 +520,6 @@ math:
 
 # Easily enable fast Ajax navigation on your website.
 # Dependencies: https://github.com/theme-next/theme-next-pjax
-# For moreinformation: https://github.com/MoOx/pjax
 pjax: false
 
 # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
@@ -548,14 +541,14 @@ pangu: false
 
 # Quicklink Support
 # For more information: https://github.com/GoogleChromeLabs/quicklink
+# Front-matter (unsupport home archive).
 quicklink:
   enable: false
 
-  # Quicklink (quicklink.umd.js script) is loaded on demand.
-  # Add `quicklink: true` in Front-matter of the page or post you need.
   # Home page and archive page can be controlled through home and archive options below.
-  home: true
-  archive: true
+  # This configuration item is independent of `enable`.
+  home: false
+  archive: false
 
   # Default (true) will initialize quicklink after the load event fires.
   delay: true
@@ -622,20 +615,19 @@ changyan:
   #post_meta_order: 0
 
 # Valine
-# You can get your appid and appkey from https://leancloud.cn
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
-  enable: false # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version
+  enable: false
   appid: # Your leancloud application appid
   appkey: # Your leancloud application appkey
-  notify: false # Mail notifier. See: https://github.com/xCss/Valine/wiki
+  notify: false # Mail notifier
   verify: false # Verification code
   placeholder: Just go go # Comment box placeholder
   avatar: mm # Gravatar style
   guest_info: nick,mail,link # Custom comment header
   pageSize: 10 # Pagination size
   language: # Language, available values: en, zh-cn
-  visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+  visitor: false # Article reading statistic
   comment_count: true # If false, comment count will only be displayed in post page, not in home page
   recordIP: false # Whether to record the commenter IP
   serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
@@ -646,8 +638,7 @@ valine:
 livere_uid: # <your_uid>
 
 # Gitalk
-# Demo: https://gitalk.github.io
-# For more information: https://github.com/gitalk/gitalk
+# For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
   enable: false
   github_id: # GitHub repo owner
@@ -687,7 +678,6 @@ add_this_id:
 # Google Analytics
 google_analytics:
   tracking_id: # <app_id>
-  localhost_ignored: true
   # By default, NexT will load an external gtag.js script on your site.
   # If you only need the pageview feature, set the following option to true to get a better performance.
   only_pageview: false
@@ -701,14 +691,10 @@ growingio_analytics: # <project_id>
 # CNZZ count
 cnzz_siteid:
 
-# Tencent analytics
-tencent_analytics: # <app_id>
-
-# Tencent MTA
-tencent_mta: # <app_id>
-
-# Show number of visitors to each article.
+# Show number of visitors of each article.
 # You can visit https://leancloud.cn to get AppID and AppKey.
+# AppID and AppKey are recommended to be the same as valine's for counter compatibility.
+# Do not enable both `valine.visitor` and `leancloud_visitors`.
 leancloud_visitors:
   enable: false
   app_id: # <app_id>
@@ -810,7 +796,6 @@ note:
   #  - disabled  disable all CSS styles import of note tag.
   style: simple
   icons: false
-  border_radius: 3
   # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
   # Offset also applied to label tag variables. This option can work with disabled note tag.
   light_bg_offset: 0
@@ -820,7 +805,6 @@ tabs:
   transition:
     tabs: false
     labels: true
-  border_radius: 0
 
 # PDF tag, requires two plugins: pdfObject and pdf.js
 # pdfObject will try to load pdf files natively, if failed, pdf.js will be used.
