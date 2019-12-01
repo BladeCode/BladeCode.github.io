@@ -2,7 +2,7 @@
   {### POST BLOCK ###}
   {##################}
   <article itemscope itemtype="http://schema.org/Article" class="post-block {% if is_index %}home{% endif %}" lang="{{ post.lang or post.language or config.language }}">
-    <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(post.path) }}">
+    <link itemprop="mainEntityOfPage" href="{{ post.permalink }}">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="{{ url_for(theme.avatar.url or theme.images + '/avatar.gif') }}">
@@ -36,7 +36,7 @@
             {{ next_url(post.path, post.title or __('post.untitled'), {class: 'post-title-link', itemprop: 'url'}) }}
           {%- else %}
             {{- post.title }}
-            {{- post_edit(page.source) }}
+            {{- post_edit(post.source) }}
           {%- endif %}
         </{%- if theme.seo %}h2{% else %}h1{%- endif %}>
 
@@ -226,13 +226,8 @@
     {%- if not is_index %}
       {{- next_inject('postBodyEnd') }}
 
-      {%- if post.reward === undefined and theme.reward_settings.enable %}
-        {%- set reward_able = true %}
-      {% else %}
-        {%- set reward_able = post.reward %}
-      {%- endif %}
-      {%- if reward_able %}
-        {{ partial('_partials/post/post-reward.swig', {}, {cache: theme.cache.enable}) }}
+      {%- if post.reward_settings.enable %}
+        {{ partial('_partials/post/post-reward.swig') }}
       {%- endif %}
 
       {%- if theme.creative_commons.license and theme.creative_commons.post %}
@@ -255,27 +250,7 @@
 
         {{ partial('_partials/post/post-footer.swig', {}, {cache: theme.cache.enable}) }}
 
-        {%- if post.prev or post.next %}
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              {%- if post.next %}
-                <a href="{{ url_for(post.next.path) }}" rel="next" title="{{ post.next.title }}">
-                  <i class="fa fa-chevron-left"></i> {{ post.next.title }}
-                </a>
-              {%- endif %}
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              {%- if post.prev %}
-                <a href="{{ url_for(post.prev.path) }}" rel="prev" title="{{ post.prev.title }}">
-                  {{ post.prev.title }} <i class="fa fa-chevron-right"></i>
-                </a>
-              {%- endif %}
-            </div>
-          </div>
-        {%- endif %}
+        {{ post_nav(post) }}
       </footer>
     {% else %}
       <footer class="post-footer">
