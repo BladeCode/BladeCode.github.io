@@ -9,6 +9,8 @@ The Apache Thrift software framework, for scalable cross-language services devel
 
 Apache Thrift软件框架，用于可扩展的跨语言服务开发，它包含软件栈和一个代码生成器用于构建服务，这个服务可以高效并且无缝的在 C++，Java，Python，PHP，Ruby，Erlang，Perl，Haskell，C#，Cocoa，Node.js，Smalltalk，OCaml 和 Delphi 等其他语言间协作
 
+<!-- more -->
+
 [Apache Thrift](http://thrift.apache.org) 与 [Google Protocal Buffers](https://developers.google.com/protocol-buffers) 都是一种可以用于在 Netty 之上的一种数据格式，Thrift 可应用的语言比 Protocal Buffers 多，并且 Thrift 除了用于传递数据的定义，底层还提供了传输层，因此可以单独的去使用，而不必强制运行在 Netty 载体之上
 
 ## Thrift

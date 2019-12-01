@@ -13,6 +13,8 @@ tag: [Android Studio, JetBrains]
 * Windows：`Ctrl`+`Alt`+`S`
 * macOS：`⌘`+`,`
 
+<!-- more -->
+
 ### 样式
 
 #### 约束提示/空格及缩进

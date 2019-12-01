@@ -16,6 +16,8 @@ Android SDK中提供了`AudioRecord`，`MediaRecorder`两个API经行音频的�
     缺点：输出的是PCM的语音数据，如果保存成音频文件是不能被播放器播放的。要用到这个去进行处理。  
     适用场景：需要实时处理分析的录音场景等，如：会说话的汤姆猫『[AppStore](https://itunes.apple.com/cn/app/%E4%BC%9A%E8%AF%B4%E8%AF%9D%E7%9A%84%E6%B1%A4%E5%A7%86%E7%8C%AB/id377194688?mt=8) | [GooglePlay](https://play.google.com/store/apps/details?id=com.outfit7.talkingtom&hl=zh)』
 
+<!-- more -->
+
 * [MediaRecorder](https://developer.android.google.cn/reference/android/media/MediaRecorder) 『added in API level 1』(基于文件音视频录制)：  
     优点：封装度很高，操作简单，无需处理中间录制过程；录制的音频文件是经过压缩的，需要设置编码器；录制的音频文件可以使用系统自带的播放器播放  
     缺点：无法实现实时处理音频，输出的音频格式少。  

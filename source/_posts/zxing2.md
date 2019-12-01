@@ -9,7 +9,10 @@ tag: [Zxing]
 
 本篇开启 [ZXing项目Android](https://github.com/zxing/zxing/tree/master/android) 模块的探索学习之路，那么首先我们要集成该模块到项目中
 
+<!-- more -->
+
 ## 模块集成
+
 * 下载官方项目[Zxing](https://github.com/zxing/zxing)
 * 使用 AS 创建一个新的 Project
 
@@ -22,6 +25,7 @@ tag: [Zxing]
 演示项目[rc-android-zxing](https://github.com/RootCluster/rc-android-zxing)
 
 ### 导入步骤
+
 * 导入 module
     ![import_module](https://raw.githubusercontent.com/RootCluster/rc-android-zxing/zxing/images/import_module.png)
 * 选择 module
@@ -35,6 +39,7 @@ tag: [Zxing]
 * 删除`app`module（可选）
 
 ### 项目展示
+
 ![zxing](https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/zxing.gif)
 
 当然你也可以下载官方提供的应用[google play](https://play.google.com/store/apps/details?id=com.google.zxing.client.android)
@@ -44,10 +49,12 @@ tag: [Zxing]
 #### 相机出现问题
 
 ##### 表现
+
 如果你运行的设备是 Android 6.0 以上版本，那么在启动应用程序后，应该会提示你“很遗憾，Android 相机出现问题，你可能需要重启设备”，如下图
 ![project_problem](https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/project_problem.png)
 
 ##### 分析
+
 分析运行日志，进行定位`CaptureActivity.java`类，在初始化相机时，由于没有相机权限，因此无法正常运行应用
 ![zxing_error_log](https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/zxing_error_log.png)
 
@@ -87,6 +94,7 @@ public void onRequestPermissionsResult(int requestCode
 }
 ```
 #### 其他问题
+
 同样我们在`EncodeActivity.java`文件中加入读取内存卡的权限`READ_EXTERNAL_STORAGE`
 
 ## 项目分析

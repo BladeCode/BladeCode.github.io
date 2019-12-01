@@ -11,6 +11,8 @@ SpringBoot 与 SpringCloud 微服务技术栈体系本质就是围绕注解来�
 * Spring：5.1.8 RELEASE
 * SpringBoot：2.1.6 RELEASE
 
+<!-- more -->
+
 >由于本篇包含众多注解，请配合 `Ctrl` + `F` （或 `⌘` + `F`）使用
 ><font color=green>绿色</font> ：**基础** 的注解
 ><font color=red>红色</font> ：**常用** 的注解

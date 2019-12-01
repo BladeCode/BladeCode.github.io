@@ -13,6 +13,8 @@ tag: Build
 * 常用设置
 * 常用插件安装
 
+<!-- more -->
+
 ## 弃用Cloudflare
 1. 关闭Cloudflare中设置Page Rules
 2. 删除Cloudflare的DNS记录

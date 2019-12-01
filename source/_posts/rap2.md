@@ -12,6 +12,8 @@ RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 **服务
 
 由于 **客户端：**[rap2-dolores](https://github.com/thx/rap2-dolores) 是建立在 **服务端：**[rap2-delos](https://github.com/thx/rap2-delos) 基础上，因此先搭建服务端应用
 
+<!-- more -->
+
 > * 截至到2018-08-01 delos 并没有发布Tag版本，应该还处于功能开发前期阶段吧。本教程是在CentOS机器上实战部署
 > * 然而安装部署并不是顺利，因此记录踩过的坑（别问我为啥不用Docker，因为我司分配的机器无法满足Docker的最低内核版本），安装环境介绍：Redis，delos，dolores均在一台服务器，MySQL使用已存在的服务
 

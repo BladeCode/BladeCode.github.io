@@ -11,6 +11,8 @@ tag: [flutter]
 
 本篇文章主要记录在macOS系统上搭建flutter开发环境的过程
 
+<!-- more -->
+
 ## 准备
 * Android Studio开发环境（JDK，AndroidSDK，Gradle等等，这里不再赘述）
 * [flutter SDK](https://flutter.io/docs/get-started/install)

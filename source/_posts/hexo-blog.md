@@ -11,6 +11,8 @@ tag: Build
 
 既然自己修改的无法正常部署预览，那就用别人写好的吧，刚好赶上[Next](https://github.com/theme-next/hexo-theme-next)新版本V6.0系列的推出，那就不废话，直接开干
 
+<!-- more -->
+
 ## 材料准备
 * [Node LTS](https://nodejs.org/en/download)
 * [Git](https://git-scm.com/downloads)

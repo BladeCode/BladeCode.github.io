@@ -9,6 +9,8 @@ tag: OkHttp
 
 OkHttp：An HTTP & HTTP/2 client for Android and Java applications
 
+<!-- more -->
+
 >Android 历史网络库
 * `HttpClient` 是 Apache 提供的HTTP网络访问接口，从一开始的时候就被引入到了Android的API中；
 * `HttpURLConnection` 是一种多用途, 轻量极的HTTP客户端, 提供的API比较简单, 可以容易地去使用和扩展. 

@@ -7,6 +7,8 @@ tag: [Flowable]
 
 Flowable是一个使用Java编写的轻量级业务流程引擎。Flowable流程引擎可用于部署BPMN 2.0流程定义（用于定义流程的行业XML标准）， 创建这些流程定义的流程实例，进行查询，访问运行中或历史的流程实例与相关数据等，众所周知，Flowable是Activit的一个分叉，[Flowable的第一个版本（5.22.0）是基于Activit（5.21.0）](https://blog.flowable.org/2016/10/13/flowable-5-22-0-release/)，关于为什么Flowable会从Activit分叉，感兴趣可以查看Flowable官方的文章[Flowable and Activiti: What the Fork?!](https://blog.flowable.org/2016/10/12/flowable-and-activiti-what-the-fork/)，这里不在赘述这些内容
 
+<!-- more -->
+
 从[Flowable官方文档](https://www.flowable.org/documentation.html)介绍，可知Flowable遵循[BPMN](https://www.flowable.org/docs/userguide/index.html)，[CMMN](https://www.flowable.org/docs/userguide-cmmn/index.html)，[DMN](https://www.flowable.org/docs/userguide-dmn/index.html)，[From](https://www.flowable.org/docs/userguide-form/index.html)设计指导
 * BPMN：用于流程管理
 * CMMN：用于案例管理

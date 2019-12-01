@@ -12,6 +12,8 @@ Aria2 是一款支持多种协议的 **轻量级命令行** 下载工具。有�
 * 全功能 BitTorrent 客户端；
 * 支持 RPC 界面远程控制
 
+<!-- more -->
+
 ## Aria2 安装
 ```bash
 # 安装Homebrew

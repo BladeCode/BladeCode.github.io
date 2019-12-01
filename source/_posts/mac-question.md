@@ -14,6 +14,8 @@ tag: [Exp]
 
 iTerm2对应的配置文件：`.zshrc`，Terminal对于的配置文件：`.bash_profile` 或 `.bashrc`
 
+<!-- more -->
+
 * 问题：iTerm2查看本地文件，能正常显示，无乱码，但查看服务器上文件，出现乱码
 * 原因：本地iTerm2终端和服务器字符集不一致，造成乱码，macOS默认Terminal应用是`utf-8`，而iTerm2默认没有设置`utf-8`编码
 * 解决办法：给本地的`.zshrc`设置字符集编码

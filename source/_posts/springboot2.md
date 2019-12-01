@@ -8,6 +8,9 @@ tag: [SpringBoot]
 我们在开发过程中，使用 {% label info@java -jar you-jar-name.jar %} 命令来启动应用，它是如何启动？以及它如何去寻找`.class`文件并执行这些文件？本节就带着这两个问题，让我们一层层解开 SpringBoot 项目的 jar 启动过程，废话不多说，跟着我的脚步一起去探索`spring-boot-load`的秘密。
 
 在[SpringBoot（一） 初识]()已经解释了为什么在编译后的 jar 中根目录存在`org/springframework/boot/loader`内容，以及为了方便学习研究，我们需要在项目的依赖中导入`org.springframework.boot:spring-boot-loader`依赖。同时我们在解压的`you-jar-name.jar`文件中，查看对应的清单文件 {% label primary@MANIFEST.MF %} 内容，其中明确指出了应用的入口`org.springframework.boot.loader.JarLauncher `因此我们就从`JarLauncher`开始一步步深入
+
+<!-- more -->
+
 ![spring-boot-loader-jarlauncher](https://res.cloudinary.com/incoder/image/upload/v1562394534/blog/spring-boot-loader-jarlauncher.png)
 
 ## 结构

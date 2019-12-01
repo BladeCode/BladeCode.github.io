@@ -10,6 +10,8 @@ tag: [Util]
 Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.
 Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more（Project Lombok是一个java库，可以自动插入编辑器并构建工具，为您的java增添色彩。 永远不要再写另一个getter或equals方法，使用一个注释，你的类有一个功能齐全的构建器，自动化你的日志记录变量等等），这是官方对Lombok的介绍，简单来讲就是通过注解的方式，代替一些重复性的代码，让代码更加简洁
 
+<!-- more -->
+
 ## 安装集成
 
 * 编辑器（IDEA or Android Studio）安装 Lombok 插件，`File` -> `Settings...` -> `Plugins` -> `搜索 Lombok 并安装`

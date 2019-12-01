@@ -9,6 +9,8 @@ tag: Build
 
 [Hugo](https://gohugo.io)是世界上最快的静态网站引擎。它是用[Go](https://golang.org)（aka Golang）编写的，由[bep](https://github.com/bep)，[spf13](https://github.com/spf13)和[朋友](https://github.com/gohugoio/hugo/graphs/contributors)开发
 
+<!-- more -->
+
 ## 材料准备
 * SystemOS：Windows 10
 * [Chocolatey](https://chocolatey.org)：Windows的包管理器

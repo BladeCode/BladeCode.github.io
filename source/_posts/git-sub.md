@@ -13,6 +13,8 @@ $ git clone https://github.com/theme-next/hexo-theme-next themes/next
 ```
 发现commit并push到GitHub的远程服务器上，发现`themes/next`路径下并不能打开和查看该路径下的文件，原因是NexT是当前项目的一个子仓库(项目)，在Github上对于之仓库项目的引用，推荐使用`git subtree`命令来进行对子仓库的管理，不推荐直接拷贝需要子仓库的代码到自己的项目中
 
+<!-- more -->
+
 原因是我是使用Travis CI来部署自己的项目，具体的[构建脚本和介绍](https://incoder.org/2018/05/02/hexo-iterative)请看，下面分别使用 `git submodule`、`git subtree`的方式进行NexT主题的管理
 
 ## git submodule 与 git subtree

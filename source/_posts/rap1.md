@@ -11,6 +11,8 @@ API管理工具有很多，选择适合自身需求的就是最好
 
 这里以[阿里妈妈](https://thx.github.io)出品的[RAP](https://thx.github.io/RAP)产品；目前RAP分为： ~~[RAP1](https://github.com/thx/RAP)~~，[RAP2](https://github.com/thx/rap2-delos)
 
+<!-- more -->
+
 >虽然RAP1不再添加新功能，只做维护工作，介于RAP2目前还不是很成熟，本篇文章先讲RAP1的搭建过程(虽然官方[Wiki](https://github.com/thx/RAP/wiki)已经有很详细的部署教程，但在部署过程中还是遇到一些问题，因此就记录下来)
 
 如果你不需要搭建，可以直接访问RAP1提供的服务[http://rapapi.org](http://rapapi.org)

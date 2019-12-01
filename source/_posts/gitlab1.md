@@ -10,6 +10,8 @@ tag: Gitlab
 2. SVN都是以中文命名，这其实没啥，但是在[eclipse](https://eclipse.org) 以及[IDEA](https://www.jetbrains.com/idea/?fromMenu) ，[Xcode](https://developer.apple.com/xcode)等开发工具，链接地址都会把中文字进行编码，造成路径非常的长，强迫症的我这怎么忍得了
 3. 产品相关的，设计相关的啥也都放在SVN里面，搞得SVN里面鱼龙混杂
 
+<!-- more -->
+
 因此在我提出及建议下，部门经理同意了对代码的管理进行隔离方便有效的对代码的授权监管，并同时制定代码的相关规范和服务的自动化部署等，提高团队的开发效率和代码质量。
 
 本节主要介绍Gitlab的环境搭建和基础的功能配置

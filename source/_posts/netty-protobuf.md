@@ -12,6 +12,8 @@ RMI：Remote Method Invocation，用于跨机器方法调用，只针对于 Java
 * server：skeleton（骨架）
 client 与 server 底层通过 socket 数据传输
 
+<!-- more -->
+
 RPC：Remote Procedure Call，远程过程调用，原理和 RMI 一致，优势在于跨语言支持
 
 那对于 RMI 和 RPC 编写的具体步骤如下：

@@ -11,6 +11,8 @@ tag: [SOA,SpringBoot]
 
 面向服务的架构（SOA）是一种[软件设计](https://en.wikipedia.org/wiki/Software_design)风格。 SOA 服务通过[应用组件](https://en.wikipedia.org/wiki/Application_components)，通过网络[通信协议](https://en.wikipedia.org/wiki/Communications_protocol)的方式向其他组件提供服务。SOA 的基本原则是独立于厂商，独立于产品以及独立于技术[^1]。服务是一种功能的离散独立单元，可以远程访问并独立运行与更新，例如在线查询信用卡账单。
 
+<!-- more -->
+
 一个服务在诸多 SOA 定义中有 4 个属性[^2]：
 1. 它逻辑上代表具有指定结果的业务活动
 2. 它是自包含的

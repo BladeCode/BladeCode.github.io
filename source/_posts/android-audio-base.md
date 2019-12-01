@@ -11,6 +11,8 @@ tag: [media]
 
 "声音是振动产生的`声波`，通过`介质`（`气体`，`固体`，`液体`）传播并能被人或动物`听觉器官`所感知的`波动`现象"。声音的频率一般以[赫兹](https://zh.wikipedia.org/wiki/%E8%B5%AB%E5%85%B9)表示，记为`Hz`，指每秒周期性震动的次数
 
+<!-- more -->
+
 ![trasound_range_diagram](https://res.cloudinary.com/incoder/image/upload/v1541400788/blog/trasound_range_diagram.png)
 >图片来自[Wikipedia](https://zh.wikipedia.org/wiki/%E5%A3%B0%E9%9F%B3)
 

@@ -14,6 +14,8 @@ RxJava – Reactive Extensions for the JVM – a library for composing **asynchr
 2. RxJava 实际应用
 3. RxJava 源码剖析
 
+<!-- more -->
+
 目前来说，RxJava有两个版本，RxJava1 与 RxJava2 两个版本之间虽然存在很多不同，但它们的本质是相同，由于对于RxJava1 **已废弃**，因此建议没有学习或者是使用过，可直接上手学习RxJava2(在学习过程中部分地方还是会有RxJava1相关的说明，但这不是重点)  
 
 文章使用RxJava版本如下:

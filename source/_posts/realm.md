@@ -6,6 +6,9 @@ tag: Realm
 ---
 
 ![realm-db](https://res.cloudinary.com/incoder/image/upload/v1525517554/blog/gitpages-realm-mobile-db.png)
+
+<!-- more -->
+
 Android 供了多种选项来保存永久性应用数据。
 * [Shared preferences](https://developer.android.google.cn/guide/topics/data/data-storage.html?hl=zh-cn#pref)
 * [Internal file storage](https://developer.android.google.cn/guide/topics/data/data-storage.html?hl=zh-cn#filesInternal)

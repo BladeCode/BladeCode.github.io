@@ -13,6 +13,8 @@ Shell：在计算机中，值“为用户提供用户界面”的软件，通常
 * 命令行：提供一个命令行界面（CLI）
 * 图形界面：提供一个图形用户界面（GUI）
 
+<!-- more -->
+
 ![linux_system](https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_general_structure_of_a_Linux_system.jpeg/250px-The_general_structure_of_a_Linux_system.jpeg)
 
 在PC桌面领域，不同的操作系统都有自己的`Shell`，截止2018.10主流的操作系统市场占有率，Windows（78.04%），OS X（13.73%），Unknown（5.44%），Linux（1.64%），Chrome（1.15%），数据来源于[statcounter](http://gs.statcounter.com/os-market-share/desktop/worldwide/#monthly-201710-201810)；

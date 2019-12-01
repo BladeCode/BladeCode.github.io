@@ -16,6 +16,8 @@ OOAD（Object Oriented Analysis and Desigin） 是根据 OO 的方法学，对�
 * 针对问题域建立公共词汇表
 * 列出针对此问题域的最佳解决方案
 
+<!-- more -->
+
 ## How to do
 设计阶段主要解决以下问题（How to do?）
 * 如何解决具体的业务问题

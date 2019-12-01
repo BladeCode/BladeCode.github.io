@@ -14,6 +14,9 @@ Git级别：system(系统所有用户) < global(当前用户) < local(当前仓�
     # 查看对应 Git 级别（--local；--global；--system）的配置信息
     git config --list --local
     ```
+
+<!-- more -->
+
 * 新增或修改
     ```sh
     git config --global user.name xxxxx

@@ -13,6 +13,8 @@ MySQL是一个开源数据库管理系统，通常作为流行的LEMP（Linux，
 
 [CentOS 7](https://www.centos.org)更喜欢[MariaDB](https://mariadb.org)，它是由原始`MySQL`开发人员管理的`MySQL`分支，旨在替代MySQL。如果你在CentOS 7上运行`yum install mysql`，那么安装的是MariaDB，而不是MySQL。
 
+<!-- more -->
+
 ## 清单
 * OS: CentOS 7
 * DataBase：MySQL 8.0.11

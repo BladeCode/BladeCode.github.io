@@ -10,6 +10,8 @@ float 和 double 同样也是可以表示浮点数，为啥在对于要求精确
 1. float 和 double 类型的主要设计目标是为了科学计算和工程计算。他们执行二进制浮点运算，这是为了在广域数值范围上提供较为精确的 **快速近似** 计算而精心设计的。然而，它们<font color=red>没有提供完全精确</font>的结果，所以不应该用于要求精确结果的场合。——《Effective Java》
 2. float 精度 7 位，double 精度 16 位
 
+<!-- more -->
+
 综上所述，对于精确计算时，就不能采用 float 和 double 来计算了，而是 <font color=red>正确的使用 BigDecimal</font> 时，结果才是精确的，为什么会这么说，那就跟着我一块来深入了解 BigDecimal，我们查看`java.math`路径下，除了 BigDecimal 还有 BigInteger ，因此，我们先去了解 BigInteger
 
 ## BigInteger

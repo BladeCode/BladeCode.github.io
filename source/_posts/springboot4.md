@@ -7,6 +7,8 @@ tag: [SpringBoot]
 
 关于 SpringBoot 配置文件，在之前的文章中已经提到[配置文件格式](https://incoder.org/2019/06/23/springboot1/#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F)，主要是两种格式的配置，这里并没有哪个配置写法一定优于另一种写法，对于配置文件名（application.yml 或者 application.properties），可以更改，为了减少不必要的麻烦，不建议修改，本篇文章以 yml 文件作为示例
 
+<!-- more -->
+
 ## YAML
 
 [YAML](https://en.wikipedia.org/wiki/YAML)是JSON的超集，因此是用于指定分层配置数据的便捷格式。只要在类路径上有SnakeYAML库，SpringApplication类就会自动支持YAML作为属性的替代 。
