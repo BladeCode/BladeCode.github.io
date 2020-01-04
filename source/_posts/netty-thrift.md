@@ -21,7 +21,7 @@ Apache Thrift软件框架，用于可扩展的跨语言服务开发，它包含�
 
 ```xml
 # maven
-<dependency>∏
+<dependency>
   <groupId>org.apache.thrift</groupId>
   <artifactId>libthrift</artifactId>
   <version>0.13.0</version>
