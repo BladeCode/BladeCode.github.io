@@ -4,9 +4,9 @@ cache:
     directories:
         - node_modules    # 据说可以减少travis构建时间
 before_install:
+  - npm config set bin-links false
   - npm install -g hexo
   - npm install -g hexo-cli
-  - npm config set bin-links false
 install:
   - npm install   # 安装hexo及插件
 before_script:
