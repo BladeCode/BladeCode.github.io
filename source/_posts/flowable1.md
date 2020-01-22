@@ -10,9 +10,9 @@ Flowable是一个使用Java编写的轻量级业务流程引擎。Flowable流程
 <!-- more -->
 
 从[Flowable官方文档](https://www.flowable.org/documentation.html)介绍，可知Flowable遵循[BPMN](https://www.flowable.org/docs/userguide/index.html)，[CMMN](https://www.flowable.org/docs/userguide-cmmn/index.html)，[DMN](https://www.flowable.org/docs/userguide-dmn/index.html)，[From](https://www.flowable.org/docs/userguide-form/index.html)设计指导
-* BPMN：用于流程管理
-* CMMN：用于案例管理
-* DMN：用于决策规则
+* BPMN（Business Process Model and Notation）：用于流程管理
+* CMMN（Case Management Model and Notation）：用于案例管理
+* DMN（Decision Model and Notation）：用于决策规则
 * Form：用于表单和任务表单管理
 
 ## Flowable 直运行
