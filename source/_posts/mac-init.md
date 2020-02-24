@@ -51,7 +51,7 @@ echo $JAVA_HOME
 
 ## MySQL
 
-## 下载
+### 下载
 
 官方下载地址：https://dev.mysql.com/downloads/
 
