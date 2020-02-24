@@ -49,6 +49,33 @@ echo $JAVA_HOME
 >1. `JAVA_HOME`中`jdk1.8.0_191.jdk`是自己安装对应版本的文件夹，可以在Finder中，快捷键：Command + Shift + G，输入：`/Library/Java/JavaVirtualMachines/`，最终得到对应的文件夹名，如：`jdk1.8.0_191.jdk`
 >2. vim模式下，输入“i”：表示，插入，“esc”：表示退出编辑模式，“:wq!”：表示保存并退出
 
+## MySQL
+
+## 下载
+
+官方下载地址：https://dev.mysql.com/downloads/
+
+![mac-mysql-downlaod](https://res.cloudinary.com/incoder/image/upload/v1582517702/blog/mac-mysql-downlaod.png)
+
+### 安装
+
+![mac-mysql-install](https://res.cloudinary.com/incoder/image/upload/v1582523133/blog/mac-mysql-install.gif)
+我这里选择自定义设置密码，请记住你设置的密码，最好是大小写+数字+字符的组合方式
+
+### 登录
+
+```mysql
+# 使用 root 账号登录 MySQL
+mysql -u root -p
+# 出现下图中的MySQL，表示成功连接 MySQL
+```
+
+![mac-login-mysql](https://res.cloudinary.com/incoder/image/upload/v1582523478/blog/mac-login-mysql.png)
+
+### 卸载
+
+![mac-mysql-uninstall](https://res.cloudinary.com/incoder/image/upload/v1582517706/blog/mac-mysql-uninstall.png)
+
 ## Git
 直接在自带系统**终端**应用中，输入`git --version`，由于之前并没有安装，系统会提示，直接同意并安装即可
 
