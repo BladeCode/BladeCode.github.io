@@ -212,7 +212,7 @@ Homebrew是 macOS 系统的一款开源的包管理器
 
 ```bash
 # macOS 系统修改 homebrew 镜像地址为清华镜像
-git -C “$(brew --repo)” remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
 git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
 # 『可选』 如果之前有安装过 font 相关，则更改 font 相关的镜像地址，否则会提示 cask-fonts 不存在
@@ -234,7 +234,7 @@ source ~/.zshrc
 
 ```bash
 # macOS 系统恢复 homebrew 原镜像地址
-git -C “$(brew --repo)” remote set-url origin https://github.com/Homebrew/brew.git
+git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
 git -C "$(brew --repo homebrew/core)" remote set-url origin https://github.com/Homebrew/homebrew-core.git
 git -C "$(brew --repo homebrew/cask)" remote set-url origin https://github.com/Homebrew/homebrew-cask.git
 # 『可选』 如果之前有安装过 font 相关，则更改 font 相关的镜像地址，否则会提示 cask-fonts 不存在
