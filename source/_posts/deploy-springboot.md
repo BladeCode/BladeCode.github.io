@@ -5,16 +5,16 @@ categories: IDEA
 tag: [SpringBoot, Deploy]
 ---
 
-服务端由原来 **混合式**（Java+JSP）的方式演进成了专注于提供服务 API（**前后端分离**）的方式，开发的明确分工，各自开发人员在各自领域的垂直技能的加强，以满足业务的快速迭代，因此也就在这两个方式中，项目的构建方式也有了一定的变化，混合模式中常编译为 war 包，而在前后端分离模式中常编译为 jar 包，这两种文件格式虽然都是一种压缩文件的格式，但实质还是有一些区别，那首先让我们来了解这两种文件它们之间的区别
+服务端由原来 **混合式**（Java+JSP）的方式演进成专注于提供服务 API（**前后端分离**）的方式，开发的明确分工，使的各自开发人员在各自领域的垂直技能的加强，以满足业务的快速迭代，因此也就在这两个方式中，项目的构建方式也有了一定的变化，混合模式中常编译为 war 包，而在前后端分离模式中常编译为 jar 包，这两种文件格式虽然都是一种压缩文件的格式，但实质还是有一些区别，那首先让我们来了解这两种文件它们之间的区别
 
 <!-- more -->
 
 jar 文件与 war 文件的区别
-1. war 文件常应用在 **混合式** 的项目中，war 文件包含包含Java 相关的项目文件、部署文件，还包含一些前台页面等引用的相关资源文件；jar 文件常应用在 **前后端分离** 的项目中，jar 文件主要包含Java 相关的项目文件、部署文件
-2. war 文件中不包含 Tomcat相关文件，必须运行在 Tomcat 容器中；jar 文件中包含了 Tomcat 文件，可直接运行
+1. war 文件常应用在 **混合式** 的项目中，war 文件包含Java 相关的项目文件、部署文件，还包含一些前端页面等引用的相关资源文件；jar 文件常应用在 **前后端分离** 的项目中，jar 文件主要包含Java 相关的项目文件、部署文件
+2. war 文件中不包含 Tomcat相关文件，必须运行在 Tomcat 容器中；jar 文件中内置了 Tomcat 文件，可直接运行
 3. war 文件通常使用 SSM 架构；jar 文件通常使用 SpringBoot/SpringCloud 架构
 4. 无论是 jar 还是 war 都能够使用嵌套容器，java -jar来独立运行
-5. 只有 war 才能部署到外部容器中；SpringBoot支持多种模板引擎，但JSP 只能在 war 中使用
+5. **只有 war** 才能部署到外部容器中；SpringBoot支持多种模板引擎，但JSP 只能在 war 中使用
 
 ## 准备
 
@@ -43,7 +43,7 @@ jar 文件与 war 文件的区别
 mvn clean package -Dmaven.test.skip=true
 ```
 
-![deploy-maven](https://res.cloudinary.com/incoder/image/upload/v1574837752/blog/deploy-maven.png)
+![deploy-maven-war](https://res.cloudinary.com/incoder/image/upload/v1574837752/blog/deploy-maven-war.png)
 
 ### 编译 jar（SpringBoot）
 
@@ -56,13 +56,24 @@ mvn clean package -Dmaven.test.skip=true
 
 ##### GUI 操作
 
+![deploy-maven-jar](https://res.cloudinary.com/incoder/image/upload/v1585097721/blog/deploy-maven-jar.png)
+
 ##### 命令行 操作
+
+定位到需要构建的模块下，执行如下命令
+
+```bash
+# clean依赖并编译成 package，也可以执行 mvn clean package -DskipTests
+mvn clean package -Dmaven.test.skip=true
+```
+
+![maven-package-jar](https://res.cloudinary.com/incoder/image/upload/v1585097855/blog/maven-package-jar.png)
 
 #### gradle
 
 ##### GUI 操作
 
-![deploy-gradle](https://res.cloudinary.com/incoder/image/upload/v1574838561/blog/deploy-gradle.png)
+![deploy-gradle](https://res.cloudinary.com/incoder/image/upload/v1585097492/blog/deploy-gradle.png)
 
 ##### 命令行 操作
 
@@ -93,6 +104,10 @@ scp ~/Desktop/start-1.0-SNAPSHOT.jar root@ip:/data/app
 ```
 
 ### 部署 war
+
+>由于 war 包并没有内置 Tomcat 等运行的容器，因此需要你的服务器已经安装了 Tomcat 等服务
+
+
 
 ### 部署 jar
 
@@ -134,6 +149,10 @@ tail 命令
   * -s, –sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒
 
 #### Alibaba Cloud Toolkit
+
+![alibaba-cloud-toolkit](https://res.cloudinary.com/incoder/image/upload/v1585098223/blog/alibaba-cloud-toolkit.png)
+
+视频教程：https://cloud.video.taobao.com/play/u/650480598/p/1/e/6/t/1/216889058961.mp4
 
 #### Jenkins
 

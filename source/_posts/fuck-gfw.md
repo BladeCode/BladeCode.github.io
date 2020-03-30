@@ -5,7 +5,7 @@ categories: DevTool
 tag: [Exp]
 ---
 
-众所周知国内的开发已经有原来的“致敬”到现在软件生态领域的“引领”（目前来说还未到真正引领）世界技术发展，但是一个问题始终还是未能有所突破，作为中国的开发者每次在面对新的技术在环境搭建就劝退了一众人，很多开发所依赖的项目资源都来自国外服务，而由于中国的特殊，对很多国外服务的限制，让你在开始的第一阶段总是碰的鼻青脸肿，把大量的时间浪费在环境搭建的等待上，虽然现在很多开源组织或者一线大厂提供了相应的镜像服务方便国内的开发者，但很多都还需要我们自行去更改或者解决这些问题，本篇文章就是我的开发之路上的各种网络问题的解决办法
+众所周知国内的开发已经由原来的“致敬”到现在软件生态领域的“引领”（目前来说还未到真正引领）世界技术发展，但是一个问题始终还是未能有所突破，作为中国的开发者每次在面对新的技术在环境搭建就劝退了一众人，很多开发所依赖的项目资源都来自国外服务，而由于中国的特殊，对很多国外服务的限制，让你在开始的第一阶段总是碰的鼻青脸肿，把大量的时间浪费在环境搭建的等待上，虽然现在很多开源组织或者一线大厂提供了相应的镜像服务方便国内的开发者，但很多都还需要我们自行去更改或者解决这些问题，本篇文章就是我的开发之路上的各种网络问题的解决办法
 
 <!-- more -->
 
@@ -107,6 +107,8 @@ test {
 
 在当前系统 `${USER_HOME}/.gradle/` 目录下创建 `init.gradle` 文件，将 Maven 和 Jcenter 仓库都指向阿里云镜像仓库
 
+>这里没有完全去匹配，只列举了 maven，jcenter，google 仓库映射的更改，其他使用到的各位自行添加
+
 ```groovy
 allprojects{
     repositories {
@@ -166,41 +168,42 @@ Maven 默认配置文件地址，`Users/<PC_USER_NAME>/.m2`目录下，如果没
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                       http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
-  <mirrors>
-    <mirror>
-     <id>aliyunmaven</id>
-     <mirrorOf>*</mirrorOf>
-     <name>阿里云公共仓库</name>
-     <url>https://maven.aliyun.com/repository/public</url>
-    </mirror>
-     <mirror>
-     <id>aliyunmaven</id>
-     <mirrorOf>*</mirrorOf>
-     <name>阿里云Google仓库</name>
-     <url>https://maven.aliyun.com/repository/google</url>
-    </mirror>
-    <mirror>
-     <id>aliyunmaven</id>
-     <mirrorOf>*</mirrorOf>
-     <name>阿里云Apache仓库</name>
-     <url>https://maven.aliyun.com/repository/apache-snapshots</url>
-    </mirror>
-    <mirror>
-     <id>aliyunmaven</id>
-     <mirrorOf>*</mirrorOf>
-     <name>阿里云Spring仓库</name>
-     <url>https://maven.aliyun.com/repository/spring</url>
-    </mirror>
-    <mirror>
-     <id>aliyunmaven</id>
-     <mirrorOf>*</mirrorOf>
-     <name>阿里云Spring插件仓库</name>
-     <url>https://maven.aliyun.com/repository/spring-plugin</url>
-    </mirror>
-  </mirrors>
-  <proxies/>
-  <profiles/>
-  <activeProfiles/>
+    <mirrors>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云公共仓库</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云Google仓库</name>
+            <url>https://maven.aliyun.com/repository/google</url>
+        </mirror>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云Apache仓库</name>
+            <url>https://maven.aliyun.com/repository/apache-snapshots</url>
+        </mirror>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云Spring仓库</name>
+            <url>https://maven.aliyun.com/repository/spring</url>
+        </mirror>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云Spring插件仓库</name>
+            <url>https://maven.aliyun.com/repository/spring-plugin</url>
+        </mirror>
+    </mirrors>
+
+    <proxies/>
+    <profiles/>
+    <activeProfiles/>
 </settings>
 ```
 
@@ -316,6 +319,8 @@ host 路径
 
 ### git clone 慢的想砸电脑
 
+#### 方式一，设置代理
+
 这个无解，只能在<font color=red>开启代理的前提下</font>，也给终端设置代理
 
 ```bash
@@ -324,6 +329,15 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:port
 # 取消代理
 git config --global --unset http.https://github.com.proxy
 ```
+
+#### 方式二，Gitee 中转
+
+另一种方式，适用于你需要获取 GitHub 源码做相关的其他操作时，可以借助于 Gitee 来作为中转
+
+![improt-github-to-gitee](https://res.cloudinary.com/incoder/image/upload/v1585097262/blog/improt-github-to-gitee.png)
+
+可以参考大佬的手把手教你
+<iframe src="//player.bilibili.com/player.html?aid=94251133&bvid=BV1aE411p7Cd&cid=160907040&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ## 参考
 

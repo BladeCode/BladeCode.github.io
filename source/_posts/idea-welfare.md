@@ -7,9 +7,9 @@ tag: [JetBrains]
 
 ![](https://res.cloudinary.com/incoder/image/upload/v1582782666/blog/idea.png)
 
-位于捷克的布拉格的[JetBrains](https://jetbrains.com)公司你可能不是很熟悉，但在开发的江湖中你一定听过他的名号，“**Java 开发最好用 IDE，没有之一**”，产品很好，但价格也不便宜。虽然有学生优惠，但对于非学生用户来说也是不小的开支。如果你想支持正版，官方还提供了一个开源项目渠道，你可以用你的开源项目进行申请，申请通过可以获得一年JetBrains全家桶的使用权限，这么好的福利当然不能错过。
-
 <!-- more -->
+
+位于捷克的布拉格的[JetBrains](https://jetbrains.com)公司你可能不是很熟悉，但在开发的江湖中你一定听过他的名号，“**Java 开发最好用 IDE，没有之一**”，产品很好，但价格也不便宜。虽然有学生优惠，但对于非学生用户来说也是不小的开支。如果你想支持正版，官方还提供了一个开源项目渠道，你可以用你的开源项目进行申请，申请通过可以获得一年JetBrains全家桶的使用权限，这么好的福利当然不能错过。
 
 我们先看看正常**个人订阅**价格图，IDEA：$149.00/1st year，全家桶产品：$249.00/1st year
 ![idea-price](https://res.cloudinary.com/incoder/image/upload/v1582782335/blog/idea-price.png)

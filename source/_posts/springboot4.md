@@ -39,8 +39,9 @@ tag: [SpringBoot]
     name1: "A n B"
     # 单引号  
     # 会转义特殊字符，特殊字符最终只是一个普通的字符串数据
-    name2: A n B
-
+    # 输出：
+    # A n B
+    name2: 'A n B'
     ```
 2. 数组，一组按次序排列的值
    ```yml
@@ -80,15 +81,22 @@ tag: [SpringBoot]
 为了在配置自定义属性时，向配置 springboot 属性自动提示的功能，导入如下的包
 ```xml
 <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
+<!-- @ConfigurationProperties annotation processing (metadata for IDEs)
+         生成spring-configuration-metadata.json类，需要引入此类-->
 <dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-configuration-processor</artifactId>
-  <optional>true</optional>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+    <optional>true</optional>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-autoconfigure</artifactId>
 </dependency>
 ```
 或者在 gradle 配置文件中添加依赖
 ```gradle
-implementation 'org.springframework.boot:spring-boot-configuration-processor'
+compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
+annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 ```
 如果任然无法自动提示，请查看你的编辑器 IDEA 中是否开启了 `Annonation Processing`
 ![idea-annotation-processors](https://res.cloudinary.com/incoder/image/upload/v1566701581/blog/idea-annotation-processors.png)
@@ -119,41 +127,34 @@ myConfig:
 
 #### Value
 
-`@Value` 注解支持直接从配置文件中读取值，同时支持 SpEL表达式，但是不支持复杂数据类型和数据验证
+`@Value` 注解支持直接从配置文件中读取值，同时支持 [SpEL](https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/expressions.html) 表达式，但是不支持复杂数据类型和数据验证
 
 #### PropertySource
 
 `@PropertySource` 注解加载自定义配置文件，由于 `@PropertySource` 指定的文件会优先加载，所以如果在 `applocation.properties` 文件中存在相同的属性配置，会覆盖前者中对应的值，且 `@PropertySource` 不支持 yml 文件注入
 
-### 对比
-
-| 注解                   | @ConfigurationProperties | @Value       | @PropertySource |
-| ---------------------- | ------------------------ | ------------ | --------------- |
-| 支持文件类型           |                          |              |                 |
-| 功能                   | 批量注入配置文件属性     | 一个一个注入 |                 |
-| 松散绑定（松散的语法） | 支持                     | 不支持       |                 |
-| SpEL                   | 不支持                   | 支持         |                 |
-| JSR-303 数据校验       | 支持                     | 不支持       |                 |
-| 复杂类型               | 支持                     | 不支持       |                 |
-| 应用场景               |                          |              |                 |
-
 ### 多环境配置
 
 在实际的开发中，不同环境对应不同的配置，因此我们需要根据环境来配置不同的项目配置信息，SpringBoot 也是支持我们进行多环境的配置，通常情况下，我们命名为 `application-{profile}.properties/yml` ，其中
-`{profile}`表示不同的环境，比如：dev（开发），release（线上） 等
+`{profile}`表示不同的环境，比如：dev（开发），prod（线上） 等
+
+关于具体的多环境配置，可以参考文章 [SpringBoot（五）多环境配置](https://incoder.org/2020/02/02/springboot5/)
 
 ## 配置文件加载顺序
 
 Spring Boot 启动会扫描以下位置的配置文件（application.properties 或 application.yml） 作为Spring Boot 的默认配置文件
 
-* -file:./config/
-* -file:./
-* -classpath:/config/
-* -classpath:/
+1. -file:./config/
+2. -file:./
+3. -classpath:/config/
+4. -classpath:/
+
+加载顺序可以查看下图
+![application-sort](https://res.cloudinary.com/incoder/image/upload/v1585239269/blog/application-sort.png)
 
 优先级从高到低，高优先级的配置会覆盖低优先级的配置
 
 ## 附录
-* [Spring Boot 配置文件](https://www.codingme.net/2019/01/springboot/springboot02-config/)
+
 * [最全面的SpringBoot配置文件详解](https://zhuanlan.zhihu.com/p/57693064)
 * [Properties and Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html)
