@@ -5,11 +5,11 @@ categories: SpringBoot
 tag: [SpringBoot]
 ---
 
-![springboot](https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg)
-
-从本篇文章开始，记录学习 SpringBoot框架在实践，源码方面的知识，本节是第一篇，因此不涉及相关复杂知识的学习。众所周知，随着微服务的广泛流行，Spring 系列的 SpringBoot 和 SpringCloud 的应用也更受欢迎，那么请跟随我的脚本来一步步解开 SpringBoot 她神秘的面纱
+![](https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg)
 
 <!-- more -->
+
+从本篇文章开始，记录学习 SpringBoot 框架在实践，源码方面的知识，本节是第一篇，因此不涉及相关复杂知识的学习。众所周知，随着微服务的广泛流行，Spring 系列的 SpringBoot 和 SpringCloud 的应用也更受欢迎，那么请跟随我的脚本来一步步解开 SpringBoot 她神秘的面纱
 
 熟悉后端服务开发的小伙伴，在使用 SpringBoot 时一定会有这样的感受，咦，以前繁琐的配置，现在都不用再去配置一大堆东西了，以前跑起来一个 demo，感觉真是千辛万苦，错一步就 game over，以前服务基本都是已 war 包的形式运行在 Tomcat 中，而现在，你基本不需要手动写太多的代码，一个应用服务就可以运行起来，其次现在应用基本已 jar 包方式直接运行，虽然本质还是运行在 Tomcat 中，但现在 jar 包中已经有了服务运行的基础环境，可以直接使用 jar 相关的运行命令就可以运行起服务。好了，废话了这么多，先看看我们如何运行起一个 DEMO 应用。
 

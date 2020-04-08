@@ -10,15 +10,15 @@ comments: false
 
 >Life's a struggle!(生命不息，折腾不止，当然这不能是瞎折腾)~
 
-陕西汉中，现居浙江杭州，理工男一枚  
-机械制造与自动化专业，14年毕业后投奔于互联网世界  
+坐标杭州，理工男，机械制造与自动化专业  
+14年毕业后，跌跌撞撞闯进互联网世界  
 16年开始自学Android开发，后自学服务端相关开发，现从事服务端开发工作  
 
 喜欢Coding，音乐，电影  
 
 ## 关于本站
 
-> 本站已开启HTTPS
+> 本站基于 [Hexo](https://hexo.io) 和 [NexT](https://theme-next.org) 搭建，使用 [git-pages](https://pages.github.com) 托管服务
 
 资源：便捷，高效，有趣的工具资源  
 
