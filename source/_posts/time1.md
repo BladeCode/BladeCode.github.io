@@ -58,7 +58,7 @@ tag: [JDK8]
 
 ### JSR-310
 
-JSR（Java Specification Requests）是，310 是一个编号，在 JDK8 中通过这个标准提供了新的改进日期时间的 API
+JSR（Java Specification Requests）是Java 规范提案。是指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求。任何人都可以提交JSR，以向Java平台增添新的API和服务。JSR已成为Java界的一个重要标准。310 是一个编号，在 JDK8 中通过这个标准提供了新的改进日期时间的 API
 
 详细做 Java 开发，对于JDK 的时间 API（小于JDK8版本）肯定都是吐槽不少，主要问题体现在以下几个方面
 
