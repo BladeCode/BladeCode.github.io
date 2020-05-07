@@ -1,8 +1,8 @@
 ---
-title: 时间（一）
+title: 时间（一）之基础概念
 date: 2020-04-07 10:01:00
 categories: JDK8
-tag: [JDK8]
+tag: [JDK8, Time]
 ---
 
 {% cq %}
@@ -60,7 +60,7 @@ tag: [JDK8]
 
 JSR（Java Specification Requests）是Java 规范提案。是指向JCP(Java Community Process)提出新增一个标准化技术规范的正式请求。任何人都可以提交JSR，以向Java平台增添新的API和服务。JSR已成为Java界的一个重要标准。310 是一个编号，在 JDK8 中通过这个标准提供了新的改进日期时间的 API
 
-详细做 Java 开发，对于JDK 的时间 API（小于JDK8版本）肯定都是吐槽不少，主要问题体现在以下几个方面
+相信做 Java 开发，对于JDK 的时间 API（小于JDK8版本）肯定都是吐槽不少，主要问题体现在以下几个方面
 
 1. 最开始，Date 既要承载日期信息，又要做日期之间的转换，还要做不同日期格式的显示，职责较繁杂
    而后 JDK1.1 开始，将三项职责分开了
@@ -86,7 +86,7 @@ JSR（Java Specification Requests）是Java 规范提案。是指向JCP(Java Com
     // 月输出：还和 Date 一样是输入月份 +1 
     System.out.println(calendar.getTime());
    ```
-3. Date 与 Calendar 类中的所有属性是可变的
+3. Date 与 Calendar 类中的所有属性是可变的，线程不安全
    ```java
     // 计算两个日期之间的天数
     public static void main(String[] args) {
@@ -127,5 +127,6 @@ JSR（Java Specification Requests）是Java 规范提案。是指向JCP(Java Com
 * [ISO 8601 • 维基百科](https://zh.wikipedia.org/wiki/ISO_8601)
 * [格林尼治标准时间（GMT） •  维基百科](https://zh.wikipedia.org/wiki/%E6%A0%BC%E6%9E%97%E5%B0%BC%E6%B2%BB%E6%A8%99%E6%BA%96%E6%99%82%E9%96%93)
 * [协调世界时（UTC） • 维基百科](https://zh.wikipedia.org/wiki/%E5%8D%8F%E8%B0%83%E4%B8%96%E7%95%8C%E6%97%B6)
+* [计算机世界中的时间概念](https://blog.csdn.net/taolong1/article/details/20742613)
 * [JSR 310: Date and Time API](https://jcp.org/en/jsr/detail?id=310)
 * [JSR310-新日期API(完结篇)-生产实战](http://throwable.club/2020/03/02/java-jsr310-in-action/)

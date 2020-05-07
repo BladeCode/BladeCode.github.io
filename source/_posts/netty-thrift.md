@@ -161,7 +161,6 @@ thrift --gen <language> <Thrift filename>
 {% tabs Tags %}
 
 <!-- tab Thrift Definition File -->
-Thrift Definition File
 {% code %}
 // 定义命名空间
 namespace java org.incoder.thrift.java
@@ -245,7 +244,6 @@ except Thrift.TException as tx:
 <!-- endtab -->
 
 <!-- tab Java Server -->
-Java Server
 {% code lang:java %}
 public static void main(String[] args) throws Exception {
     TNonblockingServerSocket serverSocket = new TNonblockingServerSocket(9090);
