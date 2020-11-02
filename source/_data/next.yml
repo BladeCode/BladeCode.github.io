@@ -122,8 +122,9 @@ menu:
   archives: /archives/ || fa fa-archive
   books: /books/ || fa fa-book
   movies: /movies || fa fa-film
-  java: https://java.incoder.org/ || fa fa-globe
-  mobile: https://mobile.incoder.org/ || fa fa-sitemap
+  plan: https://www.notion.so/incoder/3d9638dbe2cb48a9a724a39bf9723717?v=e11c491037cd4fcda3a7b320bf996c5a || fa fa-calendar-check
+  java: https://java.incoder.org/ || fa fa-java
+  mobile: https://mobile.incoder.org/ || fa fa-android
   about: /about/ || fa fa-user
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
@@ -208,6 +209,7 @@ links_settings:
 links:
   TwoDragonLake: https://twodragonlake.com
   RootCluster: https://rootcluster.github.io
+  MuseFlow: https://museflow.io
   南贺神社: https://ceaser.wang
   Alyenc: https://kaifa.dev
   大师傅: https://blog.dazhidayong.cn

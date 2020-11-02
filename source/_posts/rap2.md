@@ -14,6 +14,8 @@ RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 **服务
 
 <!-- more -->
 
+个人贡献[issues 119](https://github.com/thx/rap2-delos/issues/119)
+
 > * 截至到2018-08-01 delos 并没有发布Tag版本，应该还处于功能开发前期阶段吧。本教程是在CentOS机器上实战部署
 > * 然而安装部署并不是顺利，因此记录踩过的坑（别问我为啥不用Docker，因为我司分配的机器无法满足Docker的最低内核版本），安装环境介绍：Redis，delos，dolores均在一台服务器，MySQL使用已存在的服务
 
@@ -88,6 +90,7 @@ npm run create-db
 ```
 
 #### 编译启动项目
+
 执行mocha测试用例和js代码规范检查
 ```sh
 npm run check
@@ -113,6 +116,7 @@ npm run check
 ### 常见问题
 
 #### 部署问题
+
 1. Windows下执行`npm run build`，提示`'rm' 不是内部或外部命令，也不是可运行的程序或批处理文件`
 
     原因：`rm` 是Linux下命令，  
@@ -147,7 +151,9 @@ npm run check
 ## 客户端dolores环境搭建
 
 ### 构建项目
+
 #### 获取源代码
+
 ``` sh
 git clone https://github.com/thx/rap2-dolores.git
 ```
@@ -199,6 +205,7 @@ npm install
 ### 常见问题
 
 #### 部署问题
+
 1. 执行`npm run dev`，提示
     ```sh
     return process.dlopen(module,path._makeLong(filename))
@@ -220,7 +227,9 @@ npm install
     >如果Windows系统修改正确无误后，依旧出错，那么查看hosts(路径：C:\Windows\System32\drivers\etc)中127.0.0.1的IP前是否有`#`，如果有请取消注释
 
 ## 其他
+
 ### MySQL 运行问题
+
 * 错误一  
 ![mysql](https://res.cloudinary.com/incoder/image/upload/v1525517475/blog/gitpages-rap2-mysql.png)  
 原因：MySQL 集成命令没有加入系统的环境变量  
@@ -232,6 +241,7 @@ npm install
 解决方法：先登录用root数据库，密码具体看自己数据库当时设置的密码
 
 ### 如何获取更新
+
 目前请选择`master`分支源码，后续其他分支请看相应分支说明文档。在开发环境中git pull来获取最新的源码更新，每一期更新都会有对应的update.md请关注并按照上面的指示进行升级工作。
 
 ## 附录

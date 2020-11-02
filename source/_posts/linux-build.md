@@ -15,18 +15,51 @@ tag: Build
 
 <!-- more -->
 
-也是第一次正式的从头开始安装所需软件及应用部署，虽然这些工作可以完全找运维去处理，难得这样的机会从头开始去熟悉Linux。
+也是第一次正式的从头开始安装所需软件及应用部署，虽然这些工作可以完全找运维去处理，难得这样的机会从头开始去熟悉 Linux。
 
-**安卓，是一个基于Linux内核的开放源代码移动操作系统**，因此多了解Linux是一件双赢的事情，基于当前机器需要提供的服务，安装部署需要的软件应用
+**安卓，是一个基于Linux内核的开放源代码移动操作系统**，因此多了解 Linux 是一件双赢的事情，基于当前机器需要提供的服务，安装部署需要的软件应用
 
 <blockquote class="blockquote-center">废话不多说，上来就是干</blockquote>
 
-查看当前系统版本信息
-```bash
-lsb_release -a
-```
-以下软件版本，请下载对应支持系统的软件
+和 Windows 一样不同的系统，安装的软件也是有区别的，而且 Linux 的系统众多，因此需要先查看系统的版本及相关信息，然后再下载对应系统版本的应用进行安装
 
+## 查看 Linux 发行版的名称及其版本号
+
+### 查看内核
+
+1. `cat /proc/version`
+    ```
+    [dc2-user@10-255-0-191 ~]$ cat /proc/version
+    Linux version 3.10.0-957.27.2.el7.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-36) (GCC) ) #1 SMP Mon Jul 29 17:46:05 UTC 2019
+    ```
+2. `uname -a`
+    ```
+    [dc2-user@10-255-0-191 ~]$ uname -a
+    Linux 10-255-0-191 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+    ```
+
+### 查看 Linux 系统版本
+
+1. `lsb_release -a`：列出所有版本信息
+    ```
+    [dc2-user@10-255-0-191 ~]$ lsb_release -a
+    LSB Version:	:core-4.1-amd64:core-4.1-noarch
+    Distributor ID:	CentOS
+    Description:	CentOS Linux release 7.6.1810 (Core)
+    Release:	7.6.1810
+    Codename:	Core
+    ```
+2. `cat /etc/redhat-release`：只适合 Redhat 系的Linux
+    ```
+    [dc2-user@10-255-0-191 ~]$ cat /etc/redhat-release
+    CentOS Linux release 7.6.1810 (Core)
+    ```
+3. `cat /etc/issue`：此命令也适用于所有的Linux发行版
+    ```
+    [root@localhost ~]# cat /etc/issue
+    CentOS release 6.7 (Final)
+    Kernel \r on an \m
+    ```
 ## Java
 
 [官方下载地址](http://www.oracle.com/technetwork/java/javase/downloads/index.html)，选择需要的版本下载安装包

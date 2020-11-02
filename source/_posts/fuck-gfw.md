@@ -288,6 +288,23 @@ brew cleanup -n
 brew search [包名]
 ```
 
+### brew service
+
+```bash
+# 查看使用brew安装的服务列表
+brew services list
+# 启动服务（仅启动不注册）
+brew services run formula|--all
+# 启动服务，并注册
+brew services start formula|--all
+# 停止服务，并取消注册
+brew services stop formula|--all
+# 重启服务，并注册
+brew services restart formula|--all
+# 清除已卸载应用的无用的配置
+brew services cleanup
+```
+
 ## Github
 
 ### 资源文件无法加载
@@ -319,7 +336,7 @@ host 路径
 
 ### git clone 慢的想砸电脑
 
-#### 方式一，设置代理
+#### 方式一：设置代理
 
 这个无解，只能在<font color=red>开启代理的前提下</font>，也给终端设置代理
 
@@ -330,7 +347,7 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:port
 git config --global --unset http.https://github.com.proxy
 ```
 
-#### 方式二，Gitee 中转
+#### 方式二：Gitee 中转
 
 另一种方式，适用于你需要获取 GitHub 源码做相关的其他操作时，可以借助于 Gitee 来作为中转
 
@@ -338,6 +355,18 @@ git config --global --unset http.https://github.com.proxy
 
 可以参考大佬的手把手教你
 <iframe src="//player.bilibili.com/player.html?aid=94251133&bvid=BV1aE411p7Cd&cid=160907040&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+#### 方式三：cnpmjs镜像中转
+
+在你需要 clone 的仓库地址中，添加 `.cnpmjs.org` 在 `github.com` 的后面
+
+![github-cnpmjs](https://res.cloudinary.com/incoder/image/upload/v1595934447/blog/github-cnpmjs.png)
+
+#### 方法四：jsdelivr 免费 CDN 加速
+
+适用于下载单个文件
+
+<iframe src="//player.bilibili.com/player.html?aid=371171067&bvid=BV13Z4y1p75s&cid=205661842&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ## 参考
 

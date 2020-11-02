@@ -141,9 +141,10 @@ License Key: 48891cf209c6d32bf4
     * 查看你的客户端网络设置，是否正确
     * 查看你的客户端和 Charles 是否是处于同一网络环境
 2. Charles 无法抓取 Https 网络请求
-    * 查看你的客户端和 Charles 是否安装证书，并设置为终是允许
+    * 查看你的客户端和 Charles 是否安装证书，并设置终是允许
 
 3. 网络请求及网络响应信息中文乱码
+4. 如果需要抓本地应用（即拦截电脑上的应用接口），请确保你<font color=#FF0000>未开启</font>翻墙代理软件
 
 ## 附录
 * [Charles Document](https://www.charlesproxy.com/documentation)

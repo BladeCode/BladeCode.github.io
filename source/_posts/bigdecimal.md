@@ -334,7 +334,6 @@ DecimalFormat df1 = new DecimalFormat(style);
 System.out.println("8-->" + df1.format(data));  
 ```
 
-
 ### 其他
 
 #### 科学计数法问题

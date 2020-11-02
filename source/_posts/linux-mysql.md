@@ -19,11 +19,15 @@ MySQL是一个开源数据库管理系统，通常作为流行的LEMP（Linux，
 * OS: CentOS 7
 * DataBase：MySQL 8.0.11
 
+>`uname -a`查看你 Linux 系统的信息，按照系统版本选择对应的应用
+
 ## 安装
+
+>下载 MySQL Community Server 地址：https://dev.mysql.com/downloads/mysql/
 
 ```bash
 # 1. 获取官方yum源安装包 mysql80-community-release-el7-1.noarch.rpm 是根据官网提供的版本信息
-wget wget https://dev.mysql.com/get/`mysql80-community-release-el7-1.noarch.rpm`
+wget https://dev.mysql.com/get/`mysql80-community-release-el7-1.noarch.rpm`
 # 2. 安装rpm包
 rpm -ivh mysql80-community-release-el7-1.noarch.rpm
 # 3. 安装mysql-server

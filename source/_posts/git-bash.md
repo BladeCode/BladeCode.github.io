@@ -12,6 +12,7 @@ tag: [git bash]
 记录 Git 日常操作常用命令
 
 ## git config
+
 Git级别：system(系统所有用户) < global(当前用户) < local(当前仓库)
 * 查看配置信息
     ```
@@ -31,6 +32,7 @@ Git级别：system(系统所有用户) < global(当前用户) < local(当前仓�
     ```
 
 ## git init
+
 1. 把已有项目代码纳入 Git 管理
     ```sh
     # 进入项目根路径
@@ -47,6 +49,7 @@ Git级别：system(系统所有用户) < global(当前用户) < local(当前仓�
     ```
 
 ## git clone
+
 * clone 
     ```sh
     git clone url
@@ -75,8 +78,10 @@ Git级别：system(系统所有用户) < global(当前用户) < local(当前仓�
 ```sh
 git commit -m "注释"
 ```
+> `-a` 指定标签名，`-m` 指定说明文字
 
 ## git branch
+
 * 创建分支
     ```sh
     # 创建分支
@@ -110,23 +115,35 @@ git commit -m "注释"
     ```
 
 ## git tag
-* 新增tag
+
+* 新增 tag
     ```sh
     git tag -a tag_name -m "注释"
     ```
-* 查看tag
+* 查看 tag
     ```sh
+    # 查看指定 tag 信息
+    git show tagname
+    # 查看所有 tag
     git tag -l
     ```
-* 删除tag
+* 删除 tag
     ```sh
     # 删除本地tag
     git tag -d tag_name
     # 删除远程指定tag
     git push origin --delete tag tag_name
     ```
+* 推送 tag 到远程
+    ```sh
+    # push 单个 tag
+    git push origin tag_name
+    # push 所有 tag
+    git push [origin] --tags
+    ```
 
 ## git mv
+
 * 重命名文件
     ```sh
     git mv old_file_name new_file_name
@@ -140,12 +157,14 @@ git commit -m "注释"
     ```
 
 ## git help
+
 更多命令
     ```sh
     git --help
     ```
 
 ## git other
+
 * 查看当前项目远程仓库地址
     ```sh
     git remote -v
@@ -161,4 +180,5 @@ git commit -m "注释"
     ```
 
 ## 附录
+
 * [Git Docs](https://git-scm.com/docs)

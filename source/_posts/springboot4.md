@@ -129,6 +129,8 @@ myConfig:
 
 `@Value` 注解支持直接从配置文件中读取值，同时支持 [SpEL](https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/expressions.html) 表达式，但是不支持复杂数据类型和数据验证
 
+>使用 `@Value` 获取配置文件中定义的值，通常其类是被 <font color=#FF0000>`@Controller`，`@Service` ，`@Component`</font> 等注解修饰，如果是一般普通的类（如一些工具类）并 **不能** 只接获取到配置文件中定义的值
+
 #### PropertySource
 
 `@PropertySource` 注解加载自定义配置文件，由于 `@PropertySource` 指定的文件会优先加载，所以如果在 `applocation.properties` 文件中存在相同的属性配置，会覆盖前者中对应的值，且 `@PropertySource` 不支持 yml 文件注入
