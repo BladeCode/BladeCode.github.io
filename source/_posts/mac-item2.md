@@ -131,6 +131,47 @@ ZSH_THEME="agnoster"
 * 设置背景图
 iTerm2 -> Preferences -> Profiles -> Window -> BackGround Image
 
+## 主题选择
+
+Oh my zsh 本身也包含了很多主题，而我比较喜欢的一款 [powerlevel10k](https://github.com/romkatv/powerlevel10k) 的主题，非常的简洁，满足我的装 X 的需求的同时，极其简单的设置也是我对其爱不释手。
+
+之前最早使用的是 [powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k)，我的博客里面一些终端的截图就是 powerlevel9k，但随着我的需求越来越多以及加载的插件也越来越多，我不能忍受 iTerm2 在使用 时的效率问题，然后就看到了powerlevel10k，它是在powerlevel9k 的基础上迭代的，大大提高了响应效率和更加简洁的配置等
+
+### 安装
+
+官方提供了多种安装方式（Manual，Oh My Zsh，Homebrew 等等），选择你熟系的方式进行安装，我这里使用 [Oh My Zsh](https://github.com/romkatv/powerlevel10k#oh-my-zsh) 方式安装，选择了 gitee 镜像地址进行下载
+
+```bash
+# 1. 下载主题
+git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# 2. 在 .zshrc 文件中设置主题
+vim ~/.zshrc
+# 3. 大概 19 行，设置 ZSH_THEME 参数的值为 powerlevel10k/powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+>默认安装路径：/Users/`<PC USER NAME>`/.oh-my-zsh/custom/themes/powerlevel10k
+
+### 更新
+
+当初选择的什么安装方式，就使用什么方式进行更新，我这里以 [Oh My Zsh](https://github.com/romkatv/powerlevel10k#FAQ) 方式进行更新
+
+```bash
+git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
+```
+
+### 配置
+
+只需要在终端（）或者 iTerm2 命令窗口中输入 `p10k configure` 即可，然后根据提示选择即可完成配置，我比较懒，就用的 `Pure` 样式
+
+### 问题
+
+#### VS Code
+
+在 VS Code Terminal 中显示不出来图标或者显示乱码异常等问题，先设置 VS Code 字体看看是否能解决，如果不能再进行排查
+
+Open File → Preferences → Settings, 在搜索框中输入`terminal.integrated`，字体设置为`MesloLGS NF`.
+
 ## 常用工具
 
 ### Homebrew
@@ -260,7 +301,8 @@ brew install nmap
 1. 清除当前行：⌘(command) + u
 2. 清屏：⌘(command) + r
 3. 列出剪切板历史：⌘(command) + ⇧(shift) + h
-4. 命令快照（很实用的一个功能）：⌘(command) + ⌥(option) + h
+4. 命令快照（很实用的一个功能）：⌘(command) + ⌥(option) + b
+    >大概只能记录 30s 左右的操作
 
 ## 常见问题
 

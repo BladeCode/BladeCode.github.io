@@ -7,12 +7,12 @@ tag: [SpringCloud, OAuth2]
 
 在上一篇文章中，我们了解了 Security OAuth2 相关的一些基础知识，和整个四种授权模式的交互过程，那么本篇是对四种模式的实践，废话不多说，我们直接开始，SpringCloud 相关的实践代码均托管在[rc-cluster-springcloud](https://github.com/RootCluster/rc-cluster-springcloud)项目的中，项目使用的一些依赖版本如下
 
+<!-- more -->
+
 * gradle：6.1.1
 * SpringBoot：2.2.6.RELEASE
 * SpringCloud：Hoxton.SR4
 * JDK：1.8
-
-<!-- more -->
 
 ## 实践
 

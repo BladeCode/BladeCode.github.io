@@ -24,6 +24,7 @@ Android SDK中提供了`AudioRecord`，`MediaRecorder`两个API经行音频的�
     适用场景：录制过程需要实时处理的场景等
 
 ## 音频播放
+
 * [AudioTrack](https://developer.android.google.cn/reference/android/media/AudioTrack)『added in API level 3』：
 AudioTrack 则更接近底层，提供了非常强大的控制能力，支持低延迟播放，适合流媒体和VoIP语音电话等场景
 
@@ -33,7 +34,7 @@ AudioTrack 则更接近底层，提供了非常强大的控制能力，支持低
     适用场景：播放短，反应要求高的音频
 
 * [MediaPlayer](https://developer.android.google.cn/reference/android/media/MediaPlayer) 『added in API level 1』(基于字节流音视频播放)：  
-    优点：支持本地，网络音频资源的播放   
+    优点：支持本地，网络音频资源的播放
     缺点：资源占用量较高、加载延迟时间较长；不支持多个音频同时播放等  
     适用场景：播放长音频
 
@@ -53,27 +54,27 @@ AudioTrack 则更接近底层，提供了非常强大的控制能力，支持低
 ### 参数配置
 
 * audioSource ：音频采集的输入源
-    * DEFAULT（默认）
-    * VOICE_RECOGNITION（用于语音识别，等同于DEFAULT）
-    * MIC（由手机麦克风输入）
-    * VOICE_COMMUNICATION（用于VoIP应用）
+  * DEFAULT（默认）
+  * VOICE_RECOGNITION（用于语音识别，等同于DEFAULT）
+  * MIC（由手机麦克风输入）
+  * VOICE_COMMUNICATION（用于VoIP应用）
 * sampleRateInHz：采样率
     目前44100Hz是唯一可以保证兼容所有Android手机的采样率
 * channelConfig：通道数的配置
-    * CHANNEL_IN_MONO：单通道
-    * CHANNEL_IN_STEREO：双通道
+  * CHANNEL_IN_MONO：单通道
+  * CHANNEL_IN_STEREO：双通道
 * audioFormat：数据位宽
-    * ENCODING_PCM_8BIT：8bit
-    * ENCODING_PCM_16BIT：16bit
+  * ENCODING_PCM_8BIT：8bit
+  * ENCODING_PCM_16BIT：16bit
 * bufferSizeInBytes：AudioRecord 内部的音频缓冲区的大小，该缓冲区的值不能低于一帧“音频帧”（Frame）的大小
 
-
 ### 示例代码
+
 ```java
 public class AudioCapturer {
 
     private static final String TAG = "AudioCapturer";
-	
+
     private static final int DEFAULT_SOURCE = MediaRecorder.AudioSource.MIC;
     private static final int DEFAULT_SAMPLE_RATE = 44100;
     private static final int DEFAULT_CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;
@@ -81,8 +82,8 @@ public class AudioCapturer {
 
     private AudioRecord mAudioRecord;
     private int mMinBufferSize = 0;
-	
-    private Thread mCaptureThread; 	
+
+    private Thread mCaptureThread; 
     private boolean mIsCaptureStarted = false;
     private volatile boolean mIsLoopExit = false;
 
@@ -90,9 +91,9 @@ public class AudioCapturer {
 
     public interface OnAudioFrameCapturedListener {
         public void onAudioFrameCaptured(byte[] audioData);
-    }	
+    }
 
-    public boolean isCaptureStarted() {		
+    public boolean isCaptureStarted() {
         return mIsCaptureStarted;
     }
 
@@ -118,12 +119,12 @@ public class AudioCapturer {
             return false;
         }
         Log.d(TAG , "getMinBufferSize = "+mMinBufferSize+" bytes !");
-		
-        mAudioRecord = new AudioRecord(audioSource,sampleRateInHz,channelConfig,audioFormat,mMinBufferSize);				
+
+        mAudioRecord = new AudioRecord(audioSource,sampleRateInHz,channelConfig,audioFormat,mMinBufferSize);
         if (mAudioRecord.getState() == AudioRecord.STATE_UNINITIALIZED) {
-    	    Log.e(TAG, "AudioRecord initialize fail !");
-	    return false;
-        }		
+            Log.e(TAG, "AudioRecord initialize fail !");
+            return false;
+        }
 
         mAudioRecord.startRecording();
 
@@ -144,29 +145,29 @@ public class AudioCapturer {
             return;
         }
 
-        mIsLoopExit = true;		
+        mIsLoopExit = true;
         try {
             mCaptureThread.interrupt();
             mCaptureThread.join(1000);
         } 
-        catch (InterruptedException e) {		
+        catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         if (mAudioRecord.getRecordingState() == AudioRecord.RECORDSTATE_RECORDING) {
-            mAudioRecord.stop();						
+            mAudioRecord.stop();
         }
 
-        mAudioRecord.release();		
-	
+        mAudioRecord.release();
+
         mIsCaptureStarted = false;
         mAudioFrameCapturedListener = null;
 
         Log.d(TAG, "Stop audio capture success !");
     }
 
-    private class AudioCaptureRunnable implements Runnable {		
-	
+    private class AudioCaptureRunnable implements Runnable {
+
         @Override
         public void run() {
 
@@ -174,7 +175,7 @@ public class AudioCapturer {
 
                 byte[] buffer = new byte[mMinBufferSize];
 
-                int ret = mAudioRecord.read(buffer, 0, mMinBufferSize);				
+                int ret = mAudioRecord.read(buffer, 0, mMinBufferSize);
                 if (ret == AudioRecord.ERROR_INVALID_OPERATION) {
                     Log.e(TAG , "Error ERROR_INVALID_OPERATION");
                 } 
@@ -186,12 +187,13 @@ public class AudioCapturer {
                         mAudioFrameCapturedListener.onAudioFrameCaptured(buffer);
                     }   
                     Log.d(TAG , "OK, Captured "+ret+" bytes !");
-                }														
-            }		
+                }
+            }
         }    
     }
 }
 ```
+
 ## AudioTrack
 
 ### 播放流程
@@ -202,27 +204,28 @@ public class AudioCapturer {
 4. 停止播放，释放资源
 
 ### 参数配置
+
 * streamType：当前应用使用的哪一种音频管理策略
 当系统有多个进程需要播放音频时，这个管理策略会决定最终的展现效果
-    * STREAM_VOCIE_CALL：电话声音
-    * STREAM_SYSTEM：系统声音
-    * STREAM_RING：铃声
-    * STREAM_MUSCI：音乐声
-    * STREAM_ALARM：警告声
-    * STREAM_NOTIFICATION：通知声
+  * STREAM_VOCIE_CALL：电话声音
+  * STREAM_SYSTEM：系统声音
+  * STREAM_RING：铃声
+  * STREAM_MUSCI：音乐声
+  * STREAM_ALARM：警告声
+  * STREAM_NOTIFICATION：通知声
 * sampleRateInHz：采样率
 采样率的取值范围必须在 4000Hz～192000Hz 之间
 * channelConfig：通道数的配置
-    * CHANNEL_IN_MONO：单通道
-    * CHANNEL_IN_STEREO：双通道
+  * CHANNEL_IN_MONO：单通道
+  * CHANNEL_IN_STEREO：双通道
 * audioFormat：数据位宽
-    * ENCODING_PCM_8BIT：8bit
-    * ENCODING_PCM_16BIT：16bit
+  * ENCODING_PCM_8BIT：8bit
+  * ENCODING_PCM_16BIT：16bit
 * bufferSizeInBytes：配置的是 AudioTrack 内部的音频缓冲区的大小，该缓冲区的值不能低于一帧“音频帧”（Frame）的大小
 * mode：AudioTrack 播放模式
-    * MODE_STATIC
+  * MODE_STATIC
         static：一次性将所有的数据都写入播放缓冲区，简单高效，通常用于播放铃声、系统提醒的音频片段
-    * MODE_STREAM
+  * MODE_STREAM
         streaming：按照一定的时间间隔不间断地写入音频数据，理论上它可用于任何音频播放的场景
 
 ### 示例代码
@@ -368,13 +371,13 @@ public class AudioPlayer {
 从上图可知，[AAC](https://zh.wikipedia.org/wiki/%E9%80%B2%E9%9A%8E%E9%9F%B3%E8%A8%8A%E7%B7%A8%E7%A2%BC)，[FLAC](https://zh.wikipedia.org/wiki/FLAC)，[MP3](https://zh.wikipedia.org/wiki/MP3)三种编码是全平台支持的音频编码方式（或音频压缩方式），注意编码方式并不是文件格式即文件的扩展名
 
 * AAC 主要扩展名
-    * `.aac`
-    * `.mp4`
-    * `.m4a`
+  * `.aac`
+  * `.mp4`
+  * `.m4a`
 * FLAC 扩展名
-    * `.flac`
+  * `.flac`
 * MP3 扩展名
-    * `.mp3`
+  * `.mp3`
 
 ## 总结
 
@@ -385,6 +388,7 @@ public class AudioPlayer {
 > 关于音视频相关的资料参差不齐，目前尚未有大量相关专门的书籍来介绍该领域的图书或者易懂视频，很多情况需要根据所处应用场景灵活应变。
 推荐刚刚发行的一本关于音频方面的图书[《Android音视频开发》](https://item.jd.com/35027062396.html)
 推荐国内比较专业音视频方面相关的介绍[《雷霄骅的专栏》](http://blog.csdn.net/leixiaohua1020)
+
 ## 附录
 
 * [音频编码格式的比较](https://zh.wikipedia.org/wiki/%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%AF%94%E8%BE%83)

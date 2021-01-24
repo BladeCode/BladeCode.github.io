@@ -19,7 +19,7 @@ minify: true
 # Define custom file paths.
 # Create your custom files in site directory `source/_data` and uncomment needed files below.
 custom_file_path:
-  # head: source/_data/head.njk
+  #head: source/_data/head.njk
   #header: source/_data/header.njk
   #sidebar: source/_data/sidebar.njk
   #postMeta: source/_data/post-meta.njk
@@ -66,7 +66,7 @@ custom_logo: #/uploads/custom-logo.jpg
 # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
 creative_commons:
   license: by-nc-sa
-  sidebar: false
+  sidebar: true
   post: true
   language:
 
@@ -84,10 +84,11 @@ menu:
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
-  books: /books/ || fa fa-book
-  movies: /movies || fa fa-film
+  # books: /books/ || fa fa-book
+  # movies: /movies || fa fa-film
+  music: https://museflow.io/ || fa fa-music
   # plan: https://www.notion.so/incoder/3d9638dbe2cb48a9a724a39bf9723717?v=e11c491037cd4fcda3a7b320bf996c5a || fa fa-calendar-check
-  java: https://java.incoder.org/ || fa fa-globe
+  java: https://java.incoder.org/ || fa fa-coffee
   mobile: https://mobile.incoder.org/ || fa fa-sitemap
   about: /about/ || fa fa-user
 
@@ -127,7 +128,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png #/images/avatar.gif
+  url: https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png #/images/
   # If true, the avatar will be dispalyed in circle.
   rounded: false
   # If true, the avatar will be rotated with the cursor.
@@ -147,6 +148,7 @@ social:
   #Google: https://plus.google.com/yourname || fab fa-google
   Twitter: https://twitter.com/_incoder || fab fa-twitter
   Medium: https://medium.com/@incoder || fab fa-medium
+  # Bilibili: https://space.bilibili.com/14344538 || fab fa-bilibili
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
   #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
   #YouTube: https://youtube.com/yourname || fab fa-youtube
@@ -160,7 +162,7 @@ social_icons:
 
 # Blog rolls
 links_settings:
-  icon: fa fa-globe
+  icon: fa fa-user-friends
   title: Links
   # Available values: block | inline
   layout: block
@@ -205,7 +207,7 @@ chat:
 language_switcher: false
 
 footer:
-  # Specify the date when the site was setup. If not defined, current year will be used.
+  # Specify the year when the site was setup. If not defined, current year will be used.
   since: 2018
 
   # Icon between year and copyright info.
@@ -252,7 +254,7 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: false
+    enable: true
     another_day: true
   categories: true
 
@@ -369,8 +371,6 @@ codeblock:
     light: atom-one-dark-reasonable
     dark: atom-one-dark-reasonable
   prism:
-    # light: prism-okaidia
-    # dark: prism-okaidia
     light: prism
     dark: prism-dark
   # Add copy button on codeblock
@@ -405,8 +405,8 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: true
-  permalink: https://github.com/BladeCode
+  enable: false
+  permalink: https://github.com/yourname
   title: Follow me on GitHub
 
 
@@ -418,7 +418,7 @@ github_banner:
 #   light | light italic | normal | normal italic | bold | bold italic
 # Be aware that setting too much fonts will cause site running slowly
 # ---------------------------------------------------------------
-# To avoid space between header and sidebar in scheme Pisces / Gemini, Web Safe fonts are recommended for `global` (and `title`):
+# Web Safe fonts are recommended for `global` (and `title`):
 # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
 # ---------------------------------------------------------------
 
@@ -467,22 +467,19 @@ font:
 # See: https://theme-next.js.org/docs/theme-settings/seo
 # ---------------------------------------------------------------
 
-# Disable Baidu transformation on mobile devices.
-disable_baidu_transformation: true
-
 # If true, site-subtitle will be added to index page.
 # Remember to set up your site-subtitle in Hexo `_config.yml` (e.g. subtitle: Subtitle)
-index_with_subtitle: true
+index_with_subtitle: false
 
 # Automatically add external URL with Base64 encrypt & decrypt.
 exturl: false
 
 # Google Webmaster tools verification.
-# See: https://www.google.com/webmasters
+# See: https://developers.google.com/search
 google_site_verification:
 
 # Bing Webmaster tools verification.
-# See: https://www.bing.com/webmaster
+# See: https://www.bing.com/webmasters
 bing_site_verification:
 
 # Yandex Webmaster tools verification.
@@ -492,9 +489,6 @@ yandex_site_verification:
 # Baidu Webmaster tools verification.
 # See: https://ziyuan.baidu.com/site
 baidu_site_verification:
-
-# Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO.
-baidu_push: false
 
 
 # ---------------------------------------------------------------
@@ -516,6 +510,8 @@ math:
 
   mathjax:
     enable: false
+    # Available values: none | ams | all
+    tags: none
 
   katex:
     enable: false
@@ -527,16 +523,16 @@ math:
 pjax: false
 
 # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
-# For more information: https://fancyapps.com/fancybox
+# For more information: https://fancyapps.com/fancybox/
 fancybox: true
 
 # A JavaScript library for zooming images like Medium.
 # Warning: Do not enable both `fancybox` and `mediumzoom`.
-# For more information: https://github.com/francoischalifour/medium-zoom
-mediumzoom: false
+# For more information: https://medium-zoom.francoischalifour.com
+mediumzoom: true
 
 # Vanilla JavaScript plugin for lazyloading images.
-# For more information: https://github.com/ApoorvSaxena/lozad.js
+# For more information: https://apoorv.pro/lozad.js/demo/
 lazyload: true
 
 # Pangu Support
@@ -545,7 +541,7 @@ lazyload: true
 pangu: false
 
 # Quicklink Support
-# For more information: https://github.com/GoogleChromeLabs/quicklink
+# For more information: https://getquick.link
 # Front-matter variable (unsupport home archive).
 quicklink:
   enable: false
@@ -577,7 +573,7 @@ comments:
   # Available values: tabs | buttons
   style: tabs
   # Choose a comment system to be displayed by default.
-  # Available values: changyan | disqus | disqusjs | gitalk | livere | valine
+  # Available values: disqus | disqusjs | changyan | livere | gitalk | utterances
   active:
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
@@ -592,18 +588,17 @@ comments:
     #  order: -2
 
 # Disqus
+# For more information: https://disqus.com
 disqus:
   enable: false
   shortname:
   count: true
 
 # DisqusJS
-# Alternative Disqus - Render comment component using Disqus API.
-# Demo: https://suka.js.org/DisqusJS/
-# For more information: https://github.com/SukkaW/DisqusJS
+# For more information: https://disqusjs.skk.moe
 disqusjs:
   enable: false
-  # API Endpoint of Disqus API (https://disqus.com/api/).
+  # API Endpoint of Disqus API (https://disqus.com/api/docs/).
   # Leave api empty if you are able to connect to Disqus API. Otherwise you need a reverse proxy for it.
   # For example:
   # api: https://disqus.skk.moe/disqus/
@@ -612,35 +607,18 @@ disqusjs:
   shortname: # See: https://disqus.com/admin/settings/general/
 
 # Changyan
+# For more information: https://changyan.kuaizhan.com
 changyan:
   enable: false
   appid:
   appkey:
-
-# Valine
-# For more information: https://valine.js.org, https://github.com/xCss/Valine
-valine:
-  enable: true
-  appId: 3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz # Your leancloud application appid
-  appKey: cW8VJrB2yJiIBLtYA0KdE8vW # Your leancloud application appkey
-  serverURLs: # When the custom domain name is enabled, fill it in here
-  placeholder: Just go go # Comment box placeholder
-  avatar: identicon # Gravatar style
-  meta: [nick, mail, link] # Custom comment header
-  pageSize: 10 # Pagination size
-  lang: # Language, available values: en, zh-cn
-  visitor: false # Article reading statistic
-  comment_count: true # If false, comment count will only be displayed in post page, not in home page
-  recordIP: true # Whether to record the commenter IP
-  enableQQ: false # Whether to enable the Nickname box to automatically get QQ Nickname and QQ Avatar
-  requiredFields: [] # Set required fields: [nick] | [nick, mail]
 
 # LiveRe comments system
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 livere_uid: # <your_uid>
 
 # Gitalk
-# For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
+# For more information: https://gitalk.github.io
 gitalk:
   enable: false
   github_id: # GitHub repo owner
@@ -653,6 +631,20 @@ gitalk:
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
   language:
+
+# Utterances
+# For more information: https://utteranc.es
+utterances:
+  enable: false
+  repo: # Github repository name
+  # Available values: pathname | url | title | og:title
+  issue_term: pathname
+  # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
+  theme: github-light
+
+# Isso
+# For more information: https://posativ.org/isso/
+isso: # <data_isso>
 
 
 # ---------------------------------------------------------------
@@ -678,6 +670,7 @@ add_this_id: ra-5ca8705bf505f047
 # ---------------------------------------------------------------
 
 # Google Analytics
+# See: https://analytics.google.com
 google_analytics:
   tracking_id: UA-100235665-1 # <app_id>
   # By default, NexT will load an external gtag.js script on your site.
@@ -685,18 +678,19 @@ google_analytics:
   only_pageview: false
 
 # Baidu Analytics
+# See: https://tongji.baidu.com
 baidu_analytics: # <app_id>
 
 # Growingio Analytics
+# See: https://www.growingio.com
 growingio_analytics: # <project_id>
 
-# CNZZ count
-cnzz_siteid:
+# Cloudflare Web Analytics
+# See: https://www.cloudflare.com/web-analytics/
+cloudflare_analytics:
 
 # Show number of visitors of each article.
-# You can visit https://leancloud.cn to get AppID and AppKey.
-# AppID and AppKey are recommended to be the same as valine's for counter compatibility.
-# Warning: Do not enable both `valine.visitor` and `leancloud_visitors`.
+# You can visit https://www.leancloud.cn to get AppID and AppKey.
 leancloud_visitors:
   enable: true
   app_id: 3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz # <your app id>
@@ -706,7 +700,7 @@ leancloud_visitors:
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
-  security: false
+  security: true
 
 # Another tool to show number of visitors to each article.
 # Visit https://console.firebase.google.com/u/0/ to get apiKey and projectId.
@@ -718,7 +712,7 @@ firestore:
   projectId: # Required
 
 # Show Views / Visitors of the website / page with busuanzi.
-# Get more information on http://ibruce.info/2015/04/04/busuanzi
+# For more information: http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
   enable: false
   total_visitors: true
@@ -755,9 +749,6 @@ local_search:
   # Preload the search data when the page loads.
   preload: true
 
-# Swiftype Search API Key
-swiftype_key:
-
 
 # ---------------------------------------------------------------
 # Chat Services
@@ -765,20 +756,20 @@ swiftype_key:
 # ---------------------------------------------------------------
 
 # Chatra Support
-# See: https://chatra.io
+# For more information: https://chatra.com
 # Dashboard: https://app.chatra.io/settings/general
 chatra:
   enable: false
   async: true
   id: # Visit Dashboard to get your ChatraID
-  #embed: # Unfinished experimental feature for developers. See: https://chatra.io/help/api/#injectto
+  #embed: # Unfinished experimental feature for developers. See: https://chatra.com/help/api/#injectto
 
 # Tidio Support
-# See: https://www.tidiochat.com
-# Dashboard: https://www.tidiochat.com/panel/dashboard
+# For more information: https://www.tidio.com
+# Dashboard: https://www.tidio.com/panel/dashboard
 tidio:
   enable: false
-  key: # Public Key, get it from dashboard. See: https://www.tidiochat.com/panel/settings/developer
+  key: # Public Key, get it from dashboard. See: https://www.tidio.com/panel/settings/developer
 
 
 # ---------------------------------------------------------------
@@ -786,11 +777,11 @@ tidio:
 # See: https://theme-next.js.org/docs/tag-plugins/
 # ---------------------------------------------------------------
 
-# Note tag (bs-callout)
+# Note tag (bootstrap callout)
 note:
   # Note tag style values:
-  #  - simple    bs-callout old alert style. Default.
-  #  - modern    bs-callout new (v2-v3) alert style.
+  #  - simple    bootstrap callout old alert style. Default.
+  #  - modern    bootstrap callout new (v2-v3) alert style.
   #  - flat      flat callout style with background, like on Mozilla or StackOverflow.
   #  - disabled  disable all CSS styles import of note tag.
   style: simple
@@ -861,7 +852,7 @@ canvas_ribbon:
 #! ==============================================================
 
 # It's recommended to use the same version as in `_vendors.yml` to avoid potential problems.
-# Remember to use the https protocol of CDN links when you enable https on your site.
+# Remember to use the HTTPS protocol of CDN links when you enable HTTPS on your site.
 vendors:
   # The CDN provider of NexT internal scripts.
   # Available values: local | jsdelivr | unpkg | cdnjs
@@ -920,9 +911,6 @@ vendors:
   disqusjs_js:
   disqusjs_css:
 
-  # Valine
-  valine:
-
   # Gitalk
   gitalk_js:
   gitalk_css:
@@ -934,6 +922,9 @@ vendors:
   # Algolia Search
   algolia_search:
   instant_search:
+
+  # PDF
+  pdfobject:
 
   # Mermaid
   mermaid:

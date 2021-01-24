@@ -1,19 +1,19 @@
 ---
 title: 应该知道的系统环境配置文件
 date: 2018-11-24 15:27:20
-categories: Operating Systems
-tag: [OS, Shell]
+categories: macOS
+tag: [Shell]
 ---
 
 在计算机操作系统中`Shell`是用户与操作系统交互的媒介，而`bash`作为目前`Linux\macOS`系统中最常用的`Shell`，它支持的`startup`文件也并不单一，甚至让人感到费解，以下就是对Shell的学习
 
 Shell：在计算机中，值“为用户提供用户界面”的软件，通常指的是 **命令行界面** 的解析器。一般来说，`Shell`指操作系统中提供访问内核所提供的服务程序。
 
+<!-- more -->
+
 通常将`Shell`分为两类
 * 命令行：提供一个命令行界面（CLI）
 * 图形界面：提供一个图形用户界面（GUI）
-
-<!-- more -->
 
 ![linux_system](https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_general_structure_of_a_Linux_system.jpeg/250px-The_general_structure_of_a_Linux_system.jpeg)
 
@@ -75,10 +75,12 @@ Shell：在计算机中，值“为用户提供用户界面”的软件，通常
 
 我们看看在macOS系统中，bash的startup文件是如何进行加载
 
->注意：
->* `/etc/profile`和`/etc/paths`是系统级别，系统启动后就会加载，后面的配置文件是当前用户级的环境变量
->* 如果`~/.bash_profile`存在，后面几个文件就会忽略不读，不在时，才会以此类推读取后面的文件
->* `~/.bashrc`没有上述规则，他始终加载，它是在`bash shell`打开的时候载入的
+{% note info %}
+注意：
+* `/etc/profile`和`/etc/paths`是系统级别，系统启动后就会加载，后面的配置文件是当前用户级的环境变量
+* 如果`~/.bash_profile`存在，后面几个文件就会忽略不读，不在时，才会以此类推读取后面的文件
+* `~/.bashrc`没有上述规则，他始终加载，它是在`bash shell`打开的时候载入的
+{% endnote %}
 
 ## 特点
 `bash`的两种属性，即 **“交互”** 与 **“登录”**，按照`bash`是否与用户进行交互，可将其分为 **“交互式”** 与 **“非交互式”**；按照`bash`是否被用户登录，又可将其分为 **“登录shell”** 与 **“非登录shell”**

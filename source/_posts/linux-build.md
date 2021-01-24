@@ -104,6 +104,7 @@ cd /usr/local/tomcat/bin
 ```
 
 ### 配置Web管理账号
+
 * 修改文件conf/tomcat-users.xml，在元素中添加帐号密码，需要指定角色
     ```bash
     vim /usr/local/tomcat/conf/tomcat-users.xml
@@ -113,6 +114,7 @@ cd /usr/local/tomcat/bin
     ```
 
 ### 配置端口
+
 * 可以修改conf目录下的文件server.xml，修改Connector元素(Tomcat的默认端口是8080)，需要重新启动Tomcat服务生效
     ```bash
     vim /usr/local/tomcat/conf/server.xml
@@ -120,6 +122,7 @@ cd /usr/local/tomcat/bin
     ```
 
 ### 应用部署
+
 * 放置需部署包到容器中`webapps`路径
     ```bash
     cd /usr/local/tomcat/webapps
@@ -131,11 +134,13 @@ cd /usr/local/tomcat/bin
     ```
 
 ## Apache
+
 一般系统中已经包含apache应用  
 [官方下载地址](http://httpd.apache.org/download.cgi)，选择需要的版本下载安装包
 >官方提供了`.bz2`,`.gz`两种格式安装包
 
 ### 安装
+
 查看系统中是否已包含httpd应用
 ```
 rpm -qa | grep httpd 或 yum list | grep httpd
@@ -156,11 +161,13 @@ rpm -qa | grep httpd 或 yum list | grep httpd
     ```
 
 ### 卸载
+
 ```bash
 yum erase httpd.x86_64 或 rpm -e httpd.x86_64
 ```
 
 ### 常用命令
+
 ```bash
 # 查看服务运行状态
 systemctl status httpd.service
@@ -181,6 +188,7 @@ RPM默认安装路径：
 | /usr/share/man |  一些man page文件 |
 
 ## Nginx
+
 [官方下载地址](http://nginx.org/download)，选择需要的版本下载安装包(最新安装版本1.14.0)
 >官方提供了`.zip`,`.gz`两种格式安装包
 
@@ -204,6 +212,7 @@ RPM默认安装路径：
     ```
 
 ### 常用命令
+
 * 加压文件安装常用命令
     ```bash
     # 停止ngix
@@ -237,6 +246,7 @@ RPM默认安装路径：
 >官方提供了`.gz`,`.7z`,`zip`等多种格式安装包
 
 ### 安装
+
 ```bash
 # 1.下载安装文件
 wget https://nodejs.org/download/chakracore-release/v8.6.0/node-v8.6.0-linux-x64.tar.gz
@@ -248,10 +258,12 @@ ln -s /root/node-v8.6.0-linux-x64/bin/npm /usr/local/bin/npm
 ```
 
 ## Redis
+
 [官方下载地址](https://redis.io/download)，选择需要的版本下载安装包
 >官方提供了`.gz`格式安装包
 
 ### 安装
+
 ```bash
 # 1.下载安装文件
 wget wget http://download.redis.io/releases/redis-4.0.10.tar.gz
@@ -265,6 +277,7 @@ src/redis-server
 ```
 
 ## 配置
+
 ```bash
 # 1.修改redis.conf文件中daemonize属性 为 yes
 vim /you_install_path/redis.conf
@@ -272,6 +285,7 @@ vim /you_install_path/redis.conf
 > 其他配置根据自身需要调整修改
 
 ## 其他命令
+
 1. 关闭服务
     ```bash
     redis-cli -h 127.0.0.1 -p 6379 shutdown
@@ -285,7 +299,9 @@ vim /you_install_path/redis.conf
 ## 常用命令
 
 ### 文件查找
+
 #### find
+
 find命令是根据文件的属性进行查找，如文件名，文件大小，所有者，所属组，是否为空，访问时间，修改时间等。 
 * 基本格式：
 find  path expression
@@ -302,6 +318,7 @@ find  path expression
     find / -size -1000k
 
 #### grep
+
 grep是根据文件的内容进行查找，会对文件的每一行按照给定的模式(patter)进行匹配查找。
 * 基本格式：
 find expression
@@ -353,10 +370,13 @@ find expression
 ### 文件复制
 
 #### 语法
+
 ```
 scp(选项)(参数)
 ```
+
 #### 选项
+
 ```
 -1：使用ssh协议版本1；
 -2：使用ssh协议版本2；
@@ -375,10 +395,12 @@ scp(选项)(参数)
 ```
 
 #### 参数
+
 * 源文件：指定要复制的源文件
 * 目标文件：目标文件。格式为user@host：filename（文件名为目标文件的名称）
 
 #### 示例
+
 * 上传本地文件到远程机器指定目录
     ```
     scp /opt/soft/nginx-0.5.38.tar.gz root@10.10.10.10:/opt/soft/scptest
@@ -404,11 +426,13 @@ scp(选项)(参数)
 ### 文件删除
 
 #### 语法
+
 ```bash
 rm [选项] 文件或目录
 ```
 
 #### 选项
+
 ```
 -f：强行删除，忽略不存在的文件，不提示确认。(f为force的意思)
 -i：进行交互式删除，即删除时会提示确认。(i为interactive的意思)
@@ -417,6 +441,7 @@ rm [选项] 文件或目录
 ```
 
 #### 示例
+
 * 删除一个文件
     ```bash
     rm file

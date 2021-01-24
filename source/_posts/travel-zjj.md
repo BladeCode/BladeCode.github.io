@@ -1,7 +1,7 @@
 ---
 title: 行·张家界
 date: 2018-05-20 22:39:10
-categories: Travel
+categories: [Memory, Travel]
 tag: 张家界
 ---
 

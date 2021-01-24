@@ -5,7 +5,7 @@
   <a title="Russian" href="docs/ru/README.md">🇷🇺</a>
 </div>
 
-![NexT preview](https://user-images.githubusercontent.com/16272760/83972923-98baae80-a915-11ea-8142-3cf875dad8bf.png)
+![NexT preview](https://user-images.githubusercontent.com/16272760/99784261-872d3200-2b56-11eb-807c-869042d1f6e8.png)
 
 <a title="NexT website" href="https://theme-next.js.org"><img align="right" alt="NexT logo" width="100" height="100" src="https://raw.githubusercontent.com/next-theme/hexo-theme-next/master/source/images/logo.svg"></a>
 
@@ -89,28 +89,28 @@ vendors:
 
 ## Update
 
-A new version of NexT will be released every month. You can update NexT by the following command.
+A new version of NexT will be released every month. Please read the [release notes][docs-release-url] before updating the theme. You can update NexT by the following command.
 
 Install the latest version throuth npm:
 
 ```sh
 $ cd hexo-site
-$ npm update hexo-theme-next
+$ npm install hexo-theme-next@latest
 ```
 
-Or update to latest master branch:
+Or update to the latest master branch:
 
 ```sh
 $ cd themes/next
 $ git pull
 ```
 
-**If you want to update from v5.x / v7.x to the latest version, read [this][docs-update-5-1-x-url].**
+**If you want to update from v5.x / v7.x to the latest version, read [this][docs-upgrade-url].**
 
 ## Feedback
 
 * Visit the [Awesome NexT][awesome-next-url] list to share plugins and tutorials with other users.
-* Join our [Gitter][gitter-url] chats.
+* Join our [GitHub discussions][discussions-url] / [Gitter][gitter-url] chats.
 * [Add or improve translation][i18n-url] in few seconds.
 * Report a bug in [GitHub Issues][issues-bug-url].
 * Request a new feature on [GitHub][issues-feat-url].
@@ -149,12 +149,14 @@ Also, we welcome Issue or PR to our [official-plugins][official-plugins-url].
 [docs-installation-url]: https://theme-next.js.org/docs/getting-started/installation.html
 [docs-configuration-url]: https://theme-next.js.org/docs/getting-started/configuration.html
 [docs-custom-files-url]: https://theme-next.js.org/docs/advanced-settings/custom-files.html
-[docs-update-5-1-x-url]: https://theme-next.js.org/docs/getting-started/update-from-v5.html
+[docs-release-url]: https://github.com/next-theme/hexo-theme-next/releases
+[docs-upgrade-url]: https://theme-next.js.org/docs/getting-started/upgrade.html
 
+[awesome-next-url]: https://github.com/next-theme/awesome-next
+[discussions-url]: https://github.com/next-theme/hexo-theme-next/discussions
 [gitter-url]: https://gitter.im/hexo-next
 [i18n-url]: https://crowdin.com/project/hexo-theme-next
 
-[awesome-next-url]: https://github.com/next-theme/awesome-next
 [issues-bug-url]: https://github.com/next-theme/hexo-theme-next/issues/new?assignees=&labels=Bug&template=bug-report.md
 [issues-feat-url]: https://github.com/next-theme/hexo-theme-next/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
 [feat-req-vote-url]: https://github.com/next-theme/hexo-theme-next/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature+Request%22

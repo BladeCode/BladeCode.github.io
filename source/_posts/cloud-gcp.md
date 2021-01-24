@@ -18,6 +18,7 @@ Google Cloud 特点
 * 免费使用结束后不会自动收费
 
 ## 准备
+
 * Google Email
 * visa 信用卡（需要$1进行认证，认传完成后返还$1）
 > 因为Google本身在大陆是无法正常访问的，因此需要先**自备梯子**，可以先使用[Lantern](https://github.com/getlantern/lantern)
@@ -25,6 +26,7 @@ Google Cloud 特点
 ## GCP
 
 ### 申请Google Cloud Platform
+
 [官网申请](https://cloud.google.com/free)：https://cloud.google.com/free
 
 ![gcp-register1](https://res.cloudinary.com/incoder/image/upload/v1542540776/blog/gcp-register1.png)
@@ -37,6 +39,7 @@ Google Cloud 特点
 根据需要填写一些信息，由于我的Google账号已是开发者账号，一些信息都是完善的，所以Google直接关联了信息，因此也不会再扣除$1，如果你是新账号，详细步骤可参考附录
 
 ## VM创建
+
 在创建VM之前，我们先进行[网络防火墙修改](https://console.cloud.google.com/networking/firewalls/list)，避免后续的麻烦
 
 ![gcp-firewall-settings](https://res.cloudinary.com/incoder/image/upload/v1574522003/blog/gcp-firewall-settings.png)
@@ -49,6 +52,7 @@ Google Cloud 特点
 其它按照图上设置即可
 
 ### 创建VM实例
+
 ![gcp-create-vm](https://res.cloudinary.com/incoder/image/upload/v1542546431/blog/gcp-create-vm.png)
 ![gcp-create-vm-init](https://res.cloudinary.com/incoder/image/upload/v1542546640/blog/gcp-create-vm-init.png)
 ![gcp-create-vm-course](https://res.cloudinary.com/incoder/image/upload/v1542546774/blog/gcp-create-vm-course.png)
@@ -72,6 +76,7 @@ Google Cloud 特点
 ### 使用Xshell 
 
 #### 密钥生成
+
 1. 新建用户密钥生成向导  
 ![gcp-link-vm-xshell1](https://res.cloudinary.com/incoder/image/upload/v1542547944/blog/gcp-link-vm-xshell1.png)
 2. 密钥类型长度设置  
@@ -146,6 +151,7 @@ uname -r
 通过以上的配置，我们可以使用Xshell进行SSR工具的安装，安装SSR工具前，需要先升级系统内核，按照如下执行命令
 
 ### 安装SSR
+
 ```bash
 # 切换到root用户
 sudo -i
@@ -280,6 +286,7 @@ service v2ray status
 **协议**，**混淆方式**这些配置一并改掉，然后重启 SSR 服务，并修改连接 SSR 服务的**客户端配置**，其实这只是一个暂时的解决方法，我们可以使用更加隐蔽的 [<font color=red>v2ray</font>](#v2ray) 服务
 
 ## 其它
+
 * 查询余额  
 进入结算概览页面: https://console.cloud.google.com/billing/
 * 扣费计算  
@@ -289,6 +296,7 @@ service v2ray status
 * [SSR客户端](https://www.mediafire.com/folder/btkdbx7j9lr98/Shadowsocks_%E7%9B%B8%E5%85%B3%E5%AE%A2%E6%88%B7%E7%AB%AF#myfiles)
 
 ## 附录
+
 * [Google Cloud Platform免费申请&一键搭建SSR & BBR加速教程](https://www.wmsoho.com/google-cloud-platform-ssr-bbr-tutorial)
 * [Google Cloud使用VM虚拟机详细操作指南](https://www.rultr.com/tutorials/vps/2303.html)
 * [ShadowsocksR客户端 各种隐藏使用技巧说明](https://www.wmsoho.com/how-to-use-shadowsocksr)

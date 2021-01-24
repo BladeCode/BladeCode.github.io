@@ -1,11 +1,25 @@
 ---
 title: MacBook Pro 疑难杂症
-date: 2019-01-10 02:04:46
+date: 2020-11-13 02:04:46
 categories: macOS
 tag: [Exp, iTerm2]
 ---
 
 这是一篇记录使用macOS系统时遇到的一些疑难杂症
+
+## macOS Big Sur
+
+在 2020.11.13 正式推送了 macOS Big Sur version 11.0.1 版本，这一个版本是改动比较大的版本，这里关于它的新特性就不做介绍了，有兴趣的请查看官方网站介绍 [Big Sur](https://www.apple.com.cn/macos/big-sur)
+
+![](https://res.cloudinary.com/incoder/image/upload/v1605885064/blog/macOS_Big_Sur.png)
+
+<!-- more -->
+
+### Glance 失效
+
+Glance 是一个快速预览增强，可以对一些文件进行快速预览，大大提高我们的日常效率，但该应用在 Big Sur 版本中不兼容，由于作者已入职 Apple，且对项目做了归档，不在维护，因此该问题依旧没有解决，可以使用一个付费的应用[iPreView](https://apps.apple.com/cn/app/ipreview-powerful-quick-look/id1519213509?l=en&mt=12)来满足当前需要
+
+>[Glance 在 Big Sur 系统中失效](https://v2ex.com/t/725909)
 
 ## AirPods 异常
 

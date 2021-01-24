@@ -1,7 +1,7 @@
 ---
 title: MySQL 必备技能
 date: 2019-11-01 00:01:00
-categories: MySQL
+categories: [DataBase, MySQL]
 tag: [MySQL]
 ---
 
@@ -96,10 +96,12 @@ Data Definition Language（DDL）：数据定义语言，用来创建数据库�
    DROP TABLE IF EXISTS 表名;
    ```
 
->TRUNCATE 和 DELETE 区别
->1. TRUNCATE TABLE 表名 语句在功能上与不带 WHERE 子句的 DELETE 语句相同；二者均删除表中的全部数据，但 TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少
->2. DELETE 语句每次删除一行，并在事务日志中为所删除的每一行记录。TRUNCATE TABLE 通过释放存储表数据所用的数据页来删除数据，并且旨在事务日志中记录页的释放
->3. TRUNCATE TABLE 删除表中的所有行，但表结构及其列，约束，索引等保存不变，且会**重置表的计数**（通常我们作为表的主键）；DELETE TABLE **不会重置计数**；如果要删除表定义及其数据，使用 DROP TABLEE 语句
+TRUNCATE 和 DELETE 区别
+{% note info %} 
+1. TRUNCATE TABLE 表名 语句在功能上与不带 WHERE 子句的 DELETE 语句相同；二者均删除表中的全部数据，但 TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少
+2. DELETE 语句每次删除一行，并在事务日志中为所删除的每一行记录。TRUNCATE TABLE 通过释放存储表数据所用的数据页来删除数据，并且旨在事务日志中记录页的释放
+3. TRUNCATE TABLE 删除表中的所有行，但表结构及其列，约束，索引等保存不变，且会**重置表的计数**（通常我们作为表的主键）；DELETE TABLE **不会重置计数**；如果要删除表定义及其数据，使用 DROP TABLEE 语句
+{% endnote %}
 
 #### DML
 

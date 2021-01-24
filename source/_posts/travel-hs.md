@@ -1,7 +1,7 @@
 ---
 title: 忆·黄山
 date: 2018-05-01 00:02:00
-categories: Memory
+categories: [Memory, Travel]
 tag: 黄山
 ---
 

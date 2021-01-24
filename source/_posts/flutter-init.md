@@ -82,9 +82,11 @@ tag: [flutter]
     # 选择需要启动的模拟器，avd_name：表示从上面列表获取到的模拟器名称
     emulator -avd [avd_name]
     ```
->注意：
->* 不推荐使用[Genymotion](https://www.genymotion.com/)，flutter的运行在此模拟器上有各种灵异bug
->* PANIC: Missing emulator engine program for 'x86' CPU.解决方式：创建一个x64的模拟器
+{% note warning %} 
+注意：
+* 不推荐使用[Genymotion](https://www.genymotion.com/)，flutter的运行在此模拟器上有各种灵异bug
+* PANIC: Missing emulator engine program for 'x86' CPU.解决方式：创建一个x64的模拟器
+{% endnote %}
 
 ## 问题
 

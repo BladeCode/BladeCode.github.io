@@ -14,8 +14,10 @@ Android在开发过程中，一些特殊字符时无法直接在 `strings.xml` �
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- 无法直接使用I'm developer
-    <string name="name_introduce">I'm developer</string> -->
+    <!-- 
+    无法直接使用I'm developer
+    <string name="name_introduce">I'm developer</string> 
+    -->
     <!-- 解决方法一 转义字符代替 -->
     <string name="name_introduce">I&#039;m developer</string>
     <!-- 解决方法二 使用 \  -->

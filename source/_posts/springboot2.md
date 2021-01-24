@@ -396,9 +396,9 @@ public class MainMethodRunner {
 
 通过打印出来的信息，可以验证我们的分析，方式一的运行，实际上是应用类加载器启动，而方式二是`spring-boot-loader`包中自定义的`LaunchedURLClassLoader`来启动项目
 
-在实际的生产开发中，有时我们的分析需要进行验证（或者找问题），而此时服务又部署在生成环境或者非本机上，通常用的方式是看应用的日志输出，在日志中去定位问题，而有时我们需要断点的方式去找问题，那该如何去操作呢？对于这个问题，在实际开发中是有方法去处理，请看下篇[《SpringBoot（三） JDWP远程调用》](/springboot3.md)
+在实际的生产开发中，有时我们的分析需要进行验证（或者找问题），而此时服务又部署在生成环境或者非本机上，通常用的方式是看应用的日志输出，在日志中去定位问题，而有时我们需要断点的方式去找问题，那该如何去操作呢？对于这个问题，在实际开发中是有方法去处理，请看下篇[《SpringBoot（三） JDWP远程调用》](https://incoder.org/2019/07/11/springboot3/)
 
 ## 附录
 
-* [spring_boot_cloud(2)Spring_Boot打包文件结构深入分析源码讲解](https://1156721874.github.io/2019/06/07/spring_boot_and_cloud/spring_boot_cloud(2)Spring_Boot%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90%E6%BA%90%E7%A0%81%E8%AE%B2%E8%A7%A3/)
-* [校验者•CeaserWang](https://1156721874.github.io)
+* [spring_boot_cloud(2)Spring_Boot打包文件结构深入分析源码讲解](https://ceaser.wang/2019/06/07/spring_boot_and_cloud/spring_boot_cloud(2)Spring_Boot%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90%E6%BA%90%E7%A0%81%E8%AE%B2%E8%A7%A3/)
+* [校验者•CeaserWang](https://ceaser.wang/)

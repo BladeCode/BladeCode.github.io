@@ -64,6 +64,7 @@ tag: [media]
 经过采集和量化后的声音信号已经是数字形式了，但是为了便于计算机的存储，处理，传输，还必须按照一定的要求进行数据`压缩`和`编码`
 
 ##### 压缩
+
 一种音频文件格式可以支持多种编码，例如AVI文件格式，但多数的音频文件仅支持一种音频编码
 
 主要的音频文件格式：
@@ -127,6 +128,7 @@ int size = 8000 x 16bit x 0.02s  x 2 = 5120 bit = 640 byte;
 ## 音频处理开源项目
 
 ### VoIP相关
+
 基于IP的语音传输（英语：Voice over Internet Protocol，缩写为VoIP）是一种语音通话技术，经由网际协议（IP）来达成语音通话与多媒体会议，也就是经由互联网来进行通信。其他非正式的名称有IP电话（IP telephony）、互联网电话（Internet telephony）、宽带电话（broadband telephony）以及宽带电话服务（broadband phone service）。
 * imsdroid
 * sipdroid
@@ -135,10 +137,12 @@ int size = 8000 x 16bit x 0.02s  x 2 = 5120 bit = 640 byte;
 * WebRTC
 
 ### 算法相关
+
 * ffmpeg
 * speex
 
 ### 其他
+
 MP3编码库
 * [Lame](https://sourceforge.net/projects/lame)
 

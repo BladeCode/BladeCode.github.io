@@ -105,7 +105,7 @@ env:
 ## 常用设置
 
 [NexT 配置使用手册](http://theme-next.iissnan.com)
-[NexT 配置使用手册 {% label primary@新 %}](https://theme-next.org/docs/)
+[NexT 配置使用手册 {% label primary@新 %}](https://theme-next.js.org/docs/)
 
 ### NexT主题更新
 

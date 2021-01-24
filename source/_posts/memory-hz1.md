@@ -1,7 +1,7 @@
 ---
 title: 品·杭州
 date: 2018-04-29 00:11:01
-categories: Memory
+categories: [Memory]
 tag: 杭州
 ---
 

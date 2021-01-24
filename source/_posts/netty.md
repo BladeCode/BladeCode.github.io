@@ -7,9 +7,9 @@ tag: [Netty]
 
 [Netty](https://netty.io) 是国内外各大互联网公司的必备网络应用框架，Netty 主要处理与网络相关的一些应用。由于 Netty 设计的巧妙的实现方式，以及对协议很好的实现，使的 Netty 可以在各种应用场景下广泛的应用，无论是传统基于HTTP协议的访问方式，还是更底层基于socket的访问方式，以及支持HTML5规范中的websocket的长连接特性，都提供了比较好的支持
 
-Netty is an asynchronous event-driven network application framework for rapid development of maintainable high performance protocol servers & clients（Netty 是一个异步的，事件驱动的网络应用框架，是可维护的，高性能的，协议化的服务端和客户端快速开发方式）
-
 <!-- more -->
+
+Netty is an asynchronous event-driven network application framework for rapid development of maintainable high performance protocol servers & clients（Netty 是一个异步的，事件驱动的网络应用框架，是可维护的，高性能的，协议化的服务端和客户端快速开发方式）
 
 Netty 是一个非阻塞(NIO)客户端服务端框架，它可以快速的进行网络应用开发，例如：基于协议的客户端和服务端。它极大的简化并且支持流式的网络程序，例如：基于TCP和UDP的socket服务
 '快捷方便'并不意味着最终的应用程序会受到可维护性或性能问题的影响。Netty经过精心设计，具有实施许多协议所获得的经验，如FTP，SMTP，HTTP以及各种基于二进制和文本的遗留协议。因此，Netty 成功地找到了一种在不妥协的情况下实现易于开发，性能，稳定性和灵活性的方法

@@ -5,7 +5,7 @@
   <a title="俄语" href="../ru/README.md">🇷🇺</a>
 </div>
 
-![NexT preview](https://user-images.githubusercontent.com/16272760/83972923-98baae80-a915-11ea-8142-3cf875dad8bf.png)
+![NexT preview](https://user-images.githubusercontent.com/16272760/99784261-872d3200-2b56-11eb-807c-869042d1f6e8.png)
 
 <a title="NexT 网站" href="https://theme-next.js.org"><img align="right" alt="NexT logo" width="100" height="100" src="https://raw.githubusercontent.com/next-theme/hexo-theme-next/master/source/images/logo.svg"></a>
 
@@ -89,13 +89,13 @@ vendors:
 
 ## 更新
 
-NexT 每个月都会发布新版本。你可以通过如下命令更新 NexT。
+NexT 每个月都会发布新版本。请在更新前阅读[更新说明][docs-release-url]。你可以通过如下命令更新 NexT。
 
 通过 npm 安装最新版本：
 
 ```sh
 $ cd hexo-site
-$ npm update hexo-theme-next
+$ npm install hexo-theme-next@latest
 ```
 
 或者通过 git 更新到最新的 master 分支：
@@ -105,12 +105,12 @@ $ cd themes/next
 $ git pull
 ```
 
-**如果你想要从 v5.x / v7.x 更新到最新版本，阅读[这篇文档][docs-update-5-1-x-url]。**
+**如果你想要从 v5.x / v7.x 更新到最新版本，阅读[这篇文档][docs-upgrade-url]。**
 
 ## 反馈
 
 * 浏览 [Awesome NexT][awesome-next-url] 列表，与其它用户分享插件和教程。
-* 加入我们的 [Gitter][gitter-url] 聊天。
+* 加入我们的 [GitHub discussions][discussions-url] / [Gitter][gitter-url] 聊天。
 * 请花几秒钟来[添加或修正翻译][i18n-url]。
 * 在 [GitHub Issues][issues-bug-url] 报告Bug。
 * 在 [GitHub][issues-feat-url] 请求新的功能。
@@ -149,12 +149,14 @@ $ git pull
 [docs-installation-url]: https://theme-next.js.org/docs/getting-started/installation.html
 [docs-configuration-url]: https://theme-next.js.org/docs/getting-started/configuration.html
 [docs-custom-files-url]: https://theme-next.js.org/docs/advanced-settings/custom-files.html
-[docs-update-5-1-x-url]: https://theme-next.js.org/docs/getting-started/update-from-v5.html
+[docs-release-url]: https://github.com/next-theme/hexo-theme-next/releases
+[docs-upgrade-url]: https://theme-next.js.org/docs/getting-started/upgrade.html
 
+[awesome-next-url]: https://github.com/next-theme/awesome-next
+[discussions-url]: https://github.com/next-theme/hexo-theme-next/discussions
 [gitter-url]: https://gitter.im/hexo-next
 [i18n-url]: https://crowdin.com/project/hexo-theme-next
 
-[awesome-next-url]: https://github.com/next-theme/awesome-next
 [issues-bug-url]: https://github.com/next-theme/hexo-theme-next/issues/new?assignees=&labels=Bug&template=bug-report.md
 [issues-feat-url]: https://github.com/next-theme/hexo-theme-next/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
 [feat-req-vote-url]: https://github.com/next-theme/hexo-theme-next/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature+Request%22

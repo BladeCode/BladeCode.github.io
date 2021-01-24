@@ -11,18 +11,31 @@ tag: [Exp]
 
 ## Gradle
 
-Gradle 作为新一代的包管理工具，早期作为 Android 项目的御用包管理，渐渐的越来越多的服务端项目也开始在使用 Gradle 来进行管理，至于 Gradle 和 Maven 的对比，我这里不做评论，请移步 Gradle 官方网站对两个包管理的比较[Gradle vs Maven Comparison](https://gradle.org/maven-vs-gradle/)
+Gradle 作为新一代的包管理工具，早期作为 Android 项目的御用包管理，渐渐的越来越多的服务端项目也开始在使用 Gradle 来进行管理，至于 Gradle 和 Maven 的对比，我这里不做评论，请移步 Gradle 官方网站对两个包管理的比较 [Gradle vs Maven Comparison](https://gradle.org/maven-vs-gradle/)
 
 > Gradle 镜像地址：https://services.gradle.org/distributions
+> Gradle 腾讯镜像：https://mirrors.cloud.tencent.com/gradle
 
 ### 单项目配置
 
 #### Android 项目
 
+在 Android 项目中主要有下面这些配置文件
+
+* build.gradle
+  * 项目级别：在项目根目录，定义项目中所有模块共用的 Gradle 代码库和依赖项
+  * 模块级别：在模块根目录，用于为其所在的特定模块配置构建设置，可以通过配置这些构建设置提供自定义打包选项（如额外的构建类型和产品变种），以及替换 main/ 应用清单或顶层 build.gradle 文件中的设置
+* settings.gradle：项目的根目录下，用于指示 Gradle 在构建应用时应将哪些模块包含在内
+* xxxxx.gradle：模块配置文件，可将冗长的配置信息分块进行配置，比如依赖的版本统一管理等
+
+>更详细的介绍请查看 Android 官方说明 [配置构建](https://developer.android.google.cn/studio/build)
+
+项目的依赖仓库镜像配置，在项目级别的 build.gradle 文件中，如下进行镜像的指定示例
+
 ```groovy
 buildscript {
     repositories {
-        // 添加或修改这里指向的镜像仓库地址
+        // 添加或修改这里指向的镜像仓库地址，默认使用，https://maven.google.com/
         google()
         // 如果需要指定 google 的镜像地址，可注释掉上面的 google()默认配置，使用下面的显示指定配置
         // google{
@@ -45,7 +58,7 @@ buildscript {
 
 allprojects {
     repositories {
-        // 添加或修改这里指向的镜像仓库地址
+        // 添加或修改这里指向的镜像仓库地址，默认使用，https://maven.google.com/
         google()
         jcenter()
         maven { 
@@ -65,6 +78,14 @@ task clean(type: Delete) {
 
 #### SpringBoot 项目
 
+在 SpringBoot 项目中主要有下面这些配置文件
+
+* build.gradle：主要配置文件，关于项目的依赖关系主要在该文件中配置
+* settings.gradle：项目信息文件，项目的一些可在这里配置，比如项目名称、子项目信息
+* xxxxx.gradle：模块配置文件，可将冗长的配置信息分块进行配置，比如依赖的版本统一管理等
+
+如下，build.gradle 配置信息
+
 ```groovy
 plugins {
     id 'org.springframework.boot' version '2.1.6.RELEASE'
@@ -78,13 +99,15 @@ sourceCompatibility = 1.8
 sourceCompatibility = 1.8
 
 repositories {
-    // 显式指定仓库访问地址，以下两个地址推荐阿里云镜像
+    // 显式指定仓库访问地址，以下两个地址推荐阿里云镜像，按顺序执行
    maven {
-       // 指向 spring 官方仓库
-       url 'http://repo.spring.io/release',
        // 指向 阿里云 镜像仓库
        url 'https://maven.aliyun.com/repository/public'
    }
+//    maven {
+//        // 指向 spring 官方仓库
+//        url 'http://repo.spring.io/release'
+//    }
     mavenCentral()
 }
 
@@ -103,40 +126,94 @@ test {
 }
 ```
 
+对于 SpringBoot 项目，不管是全局镜像配置还是单项目的镜像配置，可能存在 SpringBoot 依赖的插件依赖无法下载，通常表现为卡在 `Gradle: Download org.springframework.boot.gradle.plugin-xxxx.pom` 这里，那则需要也配置插件镜像，在 settings.gradle 文件<font color=red>**最上面**</font>加入如下配置
+
+```groovy
+pluginManagement {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+    }
+}
+```
+
 ### 全局配置
 
 在当前系统 `${USER_HOME}/.gradle/` 目录下创建 `init.gradle` 文件，将 Maven 和 Jcenter 仓库都指向阿里云镜像仓库
 
->这里没有完全去匹配，只列举了 maven，jcenter，google 仓库映射的更改，其他使用到的各位自行添加
-
 ```groovy
+`// 如果你的 springboot plugin 下载也很慢，也可以全局设置插件下载地址`
+pluginManagement {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+    }
+}
+// 项目依赖第三方包下载地址替换
 allprojects{
     repositories {
-        def ALIYUN_REPOSITORY_URL = 'https://maven.aliyun.com/repository/public'
-        def ALIYUN_JCENTER_URL = 'https://maven.aliyun.com/repository/jcenter'
-        def ALIYUN_GOOGLE_URL = 'https://maven.aliyun.com/repository/google'
+
+        def ALIYUN_CENTRAL_URL = 'https://maven.aliyun.com/repository/central/'
+        def ALIYUN_JCENTER_PUBLIC_URL = 'https://maven.aliyun.com/repository/public/'
+        def ALIYUN_GOOGLE_URL = 'https://maven.aliyun.com/repository/google/'
+        def ALIYUN_GRADLE_PLUGIN_URL = 'https://maven.aliyun.com/repository/gradle-plugin/'
+        def ALIYUN_SPRING_URL = 'https://maven.aliyun.com/repository/spring/'
+        def ALIYUN_SPRING_PLUGIN_URL = 'https://maven.aliyun.com/repository/spring-plugin/'
+        def ALIYUN_GRAILS_CORE_URL = 'https://maven.aliyun.com/repository/grails-core/'
+        def ALIYUN_APACHE_SNAPSHOTS_URL = 'https://maven.aliyun.com/repository/apache-snapshots/'
+
         all { ArtifactRepository repo ->
             if(repo instanceof MavenArtifactRepository){
                 def url = repo.url.toString()
-                if (url.startsWith('https://repo1.maven.org/maven2')) {
-                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL."
+                // central
+                if (url.startsWith('https://repo1.maven.org/maven2/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_CENTRAL_URL."
                     remove repo
                 }
-                if (url.startsWith('https://jcenter.bintray.com/')) {
-                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL."
+                // jcenter
+                if (url.startsWith('https://jcenter.bintray.com/') || url.startsWith('http://jcenter.bintray.com/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_JCENTER_PUBLIC_URL."
                     remove repo
                 }
+                // google
                 if (url.startsWith('https://maven.google.com/')) {
                     project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL."
                     remove repo
                 }
+                // gradle-plugin
+                if (url.startsWith('https://plugins.gradle.org/m2/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL."
+                    remove repo
+                }
+                // spring
+                if (url.startsWith('https://repo.spring.io/libs-milestone/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_SPRING_URL."
+                    remove repo
+                }
+                // spring-plugin
+                if (url.startsWith('http://repo.spring.io/plugins-release/') || url.startsWith('https://repo.spring.io/plugins-release/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_SPRING_PLUGIN_URL."
+                    remove repo
+                }
+                // grails-core
+                if (url.startsWith('https://repo.grails.org/grails/core/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_GRAILS_CORE_URL."
+                    remove repo
+                }
+                // apache snapshots
+                if (url.startsWith('https://repository.apache.org/snapshots/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_APACHE_SNAPSHOTS_URL."
+                    remove repo
+                }
             }
         }
-        maven {
-            url ALIYUN_REPOSITORY_URL
-            url ALIYUN_JCENTER_URL
-            url ALIYUN_GOOGLE_URL
-        }
+
+        maven { url ALIYUN_CENTRAL_URL }
+        maven { url ALIYUN_JCENTER_PUBLIC_URL }
+        maven { url ALIYUN_GOOGLE_URL }
+        maven { url ALIYUN_GRADLE_PLUGIN_URL }
+        maven { url ALIYUN_SPRING_URL }
+        maven { url ALIYUN_SPRING_PLUGIN_URL }
+        maven { url ALIYUN_GRAILS_CORE_URL }
+        maven { url ALIYUN_APACHE_SNAPSHOTS_URL }
     }
 }
 ```
@@ -159,7 +236,7 @@ allprojects{
 
 ### 全局配置
 
-Maven 默认配置文件地址，`Users/<PC_USER_NAME>/.m2`目录下，如果没有，则新建一个`setting.xml`文件，进行镜像的配置
+Maven 默认配置文件地址，`Users/<PC_USER_NAME>/.m2`目录下，如果没有，则新建一个`settings.xml`文件，进行镜像的配置
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -172,20 +249,26 @@ Maven 默认配置文件地址，`Users/<PC_USER_NAME>/.m2`目录下，如果没
         <mirror>
             <id>aliyunmaven</id>
             <mirrorOf>*</mirrorOf>
-            <name>阿里云公共仓库</name>
-            <url>https://maven.aliyun.com/repository/public</url>
+            <name>阿里云central仓库</name>
+            <url>https://maven.aliyun.com/repository/central/</url>
+        </mirror>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云public仓库</name>
+            <url>https://maven.aliyun.com/repository/public/</url>
         </mirror>
         <mirror>
             <id>aliyunmaven</id>
             <mirrorOf>*</mirrorOf>
             <name>阿里云Google仓库</name>
-            <url>https://maven.aliyun.com/repository/google</url>
+            <url>https://maven.aliyun.com/repository/google/</url>
         </mirror>
         <mirror>
             <id>aliyunmaven</id>
             <mirrorOf>*</mirrorOf>
-            <name>阿里云Apache仓库</name>
-            <url>https://maven.aliyun.com/repository/apache-snapshots</url>
+            <name>阿里云gradle-plugin仓库</name>
+            <url>https://maven.aliyun.com/repository/gradle-plugin/</url>
         </mirror>
         <mirror>
             <id>aliyunmaven</id>
@@ -196,8 +279,20 @@ Maven 默认配置文件地址，`Users/<PC_USER_NAME>/.m2`目录下，如果没
         <mirror>
             <id>aliyunmaven</id>
             <mirrorOf>*</mirrorOf>
-            <name>阿里云Spring插件仓库</name>
-            <url>https://maven.aliyun.com/repository/spring-plugin</url>
+            <name>阿里云spring-plugin仓库</name>
+            <url>https://maven.aliyun.com/repository/spring-plugin/</url>
+        </mirror>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云grails-core插件仓库</name>
+            <url>https://maven.aliyun.com/repository/grails-core/</url>
+        </mirror>
+        <mirror>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云Apache仓库</name>
+            <url>https://maven.aliyun.com/repository/apache-snapshots/</url>
         </mirror>
     </mirrors>
 
@@ -206,6 +301,8 @@ Maven 默认配置文件地址，`Users/<PC_USER_NAME>/.m2`目录下，如果没
     <activeProfiles/>
 </settings>
 ```
+
+>具体的配置教程，可参考[阿里云云效 maven](https://maven.aliyun.com/mvn/guide)
 
 ## Homebrew
 
@@ -266,24 +363,33 @@ GitHub 上各种图片都无法加载，不仅仅是头像，包括各个仓库�
 解决方法：通过查看头像等文件的访问地址，了解到这些地址的域名都是 `githubusercontent.com`，然后通过[IP 地址查询](https://www.ipaddress.com)可以找到其对应的 IP 地址，并将其相关二级域名一起配置到 Hosts 文件中
 
 host 路径
+
 * macOS：/etc/
 * Windows：C:\Windows\System32\drivers\etc
 
-```
-199.232.28.133 gist.githubusecontent.com
-199.232.28.133 user-images.githubusercontent.com
-199.232.28.133 raw.githubusercontent.com
-199.232.28.133 camo.githubusercontent.com
-199.232.28.133 cloud.githubusercontent.com
-199.232.28.133 avatars0.githubusercontent.com
-199.232.28.133 avatars1.githubusercontent.com
-199.232.28.133 avatars2.githubusercontent.com
-199.232.28.133 avatars3.githubusercontent.com
-199.232.28.133 avatars4.githubusercontent.com
-199.232.28.133 avatars5.githubusercontent.com
-199.232.28.133 avatars6.githubusercontent.com
-199.232.28.133 avatars7.githubusercontent.com
-199.232.28.133 avatars8.githubusercontent.com
+```bash
+# Github start
+140.82.114.3      github.com
+140.82.112.4      gist.github.com
+
+185.199.108.153    assets-cdn.github.com
+185.199.109.153    assets-cdn.github.com
+185.199.110.153    assets-cdn.github.com
+185.199.111.153    assets-cdn.github.com
+# *.githubusercontent.com   raw|gist|cloud|camo|avatars0-9|avatars
+199.232.96.133     raw.githubusercontent.com
+199.232.96.133     gist.githubusercontent.com
+199.232.96.133     cloud.githubusercontent.com
+199.232.96.133     camo.githubusercontent.com
+199.232.96.133     avatars0.githubusercontent.com
+199.232.96.133     avatars1.githubusercontent.com
+199.232.96.133     avatars2.githubusercontent.com
+199.232.96.133     avatars3.githubusercontent.com
+199.232.96.133     avatars4.githubusercontent.com
+199.232.96.133     avatars5.githubusercontent.com
+199.232.96.133     avatars6.githubusercontent.com
+199.232.96.133     avatars7.githubusercontent.com
+199.232.96.133     avatars8.githubuserconte
 ```
 
 ### git clone 慢的想砸电脑

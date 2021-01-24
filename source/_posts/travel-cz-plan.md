@@ -1,7 +1,7 @@
 ---
 title: 川藏行 —— 行程规划
 date: 2020-09-13 10:02:00
-categories: Memory
+categories: [Memory, Travel]
 tag: [成都, 拉萨]
 ---
 

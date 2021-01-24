@@ -7,12 +7,12 @@ tag: [Netty, Protobuf]
 
 Netty 框架中已经默认支持了 Protobuf 格式的数据传输，因此我们本节就来学习 Protobuf，Protobuf 主要用于进行 RPC 数据传输（它是一种自定义协议，这种协议能更好，更小体积，对数据编解码【序列号和反序列化的过程】），在学习 Protobuf 之前我们先了解两个概念 RMI 和 RPC
 
+<!-- more -->
+
 RMI：Remote Method Invocation，用于跨机器方法调用，只针对于 Java（要求调用者和被调用者都必须是 Java 程序）
 * client：stub（装）
 * server：skeleton（骨架）
 client 与 server 底层通过 socket 数据传输
-
-<!-- more -->
 
 RPC：Remote Procedure Call，远程过程调用，原理和 RMI 一致，优势在于跨语言支持
 

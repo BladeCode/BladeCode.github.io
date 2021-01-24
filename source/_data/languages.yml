@@ -1,0 +1,9 @@
+zh-CN:
+  menu:
+    books: 阅读
+    movies: 电影
+    music: Music
+    java: Java
+    mobile: Mobile
+  links_settings:
+    title: 友链

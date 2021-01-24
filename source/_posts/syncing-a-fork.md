@@ -12,6 +12,7 @@ tag: Syncing
 <!-- more -->
 
 ## 远程仓库
+
 1. 查看fork项目的远程仓库信息
     ```bash
     git remote -v
@@ -61,6 +62,7 @@ tag: Syncing
     ```
 
 ## 同步源仓库branch
+
 在git中master实质是一个特殊的branch，其它的branch的同步和master同步操作并不一样
 
 ```bash
@@ -92,6 +94,7 @@ git push origin --delete branch_name
 ```
 
 ## 同步源仓库tag
+
 ```bash
 # 获取源仓库的tag
 git fetch upstream --tags
@@ -100,6 +103,7 @@ git push --tags
 ```
 
 ## 附录
+
 * [同步你的 Fork 仓库](http://wiki.jikexueyuan.com/project/github-basics/fork-synced.html)
 * [Configuring a remote for a fork](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 * [Syncing a fork](https://help.github.com/articles/syncing-a-fork)

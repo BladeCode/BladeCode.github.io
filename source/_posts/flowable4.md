@@ -5,8 +5,6 @@ categories: Flowable
 tag: [Flowable]
 ---
 
-<!-- more -->
-
 ## 流程部署
 
 流程部署涉及到的表有 `act_re_deployment`， `act_re_procdef`,`act_ge_bytearry`,`act_ge_property`
@@ -15,6 +13,8 @@ tag: [Flowable]
 * act_re_procdef（流程定义表）：存放流程定义的属性信息，部署每个新的流程都会在这张表中添加一条记录，当流程定义的 key 相同时，使用的是版本升级
 * act_ge_bytearry（资源文件表）：存放流程定义相关的部署信息，即流程定义文档的存放处。每部署一次会增加两条记录，一条是关于 bpmn 规则文件，一条是生成的流程图片（如果部署时只指定了 bpmn 一个文件，flowable 会在部署时解析 bpmn 文件内容自动生成流程图）。两个文件都是以二进制形式存储在数据库中
 * act_ge_property：主键生成策略表
+
+<!-- more -->
 
 ## 流程定义
 

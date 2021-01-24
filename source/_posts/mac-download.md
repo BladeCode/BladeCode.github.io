@@ -16,11 +16,6 @@ Aria2 是一款支持多种协议的 **轻量级命令行** 下载工具。有�
 
 ## Aria2 安装
 ```bash
-# 安装Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# 更新及体检
-brew update && brew doctor
-# 安装Aria2
 brew install aria2
 ```
 

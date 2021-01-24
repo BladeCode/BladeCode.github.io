@@ -1,7 +1,6 @@
 ---
 title: Api 文档管理系统 RAP2环境搭建
 date: 2018-03-27 10:20:10
-update: 2018-08-01 22:10:11
 categories: Api
 tag: RAP
 ---
@@ -14,10 +13,13 @@ RAP2是采用前后端分离的形式，因此搭建完整的RAP2需要 **服务
 
 <!-- more -->
 
-个人贡献[issues 119](https://github.com/thx/rap2-delos/issues/119)
+个人贡献 [📖 issues 119](https://github.com/thx/rap2-delos/issues/119)
 
-> * 截至到2018-08-01 delos 并没有发布Tag版本，应该还处于功能开发前期阶段吧。本教程是在CentOS机器上实战部署
-> * 然而安装部署并不是顺利，因此记录踩过的坑（别问我为啥不用Docker，因为我司分配的机器无法满足Docker的最低内核版本），安装环境介绍：Redis，delos，dolores均在一台服务器，MySQL使用已存在的服务
+{% note danger %} 
+* 截至 2018-08-01 [delos](https://github.com/thx/rap2-delos) 并没有发布 Tag版本，应该还处于功能开发前期阶段吧。本教程是在CentOS机器上实战部署
+* 然而安装部署并不是顺利，因此记录踩过的坑（别问我为啥不用Docker，因为我司分配的机器无法满足Docker的最低内核版本），安装环境介绍：Redis，delos，dolores均在一台服务器，MySQL使用已存在的服务
+* 本篇文章最后更新于 2018-08-01，因此后续的项目部署相关，**请参考官方部署教程**
+{% endnote %}
 
 ## 安装基本工具
 * [Git](https://git-scm.com/downloads)
@@ -117,25 +119,28 @@ npm run check
 
 #### 部署问题
 
-1. Windows下执行`npm run build`，提示`'rm' 不是内部或外部命令，也不是可运行的程序或批处理文件`
+1. Windows下执行 `npm run build`，提示`'rm' 不是内部或外部命令，也不是可运行的程序或批处理文件`
 
     原因：`rm` 是Linux下命令，  
     解决方法：Windows系统可使用 `git bash` 打开该项目，执行该命令
 
-2. 执行`npm run create-db`命令，提示`Unable to connect to the database:{ SequelizeAccessDeniedError: Access denied for user 'root'@'localhost' (using password:NO)}`
+2. 执行 `npm run create-db` 命令，提示
+   `
+   Unable to connect to the database:{ SequelizeAccessDeniedError: Access denied for user 'root'@'localhost' (using password:NO)}
+   `
     
-    原因：未修改`rap2-delos/src/config`目录下数据库配置文件，或者是与文件中的数据库信息与之连接的数据库信息不匹配
-    解决方法：修改`config.dev.ts`文件数据库配置信息
-    >如果修改正确无误后，执行`npm run create-db`依旧出错，那么查看该项目中是否已经存在`dist`目录，如果有，请按照如上修改对应的数据库配置信息
-3. 执行`npm run dev`命令，提示`Error: listen EADDRINUSE :::8080`
+    原因：未修改 `rap2-delos/src/config` 目录下数据库配置文件，或者是与文件中的数据库信息与之连接的数据库信息不匹配
+    解决方法：修改 `config.dev.ts` 文件数据库配置信息
+    >如果修改正确无误后，执行 `npm run create-db` 依旧出错，那么查看该项目中是否已经存在 `dist` 目录，如果有，请按照如上修改对应的数据库配置信息
+3. 执行 `npm run dev` 命令，提示 `Error: listen EADDRINUSE :::8080`
     原因：8080端口被占用 
     解决方法：杀掉占用8080端口的应用
-4. 执行`npm install` 命令，提示`hiredis` 编译无法通过
+4. 执行 `npm install` 命令，提示 `hiredis` 编译无法通过
     原因：无权限操作`rap2-delos/node_modules/hiredis`路径
     解决方法：`sudo npm install`
-    > 如果提示`sudo: npm: command not found`，请参考[stackoverflow-npm](https://stackoverflow.com/questions/31472755/sudo-npm-command-not-found),[stackoverflow-node](https://stackoverflow.com/questions/4976658/on-ec2-sudo-node-command-not-found-but-node-without-sudo-is-ok)
-5. 执行`npm run dev`可以正常启动，`npm start`命令无法正常启动服务
-    原因：请使用`pm2 logs`查看日志具体定位
+    > 如果提示`sudo: npm: command not found`，请参考 [stackoverflow-npm](https://stackoverflow.com/questions/31472755/sudo-npm-command-not-found)，[stackoverflow-node](https://stackoverflow.com/questions/4976658/on-ec2-sudo-node-command-not-found-but-node-without-sudo-is-ok)
+5. 执行 `npm run dev` 可以正常启动，`npm start` 命令无法正常启动服务
+    原因：请使用 `pm2 logs` 查看日志具体定位
     示例：由于Redis的安全模式，不能正常使用
     ```bash
     ReplyError: Ready check failed: DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified, no authentication password is requested to clients. In this mode connections are only accepted from the loopback interface. If you want to connect from external computers to Redis you may adopt one of the following solutions: 
@@ -163,8 +168,8 @@ git clone https://github.com/thx/rap2-dolores.git
 #### 配置文件
 
 目录：rap2-dolores/src/config  
-文件：`config.dev.ts`;其中dev，表示开发环境，其他同理  
-修改：`config.dev.ts`文件，`serve`地址是 **服务端** `rap2-delos` 部署成功后的地址，默认：`'http://localhost:8080'`
+文件：`config.dev.ts`；其中dev，表示开发环境，其他同理  
+修改：`config.dev.ts` 配置文件 `serve` 的地址，更改为 **服务端**（`rap2-delos`）部署成功后的地址，默认：`'http://localhost:8080'`
 
 ### 启动项目
 
@@ -219,12 +224,13 @@ npm install
 2. 项目运行起来，但一直停留在加载动画那里
     
     浏览器控制台输出：  
-    `GET http://127.0.0.1:8080/account/info  ==>>
-    Failed to load http://127.0.0.1:8080/account/info`
-
+    ```
+    GET http://127.0.0.1:8080/account/info  ==>>
+    Failed to load http://127.0.0.1:8080/account/info
+    ```
     原因：未修改`rap2-delos/src/config`目录下服务端连接地址,或者修改结果与[rap2-dolores](https://github.com/thx/rap2-dolores)实际提供服务地址不匹配
     解决方法：修改`config.dev.ts`文件serve配置信息
-    >如果Windows系统修改正确无误后，依旧出错，那么查看hosts(路径：C:\Windows\System32\drivers\etc)中127.0.0.1的IP前是否有`#`，如果有请取消注释
+    >如果Windows系统修改正确无误后，依旧出错，查看hosts(路径：C:\Windows\System32\drivers\etc)中127.0.0.1的IP前是否有`#`，如果有请取消注释
 
 ## 其他
 
@@ -242,7 +248,7 @@ npm install
 
 ### 如何获取更新
 
-目前请选择`master`分支源码，后续其他分支请看相应分支说明文档。在开发环境中git pull来获取最新的源码更新，每一期更新都会有对应的update.md请关注并按照上面的指示进行升级工作。
+目前请选择 `master` 分支源码，后续其他分支请看相应分支说明文档。在开发环境中git pull来获取最新的源码更新，每一期更新都会有对应的update.md请关注并按照上面的指示进行升级工作。
 
 ## 附录
 * [Redis如何后台启动](https://blog.csdn.net/ksdb0468473/article/details/52126009)

@@ -73,6 +73,7 @@ gpg --gen-key
 ![ossrh-gpg-key](https://res.cloudinary.com/incoder/image/upload/v1563706827/blog/ossrh-gpg-key.png)
 
 这里用于生成秘钥的用户名和邮箱，可以和你的 `Sonatype` 账号不一样，记录`密码`，在部署时需要用到
+
 ### 上传秘钥
 
 ```sh
@@ -91,6 +92,7 @@ gpg --keyserver hkp://pool.sks-keyservers.net:11371 --recv-keys <密钥ID>
 ```sh
 gpg --list-keys
 ```
+
 ## 配置
 
 ### maven 配置

@@ -36,7 +36,7 @@ tag: [SpringBoot]
 
 ### 命令
 
-#### Mac or Linux
+#### macOS or Linux
 
 ```bash
 # 项目路径下(spring-start)

@@ -5,15 +5,15 @@ categories: DevTool
 tag: [Android Studio, JetBrains]
 ---
 
-[Android Studio](https://zh.wikipedia.org/wiki/Android_Studio)是Google基于JetBrains的[IntelliJ IDEA](https://www.jetbrains.com/idea)所定制开发的Android开发IDE。因此这里的设置适用于JetBrains公司系列的开发工具，同样也适用于Android Studio，这是一篇持续更新的文章，在平时的使用过程中一些习惯性的模板化的一些设置，可以减少我们一些重复性的操作，进而提高开发效率。
+[Android Studio](https://zh.wikipedia.org/wiki/Android_Studio) 是Google基于JetBrains的 [IntelliJ IDEA](https://www.jetbrains.com/idea) 所定制开发的 Android 开发 IDE。因此这里的设置适用于 JetBrains 公司系列的开发工具，同样也适用于 Android Studio，这是一篇持续更新的文章，在平时的使用过程中一些习惯性的模板化的一些设置，可以减少我们一些重复性的操作，进而提高开发效率。
+
+<!-- more -->
 
 ## 设置
 
 快捷键：
 * Windows：`Ctrl`+`Alt`+`S`
 * macOS：`⌘`+`,`
-
-<!-- more -->
 
 ### 样式
 
