@@ -1,0 +1,43 @@
+# 设置语言
+language: node_js
+# 设置相应的版本
+node_js: 
+  - '12.16.3'
+  # - lts/*
+# 可以减少travis构建时间
+cache:
+    directories:
+        - node_modules
+before_install:
+  # - npm config set bin-links false
+  # - npm install -g hexo
+  - npm install -g hexo-cli
+# 安装hexo及插件
+install:
+  - npm install
+before_script:
+  - npm install -g mocha
+  - git clone --branch master https://github.com/BladeCode/BladeCode.github.io.git public
+script:
+  # 清除
+  - hexo cl
+  # 生成
+  - hexo g
+after_script:
+  - cd ./public
+  - git init
+  # 修改成自己的github用户名
+  - git config user.name "BladeCode"
+  # 修改成自己的GitHub邮箱
+  - git config user.email "Jerry.x@outlook.com"
+  - git add .
+  - git commit -m "Update by Travis-CI on `date '+%Y-%m-%d %H:%M:%S'`"
+  # GH_token就是在travis中设置的token
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+branches:
+  only:
+  # 只监测这个分支，一有动静就开始构建
+  - dev
+env:
+    global:
+        - GH_REF: github.com/BladeCode/BladeCode.github.io.git
