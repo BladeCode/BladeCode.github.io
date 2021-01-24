@@ -21,13 +21,22 @@ MySQL是一个开源数据库管理系统，通常作为流行的LEMP（Linux，
 
 >`uname -a`查看你 Linux 系统的信息，按照系统版本选择对应的应用
 
+```
+[dc2-user@10-255-0-191 ~]$ uname -a
+Linux 10-255-0-191 3.10.0-957.27.2.el7.x86_64 #1 SMP Mon Jul 29 17:46:05 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+# 这里：el7.x86_64 就表示，CentOS 7，32 位系统
+```
+
 ## 安装
 
->下载 MySQL Community Server 地址：https://dev.mysql.com/downloads/mysql/
+>官方下载 MySQL Community Server 地址：https://dev.mysql.com/downloads/mysql/
+>清华镜像 MySQL 地址：https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/
 
 ```bash
 # 1. 获取官方yum源安装包 mysql80-community-release-el7-1.noarch.rpm 是根据官网提供的版本信息
 wget https://dev.mysql.com/get/`mysql80-community-release-el7-1.noarch.rpm`
+# 例如清华镜像，这里的版本是 mysql-community-server-8.0.22-1.el7.x86_64.rpm
+# wget https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-8.0-community-el7-x86_64/mysql-community-server-8.0.22-1.el7.x86_64.rpm
 # 2. 安装rpm包
 rpm -ivh mysql80-community-release-el7-1.noarch.rpm
 # 3. 安装mysql-server

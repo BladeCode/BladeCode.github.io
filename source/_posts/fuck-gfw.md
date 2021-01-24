@@ -257,54 +257,6 @@ source ~/.zshrc
 
 >其他镜像：[中科大](https://mirrors.ustc.edu.cn/)
 
-### 常用命令
-
-```shell
-# 安装指定包应用
-brew install [包名]
-# 卸载指定包
-brew uninstall [包名]
-# 列出已安装的软件
-brew list
-# 更新brew
-brew update
-# 用浏览器打开brew的官方网站
-brew home
-# 显示软件信息
-brew info
-# 显示包依赖
-brew deps
-# 更新所有
-brew upgarde
-# 更新指定包
-brew upgarde [包名]
-# 清理所有包的旧版本
-brew cleanup
-# 清理指定包的旧版本
-brew cleanup [包名]
-# 查看可清理的旧版本包，不执行实际操作
-brew cleanup -n
-# 查找指定包
-brew search [包名]
-```
-
-### brew service
-
-```bash
-# 查看使用brew安装的服务列表
-brew services list
-# 启动服务（仅启动不注册）
-brew services run formula|--all
-# 启动服务，并注册
-brew services start formula|--all
-# 停止服务，并取消注册
-brew services stop formula|--all
-# 重启服务，并注册
-brew services restart formula|--all
-# 清除已卸载应用的无用的配置
-brew services cleanup
-```
-
 ## Github
 
 ### 资源文件无法加载

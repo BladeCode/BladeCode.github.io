@@ -7,7 +7,7 @@ const { iconText } = require('./common');
 
 // Add comment
 hexo.extend.filter.register('theme_inject', injects => {
-  let theme = hexo.theme.config;
+  const theme = hexo.theme.config;
   if (!theme.disqus.enable || !theme.disqus.shortname) return;
 
   injects.comment.raw('disqus', `
@@ -18,13 +18,13 @@ hexo.extend.filter.register('theme_inject', injects => {
   </div>
   `, {}, {cache: true});
 
-  injects.bodyEnd.file('disqus', path.join(hexo.theme_dir, 'layout/_third-party/comments/disqus.swig'));
+  injects.bodyEnd.file('disqus', path.join(hexo.theme_dir, 'layout/_third-party/comments/disqus.njk'));
 
 });
 
 // Add post_meta
 hexo.extend.filter.register('theme_inject', injects => {
-  let theme = hexo.theme.config;
+  const theme = hexo.theme.config;
   if (!theme.disqus.enable || !theme.disqus.shortname || !theme.disqus.count) return;
 
   injects.postMeta.raw('disqus', `
@@ -36,6 +36,6 @@ hexo.extend.filter.register('theme_inject', injects => {
     </a>
   </span>
   {% endif %}
-  `, {}, {}, theme.disqus.post_meta_order);
+  `, {}, {});
 
 });

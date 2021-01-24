@@ -14,11 +14,13 @@ tag: [flutter]
 <!-- more -->
 
 ## 准备
+
 * Android Studio开发环境（JDK，AndroidSDK，Gradle等等，这里不再赘述）
 * [flutter SDK](https://flutter.io/docs/get-started/install)
 * Android Studio Plugin --> Flutter
 
 ## 步骤
+
 1. 解压下载的flutter SDK，并配置环境变量，例如这里配置在`.bash_profile`文件中
     ```bash
     # 打开 .bash_profile文件
@@ -62,6 +64,7 @@ tag: [flutter]
     ![flutter-finish](https://res.cloudinary.com/incoder/image/upload/v1544994676/blog/flutter-finish.png)
 
 ## 辅助
+
 如果你不习惯或者不想使用Android Studio来开发Flutter，那么使用[VS Code](https://code.visualstudio.com)是最佳推荐的文本编辑器，只需要在VS Code中安装[Flutter](https://marketplace.visualstudio.com/items?itemName=dart-code.flutter)插件即可，它已包含所需的[Dart](https://marketplace.visualstudio.com/items?itemName=dart-code.dart-code)语法插件
 
 关于程序的运行，那么模拟器当然少不了，这里介绍下macOS上如何启动Android 模拟器
@@ -86,7 +89,7 @@ tag: [flutter]
 ## 问题
 
 ### libusbmuxd version error during flutter install
-```bahs
+```bash
 brew update
 brew uninstall --ignore-dependencies libimobiledevice
 brew uninstall --ignore-dependencies usbmuxd
@@ -101,6 +104,7 @@ brew install --HEAD libimobiledevice
 ![flutter-node](https://res.cloudinary.com/incoder/image/upload/v1544994898/blog/flutter-node.png)
 
 ## 附录
+
 * [flutter docs](https://flutter.io/docs)
 * [Flutter免费视频第一季-环境搭建](http://jspang.com/post/flutter1.html#toc-586)
 * [flutter安装记录过程](https://www.jianshu.com/p/637796e9c0ea)

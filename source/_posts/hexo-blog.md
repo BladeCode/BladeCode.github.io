@@ -14,15 +14,18 @@ tag: Build
 <!-- more -->
 
 ## 材料准备
+
 * [Node LTS](https://nodejs.org/en/download)
 * [Git](https://git-scm.com/downloads)
 * [Hexo](https://hexo.io)
 * [Next](https://github.com/theme-next/hexo-theme-next)
 
 ## 安装
+
 `Node`,`Git`的安装过程略
 
 ### Hexo
+
 1. Hexo 安装
     ``` bash
     $ npm install hexo-cli -g
@@ -42,6 +45,7 @@ tag: Build
     ```
 
 ### Next
+
 1. 安装Next 主题
     ``` bash
     $ git clone https://github.com/theme-next/hexo-theme-next themes/next
@@ -65,6 +69,7 @@ tag: Build
 这里不罗嗦了，其配置可参考[hexo-theme-next](https://github.com/iissnan/hexo-theme-next)项目`README`文件
 
 ### 部署
+
 上面已经配置好了部署的目标仓库，那么这里直接使用Hexo提供的部署命令即可
 ``` bash
 $ hexo d
@@ -74,6 +79,7 @@ $ hexo d
 部署完成后，可以直接访问 http://`you blog name`/github.io
 
 ## 自定义域名
+
 虽然现在blog可以使用Githug提供的项目二级域名来访问，为了个性化以及方便等，配置自己的域名
 1. 登录域名所属的管理网站(这里以阿里云域名服务为例)
     ![gitpages-domain-manger](https://res.cloudinary.com/incoder/image/upload/v1525516603/blog/gitpages-domain-manger.png)
@@ -108,6 +114,7 @@ CNAME 文件内容：`incoder.org`
 > 如果带有www，那么以后访问的时候必须带有www完整的域名才可以访问，但如果不带有www，以后访问的时候带不带www都可以访问。所以建议，不要带有www
 
 ## Https开启
+
 开启Https 需要借助[Cloudflare](https://www.cloudflare.com)，关于Cloudflare的介绍等不在这里展开
 1. 注册账号
 2. Add website
