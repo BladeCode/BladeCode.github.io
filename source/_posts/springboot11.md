@@ -25,8 +25,6 @@ Gradle 版本通过 https://github.com/spring-projects/spring-boot/blob/master/g
 git clone https://github.com.cnpmjs.org/spring-projects/spring-boot.git
 ```
 
+## 编译构建
 
-~/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.4.21 ❯
-
-
-<!-- more -->
+使用 IDEA 打开项目，会自动创建索引以及，下载项目的依赖，由于依赖的 jar 比较多，建议使用 [阿里云](https://maven.aliyun.com/) 镜像，关于 Gradle 怎么修改依赖镜像源，可参考 [专治各种网络不服](https://incoder.org/2020/02/27/fuck-gfw/#Gradle) 文章，阿里云镜像能加速大部分的 jar，但有一部分在阿里云上并没有，你可以通过手动方式导入到本地

@@ -5,7 +5,7 @@ categories: Gradle
 tag: [Gradle]
 ---
 
-在上一篇 Gradle 的文章中，已经对 Gradle 有了一定的认识，Gradle 在 Android 有着广泛的应用，用作 Android 包依赖管理，应用构建，测试，等一些列自动化，我们本篇就来了解下在 Android 领域 Gradle 的使用。其实 Android 项目结构和之前在第一篇 Gradle 项目结构基本相同，只是在 module 级别多了的 proguard-rules.pro。对于不管是 Android项目或是 Spring 系列项目的子 module 都会有 build.gradle 文件
+在上一篇 Gradle 的文章中，已经对 Gradle 有了一定的认识，Gradle 在 Android 有着广泛的应用，用作 Android 包依赖管理，应用构建，测试，等一些列自动化，我们本篇就来了解下在 Android 领域 Gradle 的使用。其实 Android 项目结构和之前在第一篇 Gradle 项目结构基本相同，只是在 module 级别多了的 proguard-rules.pro。对于不管是 Android 项目或是 Spring 系列项目的子 module 都会有 build.gradle 文件
 
 <!-- more -->
 
