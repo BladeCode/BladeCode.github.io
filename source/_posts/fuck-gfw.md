@@ -389,7 +389,8 @@ host 路径
 199.232.96.133     avatars5.githubusercontent.com
 199.232.96.133     avatars6.githubusercontent.com
 199.232.96.133     avatars7.githubusercontent.com
-199.232.96.133     avatars8.githubuserconte
+199.232.96.133     avatars8.githubusercontent.com
+199.232.96.133     avatars.githubusercontent.com
 ```
 
 ### git clone 慢的想砸电脑
