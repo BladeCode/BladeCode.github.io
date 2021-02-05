@@ -80,7 +80,7 @@ $ hexo d
 
 ## 自定义域名
 
-虽然现在blog可以使用Githug提供的项目二级域名来访问，为了个性化以及方便等，配置自己的域名
+虽然现在 blog 可以使用 Github 提供的项目二级域名来访问，为了个性化以及方便等，配置自己的域名
 1. 登录域名所属的管理网站(这里以阿里云域名服务为例)
     ![gitpages-domain-manger](https://res.cloudinary.com/incoder/image/upload/v1525516603/blog/gitpages-domain-manger.png)
 2. 添加解析
