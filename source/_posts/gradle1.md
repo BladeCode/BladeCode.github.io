@@ -127,7 +127,7 @@ Gradle 的存放地址，比如：~/.gradle/wrapper/dists/gradle-6.7.1-bin/`bwlc
 
 ### build.gradle 及 settings.gradle
 
-对于`build.gradle` 及 `settings.gradle` 文件在 Android 应用和 SpringBoot 应用是不一样，因此关于他两介绍请移步 [Gradle（二）Android]()，[Gradle（三）SpringBoot]() 文章进行查看
+对于`build.gradle` 及 `settings.gradle` 文件在 Android 应用和 SpringBoot 应用是不一样，因此关于他两介绍请移步 [Gradle（二）Android](https://incoder.org/2020/12/15/gradle2)，[Gradle（三）SpringBoot]() 文章进行查看
 
 ## Gradle 依赖
 

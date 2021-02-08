@@ -1,8 +1,8 @@
 ---
 title: 微服务架构 - SpringCloud 生态整合（一）
 date: 2020-11-08 07:10:00
-categories: SOA
-tag: [SOA, SpringCloud]
+categories: Microservices
+tag: [Microservices, SpringCloud]
 ---
 
 <!-- more -->
