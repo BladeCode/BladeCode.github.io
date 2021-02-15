@@ -9,6 +9,8 @@ tag: [SpringBoot]
 
 <!-- more -->
 
+本篇文章示例代码见：[springboot-config](https://github.com/RootCluster/rc-cluster-springboot/tree/master/springboot-config)
+
 ## YAML
 
 [YAML](https://en.wikipedia.org/wiki/YAML)是JSON的超集，因此是用于指定分层配置数据的便捷格式。只要在类路径上有SnakeYAML库，SpringApplication类就会自动支持YAML作为属性的替代 。
@@ -21,52 +23,71 @@ tag: [SpringBoot]
 
 ### 数据结构
 
-1. 变量，不可再分的单个的值，如数字，字符串等。
+1. 不可再分的单个的值，如数字，字符串等。
     ```yml
-    name: Jerry
-    age: 20
+    env: dev
+    crate-date: 2020
+    is-mac: true
+
     # ~表示NULL值
     email: ~
+
     # 多行字符串可以使用 | 保留换行符，也可以使用 > 折叠换行
     # + 表示保留文字块末尾的换行，- 表示删除字符串末尾的换行
     message: |-
-      hello world
+      hello world ${crate-date}
+
+    # 单引号
+    # 会转义特殊字符，特殊字符最终只是一个普通的字符串数据
+    # 输出：mac \n catalina
+    name1: 'mac \n catalina'
+
     # 双引号
     # 不会转义字符串里面的特殊字符，特殊字符会作为本身想表示的意思
-    # 输出：
-    # A
-    # B
-    name1: "A n B"
-    # 单引号  
-    # 会转义特殊字符，特殊字符最终只是一个普通的字符串数据
-    # 输出：
-    # A n B
-    name2: 'A n B'
+    # 输出：mac
+    # catalina
+    name2: "mac \n catalina"
     ```
 2. 数组，一组按次序排列的值
-   ```yml
-   lang:
-    - java
-    - golang
-    - c
+    ```yml
+    # 这种写法，必须有两层结构，而且第二层（language 名字）是必须满足 Java 属性字段命名规则
+    list:
+      language:
+        - 'object-c'
+        - 'swift'
+        - 'c'
     # 或者行内写法
-    lang: [java, golang, c]
-   ```
+    list-program-languages: object-c, swift, c
+    # SpEL 获取数组
+    el:
+      list: object-c, swift, c
+    ```
 3. 对象，键值对的集合
     ```yml
-    person:
+    # 对象
+    object:
       name: Jerry
       age: 20
+
     # 或者行内写法
-    person: {name: Jerry, age: 20}
+    persons: { name: Jerry, age: 20 }
+
+    # Map
+    map-object:
+      map:
+        key1: value1
+        key2: value2
+
+    # 或者行内写法
+    mapObjects.maps: { key1: value1,key2: value2 }
     ```
 4. 随机数
     ```yml
-    bootapp
-      secret: ${random.value}
-      number: ${random.int}
-      bignumber: ${random.long}
-      uuid: ${random.uuid}
+    # 随机数
+    secret: ${random.value}
+    number: ${random.int}
+    bignumber: ${random.long}
+    uuid: ${random.uuid}
     ```
 5. 默认值，占位符获取之前配置的值，如果没有可以是用:指定默认值
    ```yml
@@ -74,11 +95,14 @@ tag: [SpringBoot]
      description: ${bootapp.name}是一个spring应用程序
    ```
 
-> `:` 号后面有空格，YAML 文件不能使用`@PropertySource`注解
+{% note warning %}
+1. `:` 号后面有一个<font color="red">空格</font>
+2. 对于复杂的数据结构（对象，List，Map），需要配套 <mark>@ConfigurationProperties</mark> 定义对应的对象
+{% endnote %}
 
 ## 配置
 
-为了在配置自定义属性时，向配置 springboot 属性自动提示的功能，导入如下的包
+为了在配置自定义属性时，向配置 SpringBoot 属性自动提示的功能，导入如下的包
 ```xml
 <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
 <!-- @ConfigurationProperties annotation processing (metadata for IDEs)
@@ -121,19 +145,88 @@ myConfig:
 
 ### 配置的使用
 
+|                         | @Value           | @ConfigurationProperties | @PropertySource             |
+|-------------------------|------------------|--------------------------|-----------------------------|
+| 使用场景                    | 单一属性注入，注解写在类的属性上 | 批量注入，注解写在类上              | 加载自定义配置文件，用于静态类获取配置文件中定义的信息 |
+| 松散语法                    | 不支持              | 支持                       | 支持                          |
+| SpEL                    | 支持               |  不支持                     | 支持                          |
+| JSR-303 数据校验 @Validated | 不支持              |  支持                      | 支持                          |
+| 复杂类型（数组，Map，对象等）        | 不完全支持（数组支持行内定义）  | 支持                       | 支持                          |
+
 #### ConfigurationProperties
 
-`@ConfigurationProperties` 注解是 SpringBoot提供的一种使用属性的注入方法，不仅可以方便的把配置文件中属性值与所注解类绑定，还支持松散绑定，JSR-303 数据校验等功能
+<mark>@ConfigurationProperties</mark> 注解是 SpringBoot提供的一种使用属性的注入方法，不仅可以方便的把配置文件中属性值与所注解类绑定，还支持松散绑定，JSR-303 数据校验等功能
+
+```java
+/**
+ * 使用 @ConfigurationProperties 配置属性必须是小写，多单词之间可用'-'连接
+ *
+ * @author : Jerry xu
+ * @since : 2020/3/29  16:26
+ */
+@Data
+@Component
+@ConfigurationProperties(prefix = "list")
+public class ConfigListBean {
+
+    /**
+     * 这里不能再用 @Value("") 去加载，修饰当前的字段，
+     * 必须指定其属性名和配置文件中定义的名称一致
+     */
+    private List<String> language;
+
+}
+```
 
 #### Value
 
-`@Value` 注解支持直接从配置文件中读取值，同时支持 [SpEL](https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/expressions.html) 表达式，但是不支持复杂数据类型和数据验证
+<mark>@Value</mark> 注解支持直接从配置文件中读取值，同时支持 [SpEL](https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/expressions.html) 表达式，但是不支持复杂数据类型和数据验证
 
->使用 `@Value` 获取配置文件中定义的值，通常其类是被 <font color=#FF0000>`@Controller`，`@Service` ，`@Component`</font> 等注解修饰，如果是一般普通的类（如一些工具类）并 **不能** 只接获取到配置文件中定义的值
+使用 <mark>@Value</mark> 获取配置文件中定义的值，通常其类是被 <mark>@Controller</mark>，<mark>@Service</mark>，<mark>@Component</mark> 等注解修饰，如果是一般普通的类（如一些工具类）并 **<font color="red">不能</font>** 只接获取到配置文件中定义的值
+
+```java
+@Data
+@Component
+public class GradleDataBean {
+
+    @Value("${env}")
+    private String env;
+    @Value("${crate-date}")
+    private Integer createDate;
+    @Value("${is-mac}")
+    private Boolean isMac;
+    @Value("${email}")
+    private String email;
+    @Value("${message}")
+    private String message;
+    @Value("${name1}")
+    private String name1;
+    @Value("${name2}")
+    private String name2;
+
+    @Value("${list-program-languages}")
+    private List<String> programLanguages;
+    
+    /**
+     * 使用el表达式，获取定义数组
+     */
+    @Value("#{'${el.list}'.split(',')}")
+    private List<String> programList;
+
+    @Value("${secret}")
+    private String secret;
+    @Value("${number}")
+    private Integer number;
+    @Value("${bignumber}")
+    private Long bigNumber;
+    @Value("${uuid}")
+    private String uuid;
+}
+```
 
 #### PropertySource
 
-`@PropertySource` 注解加载自定义配置文件，由于 `@PropertySource` 指定的文件会优先加载，所以如果在 `applocation.properties` 文件中存在相同的属性配置，会覆盖前者中对应的值，且 `@PropertySource` 不支持 yml 文件注入
+<mark>@PropertySource</mark> 注解加载自定义配置文件，由于 <mark>@PropertySource</mark> 指定的文件会优先加载，所以如果在 applocation.properties 文件中存在相同的属性配置，会覆盖前者中对应的值，且 <mark>@PropertySource</mark> 不支持 yml 文件注入
 
 ### 多环境配置
 
@@ -156,7 +249,8 @@ Spring Boot 启动会扫描以下位置的配置文件（application.properties 
 
 优先级从高到低，高优先级的配置会覆盖低优先级的配置
 
-## 附录
+## 参考
 
-* [最全面的SpringBoot配置文件详解](https://zhuanlan.zhihu.com/p/57693064)
+* [介绍两种SpringBoot读取yml文件中配置数组的方法](https://blog.csdn.net/liujianyangbj/article/details/108810726)
+* [Spring的@Value可以注入复杂类型吗？今天教你通过@value注入自定义类型](https://blog.csdn.net/liujianyangbj/article/details/111352703)
 * [Properties and Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html)

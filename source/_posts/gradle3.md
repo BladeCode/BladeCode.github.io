@@ -154,3 +154,4 @@ testImplementation('org.springframework.boot:spring-boot-starter-test') {
 3. [Spring-boot 2.3.x 源码基于Gradle编译](https://blog.csdn.net/buhuiguowang/article/details/110700585)
 4. [用 Gradle 构建 Spring Boot 项目](https://www.cnblogs.com/davenkin/p/gradle-spring-boot.html)
 5. [使用 Gradle 构建 springboot 多模块项目,并混合groovy开发](https://www.cnblogs.com/houzheng/p/11024865.html)
+6. [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/)

@@ -5,9 +5,9 @@ categories: SpringBoot
 tag: [SpringBoot]
 ---
 
-我们在开发过程中，使用 {% label info@java -jar you-jar-name.jar %} 命令来启动应用，它是如何启动？以及它如何去寻找`.class`文件并执行这些文件？本节就带着这两个问题，让我们一层层解开 SpringBoot 项目的 jar 启动过程，废话不多说，跟着我的脚步一起去探索`spring-boot-load`的秘密。
+我们在开发过程中，使用 {% label info@java -jar you-jar-name.jar %} 命令来启动应用，它是如何启动？以及它如何去寻找 `.class` 文件并执行这些文件？本节就带着这两个问题，让我们一层层解开 SpringBoot 项目的 jar 启动过程，废话不多说，跟着我的脚步一起去探索 {% label danger@spring-boot-load %} 的秘密。
 
-在[SpringBoot（一） 初识]()已经解释了为什么在编译后的 jar 中根目录存在`org/springframework/boot/loader`内容，以及为了方便学习研究，我们需要在项目的依赖中导入`org.springframework.boot:spring-boot-loader`依赖。同时我们在解压的`you-jar-name.jar`文件中，查看对应的清单文件 {% label primary@MANIFEST.MF %} 内容，其中明确指出了应用的入口`org.springframework.boot.loader.JarLauncher `因此我们就从`JarLauncher`开始一步步深入
+在 [SpringBoot（一）初识](https://incoder.org/2019/06/23/springboot1/) 已经解释了为什么在编译后的 jar 中根目录存在 **<font color="red">org/springframework/boot/loader</font>** 内容，以及为了方便学习研究，我们需要在项目的依赖中导入 {% label success@org.springframework.boot:spring-boot-loader %} 依赖。同时我们在解压的 {% label info@you-jar-name.jar %} 文件中，查看对应的清单文件 {% label primary@MANIFEST.MF %} 内容，其中明确指出了应用的入口 **{% label @org.springframework.boot.loader.JarLauncher %}** 因此我们就从 **<font color="red">JarLauncher</font>** 开始一步步深入
 
 <!-- more -->
 
@@ -15,20 +15,20 @@ tag: [SpringBoot]
 
 ## 结构
 
-先用Diagrams来表述`JarLauncher`类之间的结构及方法等相关信息
+先用Diagrams来表述 **<font color="red">JarLauncher</font>** 类之间的结构及方法等相关信息
 ![jarlauncher](https://res.cloudinary.com/incoder/image/upload/v1562399159/blog/jarlauncher.png)
 
 从Diagrams可知
 * 继承关系：JarLauncher <mark>extends</mark> ExecutableArchiveLauncher <mark>extends</mark> Launcher
 * 启动入口：JarLauncher {% label success@main %} 方法
 
->关于图上图标含义，这里就不再赘述，烦请移步[IntelliJ IDEA Icon reference](https://www.jetbrains.com/help/idea/symbols.html)
+>关于图上图标含义，这里就不再赘述，烦请移步 [IntelliJ IDEA Icon reference](https://www.jetbrains.com/help/idea/symbols.html)
 
 ## 流程分析
 
 ### jar规范
 
-对于 Java 标准的 jar 文件来说，规定在一个 jar 文件中，我们必须要将指定 {% label success@main.class %} 的类直接放置在文件的顶层目录中（也就是说，它不予许被嵌套），否则将无法加载，对于 BOOT-INF/class/路径下的 class 因为不在顶层目录，因此也是无法直接进行加载， 而对于BOOT-INF/lib/ 路径的 jar 属于嵌套的（Fatjar），也是不能直接加载，因此Spring要想启动加载，就需要自定义实现自己的类加载器去加载。
+对于 Java 标准的 jar 文件来说，规定在一个 jar 文件中，我们必须要将指定 {% label success@main.class %} 的类直接放置在文件的顶层目录中（也就是说，它不予许被嵌套），否则将无法加载，对于 BOOT-INF/class/ 路径下的 `class` 因为不在顶层目录，因此也是无法直接进行加载， 而对于 BOOT-INF/lib/ 路径的 jar 属于嵌套的（Fatjar），也是不能直接加载，因此 Spring 要想启动加载，就需要自定义实现自己的类加载器去加载。
 
 >关于 jar **官方标准**说明请移步
 >* [JAR File Specification](https://docs.oracle.com/javase/8/docs/technotes/guides/jar/jar.html#Signed_JAR_File)
@@ -38,7 +38,7 @@ tag: [SpringBoot]
 
 #### main 方法
 
-根据清单文件{% label primary@MANIFEST.MF %}中 `Main-Class` 的描述，我们知道入口类就是`JarLauncher`；先看下这个类的 javadoc 介绍
+根据清单文件 {% label primary@MANIFEST.MF %} 中  {% label warning@Main-Class %} 的描述，我们知道入口类就是 **<font color="red">JarLauncher</font>**；先看下这个类的 javadoc 介绍
 
 ```java
 /**
@@ -54,7 +54,7 @@ tag: [SpringBoot]
  */
 ```
 
-紧接着，要进行源码分析，那肯定是找到入口，一步步深入，那么对于`JarLauncher`就是它的 {% label success@main %} 方法了
+紧接着，要进行源码分析，那肯定是找到入口，一步步深入，那么对于 **<font color="red">JarLauncher</font>** 就是它的 {% label success@main %} 方法了
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -63,7 +63,7 @@ public static void main(String[] args) throws Exception {
 }
 ```
 
-那我们去看一看`Launcher` 的 {% label success@launch %} 方法
+那我们去看一看 Launcher 的 {% label success@launch %} 方法
 
 ```java
 /**
@@ -89,7 +89,7 @@ protected void launch(String[] args) throws Exception {
 
 #### getClassPathArchives 方法
 
-`launch`方法的第一步的相关内容比较简单，这里不做过多说明，主要后面两步，我们先看第二步，创建一个类加载器（ClassLoader）,其中`getClassPathArchives()`方法是一个抽象方法，具体的实现有（“ExecutableArchiveLauncher”和“PropertiesLauncher”，因为我们研究的`JarLauncher`是继承`ExecutableArchiveLauncher`，因此我们这里看`ExecutableArchiveLauncher`类中`getClassPathArchives()`方法的实现）我们要看看这个方法中它做了什么
+{% label success@launch %} 方法的第一步的相关内容比较简单，这里不做过多说明，主要后面两步，我们先看第二步，创建一个类加载器（ClassLoader），其中 getClassPathArchives() 方法是一个抽象方法，具体的实现有（<mark>ExecutableArchiveLauncher</mark> 和 {% label default@PropertiesLauncher %} ，因为我们研究的 <font color="red">JarLauncher</font> 是继承 <mark>ExecutableArchiveLauncher</mark> ，因此我们这里看 <mark>ExecutableArchiveLauncher</mark> 类中 getClassPathArchives() 方法的实现）我们要看看这个方法中它做了什么
 
 ```java
 @Override
@@ -105,7 +105,7 @@ protected List<Archive> getClassPathArchives() throws Exception {
 }
 ```
 
-`this.archive`位于当前类（`ExecutableArchiveLauncher`）的构造方法中
+{% label primary@this.archive %} 位于当前类 <mark>ExecutableArchiveLauncher</mark> 的构造方法中
 
 ```java
 public ExecutableArchiveLauncher() {
@@ -141,7 +141,7 @@ protected final Archive createArchive() throws Exception {
 }
 ```
 
-对于`getNestedArachives()`方法，它是Archive的接口
+对于 getNestedArachives() 方法，它是 Archive 的接口
 
 ```java
 /**
@@ -173,7 +173,7 @@ public List<Archive> getNestedArchives(EntryFilter filter) throws IOException {
 }
 ```
 
-而{% label primary@this::isNestedArchive %}方法引用，我们查看`isNestedArchive`抽象方法
+而 {% label primary@this::isNestedArchive %} 方法引用，我们查看 `isNestedArchive` 抽象方法
 
 ```java
 /**
@@ -205,7 +205,7 @@ protected boolean isNestedArchive(Archive.Entry entry) {
 
 #### createClassLoader 方法
 
-把符合条件的 `Archives` 作为参数传入到 `createClassLoader()` 方法，创建一个类加载器，我们跟进去，查看`createClassLoader()` 方法
+把符合条件的 Archives 作为参数传入到 createClassLoader() 方法，创建一个类加载器，我们跟进去，查看 createClassLoader() 方法
 
 ```java
 /**
@@ -255,11 +255,11 @@ public LaunchedURLClassLoader(URL[] urls, ClassLoader parent) {
 }
 ```
 
-super()方法是调用父类的方法，这样一层层跟进去，最终到了 JDK 的`ClassLoader`类，它也是所有类加载器的顶类
+super() 方法是调用父类的方法，这样一层层跟进去，最终到了 JDK 的 `ClassLoader` 类，它也是所有类加载器的顶类
 
 #### launch 方法
 
-launch 方法的第二个参数，`getMainClass()`是一个抽象方法
+{% label success@launch %} 方法的第二个参数，getMainClass() 是一个抽象方法
 
 ```java
 /**
@@ -288,7 +288,7 @@ protected String getMainClass() throws Exception {
 }
 ```
 
-接着我们看launch 方法
+接着我们看 {% label success@launch %} 方法
 
 ```java
 /**
@@ -324,7 +324,7 @@ protected MainMethodRunner createMainMethodRunner(String mainClass, String[] arg
 }
 ```
 
-返回一个`MainMethodRunner`对象，我们紧接着去看看这个对象，
+返回一个 `MainMethodRunner` 对象，我们紧接着去看看这个对象，
 
 ```java
 /**
@@ -368,7 +368,7 @@ public class MainMethodRunner {
 }
 ```
 
-到此为止，invoke 方法成功调用，那么我们项目中的main 方法就执行了，这时我们的所编写的 springboot 应用就正式的启动了。那么关于 springboot 的 loader加载过程已经分析完
+到此为止，invoke 方法成功调用，那么我们项目中的main 方法就执行了，这时我们的所编写的 springboot 应用就正式的启动了。那么关于 springboot 的 loader 加载过程已经分析完
 
 ## 总结
 
@@ -380,21 +380,21 @@ public class MainMethodRunner {
 
 ### 问题一
 
-项目的应用启动入口可以不是 {% label success@main.class %} 方法，只是为什么会默认为 {% label success@main.class %} 方法，原因是在 springboot 的 MainMethodRunner类的 run 方法中，是固定写死的 `main`，为什么要这么写，答案是，我们可以在编辑器中已右键或其他图标启动的方式快速启动 springboot 项目（就像是在运行一个 Java 的 main 方法一样，不再向之前需要乱七八糟各种的配置）。
+项目的应用启动入口可以不是 {% label success@main.class %} 方法，只是为什么会默认为 {% label success@main.class %} 方法，原因是在 springboot 的 MainMethodRunner类的 run 方法中，是固定写死的 {% label success@main %} ，为什么要这么写，答案是，我们可以在编辑器中已右键或其他图标启动的方式快速启动 springboot 项目（就像是在运行一个 Java 的 {% label success@main %} 方法一样，不再向之前需要乱七八糟各种的配置）。
 
 ### 问题二
 
-答案是不相同，我们可以在项目的应用启动 {% label success@main.class %} 方法中，打印出加载类`System.out.println("项目启动加载类" + SpringbootStartApplication.class.getClassLoader());`，这样就可以检验我们的分析是否正确。分别使用两种不同的方式
+答案是不相同，我们可以在项目的应用启动 {% label success@main.class %} 方法中，打印出加载类 {% label info@System.out.println("项目启动加载类" + SpringbootStartApplication.class.getClassLoader()); %} ，这样就可以检验我们的分析是否正确。分别使用两种不同的方式
 * 方式一：在编辑器中之间运行（右键，或者控制台输入命令`gradle bootRun`）或者使用 IDEA 上的运行应用运行按钮，结果如下
     ```java
     项目启动加载类sun.misc.Launcher$AppClassLoader@18b4aac2
     ```
-* 方式二：先编译成 jar 包，然后通过`java -jar build-name.jar`命令运行
+* 方式二：先编译成 jar 包，然后通过 {% label info@java -jar build-name.jar %} 命令运行
     ```java
     项目启动加载类org.springframework.boot.loader.LaunchedURLClassLoader@439f5b3d
     ```
 
-通过打印出来的信息，可以验证我们的分析，方式一的运行，实际上是应用类加载器启动，而方式二是`spring-boot-loader`包中自定义的`LaunchedURLClassLoader`来启动项目
+通过打印出来的信息，可以验证我们的分析，方式一的运行，实际上是应用类加载器启动，而方式二是 {% label danger@spring-boot-load %} 包中自定义的 `LaunchedURLClassLoader` 来启动项目
 
 在实际的生产开发中，有时我们的分析需要进行验证（或者找问题），而此时服务又部署在生成环境或者非本机上，通常用的方式是看应用的日志输出，在日志中去定位问题，而有时我们需要断点的方式去找问题，那该如何去操作呢？对于这个问题，在实际开发中是有方法去处理，请看下篇[《SpringBoot（三） JDWP远程调用》](https://incoder.org/2019/07/11/springboot3/)
 

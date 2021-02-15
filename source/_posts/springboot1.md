@@ -14,6 +14,7 @@ tag: [SpringBoot]
 熟悉后端服务开发的小伙伴，在使用 SpringBoot 时一定会有这样的感受，咦，以前繁琐的配置，现在都不用再去配置一大堆东西了，以前跑起来一个 demo，感觉真是千辛万苦，错一步就 game over，以前服务基本都是已 war 包的形式运行在 Tomcat 中，而现在，你基本不需要手动写太多的代码，一个应用服务就可以运行起来，其次现在应用基本已 jar 包方式直接运行，虽然本质还是运行在 Tomcat 中，但现在 jar 包中已经有了服务运行的基础环境，可以直接使用 jar 相关的运行命令就可以运行起服务。好了，废话了这么多，先看看我们如何运行起一个 DEMO 应用。
 
 ## 环境及版本
+
 * SpringBoot Version：2.1.6.RELEASE
 * System：macOS Mojave
 * JDK Version：1.8
@@ -31,6 +32,14 @@ tag: [SpringBoot]
 
 ### IDEA Init
 
+![](https://res.cloudinary.com/incoder/image/upload/v1616526451/blog/spring-init.png)
+
+IDEA分为四步完成初始
+
+1. 选择 Spring Initializr 初始化向导
+2. 填写项目坐标信息，构建工具，版本，报名等
+3. 选择需要的组件（会自动添加依赖）
+4. 选择项目存放路径
 
 ## Spring 运行
 
@@ -40,20 +49,19 @@ tag: [SpringBoot]
 
 ```bash
 # 项目路径下(spring-start)
-gradle bootRun
+gradlew bootRun
 ```
 
 #### Windows
 
 ```bash
 # 项目路径下(spring-start)
-./gradle bootRun
+./gradlew bootRun
 ```
 
 ### 运行说明
 
 ![spring-running-logo](https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png)
-
 
 ## Spring 打包
 
@@ -65,15 +73,15 @@ gradle bootRun
 ```
 project/
 ├── BOOT-INF/                                                                   
-│   ├── classes                                                                 # 当前项目结果文件放置在 classes 路径下
-│   │   │   └── application.properties                                          # 项目中配置文件
-│   │   ├── org/                                                                # 项目中 java 路径下，编译成 class 文件路径
-│   │   ├── static/                                                             # 项目中 resources 路径下的静态文件夹
-│   │   └── templates/                                                          # 项目中 resources 路径下的模板文件夹
-│   └── lib/                                                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）
+│   ├── classes                                 # 当前项目结果文件放置在 classes 路径下
+│   │   │   └── application.properties          # 项目中配置文件
+│   │   ├── org/                                # 项目中 java 路径下，编译成 class 文件路径
+│   │   ├── static/                             # 项目中 resources 路径下的静态文件夹
+│   │   └── templates/                          # 项目中 resources 路径下的模板文件夹
+│   └── lib/                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）
 ├── META-INF/                                                                   
-│   └── MANIFEST.MF                                                             # 清单文件，用于描述可执行 jar 的一些基本信息
-└── org/springframework/boot/loader/                                            # jar 包启动相关的引导
+│   └── MANIFEST.MF                             # 清单文件，用于描述可执行 jar 的一些基本信息
+└── org/springframework/boot/loader/            # jar 包启动相关的引导
     ├── archive/
     ├── data
     ├── ExectableArchiveLauncher.class
@@ -95,16 +103,17 @@ project/
 #### MANIFEST.MF
 
 ```jar
-Manifest-Version: 1.0                                               # 清单版本号
-Start-Class: org.incoder.start.SpringbootStartApplication           # 项目 main 方法所在的类
-Spring-Boot-Classes: BOOT-INF/classes/                              # 项目相关代码在打包后 jar 中的路径
-Spring-Boot-Lib: BOOT-INF/lib/                                      # 项目中所依赖的第三方 jar 在打包后 jar 中的路径
-Spring-Boot-Version: 2.1.6.RELEASE                                  # 项目  SpringBoot 版本
-Main-Class: org.springframework.boot.loader.JarLauncher             # 当前 jar 文件的执行入口类（main 方法所在的类）
+Manifest-Version: 1.0                                       # 清单版本号
+Start-Class: org.incoder.start.SpringbootStartApplication   # 项目 main 方法所在的类
+Spring-Boot-Classes: BOOT-INF/classes/                      # 项目相关代码在打包后 jar 中的路径
+Spring-Boot-Lib: BOOT-INF/lib/                              # 项目中所依赖的第三方 jar 在打包后 jar 中的路径
+Spring-Boot-Version: 2.1.6.RELEASE                          # 项目  SpringBoot 版本
+Main-Class: org.springframework.boot.loader.JarLauncher     # 当前 jar 文件的执行入口类（main 方法所在的类）
 回车换行（在清单文件中，必须有，否则会出错）
 ```
 
 #### org/springframework/……目录
+
 项目中引入的第三方 jar 中并不包含`org/springframework/boot/loader`内容，那这个目录是从哪里来的呢？
 
 寻找最终发现是项目中我们的`build.gradle`文件中，引入的`org.springframework.boot:spring-boot-gradle-plugin`依赖，而这个依赖位于`classpath`下，说明引入的这个插件 **仅仅** 是在项目构建时才起作用，当项目进行打包后，并不会把插件包打入到项目的依赖库中，也就是`BOOT-INF/lib/`路径下
@@ -121,15 +130,17 @@ Main-Class: org.springframework.boot.loader.JarLauncher             # 当前 jar
 * [properties](https://en.wikipedia.org/wiki/.properties)
 * **推荐** [yml](https://en.wikipedia.org/wiki/YAML)
 
+>配置文件学习可参考 [SpringBoot（四）配置文件](https://incoder.org/2019/07/28/springboot4/)
+
 ### 常用命令
 
 #### gradle tasks
 
-表示获取当前工程可用的 gradle tasks命令
+表示获取当前工程可用的 gradle tasks 命令
 
 ##### Application tasks
 
-* bootRun：Runs this project as a Spring Boot application.（以 SpringBoot 的形式运行当前项目）
+* bootRun：Runs this project as a Spring Boot application.（以 bootJar 的形式运行当前项目）
 
 ##### Build tasks
 
@@ -142,7 +153,8 @@ java -jar jar-name.jar
 ```
 
 ##### Other
-```
+
+```bash
 # 解压 jar 到当前 start 目录下
 unzip start-0.0.1-SNAPSHOT.jar -d ./start
 ```

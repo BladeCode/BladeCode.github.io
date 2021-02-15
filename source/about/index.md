@@ -1,14 +1,16 @@
 ---
 title: 关于
 date: 2018-05-04 17:50:34
-comments: false
 ---
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=145223&auto=1&height=66"></iframe>
+<blockquote class="blockquote-center">
+Life's a struggle!</br>
+生命不息，折腾不止，当然这不能瞎折腾
+</blockquote>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=400 height=86 src="//music.163.com/outchain/player?type=2&id=145223&auto=1&height=66"></iframe>
 
 ## 关于我
-
->Life's a struggle!(生命不息，折腾不止，当然这不能是瞎折腾)~
 
 坐标杭州，理工男，机械制造与自动化专业  
 14 年毕业后，误打误撞闯进计算机的世界  
@@ -29,3 +31,7 @@ comments: false
 学习：编程语言，热门开源框架的学习过程记录  
 
 影音：视觉，听觉的享受分享
+
+----
+
+留言给我吧 🍒
