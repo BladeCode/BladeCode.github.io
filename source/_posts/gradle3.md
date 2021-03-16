@@ -1,13 +1,20 @@
 ---
-title: Gradle（三）SpringBoot
+title: Gradle（三）SpringBoot 单工程
 date: 2020-12-16 13:30:46
 categories: Gradle
 tag: [Gradle]
 ---
 
-在 [Gradle（一）基础](https://incoder.org/2020/12/10/gradle1/) 的文章中，我们已经对 Gradle 有了一定的认识，本篇来看一看在后端开发中使用 Gradle 构建 SpringBoot 项目的开发
+在 [Gradle（一）基础](https://incoder.org/2020/12/10/gradle1/) 的文章中，我们已经对 Gradle 有了一定的认识，本篇来看一看在后端开发中使用 Gradle 构建 SpringBoot 项目的开发。通常有两种方式来构建项目，第一种：每个功能模块即是一个代码工程，用一个 Git 仓库来管理，每个模块只负责完成一件事情；第二种：整个系统的多个模块聚合在一个代码工程里面，也就是我们常说的多模块项目，本篇先来讲一讲单工程
 
 <!-- more -->
+
+## 工程选择
+
+对于单工程，和聚合工程的选择主要根据你所在项目团队的大小，项目分工，以及项目的复杂程度等来考虑。
+
+单工程：适用于项目分工明确，项目庞大复杂，架构服务边界划分明确，配套的自动化等设施完善
+聚合工程：适用于项目人员不是很多，项目功能一般，需要一个人集中化管理等
 
 ## 环境
 
@@ -64,7 +71,7 @@ plubins {
 
 ## settings.gradle
 
-用于项目模块管理，由于这个单项目，这里只有一个模块
+用于项目模块管理，由于这个单工程，这里只有一个模块
 
 ```groovy
 rootProject.name = 'demo'
@@ -99,7 +106,9 @@ tasks.register("bootRunDev") {
     finalizedBy("bootRun")
 }
 ```
+
 启动方式
+
 * 方式一：图形化界面中，直接运行对应环境
   ![](https://res.cloudinary.com/incoder/image/upload/v1609691501/blog/gradle-task-gui.png)
 * 方式二：在命令行中，使用命令来运行对应环境，比如 `gradlew bootRunDev`
@@ -107,7 +116,7 @@ tasks.register("bootRunDev") {
 
 * 方式三：当然你也可以在启动时指定你需要激活的环境
   ```bash
-  # 这里激活的 test 环境
+  # 这里激活的 test 环境，把 ${jar_name} 参数换成对应启动的应用文件
   java -jar ${jar_name} --spring.profiles.active=test
   ```
 
@@ -121,7 +130,22 @@ testImplementation('org.springframework.boot:spring-boot-starter-test') {
 
 ## 打包
 
+打包时需要，注意我们的 SpringBoot 应用它本质上是一个 bootJar（Fatjar） 应用，因此需要将应用打成一个 bootJar（Fatjar）。而对于什么是 bootJar 和 jar 的区别，可以查看之前在 SpringBoot（二） 启动分析JarLauncher 文章中对于 [jar 规范](https://incoder.org/2019/07/05/springboot2/#jar%E8%A7%84%E8%8C%83) 说明
+
+打包方式
+
+* 方式一：图形化操作
+
+* 方式二：命名执行
+  ```bash
+  # 在项目的根目录执行，Windows 使用：gradlew；Linux/macOS：./gradlew
+  # 当然如果那你已安装且配置好 gradle 的环境，你可以直接使用 gradle 代替 ./gradlew 的相关命令
+  gradlew bootJar
+  ```
+
 ## 发布
+
+
 
 ## 参考
 

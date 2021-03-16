@@ -61,36 +61,93 @@ choco install hugo -confirm
 
 ## GitHub Action 部署
 
+1.  新生成部署 key
+  ```shell
+  # 1. 进入本地电脑的 .ssh 文件夹 
+  cd .ssh/
+  # 2. 生成部署 key
+  ssh-keygen -t rsa -b 4096 -C "Jerry.x@outlook.com" -f id_rsa_deploy -N ""
+  ```
+2. 添加部署 key 到项目仓库设置中
+
 ```yaml
-name: github pages
+# This is a basic workflow to help you get started with Actions
 
-# 当 dev 分支发生 push 事件时执行下面任务
+name: CI
+
+# Controls when the action will run. 
 on:
+  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches:
-      - dev
+    branches: master
+  pull_request:
+    branches: dev
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  deploy:
-    runs-on: ubuntu-18.04
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true
+          fetch-depth: 0
+      # Runs a single command using the runners shell
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v2.3.1
         with:
-          hugo-version: 'latest'
-          # extended: true
+          hugo-version: '0.61.0'
+      # Runs a set of commands using the runners shell
       - name: Build
         run: hugo --minify
-
+      
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./public
+          commit_message: ${{ github.event.head_commit.message }}
+```
+
+### Travis
+
+```yml
+language: go
+
+go:
+  - master  # 使用最新版本
+
+# Specify which branches to build using a safelist
+# 分支白名单限制: 只有hugo分支的提交才会触发构建
+branches:
+  only:
+    - dev 
+
+install:
+# 安装最新的hugo
+  - go get -v github.com/gohugoio/hugo
+
+script:
+# 运行hugo命令
+  - hugo
+
+deploy:
+  provider: pages # 重要，指定这是一份github pages的部署配置
+  skip-cleanup: true # 重要，不能省略
+  local-dir: public # 静态站点文件所在目录
+  target-branch: master # 要将静态站点文件发布到哪个分支
+  github-token: $GITHUB_TOKEN # 重要，$GITHUB_TOKEN是变量，需要在GitHub上申请、再到配置到Travis
+  keep-history: true # 是否保持target-branch分支的提交记录
+  on:
+    branch: dev # 博客源码的分支
 ```
 
 ## 参考
