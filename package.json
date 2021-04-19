@@ -26,7 +26,8 @@
     "hexo-renderer-markdown-it": "^5.0.0",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
-    "hexo-symbols-count-time": "^0.7.1"
+    "hexo-symbols-count-time": "^0.7.1",
+    "hexo-theme-next": "^8.3.0"
   },
   "resolutions": {
     "stylus": "^0.54.8"

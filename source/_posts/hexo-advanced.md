@@ -23,11 +23,16 @@ tag: Build
 ### 更改 NexT 主题仓库
 
 1. 删除当前主题，在根目录下执行 `rm -rf themes/`
-2. 安装新的主题，在根目录下执行 
+2. 安装新的主题，
+   * 方案一：在根目录下执行命令添加主题
    ```bash
    git clone https://github.com/next-theme/hexo-theme-next themes/next
    ```
-
+   * 方案二：通过 yarn 来管理主题
+   ```bash
+   yarn add hexo-theme-next
+   ```
+  
 ### 修改配置
 
 之前为了使主题更新不受影响，在项目的根目录 `source/_data` 路径下有一个 `next.yml` 文件来进行对 NexT 的自定义设置，那么在 8.0 版本开始，在项目根目录 `_config.{theme}.yml` 文件来代替之前在 `source/_data` 路径下的 `next.yml` 文件
@@ -109,7 +114,19 @@ INFO  0 games have been loaded in 1004 ms, because you are offline or your netwo
 
 ## 博客评论
 
-在 NexT version 8.1.0 版本，由于安全问题，[Valine被移除](https://github.com/next-theme/hexo-theme-next/issues/4#v8.1.0%20%E7%A7%BB%E9%99%A4%20Valine)，暂时我并未迁移 Valine 的评论
+在 NexT version 8.1.0 版本，由于安全问题，[Valine被移除](https://github.com/next-theme/hexo-theme-next/issues/4#v8.1.0%20%E7%A7%BB%E9%99%A4%20Valine)，~~暂时我并未迁移 Valine 的评论~~
+
+博客已启用 [utterances](https://utteranc.es) 评论支持，配置也比较简单，如下
+
+```yml
+utterances:
+  enable: true
+  repo: BladeCode/BladeCode.github.io # Github repository name
+  # Available values: pathname | url | title | og:title
+  issue_term: title
+  # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
+  theme: github-light
+```
 
 ## 文章加密
 

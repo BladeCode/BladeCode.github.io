@@ -105,8 +105,8 @@ menu_settings:
 
 sidebar:
   # Sidebar Position.
-  # position: left
   position: right
+  #position: right
 
   # Manual define the sidebar width. If commented, will be default for:
   # Muse | Mist: 320
@@ -254,7 +254,7 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: false
+    enable: true
     another_day: true
   categories: true
 
@@ -262,7 +262,7 @@ post_meta:
 # Dependencies: https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
   separated_meta: true
-  item_text_total: false
+  item_text_total: true
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: true
@@ -284,7 +284,7 @@ reward:
 # Subscribe through Telegram Channel, Twitter, etc.
 # Usage: `Key: permalink || icon` (Font Awesome)
 follow_me:
-  #Twitter: https://twitter.com/username || fab fa-twitter
+  Twitter: https://twitter.com/_incoder || fab fa-twitter
   #Telegram: https://t.me/channel_name || fab fa-telegram
   WeChat: https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg || fab fa-weixin
   RSS: /atom.xml || fa fa-rss
@@ -348,7 +348,7 @@ calendar:
 
 # Preconnect CDN for fonts and plugins.
 # For more information: https://www.w3.org/TR/resource-hints/#preconnect
-preconnect: false
+preconnect: true
 
 # Set the text alignment in posts / pages.
 text_align:
@@ -361,6 +361,13 @@ mobile_layout_economy: true
 
 # Android Chrome header panel color ($brand-bg / $headband-bg => $black-deep).
 android_chrome_color: "#222"
+
+# Override browsers' default behavior.
+body_scrollbar:
+  # Place the scrollbar over the content.
+  overlay: true
+  # Present the scrollbar even if the content is not overflowing.
+  stable: true
 
 codeblock:
   # Code Highlight theme
@@ -389,8 +396,11 @@ back2top:
 # Reading progress bar
 reading_progress:
   enable: true
+  # Available values: left | right
+  startAt: left
   # Available values: top | bottom
   position: top
+  reversed: true
   color: "#37c6c0"
   height: 3px
 
@@ -562,6 +572,7 @@ quicklink:
 
   # For more flexibility you can add some patterns (RegExp, Function, or Array) to ignores.
   # See: https://github.com/GoogleChromeLabs/quicklink#custom-ignore-patterns
+  # This option is deprecated. Use `CONFIG.quicklink.ignores` in your custom scripts instead.
   ignores:
 
 
