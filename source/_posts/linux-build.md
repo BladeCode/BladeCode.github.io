@@ -5,13 +5,13 @@ categories: Linux
 tag: Build
 ---
 
-作为Android开发者，目标主要是在客户端，平时也就是和服务端对接数据接口，很少直接干到服务端的Linux机器，随着这波推动团队技术平台基础开发工具模块的完善，拿到了一台Linux机器，重新构建移动端的测试服务器。
+作为 Android 开发者，目标主要是在客户端，平时也就是和服务端对接数据接口，很少直接干到服务端的 Linux 机器，随着这波推动团队技术平台基础开发工具模块的完善，拿到了一台 Linux 机器，重新构建移动端的测试服务器。
 
 该机器主要功能：
-1. 提供移动端服务Api接口
+1. 提供移动端服务 Api 接口
 2. 提供移动端通讯录管理授权服务
 3. 提供企业微信通讯录同步服务
-4. 管理移动端服务器Api接口文档
+4. 管理移动端服务器 Api 接口文档
 
 <!-- more -->
 
@@ -49,12 +49,12 @@ tag: Build
     Release:	7.6.1810
     Codename:	Core
     ```
-2. `cat /etc/redhat-release`：只适合 Redhat 系的Linux
+2. `cat /etc/redhat-release`：只适合 Redhat 系的 Linux
     ```
     [dc2-user@10-255-0-191 ~]$ cat /etc/redhat-release
     CentOS Linux release 7.6.1810 (Core)
     ```
-3. `cat /etc/issue`：此命令也适用于所有的Linux发行版
+3. `cat /etc/issue`：此命令也适用于所有的 Linux 发行版
     ```
     [root@localhost ~]# cat /etc/issue
     CentOS release 6.7 (Final)
@@ -66,23 +66,23 @@ tag: Build
 >官方提供了`.rpm`,`.gz`两种格式安装包
 
 ```bash
-# 1.下载安装包
+# 1. 下载安装包
 #    拷贝安装包到需要安装的服务器
-# 2.解压并安装
-#    `.rpm`格式安装(jdk-xxx.rpm更换成对应的文件名)
+# 2. 解压并安装
+#   .rpm 格式安装(jdk-xxx.rpm更换成对应的文件名)
 sudo rpm -ivh jdk-xxx.rpm
-#    `.gz`格式安装(解压到指定目录，常存放`/usr/java/`路径)
+#   .gz 格式安装(解压到指定目录，常存放 /usr/java/ 路径)
 tar zxvf jdk-xxx.tar.gz -C /usr/java/
-# 3.设置环境变量
+# 3. 设置环境变量
 vim /etc/profile
-# 指定JDK的配置信息(修改这里路径，指向jdk安装路径)
+# 指定 JDK 的配置信息(修改这里路径，指向 jdk 安装路径)
 JAVA_HOME=/usr/java/jdk1.8.0_172
 PATH=$JAVA_HOME/bin:$PATH
 CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export JAVA_HOME PATH CLASSPATH
-# 4.编译配置文件，使修改生效
+# 4. 编译配置文件，使修改生效
 source /etc/profile
-# 5.验证jdk是否安装成功
+# 5. 验证 jdk 是否安装成功
 java –version
 ```
 
@@ -92,20 +92,20 @@ java –version
 >官方提供了`.zip`,`.gz`两种格式安装包，Linux服务器下载`Core`类即可
 
 ```bash
-# 1.下载安装文件
+# 1. 下载安装文件
 wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-9/v9.0.8/bin/apache-tomcat-9.0.8.tar.gz
-# 2.解压安装文件(解压到指定目录，常存放`/usr/tomcat/`路径)
+# 2. 解压安装文件(解压到指定目录，常存放 /usr/tomcat/ 路径)
 tar -zxvf apache-tomcat-9.0.8.tar.gz -C /usr/tomcat/
-# 3.启动tomcat
+# 3. 启动 tomcat
 cd /usr/local/tomcat/bin
 ./startup.sh
-# 4.关闭tomcat
+# 4. 关闭 tomcat
 ./shutdown.sh
 ```
 
 ### 配置Web管理账号
 
-* 修改文件conf/tomcat-users.xml，在元素中添加帐号密码，需要指定角色
+* 修改文件 conf/tomcat-users.xml，在元素中添加帐号密码，需要指定角色
     ```bash
     vim /usr/local/tomcat/conf/tomcat-users.xml
     #   <tomcat-users>
@@ -115,7 +115,7 @@ cd /usr/local/tomcat/bin
 
 ### 配置端口
 
-* 可以修改conf目录下的文件server.xml，修改Connector元素(Tomcat的默认端口是8080)，需要重新启动Tomcat服务生效
+* 可以修改 conf 目录下的文件 server.xml，修改 Connector 元素(Tomcat 的默认端口是 8080)，需要重新启动 Tomcat 服务生效
     ```bash
     vim /usr/local/tomcat/conf/server.xml
     # <Connector port="9999" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" /> 
@@ -123,7 +123,7 @@ cd /usr/local/tomcat/bin
 
 ### 应用部署
 
-* 放置需部署包到容器中`webapps`路径
+* 放置需部署包到容器中 `webapps` 路径
     ```bash
     cd /usr/local/tomcat/webapps
     ```
@@ -132,38 +132,80 @@ cd /usr/local/tomcat/bin
     cd /usr/local/tomcat/bin
     ./startup.sh
     ```
+## Maven
+
+[官方网站](http://tomcat.apache.org/)，选择需要的版本下载
+
+* 官方 Maven: https://maven.apache.org/
+* Maven 下载地址: https://maven.apache.org/download.cgi
+* Maven 历史版本: https://archive.apache.org/dist/maven/maven-3/
+
+### 安装
+
+```bash
+# 下载文件 Maven 文件
+wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
+# 解压 Maven 文件
+tar -xvf  apache-maven-3.8.1-bin.tar.gz
+# 移动 Maven 文件到 /usr/local/ 路径
+sudo mv -f apache-maven-3.8.1 /usr/local/
+```
+
+### 配置
+
+```bash
+# 编辑环境配置
+vim /etc/profile
+# 添加如下环境变量，文件末尾添加如下代码
+export MAVEN_HOME=/usr/local/apache-maven-3.8.1
+export PATH=${PATH}:${MAVEN_HOME}/bin
+# 使环境变量生效
+source /etc/profile
+```
+
+### 验证
+
+```bash
+mvn -v
+```
+
+如果需要更改 Maven 的镜像源，可参考 [专治各种网络不服](https://incoder.org/2020/02/27/fuck-gfw/#Maven) 文章
 
 ## Apache
 
-一般系统中已经包含apache应用  
+一般系统中已经包含 Apache 应用  
 [官方下载地址](http://httpd.apache.org/download.cgi)，选择需要的版本下载安装包
 >官方提供了`.bz2`,`.gz`两种格式安装包
 
 ### 安装
 
-查看系统中是否已包含httpd应用
-```
-rpm -qa | grep httpd 或 yum list | grep httpd
+查看系统中是否已包含 httpd 应用
+```bash
+rpm -qa | grep httpd
+# 或
+yum list | grep httpd
 ```
 
 * 方式一
     ```bash
-    # 1.下载需要的版本文件
+    # 1. 下载需要的版本文件
     wget http://apache.claz.org//httpd/httpd-2.4.33.tar.gz
-    # 2.解压安装文件(解压到指定目录，常存放`/usr/local/httpd/`路径)
+    # 2. 解压安装文件(解压到指定目录，常存放 /usr/local/httpd/ 路径)
     tar -zxvf httpd-2.4.33.tar.gz -C /usr/local/httpd/
     ```
 
 * 方式二(推荐)
     ```bash
-    # 1.下载安装httpd
+    # 1.下载安装 httpd
     yum install httpd
     ```
 
 ### 卸载
 
 ```bash
-yum erase httpd.x86_64 或 rpm -e httpd.x86_64
+yum erase httpd.x86_64
+# 或
+rpm -e httpd.x86_64
 ```
 
 ### 常用命令
@@ -171,9 +213,9 @@ yum erase httpd.x86_64 或 rpm -e httpd.x86_64
 ```bash
 # 查看服务运行状态
 systemctl status httpd.service
-# 启动apache服务
+# 启动 apache 服务
 systemctl start httpd.service
-# 停止apache服务
+# 停止 apache 服务
 systemctl stop httpd.service
 ```
 
@@ -181,33 +223,33 @@ RPM默认安装路径：
 
 |    路径    | 说明 |
 | ---------- | --- |
-| /etc           |  一些设置文件放置的目录如/etc/crontab |
+| /etc           |  一些设置文件放置的目录如 /etc/crontab |
 | /usr/bin       |  一些可执行文件 |
 | /usr/lib       |  一些程序使用的动态函数库 |
 | /usr/share/doc |  一些基本的软件使用手册与帮助文档 |
-| /usr/share/man |  一些man page文件 |
+| /usr/share/man |  一些 man page 文件 |
 
 ## Nginx
 
-[官方下载地址](http://nginx.org/download)，选择需要的版本下载安装包(最新安装版本1.14.0)
+[官方下载地址](http://nginx.org/download)，选择需要的版本下载安装包(最新安装版本 1.14.0)
 >官方提供了`.zip`,`.gz`两种格式安装包
 
 ### 安装
 
 * 方式一
     ```bash
-    # 1.下载安装文件
+    # 1. 下载安装文件
     wget http://nginx.org/download/nginx-1.14.0.tar.gz
-    # 2.解压安装文件(解压到指定目录，常存放`/usr/local/`路径)
+    # 2. 解压安装文件(解压到指定目录，常存放 /usr/local/ 路径)
     tar -zxvf nginx-1.14.0.tar.gz -C /usr/local/
-    # 3. 编译安装依赖库
+    # 3.  编译安装依赖库
     cd /usr/local/nginx/
     ./configure
     ```
 
 * 方式二
     ```bash
-    # 默认安装路径/etc/nginx/
+    # 默认安装路径 /etc/nginx/
     yum install nginx
     ```
 
@@ -215,13 +257,13 @@ RPM默认安装路径：
 
 * 加压文件安装常用命令
     ```bash
-    # 停止ngix
+    # 停止 ngix
     /usr/local/nginx/sbin/nginx -s quit
-    # 重新载入nginx(当配置信息发生修改时)       
+    # 重新载入 nginx(当配置信息发生修改时)       
     /usr/local/nginx/sbin/nginx -s reload
     # 查看版本     
     /usr/local/nginx/sbin/nginx -v
-    # 查看nginx的配置文件的目录            
+    # 查看 nginx 的配置文件的目录            
     /usr/local/nginx/sbin/nginx -t
     # 查看帮助信息            
     /usr/local/nginx/sbin/nginx -h            
@@ -248,11 +290,11 @@ RPM默认安装路径：
 ### 安装
 
 ```bash
-# 1.下载安装文件
+# 1. 下载安装文件
 wget https://nodejs.org/download/chakracore-release/v8.6.0/node-v8.6.0-linux-x64.tar.gz
-# 2.解压安装文件(解压到当前目录)
+# 2. 解压安装文件(解压到当前目录)
 tar -zxf node-v8.6.0-linux-x64.tar.gz
-# 3.建立软链接，实现全局访问
+# 3. 建立软链接，实现全局访问
 ln -s /root/node-v8.6.0-linux-x64/bin/node /usr/local/bin/node
 ln -s /root/node-v8.6.0-linux-x64/bin/npm /usr/local/bin/npm
 ```
@@ -265,21 +307,22 @@ ln -s /root/node-v8.6.0-linux-x64/bin/npm /usr/local/bin/npm
 ### 安装
 
 ```bash
-# 1.下载安装文件
+# 1. 下载安装文件
 wget wget http://download.redis.io/releases/redis-4.0.10.tar.gz
-# 2.解压安装文件(解压到当前目录)
+# 2. 解压安装文件(解压到当前目录)
 tar xzf redis-4.0.10.tar.gz
-# 3.编译安装
+# 3. 编译安装
 cd redis-4.0.10
+# 编译
 make
-# 4.启动服务
+# 4. 启动服务
 src/redis-server
 ```
 
 ## 配置
 
 ```bash
-# 1.修改redis.conf文件中daemonize属性 为 yes
+# 修改 redis.conf 文件中 daemonize 属性 为 yes
 vim /you_install_path/redis.conf
 ```
 > 其他配置根据自身需要调整修改
@@ -302,24 +345,24 @@ vim /you_install_path/redis.conf
 
 #### find
 
-find命令是根据文件的属性进行查找，如文件名，文件大小，所有者，所属组，是否为空，访问时间，修改时间等。 
+find 命令是根据文件的属性进行查找，如文件名，文件大小，所有者，所属组，是否为空，访问时间，修改时间等。 
 * 基本格式：
-find  path expression
+find path expression
 * 示例：
-    * 在根目录下查找文件httpd.conf，表示在整个硬盘查找
+    * 在根目录下查找文件 httpd.conf，表示在整个硬盘查找
     find / -name httpd.conf
-    * 表示当前目录下查找文件名开头是字符串‘srm’的文件
+    * 表示当前目录下查找文件名开头是字符串 srm 的文件
     find . -name 'srm*'
-    * 查找在系统中最后10分钟访问的文件(access time)
+    * 查找在系统中最后 10 分钟访问的文件(access time)
     find / -amin -10
-    * 查找在系统中属于fred这个用户的文件
+    * 查找在系统中属于 fred 这个用户的文件
     find / -user fred
-    * 查找出小于1000KB的文件
+    * 查找出小于 1000KB 的文件
     find / -size -1000k
 
 #### grep
 
-grep是根据文件的内容进行查找，会对文件的每一行按照给定的模式(patter)进行匹配查找。
+grep 是根据文件的内容进行查找，会对文件的每一行按照给定的模式(patter)进行匹配查找。
 * 基本格式：
 find expression
 * 主要参数：
@@ -331,29 +374,29 @@ find expression
     －s：不显示不存在或无匹配文本的错误信息。
     －v：显示不包含匹配文本的所有行。
 * 示例：
-    * 显示所有包含每行字符串至少有5个连续小写字符的字符串的行
+    * 显示所有包含每行字符串至少有 5 个连续小写字符的字符串的行
     grep ‘[a-z]\{5\}’ aa
-    * 显示所有以d开头的文件中包含 test的行
+    * 显示所有以 d 开头的文件中包含 test 的行
     grep 'test' d*
 
 ### 进程相关
 
 * 查看指定服务进程
     ```bash
-    # 查看httpd服务进程
+    # 查看 httpd 服务进程
     ps -ef | grep httpd
     # UID        PID  PPID  C STIME TTY          TIME CMD
     # root      7192  7103  0 19:59 pts/3    00:00:00 grep --color=auto httpd
     ```
 
     {% note info %} 
-    * UID：用户ID 
-    * PID：进程ID 
-    * PPID：父进程ID 
-    * C：CPU用于计算执行优先级的因子。数值越大，表明进程是CPU密集型运算，执行优先级会降低；数值越小，表明进程是I/O密集型运算，执行优先级会提高 
+    * UID：用户 ID 
+    * PID：进程 ID 
+    * PPID：父进程 ID 
+    * C：CPU 用于计算执行优先级的因子。数值越大，表明进程是 CPU 密集型运算，执行优先级会降低；数值越小，表明进程是 I/O 密集型运算，执行优先级会提高 
     * STIME：进程启动的时间 
     * TTY：完整的终端名称 
-    * TIME：CPU时间 
+    * TIME：CPU 时间 
     * CMD：完整的启动进程所用的命令和参数
     {% endnote %}
 
@@ -363,7 +406,7 @@ find expression
     ```
 * 查看指定端口
     ```bash
-    # 检测6379端口是否在监听  
+    # 检测 6379 端口是否在监听  
     netstat -lntp | grep 6379 
     ```
 
@@ -378,16 +421,16 @@ scp(选项)(参数)
 #### 选项
 
 ```
--1：使用ssh协议版本1；
--2：使用ssh协议版本2；
--4：使用ipv4；
--6：使用ipv6；
+-1：使用 ssh 协议版本 1；
+-2：使用 ssh 协议版本 2；
+-4：使用 ipv4；
+-6：使用 ipv6；
 -B：以批处理模式运行；
 -C：使用压缩；
 -F：指定ssh配置文件；
--i：identity_file 从指定文件中读取传输时使用的密钥文件（例如亚马逊云pem），此参数直接传递给ssh；
+-i：identity_file 从指定文件中读取传输时使用的密钥文件（例如亚马逊云 pem），此参数直接传递给ssh；
 -l：指定宽带限制；
--o：指定使用的ssh选项；
+-o：指定使用的 ssh 选项；
 -P：指定远程主机的端口号；
 -p：保留文件的最后修改时间，最后访问时间和权限模式；
 -q：不显示复制进度；
@@ -397,7 +440,7 @@ scp(选项)(参数)
 #### 参数
 
 * 源文件：指定要复制的源文件
-* 目标文件：目标文件。格式为user@host：filename（文件名为目标文件的名称）
+* 目标文件：目标文件。格式为 user@host：filename（文件名为目标文件的名称）
 
 #### 示例
 
@@ -434,10 +477,10 @@ rm [选项] 文件或目录
 #### 选项
 
 ```
--f：强行删除，忽略不存在的文件，不提示确认。(f为force的意思)
--i：进行交互式删除，即删除时会提示确认。(i为interactive的意思)
--r：将参数中列出的全部目录和子目录进行递归删除。(r为recursive的意思)
--v：详细显示删除操作进行的步骤。(v为verbose的意思)
+-f：强行删除，忽略不存在的文件，不提示确认。(f 为 force 的意思)
+-i：进行交互式删除，即删除时会提示确认。(i 为 interactive 的意思)
+-r：将参数中列出的全部目录和子目录进行递归删除。(r 为 recursive 的意思)
+-v：详细显示删除操作进行的步骤。(v 为 verbose 的意思)
 ```
 
 #### 示例
