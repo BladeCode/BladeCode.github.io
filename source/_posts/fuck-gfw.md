@@ -427,6 +427,47 @@ git config --global --unset http.https://github.com.proxy
 
 <iframe src="//player.bilibili.com/player.html?aid=371171067&bvid=BV13Z4y1p75s&cid=205661842&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
+## yum
+
+yum 源配置文件路径：/etc/yum.repo s.d/
+
+```bash
+# 查看配置，Centos-xx.repo 类型的文件即为源
+cd /etc/yum.repos.d && ls
+# 备份源，创建 centos.back 文件夹，并将 *.repo 类型文件剪切到 centos.back 文件夹
+mkdir centos.back && mv *.repo centos.back
+# 下载安装国内源文件，分别下载了阿里和 163 的源文件
+wget http://mirrors.aliyun.com/repo/Centos-7.repo
+wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
+# 清空缓存
+yum clean all
+# 生成缓存
+yum makecache
+```
+
+## docker
+
+docker 镜像源默认是使用的 docker hub(https://hub.docker.com) 的源，为加快效率，我们通常也将镜像源切换到国内镜像
+
+```bash
+# 修改 docker 源配置文件
+vim /etc/docker/daemon.json
+# 内容如下，分别是 docker 中国官方镜像，163，中国科学技术大学
+{
+    "registry-mirrors": [
+        "https://registry.docker-cn.com",
+        "https://hub-mirror.c.163.com",
+        "https://ustc-edu-cn.mirror.aliyuncs.com"
+    ]
+}
+# 保存 daemon.json 文件修改，并退出
+:wq
+# 重启 daemon 服务
+sudo systemctl daemon-reload
+# 重启 docker 服务
+sudo systemctl restart docker
+```
+
 ## 参考
 
 * [Homebrew/Linuxbrew 镜像使用帮助](https://mirror.tuna.tsinghua.edu.cn/help/homebrew/)

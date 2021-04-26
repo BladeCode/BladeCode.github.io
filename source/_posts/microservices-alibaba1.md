@@ -47,7 +47,7 @@ tag: [Microservices, Alibaba]
 
 #### OpenJDK
 
-Java 最早由 SUN（Sun Microsystems，发起于美国斯坦福大学，SUN是Stanford University Network的缩写）发明，2006 年 SUN 公司将 Java 开源，此时的 JDK 即为 OpenJDK
+Java 最早由 SUN（Sun Microsystems，发起于美国斯坦福大学，SUN 是 Stanford University Network 的缩写）发明，2006 年 SUN 公司将 Java 开源，此时的 JDK 即为 OpenJDK
 
 [OpenJDK](http://openjdk.java.net/) 是 Java SE 的开源实现，由 SUN 和 Java 社区提供支持，2009 年 Oracle 收购了 SUN 公司，自此 Java 的维护方之一的 SUN 也就变成了 Oracle
 
