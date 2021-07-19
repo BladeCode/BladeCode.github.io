@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="iTerm2是一款优秀强大的第三方终端，相信用 Mac 的开发者，一定听过或者用过 iTerm2 这款终端应用，如果你还没使用过，没关系那么本篇文章就带你了解学习 iTerm2 中的一些常用操作，来提高你的工作效率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iTerm2 日常">
+<meta property="og:url" content="https://incoder.org/2020/08/05/mac-item2/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="iTerm2是一款优秀强大的第三方终端，相信用 Mac 的开发者，一定听过或者用过 iTerm2 这款终端应用，如果你还没使用过，没关系那么本篇文章就带你了解学习 iTerm2 中的一些常用操作，来提高你的工作效率">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1596547673/blog/logo2x.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-iterm2-default.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-iterm2-hotkey.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-zsh-install.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-iterm2-font.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1541968117/blog/mac-iterm2-presets.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1605693920/blog/nmap.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1559382897/blog/ssh-login.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1562848027/blog/shadowsocks-proxy.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1562849019/blog/proxy-config.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1605687042/blog/proxy-config-info.png">
+<meta property="article:published_time" content="2020-08-05T00:32:10.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="iTerm2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1596547673/blog/logo2x.jpg">
+
+
+<link rel="canonical" href="https://incoder.org/2020/08/05/mac-item2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2020/08/05/mac-item2/","path":"2020/08/05/mac-item2/","title":"iTerm2 日常"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>iTerm2 日常 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">基础设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Oh-my-zsh"><span class="nav-number">1.4.</span> <span class="nav-text">安装Oh my zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PowerLine"><span class="nav-number">1.4.1.</span> <span class="nav-text">PowerLine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85PowerFonts"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装PowerFonts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%97%E4%BD%93%E5%8F%8A%E8%83%8C%E6%99%AF"><span class="nav-number">1.4.3.</span> <span class="nav-text">设置字体及背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-number">1.4.4.</span> <span class="nav-text">修改主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9"><span class="nav-number">1.4.5.</span> <span class="nav-text">辅助</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%80%89%E6%8B%A9"><span class="nav-number">2.</span> <span class="nav-text">主题选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">2.2.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-v2"><span class="nav-number">2.3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VS-Code"><span class="nav-number">2.4.1.</span> <span class="nav-text">VS Code</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Homebrew"><span class="nav-number">3.1.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%98%E6%96%B9"><span class="nav-number">3.1.1.</span> <span class="nav-text">官方</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-v2"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">卸载</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BD%E5%86%85%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">3.1.2.</span> <span class="nav-text">国内（推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-v3"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD-v2"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">卸载</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.1.3.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#brew-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">brew 基础命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#brew-service"><span class="nav-number">3.1.3.2.</span> <span class="nav-text">brew service</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap"><span class="nav-number">3.2.</span> <span class="nav-text">Nmap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">4.</span> <span class="nav-text">常用快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">4.1.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B1%8F"><span class="nav-number">4.2.</span> <span class="nav-text">分屏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">4.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E4%B9%B1%E7%A0%81"><span class="nav-number">5.1.</span> <span class="nav-text">文本乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F%E6%8C%87%E5%AE%9A%E8%BF%9B%E7%A8%8B"><span class="nav-number">5.2.</span> <span class="nav-text">结束指定进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">5.3.</span> <span class="nav-text">免密登录服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E5%A4%84%E7%90%86"><span class="nav-number">5.4.</span> <span class="nav-text">代理处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2020/08/05/mac-item2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iTerm2 日常
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-08-05 00:32:10" itemprop="dateCreated datePublished" datetime="2020-08-05T00:32:10+00:00">2020-08-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/macOS/" itemprop="url" rel="index"><span itemprop="name">macOS</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/08/05/mac-item2/" class="post-meta-item leancloud_visitors" data-flag-title="iTerm2 日常" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1596547673/blog/logo2x.jpg" alt=""></p>
+<p>iTerm2是一款优秀强大的第三方终端，相信用 Mac 的开发者，一定听过或者用过 iTerm2 这款终端应用，如果你还没使用过，没关系那么本篇文章就带你了解学习 iTerm2 中的一些常用操作，来提高你的工作效率</p>
+<span id="more"></span>
+<h2 id="安装配置"><a class="header-anchor" href="#安装配置"></a>安装配置</h2>
+<h3 id="下载"><a class="header-anchor" href="#下载"></a>下载</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuaXRlcm0yLmNvbQ==">iTerm2官网<i class="fa fa-external-link-alt"></i></span></p>
+<blockquote>
+<p>注意：<br>
+系统自带的终端默认使用<code>bash</code>；iTerm2默认使用<code>zsh</code>，因此两者切换如下命令</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装完iTerm 可使用如下命令来切换</span></span><br><span class="line">chsh -s /bin/[zsh | bash]</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a class="header-anchor" href="#配置"></a>配置</h3>
+<h3 id="基础设置"><a class="header-anchor" href="#基础设置"></a>基础设置</h3>
+<ol>
+<li>
+<p>默认应用<br>
+MenuBar -&gt; iTerm2 -&gt; Make iTerm2 Default Term<br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-iterm2-default.png" alt="iterm2-default"></p>
+</li>
+<li>
+<p>全局热键<br>
+MenuBar -&gt; iTerm2 -&gt; preference -&gt; Keys -&gt; Show/hide iTerm2 with a system-wide hotkey<br>
+输入设置的快捷键，这里使用<code>⌘,</code><br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-iterm2-hotkey.png" alt="iterm2-hotkey"></p>
+</li>
+</ol>
+<h3 id="安装Oh-my-zsh"><a class="header-anchor" href="#安装Oh-my-zsh"></a>安装Oh my zsh</h3>
+<ul>
+<li>方式一：crul  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>方式二：wget  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-zsh-install.png" alt="zsh-install"></li>
+</ul>
+<h4 id="PowerLine"><a class="header-anchor" href="#PowerLine"></a>PowerLine</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install powerline-status --user</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果提示：<br>
+command not found: pip<br>
+先执行，再执行上面的字体安装命令</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo easy_install pip</span><br></pre></td></tr></table></figure>
+<h4 id="安装PowerFonts"><a class="header-anchor" href="#安装PowerFonts"></a>安装PowerFonts</h4>
+<p>为避免后续的使用中，可能会遇到字符乱码的问题，因此安装字体</p>
+<p>字体库需要首先将项目<code>clone</code>到本地，然后执行源码中的<code>install.sh</code>，根据自己的喜好存放在指定的位置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入Documents目录</span></span><br><span class="line"><span class="built_in">cd</span> Documents</span><br><span class="line"><span class="comment"># 创建文件夹PowerFonts</span></span><br><span class="line">mkdir PowerFonts</span><br><span class="line"><span class="comment"># 进入PowerFonts目录</span></span><br><span class="line"><span class="built_in">cd</span> PowerFonts</span><br><span class="line"><span class="comment"># clone源码</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"><span class="comment"># 进入fonts目录</span></span><br><span class="line"><span class="built_in">cd</span> fonts</span><br><span class="line"><span class="comment"># 执行安装脚本</span></span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<h4 id="设置字体及背景"><a class="header-anchor" href="#设置字体及背景"></a>设置字体及背景</h4>
+<ul>
+<li>
+<p>设置字体<br>
+MenuBar -&gt; iTerm2 -&gt; Preferences -&gt; Profiles -&gt; Text -&gt; Change Font，选择<code>Meslo LG</code>字体，L，M，S风格，看个人喜好，这里选择<code>Meslo LG S Powerline</code><br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1541968115/blog/mac-iterm2-font.png" alt="iterm2-font"></p>
+</li>
+<li>
+<p>背景设置<br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1541968117/blog/mac-iterm2-presets.png" alt="iterm2-presets"></p>
+</li>
+</ul>
+<h4 id="修改主题"><a class="header-anchor" href="#修改主题"></a>修改主题</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开.zshrc隐藏文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 修改ZSH_THEME为agnoster</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;agnoster&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>默认：ZSH_THEME=“robbyrussell”</p>
+</blockquote>
+<h4 id="辅助"><a class="header-anchor" href="#辅助"></a>辅助</h4>
+<ul>
+<li>高亮插件  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git</span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 添加zsh-syntax-highlighting到plugins中，放在git后面</span></span><br><span class="line">plugins=(</span><br><span class="line">    git</span><br><span class="line">    zsh-syntax-highlighting</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 文件最后添加，然后保存并退出</span></span><br><span class="line"><span class="built_in">source</span> ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br></pre></td></tr></table></figure>
+最后，对配置文件进行生效处理  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li>命令补全<br>
+安装步骤和上面的高亮插件一致  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.oh-my-zsh/custom/plugins/</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions</span><br><span class="line"></span><br><span class="line">vi ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li>设置背景图<br>
+iTerm2 -&gt; Preferences -&gt; Profiles -&gt; Window -&gt; BackGround Image</li>
+</ul>
+<h2 id="主题选择"><a class="header-anchor" href="#主题选择"></a>主题选择</h2>
+<p>Oh my zsh 本身也包含了很多主题，而我比较喜欢的一款 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JvbWthdHYvcG93ZXJsZXZlbDEwaw==">powerlevel10k<i class="fa fa-external-link-alt"></i></span> 的主题，非常的简洁，满足我的装 X 的需求的同时，极其简单的设置也是我对其爱不释手。</p>
+<p>之前最早使用的是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Bvd2VybGV2ZWw5ay9wb3dlcmxldmVsOWs=">powerlevel9k<i class="fa fa-external-link-alt"></i></span>，我的博客里面一些终端的截图就是 powerlevel9k，但随着我的需求越来越多以及加载的插件也越来越多，我不能忍受 iTerm2 在使用 时的效率问题，然后就看到了powerlevel10k，它是在powerlevel9k 的基础上迭代的，大大提高了响应效率和更加简洁的配置等</p>
+<h3 id="安装"><a class="header-anchor" href="#安装"></a>安装</h3>
+<p>官方提供了多种安装方式（Manual，Oh My Zsh，Homebrew 等等），选择你熟系的方式进行安装，我这里使用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JvbWthdHYvcG93ZXJsZXZlbDEwayNvaC1teS16c2g=">Oh My Zsh<i class="fa fa-external-link-alt"></i></span> 方式安装，选择了 gitee 镜像地址进行下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 下载主题</span></span><br><span class="line">git <span class="built_in">clone</span> --depth=1 https://gitee.com/romkatv/powerlevel10k.git <span class="variable">$&#123;ZSH_CUSTOM:-<span class="variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k</span><br><span class="line"><span class="comment"># 2. 在 .zshrc 文件中设置主题</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 3. 大概 19 行，设置 ZSH_THEME 参数的值为 powerlevel10k/powerlevel10k</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;powerlevel10k/powerlevel10k&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>默认安装路径：/Users/<code>&lt;PC USER NAME&gt;</code>/.oh-my-zsh/custom/themes/powerlevel10k</p>
+</blockquote>
+<h3 id="更新"><a class="header-anchor" href="#更新"></a>更新</h3>
+<p>当初选择的什么安装方式，就使用什么方式进行更新，我这里以 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JvbWthdHYvcG93ZXJsZXZlbDEwayNGQVE=">Oh My Zsh<i class="fa fa-external-link-alt"></i></span> 方式进行更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -C <span class="variable">$&#123;ZSH_CUSTOM:-<span class="variable">$HOME</span>/.oh-my-zsh/custom&#125;</span>/themes/powerlevel10k pull</span><br></pre></td></tr></table></figure>
+<h3 id="配置-v2"><a class="header-anchor" href="#配置-v2"></a>配置</h3>
+<p>只需要在终端（）或者 iTerm2 命令窗口中输入 <code>p10k configure</code> 即可，然后根据提示选择即可完成配置，我比较懒，就用的 <code>Pure</code> 样式</p>
+<h3 id="问题"><a class="header-anchor" href="#问题"></a>问题</h3>
+<h4 id="VS-Code"><a class="header-anchor" href="#VS-Code"></a>VS Code</h4>
+<p>在 VS Code Terminal 中显示不出来图标或者显示乱码异常等问题，先设置 VS Code 字体看看是否能解决，如果不能再进行排查</p>
+<p>Open File → Preferences → Settings, 在搜索框中输入<code>terminal.integrated</code>，字体设置为<code>MesloLGS NF</code>.</p>
+<h2 id="常用工具"><a class="header-anchor" href="#常用工具"></a>常用工具</h2>
+<h3 id="Homebrew"><a class="header-anchor" href="#Homebrew"></a>Homebrew</h3>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9icmV3LnNo">Homebrew<i class="fa fa-external-link-alt"></i></span> 是一款自由及开放源代码的软件包管理系统，用以简化macOS系统上的软件安装过程，最初由马克斯·霍威尔（Max Howell）写成</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0hvbWVicmV3L2hvbWVicmV3LWNhc2s=">Homebrew Cask<i class="fa fa-external-link-alt"></i></span>，它是一套建立在 Homebrew 基础之上软件安装命令行工具，是 Homebrew 的扩展</li>
+</ul>
+<h4 id="官方"><a class="header-anchor" href="#官方"></a>官方</h4>
+<blockquote>
+<p>如果你使用的官方安装教程，需要切换 brew 的镜像源，可参考 <a href="https://incoder.org/2020/02/27/fuck-gfw">专治各种网络不服</a> 文章</p>
+</blockquote>
+<h5 id="安装-v2"><a class="header-anchor" href="#安装-v2"></a>安装</h5>
+<p>在你的终端（Terminal/iTerm2）运行如下脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="卸载"><a class="header-anchor" href="#卸载"></a>卸载</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="国内（推荐）"><a class="header-anchor" href="#国内（推荐）"></a>国内（推荐）</h4>
+<blockquote>
+<p>按照命令行上面的提示，进行安装</p>
+</blockquote>
+<h5 id="安装-v3"><a class="header-anchor" href="#安装-v3"></a>安装</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="卸载-v2"><a class="header-anchor" href="#卸载-v2"></a>卸载</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="常用命令"><a class="header-anchor" href="#常用命令"></a>常用命令</h4>
+<p>对于 brew 和 brew cask 的命令基本一致，比如</p>
+<ul>
+<li>【brew】：brew install [包名]</li>
+<li>【brew cask】：brew cask install [包名]</li>
+</ul>
+<h5 id="brew-基础命令"><a class="header-anchor" href="#brew-基础命令"></a>brew 基础命令</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装指定包应用，如：brew install wget</span></span><br><span class="line">brew install [包名]</span><br><span class="line"><span class="comment"># 重新安装指定应用，如：brew reinstall wget</span></span><br><span class="line">brew reinstall [包名]</span><br><span class="line"><span class="comment"># 卸载指定包，如：brew uninstall wget</span></span><br><span class="line">brew uninstall [包名]</span><br><span class="line"><span class="comment"># 列出已安装的软件</span></span><br><span class="line">brew list</span><br><span class="line"><span class="comment"># 全部更新过时软件，如：brew upgrade</span></span><br><span class="line">brew upgrade</span><br><span class="line"><span class="comment"># 指定更新过时的软件，如：brew upgrade wget</span></span><br><span class="line">brew upgrade [包名]</span><br><span class="line"><span class="comment"># 用浏览器打开brew的官方网站</span></span><br><span class="line">brew home</span><br><span class="line"><span class="comment"># 显示当前软件信息，如：brew info wget</span></span><br><span class="line">brew info [包名]</span><br><span class="line"><span class="comment"># 显示包依赖，如：brew deps wget</span></span><br><span class="line">brew deps [包名]</span><br><span class="line"><span class="comment"># 清理所有包的旧版本</span></span><br><span class="line">brew cleanup</span><br><span class="line"><span class="comment"># 清理指定包的旧版本</span></span><br><span class="line">brew cleanup [包名]</span><br><span class="line"><span class="comment"># 查看可清理的旧版本包，不执行实际操作</span></span><br><span class="line">brew cleanup -n</span><br><span class="line"><span class="comment"># 查找指定包</span></span><br><span class="line">brew search [包名]</span><br><span class="line"><span class="comment"># 查看缓存路径</span></span><br><span class="line">brew --cache</span><br></pre></td></tr></table></figure>
+<h5 id="brew-service"><a class="header-anchor" href="#brew-service"></a>brew service</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看使用brew安装的服务列表</span></span><br><span class="line">brew services list</span><br><span class="line"><span class="comment"># 启动服务（仅启动不注册）</span></span><br><span class="line">brew services run formula|--all</span><br><span class="line"><span class="comment"># 启动服务，并注册</span></span><br><span class="line">brew services start formula|--all</span><br><span class="line"><span class="comment"># 停止服务，并取消注册</span></span><br><span class="line">brew services stop formula|--all</span><br><span class="line"><span class="comment"># 重启服务，并注册</span></span><br><span class="line">brew services restart formula|--all</span><br><span class="line"><span class="comment"># 清除已卸载应用的无用的配置</span></span><br><span class="line">brew services cleanup</span><br></pre></td></tr></table></figure>
+<h3 id="Nmap"><a class="header-anchor" href="#Nmap"></a>Nmap</h3>
+<p>端口扫描必备工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 nmap 工具</span></span><br><span class="line">brew install nmap</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1605693920/blog/nmap.png" alt="nmap"></p>
+<h2 id="常用快捷键"><a class="header-anchor" href="#常用快捷键"></a>常用快捷键</h2>
+<h3 id="标签"><a class="header-anchor" href="#标签"></a>标签</h3>
+<ol>
+<li>新建标签：⌘(command) + t</li>
+<li>关闭标签：⌘(command) + w</li>
+<li>切换标签：⌘(command) + 数字 ⌘(command) + 左右方向键</li>
+<li>切换全屏：⌘(command) + enter</li>
+<li>查找：⌘(command) + f</li>
+</ol>
+<h3 id="分屏"><a class="header-anchor" href="#分屏"></a>分屏</h3>
+<ol>
+<li>垂直分屏：⌘(command) + d</li>
+<li>水平分屏：⌘(command) + ⇧(shift) + d</li>
+<li>切换屏幕：⌘(command) + ⌥(option) + 方向键 ⌘(command) + [ 或 ⌘(command) + tab 所在的数字]</li>
+<li>查看历史命令：⌘(command) + ;</li>
+<li>查看剪贴板历史：⌘(command) + ⇧(shift) + h</li>
+</ol>
+<h3 id="其他"><a class="header-anchor" href="#其他"></a>其他</h3>
+<ol>
+<li>清除当前行：⌘(command) + u</li>
+<li>清屏：⌘(command) + r</li>
+<li>列出剪切板历史：⌘(command) + ⇧(shift) + h</li>
+<li>命令快照（很实用的一个功能）：⌘(command) + ⌥(option) + b
+<blockquote>
+<p>大概只能记录 30s 左右的操作</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="常见问题"><a class="header-anchor" href="#常见问题"></a>常见问题</h2>
+<h3 id="文本乱码"><a class="header-anchor" href="#文本乱码"></a>文本乱码</h3>
+<p>在一开始使用macOS就已经安装iTerm2来代替了系统自带的Terminal应用，毕竟颜值是决定要不用长期使用的重要因素</p>
+<p>iTerm2对应的配置文件：<code>.zshrc</code>，Terminal对于的配置文件：<code>.bash_profile</code> 或 <code>.bashrc</code></p>
+<ul>
+<li>问题：iTerm2查看本地文件，能正常显示，无乱码，但查看服务器上文件，出现乱码</li>
+<li>原因：本地iTerm2终端和服务器字符集不一致，造成乱码，macOS默认Terminal应用是<code>utf-8</code>，而iTerm2默认没有设置<code>utf-8</code>编码</li>
+<li>解决办法：给本地的<code>.zshrc</code>设置字符集编码  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用vim打开.zshrc文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 在文本内容末尾添加以下两行内容进行字符编码设置</span></span><br><span class="line"><span class="built_in">export</span> LC_ALL=en_US.UTF-8  </span><br><span class="line"><span class="built_in">export</span> LANG=en_US.UTF-8</span><br><span class="line"><span class="comment"># 保存文件内容，退出vim模式，并使刚刚设置的内容生效</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>帮助：可以在本地和服务器上分别使用<code>locale</code>命令来查看，本地和服务器的字符编码是否一致</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="结束指定进程"><a class="header-anchor" href="#结束指定进程"></a>结束指定进程</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看指定端口号 lsof -i:端口号</span></span><br><span class="line">lsof -i:8088</span><br><span class="line">COMMAND   PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME</span><br><span class="line">java    72612 blade   18u  IPv6 0x21ccddb0352361e5      0t0  TCP *:radan-http (LISTEN)</span><br><span class="line"><span class="comment"># kill指定进程</span></span><br><span class="line"><span class="built_in">kill</span> -9 72612</span><br></pre></td></tr></table></figure>
+<h3 id="免密登录服务器"><a class="header-anchor" href="#免密登录服务器"></a>免密登录服务器</h3>
+<p>一图胜千言，请看图</p>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1559382897/blog/ssh-login.png" alt="ssh-login"></p>
+<h3 id="代理处理"><a class="header-anchor" href="#代理处理"></a>代理处理</h3>
+<p>在 Mac 系统上，使用 iTerm2 是一件很享受的过程，很多事情都可以通过命令行直接完成，但是一个致命的问题是，很多连接在国内环境下，异常忙，比如通过命令 clone 或处理 GitHub 上的项目，速度慢的让人抓狂，虽然电脑开启了代理（非全局），但视乎没有什么作用，针对此问题，需要让我们的终端也通过代理</p>
+<ol>
+<li>install privoxy <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install privoxy</span><br></pre></td></tr></table></figure>
+</li>
+<li>setting privoxy <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="built_in">local</span>/etc/privoxy/config</span><br></pre></td></tr></table></figure>
+</li>
+<li>config privoxy <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">listen-address 0.0.0.0:xxxx</span><br><span class="line">forward-socks5 / localhost:1080 .</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>0.0.0.0 可以让其他设备访问到，若不需要，请修改成用 127.0.0.1；xxxx是HTTP代理的默认端口；<br>
+localhost:1080 是 SOCKS5（shadowsocks） 默认的地址，可根据需要自行修改，且注意不要忘了最后有一个空格和点号。</p>
+</blockquote>
+</li>
+<li>start privoxy <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 因没有安装在系统目录内，所以启动的时候需要打全路径</span></span><br><span class="line">sudo /usr/<span class="built_in">local</span>/sbin/privoxy /usr/<span class="built_in">local</span>/etc/privoxy/config</span><br><span class="line"><span class="comment"># 查看是否启动成功（1087 端口号换成自己的）</span></span><br><span class="line">netstat -na | grep 1087</span><br><span class="line"><span class="comment"># 看到有类似如下信息就表示启动成功了</span></span><br><span class="line">tcp4	0	0  *.1087		*.*		LISTEN</span><br></pre></td></tr></table></figure>
+代理端口查看<br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1562848027/blog/shadowsocks-proxy.png" alt="shadowsocks-proxy"></li>
+<li>use proxy
+<ul>
+<li>temp proxy<br>
+如果关闭终端标签页或窗口，功能就会失效
+<ul>
+<li>star proxy  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里的端口号1087，换成你自己的</span></span><br><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">&#x27;http://localhost:1087&#x27;</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">&#x27;http://localhost:1087&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>cancel proxy  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> http_proxy</span><br><span class="line"><span class="built_in">unset</span> https_proxy</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>auto proxy
+<ul>
+<li>setting ~/.bash_profile  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开.bash_profile 文件</span></span><br><span class="line">vim ~/.bash_profile</span><br><span class="line"><span class="comment"># .bash_profile文件最后添加（1087 端口替换成你自己的）</span></span><br><span class="line"><span class="built_in">export</span> http_proxy=<span class="string">&#x27;http://localhost:1087&#x27;</span></span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="string">&#x27;http://localhost:1087&#x27;</span></span><br><span class="line"><span class="comment"># 保存文件  :wq 后，使配置生效</span></span><br><span class="line"><span class="built_in">source</span>  ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li>上面的方式也可以在文件(<code>.bash_profile</code>)中加入如下方法，使用时只需要在终端中输入<code>proxy_on</code>命令，关闭输入<code>proxy_off</code>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">proxy_off</span></span>()&#123;</span><br><span class="line">    <span class="built_in">unset</span> http_proxy</span><br><span class="line">    <span class="built_in">unset</span> https_proxy</span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;已关闭代理&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">proxy_on</span></span>() &#123;</span><br><span class="line">    <span class="built_in">export</span> no_proxy=<span class="string">&quot;localhost,127.0.0.1,localaddress,.localdomain.com&quot;</span></span><br><span class="line">    <span class="built_in">export</span> http_proxy=<span class="string">&quot;http://127.0.0.1:1087&quot;</span></span><br><span class="line">    <span class="built_in">export</span> https_proxy=<span class="variable">$http_proxy</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;已开启代理&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>test <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 已废弃，只能查看到当前的 IP 地址，其他信息请使用 curl cip.cc 命令</span></span><br><span class="line">curl ip.gs</span><br></pre></td></tr></table></figure>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1562849019/blog/proxy-config.png" alt="proxy-config"> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl cip.cc</span><br></pre></td></tr></table></figure>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1605687042/blog/proxy-config-info.png" alt="proxy-config-info"></li>
+</ol>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aGFuZ21pYW8uY2MvcG9zdHMvZTZiYzY1ZGUuaHRtbA==">Mac终端-iTerm2使用<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8xMTEwMTQ0NDg=">Homebrew国内如何自动安装（国内地址）<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9saGFqaC5naXRodWIuaW8vbWFjLzIwMTgvMDQvMjUvSXRlcm0yLXVzYWdlLWFuZC1za2lsbHMuaHRtbA==">iTerm2 用法与技巧<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2020/08/05/mac-item2/" title="iTerm2 日常">https://incoder.org/2020/08/05/mac-item2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/iTerm2/" rel="tag"><i class="fa fa-tag"></i> iTerm2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/25/springcloud3/" rel="prev" title="SpringCloud（三）Security OAuth2 源码分析">
+                  <i class="fa fa-chevron-left"></i> SpringCloud（三）Security OAuth2 源码分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/09/13/travel-cz-plan/" rel="next" title="川藏行 —— 行程规划">
+                  川藏行 —— 行程规划 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

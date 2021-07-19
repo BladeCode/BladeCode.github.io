@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="移动端开发，一个避不开的老生常谈功能开发，二维码扫描识别（主要）及二维码生成（辅助），虽然已有现成的开源项目提供了功能，仅仅作为功能的开发集成和调试，其实远远不够，应该在完成功能开发的基础上去学习背后的技术点和原理，让我们更加完整的掌握该技术。废话不多说，本篇是 Zxing 相关技术的第一篇文章，本篇不会涉及到应用相关，仅仅是二维码基础知识的学习记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zxing（一）二维码基础知识">
+<meta property="og:url" content="https://incoder.org/2019/05/01/zxing1/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="移动端开发，一个避不开的老生常谈功能开发，二维码扫描识别（主要）及二维码生成（辅助），虽然已有现成的开源项目提供了功能，仅仅作为功能的开发集成和调试，其实远远不够，应该在完成功能开发的基础上去学习背后的技术点和原理，让我们更加完整的掌握该技术。废话不多说，本篇是 Zxing 相关技术的第一篇文章，本篇不会涉及到应用相关，仅仅是二维码基础知识的学习记录。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1556733911/blog/QR_Code_Structure_Example.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1556802979/blog/qr-iec-18004.png">
+<meta property="article:published_time" content="2019-05-01T09:01:22.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.819Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="Zxing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1556733911/blog/QR_Code_Structure_Example.png">
+
+
+<link rel="canonical" href="https://incoder.org/2019/05/01/zxing1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2019/05/01/zxing1/","path":"2019/05/01/zxing1/","title":"Zxing（一）二维码基础知识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Zxing（一）二维码基础知识 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#QRcode"><span class="nav-number">1.</span> <span class="nav-text">QRcode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%8F%8A%E5%8F%91%E5%B1%95"><span class="nav-number">2.</span> <span class="nav-text">标准及发展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IEC-18004"><span class="nav-number">3.1.</span> <span class="nav-text">IEC 18004</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A9%E7%A0%81"><span class="nav-number">3.2.</span> <span class="nav-text">掩码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A0%E9%94%99%E7%AD%89%E7%BA%A7"><span class="nav-number">3.3.</span> <span class="nav-text">纠错等级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81-QR-%E7%A0%81%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.4.</span> <span class="nav-text">编码 QR 码步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2019/05/01/zxing1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Zxing（一）二维码基础知识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-01 09:01:22" itemprop="dateCreated datePublished" datetime="2019-05-01T09:01:22+00:00">2019-05-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/05/01/zxing1/" class="post-meta-item leancloud_visitors" data-flag-title="Zxing（一）二维码基础知识" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>移动端开发，一个避不开的老生常谈功能开发，二维码扫描识别（主要）及二维码生成（辅助），虽然已有现成的开源项目提供了功能，仅仅作为功能的开发集成和调试，其实远远不够，应该在完成功能开发的基础上去学习背后的技术点和原理，让我们更加完整的掌握该技术。废话不多说，本篇是 Zxing 相关技术的第一篇文章，本篇不会涉及到应用相关，仅仅是二维码基础知识的学习记录。</p>
+<span id="more"></span>
+<h2 id="QRcode"><a class="header-anchor" href="#QRcode"></a>QRcode</h2>
+<p>QRcode（全称：Quick Response Code，快速响应矩阵图码）</p>
+<ul>
+<li>1994 年由<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU5JTlCJUJCJUU4JUEzJTlE">日本 DENSO WAVE<i class="fa fa-external-link-alt"></i></span>公司发明，</li>
+<li>QR 码使用<code>四种</code>标准化编码模式（数字，字母数字，字节（二进制）和汉字）来存储数据</li>
+<li>QR 码可以存储更多信息，可在小空间内打印，可以从 360°任一方向读取，可以对变脏和破损的图码有一定的容错能力，并且可以有效处理各种数据，支持数据合并等</li>
+<li>QR 码的种类：<span class="exturl" data-url="aHR0cHM6Ly93d3cucXJjb2RlLmNvbS96aC9jb2Rlcy9tb2RlbDEyLmh0bWw=">QR 码（模型1，模型2）<i class="fa fa-external-link-alt"></i></span>；<span class="exturl" data-url="aHR0cHM6Ly93d3cucXJjb2RlLmNvbS96aC9jb2Rlcy9taWNyb3FyLmh0bWw=">Micro QR 码<i class="fa fa-external-link-alt"></i></span>；<span class="exturl" data-url="aHR0cHM6Ly93d3cucXJjb2RlLmNvbS96aC9jb2Rlcy9pcXIuaHRtbA==">iQR 码<i class="fa fa-external-link-alt"></i></span>；<span class="exturl" data-url="aHR0cHM6Ly93d3cucXJjb2RlLmNvbS9lbi9jb2Rlcy9zcXJjLmh0bWw=">SQRC<i class="fa fa-external-link-alt"></i></span>；<span class="exturl" data-url="aHR0cHM6Ly93d3cucXJjb2RlLmNvbS9lbi9jb2Rlcy9mcmFtZXFyLmh0bWw=">Frame QR<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<blockquote>
+<p>QR 码（模型1，模型2）:<br>
+模型1：最早制作的 QR 码。最高版本为 14（73x73 码元），最多可以处理 1167 位数字<br>
+模型2：是模型1的改良版，最高版本为 40（177x177 码元），最多可以处理 7089 位数字，现在我们通常所说的 QR 码一般指模型2<br>
+Micro QR 码：该码只有 1 个定位图案，可以在更小的空间内打印，最高版本为 M4（17x17 码元），最多可以因 35 位数字<br>
+iQR码：可生成正方形或长方形，可以支持内外翻转，黑白反色，圆点图案（直接打标在部件上）。理论上的最高版本为 61（422x422 码元），最多大约可以处理 4万位数字<br>
+SQRC：安全快速响应代码（Secure Quick Response code，简写SQRC）是一种QR代码，在终结符之后包含“私有数据”段而不是指定的填充字节“ec 11”。必须使用加密密钥对此专用数据段进行解密。这可用于存储私人信息和管理公司的内部信息。<br>
+Frame QR：FrameQR是具有“画布区域”的QR码，可以灵活使用。在这个代码的中心是画布区域，其中可以灵活地安排图形，字母等，使得可以布置代码而不会丢失插图，照片等的设计</p>
+</blockquote>
+<h2 id="标准及发展"><a class="header-anchor" href="#标准及发展"></a>标准及发展</h2>
+<ul>
+<li>1997年10月：AIM（自动识别和流动协会）国际</li>
+<li>1999年1月：JIS X 0510</li>
+<li>2000年6月
+<ul>
+<li>ISO / IEC 18004：2000信息技术 - 自动识别和数据捕获技术 - 条形码符号 - QR码（现已撤销）</li>
+<li>定义QR码模型1和2符号</li>
+</ul>
+</li>
+<li>2006年9月1日：
+<ul>
+<li>ISO / IEC 18004：2006信息技术 - 自动识别和数据捕获技术 - QR码2005条形码符号规范（现已撤销）</li>
+<li>定义QR码2005符号，QR码模型2的扩展。不指定如何读取QR码模型1符号，或要求符合性。</li>
+</ul>
+</li>
+<li>2015年2月1日：
+<ul>
+<li>ISO / IEC 18004：2015信息 - 自动识别和数据捕获技术 - QR码条形码符号规范</li>
+<li>将QR Code 2005符号重命名为QR Code，并对某些程序和次要更正添加说明</li>
+</ul>
+</li>
+</ul>
+<h2 id="结构"><a class="header-anchor" href="#结构"></a>结构</h2>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1556733911/blog/QR_Code_Structure_Example.png" alt="qrcode-structure"></p>
+<blockquote>
+<p>图片来自<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvUVIlRTclQTIlQkM=">维基百科<i class="fa fa-external-link-alt"></i></span>，Version7</p>
+</blockquote>
+<p>如图所示，QR码由 5 部分组成</p>
+<ol>
+<li>版本信息：记录具体的版本信息（仅存在 Version7 以上）
+<ul>
+<li>version1 是 21x21 的矩阵</li>
+<li>最高 version40 是 177x177 的矩阵</li>
+<li>计算公式：(V-1)*4+21，V 代表版本号</li>
+</ul>
+</li>
+<li>格式信息：记录使用的<code>掩码</code>和<code>纠错等级</code></li>
+<li>数据及容错密钥</li>
+<li>数据需求模块</li>
+<li>静态区域</li>
+</ol>
+<h3 id="IEC-18004"><a class="header-anchor" href="#IEC-18004"></a>IEC 18004</h3>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1556802979/blog/qr-iec-18004.png" alt="qr-iec-18004"><br>
+IEC 18004标准中给出了详细的说明</p>
+<ul>
+<li>位置探测图形、位置探测图形分隔符、定位图形：用于对二维码的定位，对每个QR码来说，位置都是固定存在的，只是大小规格会有所差异；</li>
+<li>校正图形：规格确定，校正图形的数量和位置也就确定了；</li>
+<li>格式信息：表示改二维码的纠错级别，分为L、M、Q、H；</li>
+<li>版本信息：即二维码的规格，QR码符号共有40种规格的矩阵（一般为黑白色），从21x21（版本1），到177x177（版本40），每一版本符号比前一版本 每边增加4个模块。</li>
+<li>数据和纠错码字：实际保存的二维码信息，和纠错码字（用于修正二维码损坏带来的错误）</li>
+</ul>
+<h3 id="掩码"><a class="header-anchor" href="#掩码"></a>掩码</h3>
+<p>掩码的作用</p>
+<ol>
+<li>为了对数据区域进行掩模以利于扫描仪识别，可以避免数据区域出现连续的空白或连续的黑色区，</li>
+<li>避免了数据区出现类似定位点样式的正方形出现。掩模图案在整个数据区域的网格内不断重复进行掩模计算（功能图形不进行掩模），数据区上对应掩模黑色模块的单元将会反转。</li>
+<li>每个二维码上会有两组相同的格式信息出现，并且带有 BCH 纠错</li>
+</ol>
+<blockquote>
+<p>在计算机科学中，掩码就是一个二进制串，通过和数据进行<code>异或运算</code>来变换数据。在 QR 码中，掩码也是通过异或运算来变换数据矩阵，所以 QR 码掩码就是预先定义好的矩阵</p>
+</blockquote>
+<h3 id="纠错等级"><a class="header-anchor" href="#纠错等级"></a>纠错等级</h3>
+<p>相对而言，容错率愈高，QR 码图形面积愈大，所以一般折中使用 15% 容错能力</p>
+<table>
+<thead>
+<tr>
+<th>错误修正容量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L 等级</td>
+</tr>
+<tr>
+<td>M 等级</td>
+</tr>
+<tr>
+<td>Q 等级</td>
+</tr>
+<tr>
+<td>H 等级</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编码-QR-码步骤"><a class="header-anchor" href="#编码-QR-码步骤"></a>编码 QR 码步骤</h3>
+<ol>
+<li>数据分析（data analysis）：分析输入数据，根据数据决定要使用的 QR 码版本、容错等级和编码模式</li>
+<li>编码数据（data encoding）：根据选择的编码模式，将输入的字符串转变成比特流，插入模式标识码（mode indicator）和终止标识符（terminator），将比特流切分成 8 比特的字节，加入填充字节来满足标准的数据字码数要求</li>
+<li>计算容错码（error correction coding）：对步骤二产生的比特流计算容错码，附在比特流之后。高版本的编码方式可能需要将数据流切分成块再分别进行容错码计算</li>
+<li>组织数据（structure final message）：根据结构图把步骤三得到的有容错的数据切分，准备填充</li>
+<li>填充（module placement in matrix）：把数据和功能性图样根据标准填充到矩阵中</li>
+<li>应用数据掩码（data masking）：应用标准中的 8 个数据掩码来变换编码区域的数据，选择最优的掩码应用</li>
+<li>填充格式和版本信息（format and version information）：计算格式和版本信息填入矩阵，完成 QR 码</li>
+</ol>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvUVIlRTclQTIlQkM=">维基百科·QR码·中文<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUVJfY29kZQ==">维基百科·QR码·英文·推荐<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTI2MTE4NzgvYXJ0aWNsZS9kZXRhaWxzLzUzMTY3MDA5">二维码（QR code）基本结构及生成原理<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucXJjb2RlLmNvbQ==">QRcode<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb29sc2hlbGwuY24vYXJ0aWNsZXMvMTA1OTAuaHRtbA==">二维码的生成细节和原理<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84MjA4YWFkNTM3YmI=">为程序员写的Reed-Solomon码解释<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb29sc2hlbGwuY24vYXJ0aWNsZXMvMTA1OTAuaHRtbA==">ISO/IEC 18004:2015·PDF<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb29sc2hlbGwuY24vYXJ0aWNsZXMvMTA1OTAuaHRtbA==">ISO/IEC 18004:2015·PDF<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2019/05/01/zxing1/" title="Zxing（一）二维码基础知识">https://incoder.org/2019/05/01/zxing1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Zxing/" rel="tag"><i class="fa fa-tag"></i> Zxing</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/01/10/docker-init/" rel="prev" title="Docker 之 SpringBoot 项目部署">
+                  <i class="fa fa-chevron-left"></i> Docker 之 SpringBoot 项目部署
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/05/02/zxing2/" rel="next" title="Zxing（二）Android 模块应用源码探索">
+                  Zxing（二）Android 模块应用源码探索 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

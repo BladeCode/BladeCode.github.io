@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="基础名称 请求报文 客户端发送一个HTTP请求到服务器的请求消息包括以下格式： 请求行（request line）、请求头（header）、请求内容组成，如下请求报文的一般格式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Http VS Https">
+<meta property="og:url" content="https://incoder.org/2018/06/22/network-http/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="基础名称 请求报文 客户端发送一个HTTP请求到服务器的请求消息包括以下格式： 请求行（request line）、请求头（header）、请求内容组成，如下请求报文的一般格式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1562212437/blog/newwork-request.webp">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1529805798/blog/http-request.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1529805798/blog/http-response.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1529822573/blog/HTTPS.png">
+<meta property="og:image" content="https://blog-10039692.file.myqcloud.com/1494841223417_6503_1494841223715.png">
+<meta property="og:image" content="https://blog-10039692.file.myqcloud.com/1494841503771_6933_1494841504095.png">
+<meta property="article:published_time" content="2018-06-22T01:14:25.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="Http">
+<meta property="article:tag" content="Https">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1562212437/blog/newwork-request.webp">
+
+
+<link rel="canonical" href="https://incoder.org/2018/06/22/network-http/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2018/06/22/network-http/","path":"2018/06/22/network-http/","title":"Http VS Https"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Http VS Https | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%90%8D%E7%A7%B0"><span class="nav-number">1.</span> <span class="nav-text">基础名称</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="nav-number">1.1.</span> <span class="nav-text">请求报文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E8%A1%8C"><span class="nav-number">1.1.1.</span> <span class="nav-text">请求行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">1.1.2.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%86%85%E5%AE%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">请求内容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="nav-number">1.2.</span> <span class="nav-text">响应报文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E8%A1%8C"><span class="nav-number">1.2.1.</span> <span class="nav-text">响应行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="nav-number">1.2.2.</span> <span class="nav-text">响应头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">响应内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http"><span class="nav-number">2.</span> <span class="nav-text">Http</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1"><span class="nav-number">2.2.</span> <span class="nav-text">通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">2.3.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Https"><span class="nav-number">3.</span> <span class="nav-text">Https</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-v2"><span class="nav-number">3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1-v2"><span class="nav-number">3.2.</span> <span class="nav-text">通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSL-TLS"><span class="nav-number">3.2.1.</span> <span class="nav-text">SSL&#x2F;TLS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSL-TLS%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">3.2.2.</span> <span class="nav-text">SSL&#x2F;TLS工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSL-TLS%E5%8D%8F%E8%AE%AE%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.2.3.</span> <span class="nav-text">SSL&#x2F;TLS协议实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.2.4.</span> <span class="nav-text">握手协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E9%AA%8C%E8%AF%81"><span class="nav-number">3.2.4.1.</span> <span class="nav-text">单向验证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E9%AA%8C%E8%AF%81"><span class="nav-number">3.2.4.2.</span> <span class="nav-text">双向验证</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E6%95%B0%E6%8D%AE%E5%8D%8F%E8%AE%AE-application-data-protocol"><span class="nav-number">3.2.5.</span> <span class="nav-text">应用数据协议(application data protocol)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AD%A6%E6%8A%A5%E5%8D%8F%E8%AE%AE-alert-protocol"><span class="nav-number">3.2.6.</span> <span class="nav-text">警报协议(alert protocol)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2018/06/22/network-http/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Http VS Https
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-22 01:14:25" itemprop="dateCreated datePublished" datetime="2018-06-22T01:14:25+00:00">2018-06-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/06/22/network-http/" class="post-meta-item leancloud_visitors" data-flag-title="Http VS Https" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="基础名称"><a class="header-anchor" href="#基础名称"></a>基础名称</h2>
+<h3 id="请求报文"><a class="header-anchor" href="#请求报文"></a>请求报文</h3>
+<p>客户端发送一个HTTP请求到服务器的请求消息包括以下格式：<br>
+请求行（request line）、请求头（header）、请求内容组成，如下请求报文的一般格式。<br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1562212437/blog/newwork-request.webp" alt="请求报文"></p>
+<span id="more"></span>
+<h4 id="请求行"><a class="header-anchor" href="#请求行"></a>请求行</h4>
+<ol>
+<li>
+<p>方法：</p>
+<ul>
+<li>GET： 获取资源</li>
+<li>POST： 向服务器端发送数据，传输实体主体</li>
+<li>PUT： 传输文件</li>
+<li>HEAD： 获取报文首部</li>
+<li>DELETE： 删除文件</li>
+<li>OPTIONS： 询问支持的方法</li>
+<li>TRACE： 追踪路径</li>
+</ul>
+</li>
+<li>
+<p>URL：<br>
+<code>scheme://host:port/path?query</code></p>
+<ul>
+<li>scheme: 表示协议，如Http, Https, Ftp等</li>
+<li>host: 表示所访问资源所在的主机名：如：<span class="exturl" data-url="aHR0cDovL3d3dy5iYWlkdS5jb20=">www.baidu.com<i class="fa fa-external-link-alt"></i></span></li>
+<li>port: 表示端口号，Http默认为80,Https默认为443</li>
+<li>path: 表示所访问的资源在目标主机上的储存路径</li>
+<li>query: 表示查询条件</li>
+</ul>
+</li>
+<li>
+<p>协议/版本号：</p>
+</li>
+</ol>
+<h4 id="请求头"><a class="header-anchor" href="#请求头"></a>请求头</h4>
+<ol>
+<li>通用首部(General Header)</li>
+<li>请求首部(Request Header)</li>
+<li>实体首部(Entity Header Fields)</li>
+</ol>
+<h4 id="请求内容"><a class="header-anchor" href="#请求内容"></a>请求内容</h4>
+<p>如: 客户端POST的数据就放在这里(对比:GET的数据放在请求行的URL里)</p>
+<p>例如：<br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1529805798/blog/http-request.png" alt="请求示例"></p>
+<h3 id="响应报文"><a class="header-anchor" href="#响应报文"></a>响应报文</h3>
+<p>服务端响应一个HTTP请求消息包括以下格式：<br>
+响应行（response line）、响应头（header）、响应内容组成</p>
+<h4 id="响应行"><a class="header-anchor" href="#响应行"></a>响应行</h4>
+<ol>
+<li>状态码：
+<ul>
+<li>1XX：Informational(信息性状态码)</li>
+<li>2XX：Success(成功状态码)</li>
+<li>3XX：Redirection(重定向)</li>
+<li>4XX：Client Error(客户端错误状态码)</li>
+<li>5XX：Server Error(服务器错误状态吗)</li>
+</ul>
+</li>
+<li>状态码描述：</li>
+<li>协议/版本号：</li>
+</ol>
+<h4 id="响应头"><a class="header-anchor" href="#响应头"></a>响应头</h4>
+<ol>
+<li>通用首部(General Header)</li>
+<li>响应首部(Response Header)</li>
+<li>实体首部(Entity Header Fields)</li>
+</ol>
+<h4 id="响应内容"><a class="header-anchor" href="#响应内容"></a>响应内容</h4>
+<p>如：服务器返回的HTML、JSON等数据</p>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1529805798/blog/http-response.png" alt="响应示例"></p>
+<h2 id="Http"><a class="header-anchor" href="#Http"></a>Http</h2>
+<h3 id="概念"><a class="header-anchor" href="#概念"></a>概念</h3>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JUI2JTg1JUU2JTk2JTg3JUU2JTlDJUFDJUU0JUJDJUEwJUU4JUJFJTkzJUU1JThEJThGJUU4JUFFJUFF">HTTP<i class="fa fa-external-link-alt"></i></span>：超文本传输协议（HyperText Transfer Protocol）是一种用于分布式、协作式和超媒体信息系统的应用层协议.</li>
+<li>HTTP是万维网的数据通信的基础.</li>
+</ul>
+<h3 id="通信"><a class="header-anchor" href="#通信"></a>通信</h3>
+<ol>
+<li>建立TCP连接<br>
+在HTTP工作开始之前，Client首先要通过网络与Service建立连接，该连接是通过TCP来完成的，HTTP是比TCP更高层次的应用层协议，根据规则，只有低层协议建立之后才能进行更高层协议的连接，因此，首先要建立TCP连接</li>
+<li>Client发起HTTP请求(Request)<br>
+Requset通常包含请求行，请求头，请求内容这三部风组成的请求报文</li>
+<li>Service发送HTTP响应(Response)<br>
+Response通常包含响应行，响应头，响应内容这三部风组成的响应报文</li>
+<li>Client关闭TCP连接</li>
+</ol>
+<h3 id="特点"><a class="header-anchor" href="#特点"></a>特点</h3>
+<ol>
+<li>无状态
+<ul>
+<li>每个请求结束后都会被关闭，每次的请求都是独立的，它的执行情况和结果与前面的请求和之后的请求是无直接关系的，它不会受前面的请求应答情况直接影响，也不会直接影响后面的请求应答情况</li>
+<li>服务器中没有保存客户端的状态，客户端必须每次带上自己的状态去请求服务器</li>
+</ul>
+</li>
+<li>明文传输，可能被窃听</li>
+<li>不验证通信方的身份，可能遭遇伪装
+<ul>
+<li>HTTP 协议中的请求和响应不会对通信方进行确认。也就是说存在“服务器是否就是发送请求中 URI 真正指定的主机，返回的响应是否真的返回到实际提出请求的客户端”等类似问题</li>
+<li>HTTP 协议通信时，由于不存在确认通信方的处理步骤，任何人都可以发起请求</li>
+</ul>
+</li>
+<li>无法证明报文的完整性，可能遭遇篡改
+<ul>
+<li>在请求或响应送出之后直到对方接收之前的这段时间内，即使请求或响应的内容遭到篡改，也没有办法获悉</li>
+</ul>
+</li>
+</ol>
+<h2 id="Https"><a class="header-anchor" href="#Https"></a>Https</h2>
+<h3 id="概念-v2"><a class="header-anchor" href="#概念-v2"></a>概念</h3>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JUI2JTg1JUU2JTk2JTg3JUU2JTlDJUFDJUU0JUJDJUEwJUU4JUJFJTkzJUU1JUFFJTg5JUU1JTg1JUE4JUU1JThEJThGJUU4JUFFJUFF">HTTPS<i class="fa fa-external-link-alt"></i></span>：超文本传输安全协议（Hypertext Transfer Protocol Secure，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种通过计算机网络进行安全通信的传输协议.</li>
+<li>HTTPS经由HTTP进行通信，但利用<code>SSL/TLS</code>来加密数据包.</li>
+</ul>
+<blockquote>
+<p>HTTP+加密+认证+完整性保护 = HTTPS</p>
+</blockquote>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1529822573/blog/HTTPS.png" alt="HTTP VS HTTPS"></p>
+<h3 id="通信-v2"><a class="header-anchor" href="#通信-v2"></a>通信</h3>
+<h4 id="SSL-TLS"><a class="header-anchor" href="#SSL-TLS"></a>SSL/TLS</h4>
+<p>SSL/TLS：安全传输层协议(Transport Layer Security), 是介于TCP和HTTP之间的一层安全协议，TLS的前身是SSL(Secure Sockets Layer)</p>
+<blockquote>
+<p>TLS/SSL关系</p>
+</blockquote>
+<ul>
+<li>SSL2.0</li>
+<li>SSL3.0</li>
+<li>TLS1.0(SSL3.1)</li>
+<li>TLS1.1(SSL3.2)</li>
+<li>TLS1.2(SSL3.3)</li>
+</ul>
+<h4 id="SSL-TLS工作原理"><a class="header-anchor" href="#SSL-TLS工作原理"></a>SSL/TLS工作原理</h4>
+<p>HTTPS协议的主要功能都依赖于SSL/TLS协议，SSL/TLS的功能实现主要依赖于三类算法：<code>对称加密</code>,<code>非对称加密</code>,<code>散列函数Hash</code></p>
+<ul>
+<li>非对称加密实现身份认证和密钥协商，</li>
+<li>对称加密算法采用协商的密钥对数据加密，</li>
+<li>基于散列函数验证信息的完整性</li>
+</ul>
+<h4 id="SSL-TLS协议实现"><a class="header-anchor" href="#SSL-TLS协议实现"></a>SSL/TLS协议实现</h4>
+<p>TLS以记录协议(record protocol)实现。记录协议负责在传输连接上交换所有的底层消息，并可以配置加密。每一条TLS记录以一个短标头起始。标头包含记录内容的类型(或子协议)、协议版本和长度</p>
+<p>TLS的主规格说明书定义了四个核心子协议：</p>
+<ul>
+<li>握手协议(handshake protocol)；</li>
+<li>密钥规格变更协议(change cipher spec protocol)；</li>
+<li>应用数据协议(application data protocol)；</li>
+<li>警报协议(alert protocol)；</li>
+</ul>
+<h4 id="握手协议"><a class="header-anchor" href="#握手协议"></a>握手协议</h4>
+<p>握手是TLS协议中最精密复杂的部分。在这个过程中，通信双方协商连接参数，并且完成身份验证。根据使用的功能的不同，整个过程通常需要交换6~10条消息。根据配置和支持的协议扩展的不同，交换过程可能有许多变种，在使用中经常可以观察到以下三种流程：</p>
+<ul>
+<li>单向验证(完整的握手，对服务器进行身份验证)</li>
+<li>双向验证(对客户端和服务器都进行身份验证的握手)</li>
+<li>简短握手(恢复之前的会话)</li>
+</ul>
+<h5 id="单向验证"><a class="header-anchor" href="#单向验证"></a>单向验证</h5>
+<p><img data-src="https://blog-10039692.file.myqcloud.com/1494841223417_6503_1494841223715.png" alt="单向验证"></p>
+<ol>
+<li>Handshake:ClentHello<br>
+客户端通过发送 Client Hello 报文开始 SSL通信。报文中包含客户端支持的 SSL的指定版本、加密组件（Cipher Suite）列表（所使用的加密算法及密钥长度等）。</li>
+<li>Handshake:ServerHello<br>
+服务器可进行 SSL通信时，会以 ServerHello 报文作为应答。和客户端一样，在报文中包含 SSL版本以及加密组件。服务器的加密组件内容是从接收到的客户端加密组件内筛选出来的。</li>
+<li>Handshake:Certificate<br>
+之后服务器发送 Certificate 报文。报文中包含公开密钥证书。</li>
+<li>Handshake:ServerHelloDone<br>
+最后服务器发送 ServerHelloDone 报文通知客户端，最初阶段的 SSL握手协商部分结束。</li>
+<li>Handshake:ClientKeyExchange<br>
+SSL第一次握手结束之后，客户端以 ClientKeyExchange 报文作为回应。报文中包含通信加密中使用的一种被称为 Pre-mastersecret 的随机密码串。该报文已用3 中的公开密钥进行加密。</li>
+<li>ChangeCipherSpec<br>
+接着客户端继续发送 ChangeCipherSpec 报文。该报文会提示服务器，在此报文之后的通信会采用 Pre-master secret 密钥加密。</li>
+<li>Handshake:Finished<br>
+客户端发送 Finished 报文。该报文包含连接至今全部报文的整体校验值。这次握手协商是否能够成功，要以服务器是否能够正确解密该报文作为判定标准。</li>
+<li>ChangeCipherSpec<br>
+服务器同样发送 ChangeCipherSpec 报文。</li>
+<li>Handshake:Finished<br>
+服务器同样发送 Finished 报文。</li>
+<li>Application Data(HTTP)<br>
+服务器和客户端的 Finished 报文交换完毕之后，SSL连接就算建立完成。当然，通信会受到 SSL的保护。从此处开始进行应用层协议的通信，即发送 HTTP 请求。</li>
+<li>Application Data(HTTP)<br>
+应用层协议通信，即发送 HTTP 响应。</li>
+<li>Alert:warning,close notify<br>
+最后由客户端断开连接。断开连接时，发送 close_notify 报文(上图做了一些省略，实际到这一步还需要发送TCP FIN报文关闭TCP链接)</li>
+</ol>
+<h5 id="双向验证"><a class="header-anchor" href="#双向验证"></a>双向验证</h5>
+<p><img data-src="https://blog-10039692.file.myqcloud.com/1494841503771_6933_1494841504095.png" alt="双向验证"><br>
+同单向验证流程相比，双向验证多了如下两条消息：<code>CertificateRequest</code>与<code>CertificateVerify</code>，其余流程大致相同</p>
+<ul>
+<li>CertificateRequest<br>
+CertificateRequest是TLS规定的一个可选功能，用于服务器认证客户端的身份。通过服务器要求客户端发送一个证书实现，服务器应该在ServerKeyExchange之后立即发送CertificateRequest消息</li>
+<li>CertificateVerify<br>
+当需要做客户端认证时，客户端发送CertificateVerify消息，来证明自己确实拥有客户端证书的私钥。这条消息仅仅在客户端证书有签名能力的情况下发送</li>
+</ul>
+<h4 id="应用数据协议-application-data-protocol"><a class="header-anchor" href="#应用数据协议-application-data-protocol"></a>应用数据协议(application data protocol)</h4>
+<p>应用数据协议携带着应用消息，只以TLS的角度考虑的话，这些就是数据缓冲区。记录层使用当前连接安全参数对这些消息进行打包、碎片整理和加密</p>
+<h4 id="警报协议-alert-protocol"><a class="header-anchor" href="#警报协议-alert-protocol"></a>警报协议(alert protocol)</h4>
+<p>警报的目的是以简单的通知机制告知对端通信出现异常状况。它通常会携带close_notify异常，在连接关闭时使用，报告错误</p>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li>《图解HTTP》</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSFRUUC9PdmVydmlldw==">HTTP | MDN<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9rYi5jbmJsb2dzLmNvbS9wYWdlLzE5NDc0Mg==">数字证书及CA的扫盲介绍<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xMDA1MDcz">HTTPS 原理浅析及其在 Android 中的使用<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2018/06/22/network-http/" title="Http VS Https">https://incoder.org/2018/06/22/network-http/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Http/" rel="tag"><i class="fa fa-tag"></i> Http</a>
+              <a href="/tags/Https/" rel="tag"><i class="fa fa-tag"></i> Https</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/05/20/travel-zjj/" rel="prev" title="行·张家界">
+                  <i class="fa fa-chevron-left"></i> 行·张家界
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/06/23/network-okhttp1/" rel="next" title="Network（一） 之OkHttp 入门">
+                  Network（一） 之OkHttp 入门 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

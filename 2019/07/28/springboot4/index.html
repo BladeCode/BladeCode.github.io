@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="关于 SpringBoot 配置文件，在之前的文章中已经提到配置文件格式，主要是两种格式的配置，这里并没有哪个配置写法一定优于另一种写法，对于配置文件名（application.yml 或者 application.properties），可以更改，为了减少不必要的麻烦，不建议修改，本篇文章以 yml 文件作为示例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot（四）配置文件">
+<meta property="og:url" content="https://incoder.org/2019/07/28/springboot4/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="关于 SpringBoot 配置文件，在之前的文章中已经提到配置文件格式，主要是两种格式的配置，这里并没有哪个配置写法一定优于另一种写法，对于配置文件名（application.yml 或者 application.properties），可以更改，为了减少不必要的麻烦，不建议修改，本篇文章以 yml 文件作为示例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1566701581/blog/idea-annotation-processors.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1585239269/blog/application-sort.png">
+<meta property="article:published_time" content="2019-07-28T21:20:01.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1566701581/blog/idea-annotation-processors.png">
+
+
+<link rel="canonical" href="https://incoder.org/2019/07/28/springboot4/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2019/07/28/springboot4/","path":"2019/07/28/springboot4/","title":"SpringBoot（四）配置文件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SpringBoot（四）配置文件 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#YAML"><span class="nav-number">1.</span> <span class="nav-text">YAML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99"><span class="nav-number">1.1.</span> <span class="nav-text">语法规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">定义配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">默认配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.2.</span> <span class="nav-text">自定义配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">配置的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ConfigurationProperties"><span class="nav-number">2.2.1.</span> <span class="nav-text">ConfigurationProperties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Value"><span class="nav-number">2.2.2.</span> <span class="nav-text">Value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PropertySource"><span class="nav-number">2.2.3.</span> <span class="nav-text">PropertySource</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">多环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">配置文件加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2019/07/28/springboot4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SpringBoot（四）配置文件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-07-28 21:20:01" itemprop="dateCreated datePublished" datetime="2019-07-28T21:20:01+00:00">2019-07-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/07/28/springboot4/" class="post-meta-item leancloud_visitors" data-flag-title="SpringBoot（四）配置文件" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>关于 SpringBoot 配置文件，在之前的文章中已经提到<a href="https://incoder.org/2019/06/23/springboot1/#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">配置文件格式</a>，主要是两种格式的配置，这里并没有哪个配置写法一定优于另一种写法，对于配置文件名（application.yml 或者 application.properties），可以更改，为了减少不必要的麻烦，不建议修改，本篇文章以 yml 文件作为示例</p>
+<span id="more"></span>
+<p>本篇文章示例代码见：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Jvb3RDbHVzdGVyL3JjLWNsdXN0ZXItc3ByaW5nYm9vdC90cmVlL21hc3Rlci9zcHJpbmdib290LWNvbmZpZw==">springboot-config<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="YAML"><a class="header-anchor" href="#YAML"></a>YAML</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvWUFNTA==">YAML<i class="fa fa-external-link-alt"></i></span>是JSON的超集，因此是用于指定分层配置数据的便捷格式。只要在类路径上有SnakeYAML库，SpringApplication类就会自动支持YAML作为属性的替代 。</p>
+<h3 id="语法规则"><a class="header-anchor" href="#语法规则"></a>语法规则</h3>
+<ul>
+<li>大小写敏感</li>
+<li>缩进（只能使用空格，空格数量不重要）表示层级</li>
+<li>注释用 <code>#</code> 符号</li>
+</ul>
+<h3 id="数据结构"><a class="header-anchor" href="#数据结构"></a>数据结构</h3>
+<ol>
+<li>不可再分的单个的值，如数字，字符串等。 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">env:</span> <span class="string">dev</span></span><br><span class="line"><span class="attr">crate-date:</span> <span class="number">2020</span></span><br><span class="line"><span class="attr">is-mac:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ~表示NULL值</span></span><br><span class="line"><span class="attr">email:</span> <span class="string">~</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 多行字符串可以使用 | 保留换行符，也可以使用 &gt; 折叠换行</span></span><br><span class="line"><span class="comment"># + 表示保留文字块末尾的换行，- 表示删除字符串末尾的换行</span></span><br><span class="line"><span class="attr">message:</span> <span class="string">|-</span></span><br><span class="line"><span class="string">  hello world $&#123;crate-date&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="comment"># 单引号</span></span><br><span class="line"><span class="comment"># 会转义特殊字符，特殊字符最终只是一个普通的字符串数据</span></span><br><span class="line"><span class="comment"># 输出：mac \n catalina</span></span><br><span class="line"><span class="attr">name1:</span> <span class="string">&#x27;mac \n catalina&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 双引号</span></span><br><span class="line"><span class="comment"># 不会转义字符串里面的特殊字符，特殊字符会作为本身想表示的意思</span></span><br><span class="line"><span class="comment"># 输出：mac</span></span><br><span class="line"><span class="comment"># catalina</span></span><br><span class="line"><span class="attr">name2:</span> <span class="string">&quot;mac \n catalina&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>数组，一组按次序排列的值 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这种写法，必须有两层结构，而且第二层（language 名字）是必须满足 Java 属性字段命名规则</span></span><br><span class="line"><span class="attr">list:</span></span><br><span class="line">  <span class="attr">language:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;object-c&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;swift&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;c&#x27;</span></span><br><span class="line"><span class="comment"># 或者行内写法</span></span><br><span class="line"><span class="attr">list-program-languages:</span> <span class="string">object-c,</span> <span class="string">swift,</span> <span class="string">c</span></span><br><span class="line"><span class="comment"># SpEL 获取数组</span></span><br><span class="line"><span class="attr">el:</span></span><br><span class="line">  <span class="attr">list:</span> <span class="string">object-c,</span> <span class="string">swift,</span> <span class="string">c</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>对象，键值对的集合 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对象</span></span><br><span class="line"><span class="attr">object:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">Jerry</span></span><br><span class="line">  <span class="attr">age:</span> <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者行内写法</span></span><br><span class="line"><span class="attr">persons:</span> &#123; <span class="attr">name:</span> <span class="string">Jerry</span>, <span class="attr">age:</span> <span class="number">20</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Map</span></span><br><span class="line"><span class="attr">map-object:</span></span><br><span class="line">  <span class="attr">map:</span></span><br><span class="line">    <span class="attr">key1:</span> <span class="string">value1</span></span><br><span class="line">    <span class="attr">key2:</span> <span class="string">value2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者行内写法</span></span><br><span class="line"><span class="attr">mapObjects.maps:</span> &#123; <span class="attr">key1:</span> <span class="string">value1</span>,<span class="attr">key2:</span> <span class="string">value2</span> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>随机数 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 随机数</span></span><br><span class="line"><span class="attr">secret:</span> <span class="string">$&#123;random.value&#125;</span></span><br><span class="line"><span class="attr">number:</span> <span class="string">$&#123;random.int&#125;</span></span><br><span class="line"><span class="attr">bignumber:</span> <span class="string">$&#123;random.long&#125;</span></span><br><span class="line"><span class="attr">uuid:</span> <span class="string">$&#123;random.uuid&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>默认值，占位符获取之前配置的值，如果没有可以是用:指定默认值<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bootapp.name:</span> <span class="string">SpringBoot</span></span><br><span class="line">  <span class="attr">description:</span> <span class="string">$&#123;bootapp.name&#125;是一个spring应用程序</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<div class="note warning"><ol>
+<li><code>:</code> 号后面有一个<font color="red">空格</font></li>
+<li>对于复杂的数据结构（对象，List，Map），需要配套 <mark>@ConfigurationProperties</mark> 定义对应的对象</li>
+</ol>
+</div>
+<h2 id="配置"><a class="header-anchor" href="#配置"></a>配置</h2>
+<p>为了在配置自定义属性时，向配置 SpringBoot 属性自动提示的功能，导入如下的包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--导入配置文件处理器，配置文件进行绑定就会有提示--&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- @ConfigurationProperties annotation processing (metadata for IDEs)</span></span><br><span class="line"><span class="comment">         生成spring-configuration-metadata.json类，需要引入此类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-autoconfigure<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或者在 gradle 配置文件中添加依赖</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compileOnly <span class="string">&#x27;org.springframework.boot:spring-boot-configuration-processor&#x27;</span></span><br><span class="line">annotationProcessor <span class="string">&quot;org.springframework.boot:spring-boot-configuration-processor&quot;</span></span><br></pre></td></tr></table></figure>
+<p>如果任然无法自动提示，请查看你的编辑器 IDEA 中是否开启了 <code>Annonation Processing</code><br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1566701581/blog/idea-annotation-processors.png" alt="idea-annotation-processors"></p>
+<h3 id="定义配置"><a class="header-anchor" href="#定义配置"></a>定义配置</h3>
+<h4 id="默认配置"><a class="header-anchor" href="#默认配置"></a>默认配置</h4>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnNwcmluZy5pby9zcHJpbmctYm9vdC9kb2NzL2N1cnJlbnQvcmVmZXJlbmNlL2h0bWwvY29tbW9uLWFwcGxpY2F0aW9uLXByb3BlcnRpZXMuaHRtbA==">Common application properties<i class="fa fa-external-link-alt"></i></span>，是 SpringBoot 官方提供的一些默认配置属性说明，如果需要更改，只需要在 application.yml 文件中重写该属性即可，比如重新设置服务的启动端口为 9090</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9090</span></span><br></pre></td></tr></table></figure>
+<h4 id="自定义配置"><a class="header-anchor" href="#自定义配置"></a>自定义配置</h4>
+<p>首先在 application.yml 文件中根据上面所述的规则写法进行自定义字段的声明</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">myConfig:</span></span><br><span class="line">  <span class="attr">maps:</span></span><br><span class="line">    <span class="attr">key:</span> <span class="string">value</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置的使用"><a class="header-anchor" href="#配置的使用"></a>配置的使用</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>@Value</th>
+<th>@ConfigurationProperties</th>
+<th>@PropertySource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>使用场景</td>
+<td>单一属性注入，注解写在类的属性上</td>
+<td>批量注入，注解写在类上</td>
+<td>加载自定义配置文件，用于静态类获取配置文件中定义的信息</td>
+</tr>
+<tr>
+<td>松散语法</td>
+<td>不支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>SpEL</td>
+<td>支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>JSR-303 数据校验 @Validated</td>
+<td>不支持</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>复杂类型（数组，Map，对象等）</td>
+<td>不完全支持（数组支持行内定义）</td>
+<td>支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ConfigurationProperties"><a class="header-anchor" href="#ConfigurationProperties"></a>ConfigurationProperties</h4>
+<p><mark>@ConfigurationProperties</mark> 注解是 SpringBoot提供的一种使用属性的注入方法，不仅可以方便的把配置文件中属性值与所注解类绑定，还支持松散绑定，JSR-303 数据校验等功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用 <span class="doctag">@ConfigurationProperties</span> 配置属性必须是小写，多单词之间可用&#x27;-&#x27;连接</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> : Jerry xu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> : 2020/3/29  16:26</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;list&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigListBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这里不能再用 <span class="doctag">@Value</span>(&quot;&quot;) 去加载，修饰当前的字段，</span></span><br><span class="line"><span class="comment">     * 必须指定其属性名和配置文件中定义的名称一致</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; language;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Value"><a class="header-anchor" href="#Value"></a>Value</h4>
+<p><mark>@Value</mark> 注解支持直接从配置文件中读取值，同时支持 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnNwcmluZy5pby9zcHJpbmcvZG9jcy80LjIueC9zcHJpbmctZnJhbWV3b3JrLXJlZmVyZW5jZS9odG1sL2V4cHJlc3Npb25zLmh0bWw=">SpEL<i class="fa fa-external-link-alt"></i></span> 表达式，但是不支持复杂数据类型和数据验证</p>
+<p>使用 <mark>@Value</mark> 获取配置文件中定义的值，通常其类是被 <mark>@Controller</mark>，<mark>@Service</mark>，<mark>@Component</mark> 等注解修饰，如果是一般普通的类（如一些工具类）并 <strong><font color="red">不能</font></strong> 只接获取到配置文件中定义的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GradleDataBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;env&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String env;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;crate-date&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer createDate;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;is-mac&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Boolean isMac;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;email&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;message&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;name1&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name1;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;name2&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name2;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;list-program-languages&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; programLanguages;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用el表达式，获取定义数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value(&quot;#&#123;&#x27;$&#123;el.list&#125;&#x27;.split(&#x27;,&#x27;)&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; programList;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;secret&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String secret;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;number&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer number;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;bignumber&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Long bigNumber;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;uuid&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String uuid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="PropertySource"><a class="header-anchor" href="#PropertySource"></a>PropertySource</h4>
+<p><mark>@PropertySource</mark> 注解加载自定义配置文件，由于 <mark>@PropertySource</mark> 指定的文件会优先加载，所以如果在 applocation.properties 文件中存在相同的属性配置，会覆盖前者中对应的值，且 <mark>@PropertySource</mark> 不支持 yml 文件注入</p>
+<h3 id="多环境配置"><a class="header-anchor" href="#多环境配置"></a>多环境配置</h3>
+<p>在实际的开发中，不同环境对应不同的配置，因此我们需要根据环境来配置不同的项目配置信息，SpringBoot 也是支持我们进行多环境的配置，通常情况下，我们命名为 <code>application-&#123;profile&#125;.properties/yml</code> ，其中<br>
+<code>&#123;profile&#125;</code>表示不同的环境，比如：dev（开发），prod（线上） 等</p>
+<p>关于具体的多环境配置，可以参考文章 <a href="https://incoder.org/2020/02/02/springboot5/">SpringBoot（五）多环境配置</a></p>
+<h2 id="配置文件加载顺序"><a class="header-anchor" href="#配置文件加载顺序"></a>配置文件加载顺序</h2>
+<p>Spring Boot 启动会扫描以下位置的配置文件（application.properties 或 application.yml） 作为Spring Boot 的默认配置文件</p>
+<ol>
+<li>-file:./config/</li>
+<li>-file:./</li>
+<li>-classpath:/config/</li>
+<li>-classpath:/</li>
+</ol>
+<p>加载顺序可以查看下图<br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1585239269/blog/application-sort.png" alt="application-sort"></p>
+<p>优先级从高到低，高优先级的配置会覆盖低优先级的配置</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmovYXJ0aWNsZS9kZXRhaWxzLzEwODgxMDcyNg==">介绍两种SpringBoot读取yml文件中配置数组的方法<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmovYXJ0aWNsZS9kZXRhaWxzLzExMTM1MjcwMw==">Spring的@Value可以注入复杂类型吗？今天教你通过@value注入自定义类型<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnNwcmluZy5pby9zcHJpbmctYm9vdC9kb2NzL2N1cnJlbnQvcmVmZXJlbmNlL2h0bWwvaG93dG8tcHJvcGVydGllcy1hbmQtY29uZmlndXJhdGlvbi5odG1s">Properties and Configuration<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2019/07/28/springboot4/" title="SpringBoot（四）配置文件">https://incoder.org/2019/07/28/springboot4/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/07/21/deploy-maven/" rel="prev" title="发布 jar 到 Maven中央仓库">
+                  <i class="fa fa-chevron-left"></i> 发布 jar 到 Maven中央仓库
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/08/21/lombok/" rel="next" title="Lombok">
+                  Lombok <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Netty 是国内外各大互联网公司的必备网络应用框架，Netty 主要处理与网络相关的一些应用。由于 Netty 设计的巧妙的实现方式，以及对协议很好的实现，使的 Netty 可以在各种应用场景下广泛的应用，无论是传统基于HTTP协议的访问方式，还是更底层基于socket的访问方式，以及支持HTML5规范中的websocket的长连接特性，都提供了比较好的支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty初体验（一）">
+<meta property="og:url" content="https://incoder.org/2019/11/20/netty/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="Netty 是国内外各大互联网公司的必备网络应用框架，Netty 主要处理与网络相关的一些应用。由于 Netty 设计的巧妙的实现方式，以及对协议很好的实现，使的 Netty 可以在各种应用场景下广泛的应用，无论是传统基于HTTP协议的访问方式，还是更底层基于socket的访问方式，以及支持HTML5规范中的websocket的长连接特性，都提供了比较好的支持">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1575207499/blog/netty-http.png">
+<meta property="article:published_time" content="2019-11-20T10:32:10.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="Netty">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1575207499/blog/netty-http.png">
+
+
+<link rel="canonical" href="https://incoder.org/2019/11/20/netty/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2019/11/20/netty/","path":"2019/11/20/netty/","title":"Netty初体验（一）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Netty初体验（一） | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8"><span class="nav-number">3.</span> <span class="nav-text">安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netty-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">4.</span> <span class="nav-text">Netty 使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-number">4.1.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket"><span class="nav-number">4.2.</span> <span class="nav-text">Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Websocket"><span class="nav-number">4.3.</span> <span class="nav-text">Websocket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heartbeat"><span class="nav-number">4.4.</span> <span class="nav-text">Heartbeat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty-%E7%A8%8B%E5%BA%8F%E7%BC%96%E5%86%99%E6%AD%A5%E9%AA%A4"><span class="nav-number">5.1.</span> <span class="nav-text">Netty 程序编写步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty-%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95"><span class="nav-number">5.2.</span> <span class="nav-text">Netty 程序测试</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2019/11/20/netty/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Netty初体验（一）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-20 10:32:10" itemprop="dateCreated datePublished" datetime="2019-11-20T10:32:10+00:00">2019-11-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Netty/" itemprop="url" rel="index"><span itemprop="name">Netty</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/11/20/netty/" class="post-meta-item leancloud_visitors" data-flag-title="Netty初体验（一）" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><span class="exturl" data-url="aHR0cHM6Ly9uZXR0eS5pbw==">Netty<i class="fa fa-external-link-alt"></i></span> 是国内外各大互联网公司的必备网络应用框架，Netty 主要处理与网络相关的一些应用。由于 Netty 设计的巧妙的实现方式，以及对协议很好的实现，使的 Netty 可以在各种应用场景下广泛的应用，无论是传统基于HTTP协议的访问方式，还是更底层基于socket的访问方式，以及支持HTML5规范中的websocket的长连接特性，都提供了比较好的支持</p>
+<span id="more"></span>
+<p>Netty is an asynchronous event-driven network application framework for rapid development of maintainable high performance protocol servers &amp; clients（Netty 是一个异步的，事件驱动的网络应用框架，是可维护的，高性能的，协议化的服务端和客户端快速开发方式）</p>
+<p>Netty 是一个非阻塞(NIO)客户端服务端框架，它可以快速的进行网络应用开发，例如：基于协议的客户端和服务端。它极大的简化并且支持流式的网络程序，例如：基于TCP和UDP的socket服务<br>
+'快捷方便’并不意味着最终的应用程序会受到可维护性或性能问题的影响。Netty经过精心设计，具有实施许多协议所获得的经验，如FTP，SMTP，HTTP以及各种基于二进制和文本的遗留协议。因此，Netty 成功地找到了一种在不妥协的情况下实现易于开发，性能，稳定性和灵活性的方法</p>
+<h2 id="特点"><a class="header-anchor" href="#特点"></a>特点</h2>
+<ul>
+<li>适用于各种传输类型统一API - 阻塞和非阻塞 socket</li>
+<li>基于灵活且可扩展的事件模型，可以清晰地关注分离(separation of concerns)</li>
+<li>高度可定制的线程模型 - 单线程，一个或多个线程池，如:Staged Event Driven Architecture(SEDA,阶段型事件驱动架构，将一个请求分成若干个阶段，每个阶段可以根据自身情况不用数量的线程来分别进行处理，阶段与阶段之间是通过事件驱动的这种异步通讯模式来进行沟通及通信)</li>
+<li>真正的无连接数据报套socket支持（since 3.1）</li>
+</ul>
+<h2 id="性能"><a class="header-anchor" href="#性能"></a>性能</h2>
+<ul>
+<li>更高的吞吐量，更低的延迟</li>
+<li>减少资源消耗</li>
+<li>不必要的内存复制降到最低</li>
+</ul>
+<h2 id="安全"><a class="header-anchor" href="#安全"></a>安全</h2>
+<ul>
+<li>完整的SSL / TLS 和 StartTLS 支持</li>
+</ul>
+<h2 id="Netty-使用场景"><a class="header-anchor" href="#Netty-使用场景"></a>Netty 使用场景</h2>
+<ol>
+<li>作为HTTP的服务器，类似与Jetty，Tomcat这种Servlet容器，只是Netty在充当HTTP的服务器时，它采用的编程模型并不是基于Servlet的规范，原因是Netty并没有实现Servlet的接口，Servlet的实现，Netty有自己的实现方式</li>
+<li>作为RPC通讯的框架，通讯的协议（可自定义），通讯的库，实现远程过程的调用，基于Socket方式（广泛使用）</li>
+<li>作为长连接的服务器，基于WebSocket，实现客户端和服务端之间的长连接通信</li>
+</ol>
+<p>环境说明</p>
+<ul>
+<li>System：macOS</li>
+<li>Java：JDK1.8+</li>
+<li>Netty：4.1.25.Final</li>
+</ul>
+<h3 id="HTTP"><a class="header-anchor" href="#HTTP"></a>HTTP</h3>
+<p>Netty 基于Servlet的规范，是一种特定的方式（更底层），因此 Netty 更专注于底层的性能等方面，所以在应用层开发时，是由开发人员自行去组装对请求，对 <strong>请求路由</strong> 处理等</p>
+<blockquote>
+<p>示例：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Jvb3RDbHVzdGVyL3JjLWNsdXN0ZXItbmV0dHkvdHJlZS9tYXN0ZXIvc3JjL21haW4vamF2YS9vcmcvaW5jb2Rlci9uZXR0eS9odHRw">HTTP<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h3 id="Socket"><a class="header-anchor" href="#Socket"></a>Socket</h3>
+<p>Socket 是计算机网络中用于在节点内发送或接收数据的内部端点。具体来说，它是网络软件 (协议栈) 中这个端点的一种表示，包含通信协议、目标地址、状态等，是系统资源的一种形式</p>
+<blockquote>
+<p>示例：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Jvb3RDbHVzdGVyL3JjLWNsdXN0ZXItbmV0dHkvdHJlZS9tYXN0ZXIvc3JjL21haW4vamF2YS9vcmcvaW5jb2Rlci9uZXR0eS9zb2NrZXQ=">Socket<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h3 id="Websocket"><a class="header-anchor" href="#Websocket"></a>Websocket</h3>
+<p>WebSocket 是HTML5 规范的一部分，也是基于 HTTP 协议之上的一种协议，WebSocket主要是解决 HTTP 上存在的一些问题；</p>
+<ol>
+<li>HTTP 一种无状态（同一客户端发出的第一次请求接收到响应后，客户端发送第二次请求，这两次请求之间没有任何关联）的协议，HTTP 无法追踪某一请求来自哪一个客户端，客户端之前在服务器上存在一些信息（常见的解决方式：cookie，session）</li>
+<li>HTTP 是基于请求响应模式的协议，请求的发起方一定是客户端，服务器将响应返回给客户端后连接就断掉了（HTTP 1.0），在 1.0 的基础上连接可以短时间的保持，一种 keep-alive 机制（HTTP 1.1）</li>
+</ol>
+<p>通常我们所使用的长连接技术</p>
+<ul>
+<li>早期采用轮询的方式保持与服务器的连接</li>
+<li>目前通常采用 Websocket 的连接方式保持与服务器的连接
+<ul>
+<li>客户端（浏览器）与服务器建立连接后，没有其他因素干扰，连接是不会断，一直存在，客户端与服务器双方是对等的，不再区分谁是客户端，谁是服务端，客户端可以发送数据给服务端，服务端也可以发送数据给客户端，在真正意义上实现了服务端的推技术</li>
+<li>长连接在建立初期会发送带有 header 头信息的网络请求，在连接建立后，在长连接之上只需要发送需要传递的数据（真正的数据）即可</li>
+<li>Websocket 是基于 HTTP 协议</li>
+<li>Websocket 也可以用于非浏览器的场景，只要你的库支持 Websocket 即可</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Jvb3RDbHVzdGVyL3JjLWNsdXN0ZXItbmV0dHkvdHJlZS9tYXN0ZXIvc3JjL21haW4vamF2YS9vcmcvaW5jb2Rlci9uZXR0eS93ZWJzb2NrZXQ=">Websocket Server<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Jvb3RDbHVzdGVyL3JjLWNsdXN0ZXItbmV0dHkvYmxvYi9tYXN0ZXIvc3JjL3dlYmFwcA==">Websocket Client<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+</blockquote>
+<h3 id="Heartbeat"><a class="header-anchor" href="#Heartbeat"></a>Heartbeat</h3>
+<p>对于服务器上的集群服务（zookeeper 或者其他的应用服务），或者是客户端与服务端之间的长连接，需要一种机制来检测客户端还是 alive，这种机制就是 heartbeat</p>
+<ul>
+<li>对于服务器上的这些服务与服务之间，节点与节点之间的通信（无一例外都使用 TCP 连接通信），节点之间的通信如何保证（A 节点感知到 B 或者其他节点是未宕机），此时就需要心跳来检测对应的服务或节点还是正常的</li>
+<li>对于客户端与服务器之间由于网络问题，或者客户端开启飞行模式，或者关机等状态，服务端是无法感知，因此也需要借助心跳来检测客户端是否关机或开启了飞行模式</li>
+</ul>
+<blockquote>
+<p>示例：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Jvb3RDbHVzdGVyL3JjLWNsdXN0ZXItbmV0dHkvdHJlZS9tYXN0ZXIvc3JjL21haW4vamF2YS9vcmcvaW5jb2Rlci9uZXR0eS9oZWFydGJlYXQ=">Heartbeat<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
+<h3 id="Netty-程序编写步骤"><a class="header-anchor" href="#Netty-程序编写步骤"></a>Netty 程序编写步骤</h3>
+<ol>
+<li>定义好父子的（bossGroup：获取链接,workerGroup：真正来处理链接）线程组（EventLoopGroup）,服务器启动时关联一个处理器处理器类似Initializer这样的处理器</li>
+<li>Initializer定义好自定义的或Netty本身提供的ChannelHandler通道处理器，在initChannel中自定义添加若干个处理器</li>
+<li>实现自定义处理器ChannelHandler中特定的回调方法</li>
+</ol>
+<h3 id="Netty-程序测试"><a class="header-anchor" href="#Netty-程序测试"></a>Netty 程序测试</h3>
+<ol>
+<li>启动 Server 服务</li>
+<li>访问启动的服务，使用 curl命令 或者使用浏览器访问进行访问</li>
+</ol>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1575207499/blog/netty-http.png" alt="netty-test"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2019/11/20/netty/" title="Netty初体验（一）">https://incoder.org/2019/11/20/netty/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Netty/" rel="tag"><i class="fa fa-tag"></i> Netty</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/19/deploy-springboot/" rel="prev" title="IDEA 之 SpringBoot 应用部署">
+                  <i class="fa fa-chevron-left"></i> IDEA 之 SpringBoot 应用部署
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/29/netty-protobuf/" rel="next" title="Netty（二）之 Protobuf">
+                  Netty（二）之 Protobuf <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

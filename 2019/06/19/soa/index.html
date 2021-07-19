@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在学习过程中，我们首先需要将学习知识的基本概念搞清楚，而搞清楚概念最权威的方式是查阅 英文版 • 维基百科 ，或者是对应知识的官方文档上面查找相关的知识。这样学习才能学习到知识的精华，而不是阅读经过别人转译过的文章。因此，这篇文章仅是本人在学习 SOA 基本概念时，对维基百科知识的一个汇总翻译记录，不建议朋友把这篇文章当做你的学习资料，具体请查阅Service-oriented architect">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】• 面向服务的架构">
+<meta property="og:url" content="https://incoder.org/2019/06/19/soa/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="在学习过程中，我们首先需要将学习知识的基本概念搞清楚，而搞清楚概念最权威的方式是查阅 英文版 • 维基百科 ，或者是对应知识的官方文档上面查找相关的知识。这样学习才能学习到知识的精华，而不是阅读经过别人转译过的文章。因此，这篇文章仅是本人在学习 SOA 基本概念时，对维基百科知识的一个汇总翻译记录，不建议朋友把这篇文章当做你的学习资料，具体请查阅Service-oriented architect">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1561944855/blog/elements_of_soa.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1561944919/blog/soa_meta-model.svg">
+<meta property="article:published_time" content="2019-06-19T21:20:40.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="SOA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1561944855/blog/elements_of_soa.png">
+
+
+<link rel="canonical" href="https://incoder.org/2019/06/19/soa/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2019/06/19/soa/","path":"2019/06/19/soa/","title":"【译】• 面向服务的架构"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【译】• 面向服务的架构 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">定义概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%A5%91%E7%BA%A6"><span class="nav-number">3.1.</span> <span class="nav-text">标准地服务契约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E8%87%AA%E6%B2%BB"><span class="nav-number">3.2.</span> <span class="nav-text">服务自治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%9D%BE%E8%80%A6%E5%90%88"><span class="nav-number">3.3.</span> <span class="nav-text">服务松耦合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E9%95%BF%E5%AF%BF"><span class="nav-number">3.4.</span> <span class="nav-text">服务长寿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%8A%BD%E8%B1%A1%E5%8C%96"><span class="nav-number">3.5.</span> <span class="nav-text">服务抽象化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E8%87%AA%E6%B2%BB-v2"><span class="nav-number">3.6.</span> <span class="nav-text">服务自治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%97%A0%E7%8A%B6%E6%80%81%E5%8C%96"><span class="nav-number">3.7.</span> <span class="nav-text">服务无状态化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%B2%92%E5%BA%A6"><span class="nav-number">3.8.</span> <span class="nav-text">服务粒度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">3.9.</span> <span class="nav-text">服务规范化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%AF%E7%BB%84%E5%90%88%E6%80%A7"><span class="nav-number">3.10.</span> <span class="nav-text">服务可组合性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="nav-number">3.11.</span> <span class="nav-text">服务发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%AF%E9%87%8D%E7%94%A8%E6%80%A7"><span class="nav-number">3.12.</span> <span class="nav-text">服务可重用性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%B0%81%E8%A3%85"><span class="nav-number">3.13.</span> <span class="nav-text">服务封装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85"><span class="nav-number">4.1.</span> <span class="nav-text">服务提供者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E4%BB%A3%E7%90%86%EF%BC%8C%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E6%88%96%E6%9C%8D%E5%8A%A1%E5%AD%98%E5%82%A8"><span class="nav-number">4.2.</span> <span class="nav-text">服务代理，服务注册或服务存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%B6%88%E8%B4%B9%E8%80%85"><span class="nav-number">4.3.</span> <span class="nav-text">服务消费者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">实现方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E7%BB%87%E5%88%A9%E7%9B%8A"><span class="nav-number">6.</span> <span class="nav-text">组织利益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%B9%E8%AF%84"><span class="nav-number">7.</span> <span class="nav-text">批评</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%92%8C%E5%8F%98%E4%BD%93"><span class="nav-number">8.</span> <span class="nav-text">扩展和变体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">8.1.</span> <span class="nav-text">事件驱动的体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web2-0"><span class="nav-number">8.2.</span> <span class="nav-text">Web2.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">8.3.</span> <span class="nav-text">微服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">9.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">10.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2019/06/19/soa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【译】• 面向服务的架构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-19 21:20:40" itemprop="dateCreated datePublished" datetime="2019-06-19T21:20:40+00:00">2019-06-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Translation/" itemprop="url" rel="index"><span itemprop="name">Translation</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/19/soa/" class="post-meta-item leancloud_visitors" data-flag-title="【译】• 面向服务的架构" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>10k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在学习过程中，我们首先需要将学习知识的基本概念搞清楚，而搞清楚概念最权威的方式是查阅 <strong><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3Jn">英文版 • 维基百科<i class="fa fa-external-link-alt"></i></span></strong> ，或者是对应知识的官方文档上面查找相关的知识。这样学习才能学习到知识的精华，而不是阅读经过别人转译过的文章。因此，这篇文章仅是本人在学习 SOA 基本概念时，对维基百科知识的一个汇总翻译记录，<font color=#FF0000>不建议朋友把这篇文章当做你的学习资料</font>，具体请查阅<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9hcmNoaXRlY3R1cmU=">Service-oriented architecture<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>面向服务的架构（SOA）是一种<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU29mdHdhcmVfZGVzaWdu">软件设计<i class="fa fa-external-link-alt"></i></span>风格。 SOA 服务通过<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQXBwbGljYXRpb25fY29tcG9uZW50cw==">应用组件<i class="fa fa-external-link-alt"></i></span>，通过网络<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ29tbXVuaWNhdGlvbnNfcHJvdG9jb2w=">通信协议<i class="fa fa-external-link-alt"></i></span>的方式向其他组件提供服务。SOA 的基本原则是独立于厂商，独立于产品以及独立于技术<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。服务是一种功能的离散独立单元，可以远程访问并独立运行与更新，例如在线查询信用卡账单。</p>
+<span id="more"></span>
+<p>一个服务在诸多 SOA 定义中有 4 个属性<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>：</p>
+<ol>
+<li>它逻辑上代表具有指定结果的业务活动</li>
+<li>它是自包含的</li>
+<li>它对于消费者来说是<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQmxhY2tfYm94">黑盒<i class="fa fa-external-link-alt"></i></span>（不可见）</li>
+<li>它可能包含其他基础服务<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></li>
+</ol>
+<p>不同的服务可以联合起来构建大型的<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU29mdHdhcmVfYXBwbGljYXRpb25z">软件应用<i class="fa fa-external-link-alt"></i></span><sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>，SOA 遵循模块化<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTW9kdWxhcl9wcm9ncmFtbWluZw==">编程思想<i class="fa fa-external-link-alt"></i></span>，SOA 集成了分布式，独立维护和独立部署的软件组件，它通过技术和标准促使组件通过网络进行通信和协作，尤其是通过 IP 网络</p>
+<h2 id="概览"><a class="header-anchor" href="#概览"></a>概览</h2>
+<p>在 SOA 中，服务的使用是描述怎样通过<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTWV0YWRhdGE=">元数据<i class="fa fa-external-link-alt"></i></span><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTWVzc2FnZV9wYXNzaW5n">传递消息<i class="fa fa-external-link-alt"></i></span>和解析消息的协议。该元数据描述了服务的功能特性和服务质量特征。SOA 目标旨在允许用户将大块的功能组合在一起来去构成一个应用，形成纯粹由现有服务构建并以临时方式组合的应用程序。一个服务会向调用者提供一个简单的接口，它抽象出作为黑盒子的底层复杂性。其他用户可以在不了解其内部实现的情况下访问这些独立服务<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>。</p>
+<h2 id="定义概念"><a class="header-anchor" href="#定义概念"></a>定义概念</h2>
+<p>相关的流行语服务导向促进了<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRhdGlvbg==">面向服务<i class="fa fa-external-link-alt"></i></span>间的<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTG9vc2VfY291cGxpbmc=">松耦合<i class="fa fa-external-link-alt"></i></span>。SOA 将功能分为不同的单元或服务，哪些开发人员可以通过网络访问，以便允许用户在应用程序的生产中组合和重用它们。这些服务及其相应的消费者通过明确定义的共享格式，传递数据或通过协调两个或更多服务之间的活动来互相通信</p>
+<p>2009 年 10 月发布了关于 SOA 的宣言，其中提出了 6 个核心价值，如下所示</p>
+<ol>
+<li><strong>商业价值</strong>比技术战略更重要</li>
+<li><strong>战略目标</strong>比项目特定的利益更重要</li>
+<li><strong>内在的互操作</strong>性比定制集成更重要</li>
+<li><strong>共享服务</strong>比特定用途实现更重要</li>
+<li><strong>灵活性</strong>比优化更重要</li>
+<li><strong>演进式</strong>比追求初始化完美更重要</li>
+</ol>
+<p>SOA 可看作是连续统一体的一部分，其范围从旧的<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGlzdHJpYnV0ZWRfY29tcHV0aW5n">分布式计算<i class="fa fa-external-link-alt"></i></span>概念和<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTW9kdWxhcl9wcm9ncmFtbWluZw==">模块化编程<i class="fa fa-external-link-alt"></i></span><sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> <sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>，通过 SOA，以及 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTWFzaHVwXyh3ZWJfYXBwbGljYXRpb25faHlicmlkKQ==">mashups<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2FhUw==">SaaS<i class="fa fa-external-link-alt"></i></span> 和<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ2xvdWRfY29tcHV0aW5n">云计算<i class="fa fa-external-link-alt"></i></span>的当前实践（有些人认为是 SOA 的后代）<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup></p>
+<h2 id="原理"><a class="header-anchor" href="#原理"></a>原理</h2>
+<p>尽管许多行业已发布了自己的原则，但没有与 SOA 确切相关的行业标准，其中一些<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup> <sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup> <sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup> <sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>包括以下内容</p>
+<h3 id="标准地服务契约"><a class="header-anchor" href="#标准地服务契约"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU3RhbmRhcmRpemVkX3NlcnZpY2VfY29udHJhY3Q=">标准地服务契约<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务遵循标准通信协议，有一组给定服务中的一个或多个服务描述文档共同定义</p>
+<h3 id="服务自治"><a class="header-anchor" href="#服务自治"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPVNlcnZpY2VfcmVmZXJlbmNlX2F1dG9ub215JmFtcDthY3Rpb249ZWRpdCZhbXA7cmVkbGluaz0x">服务自治<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务之间的关系被最小化到它们只知道存在的等级</p>
+<h3 id="服务松耦合"><a class="header-anchor" href="#服务松耦合"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPVNlcnZpY2VfbG9jYXRpb25fdHJhbnNwYXJlbmN5JmFtcDthY3Rpb249ZWRpdCZhbXA7cmVkbGluaz0x">服务松耦合<i class="fa fa-external-link-alt"></i></span></h3>
+<p>无论网络位于何处，都可以从网络中的任何位置调用服务</p>
+<h3 id="服务长寿"><a class="header-anchor" href="#服务长寿"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3cvaW5kZXgucGhwP3RpdGxlPVNlcnZpY2VfbG9uZ2V2aXR5JmFtcDthY3Rpb249ZWRpdCZhbXA7cmVkbGluaz0x">服务长寿<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务应该设计为长寿，在可能的情况下，如果不需要新功能，服务应该避免强迫消费者进行更改。如果今天能调用的服务，到明天也应该能调用统一的服务</p>
+<h3 id="服务抽象化"><a class="header-anchor" href="#服务抽象化"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9hYnN0cmFjdGlvbg==">服务抽象化<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务充当黑盒，它们内在的逻辑对消费者是隐藏的</p>
+<h3 id="服务自治-v2"><a class="header-anchor" href="#服务自治-v2"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9hdXRvbm9teV9wcmluY2lwbGU=">服务自治<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务是独立的，从设计时和运行时的角度控制它们封装的功能</p>
+<h3 id="服务无状态化"><a class="header-anchor" href="#服务无状态化"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9zdGF0ZWxlc3NuZXNzX3ByaW5jaXBsZQ==">服务无状态化<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务是无状态的，即返回请求的值或提供异常，从而最大限度的减少资源使用</p>
+<h3 id="服务粒度"><a class="header-anchor" href="#服务粒度"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9ncmFudWxhcml0eV9wcmluY2lwbGU=">服务粒度<i class="fa fa-external-link-alt"></i></span></h3>
+<p>确保服务具有足够的规模和范围的原则。服务向用户提供的功能必修三相关的</p>
+<h3 id="服务规范化"><a class="header-anchor" href="#服务规范化"></a>服务规范化</h3>
+<p>服务被分解或合并作为最小化冗余。在某些情况下，可能无法完成，这些是需要性能优化，访问和聚合的情况<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup></p>
+<h3 id="服务可组合性"><a class="header-anchor" href="#服务可组合性"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9jb21wb3NhYmlsaXR5X3ByaW5jaXBsZQ==">服务可组合性<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务可用于组成其他服务</p>
+<h3 id="服务发现"><a class="header-anchor" href="#服务发现"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9kaXNjb3Zlcnk=">服务发现<i class="fa fa-external-link-alt"></i></span></h3>
+<p>服务补充了交流元数据，通过它可以有效地发现和解释它们</p>
+<h3 id="服务可重用性"><a class="header-anchor" href="#服务可重用性"></a><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9yZXVzYWJpbGl0eV9wcmluY2lwbGU=">服务可重用性<i class="fa fa-external-link-alt"></i></span></h3>
+<p>将逻辑分为多个服务，以促进代码的复用</p>
+<h3 id="服务封装"><a class="header-anchor" href="#服务封装"></a>服务<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRW5jYXBzdWxhdGlvbl8oY29tcHV0ZXJfc2NpZW5jZSk=">封装<i class="fa fa-external-link-alt"></i></span></h3>
+<p>许多最初未在 SOA 下计划的服务可能会被封装或成为 SOA 的一部分</p>
+<h2 id="模式"><a class="header-anchor" href="#模式"></a>模式</h2>
+<p>每个SOA构建块都可以扮演以下三种角色中的任何一种：</p>
+<h3 id="服务提供者"><a class="header-anchor" href="#服务提供者"></a>服务提供者</h3>
+<p>它创建 Web 服务并将其信息提供给服务注册。每个提供者都会讨论大量的方法，以及为什么要公开哪些服务，哪些更重要：安全性或易用性，提供服务的价格等等。提供者还必须决定应该为给定的代理服务列出服务的类别<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>以及使用该服务需要那种协议</p>
+<h3 id="服务代理，服务注册或服务存储"><a class="header-anchor" href="#服务代理，服务注册或服务存储"></a>服务代理，服务注册或服务存储</h3>
+<p>其主要功能是使用任何潜在的请求者都能获取有关 Web 服务的信息。实施的人决定代理的范围。公开的代理随处可见，但私有的代理只能向有限的公开代理开放。UDDI 是一种早期的，不再主动支持的 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2ViX1NlcnZpY2VzX0Rpc2NvdmVyeQ==">Web 服务发现<i class="fa fa-external-link-alt"></i></span>。</p>
+<h3 id="服务消费者"><a class="header-anchor" href="#服务消费者"></a>服务消费者</h3>
+<p>它使用各种查找操作在代理注册中查找，然后绑定到服务提供者以调用其中一个 Web 服务。无论服务消费者需要哪种服务，它们都必须通过代理，将其与相应的服务绑定，然后使用它。如果服务提供多种服务，它们可以访问多种服务。</p>
+<p>服务消费者-提供者关系由<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU3RhbmRhcmRpemVkX3NlcnZpY2VfY29udHJhY3Q=">标准化服务契约<i class="fa fa-external-link-alt"></i></span><sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup>管理，其中包括业务部分，功能部分和技术部分。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9jb21wb3NhYmlsaXR5X3ByaW5jaXBsZQ==">服务组合模式<i class="fa fa-external-link-alt"></i></span>有两种广泛的高级架构风格：<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9jaG9yZW9ncmFwaHkjU2VydmljZV9jaG9yZW9ncmFwaHlfYW5kX3NlcnZpY2Vfb3JjaGVzdHJhdGlvbg==">服务编排<i class="fa fa-external-link-alt"></i></span>。不受特定体系结构风格约束的较低级别的企业集成模式在 SOA 设计中任然具有相关性和合格性<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup> <sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup> <sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup>。</p>
+<h2 id="实现方法"><a class="header-anchor" href="#实现方法"></a>实现方法</h2>
+<p>SOA 可以通过 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2ViX3NlcnZpY2U=">Web 服务<i class="fa fa-external-link-alt"></i></span><sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup>实现。这样做是为了使功能模块可以通过独立于平台和编程语言的标准协议访问。这些服务既可以代表新应用程序，也可以代表现有遗留系统的包装，使其具备网络功能。<sup class="footnote-ref"><a href="#fn20" id="fnref20">[20]</a></sup></p>
+<p>实现通用使用 Web 服务标准构建 SOA。一个例子是 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU09BUA==">SOAP<i class="fa fa-external-link-alt"></i></span>，它在 2003 年从 W3C<sup class="footnote-ref"><a href="#fn21" id="fnref21">[21]</a></sup> 推荐 1.2 版本后获得广泛的行业认可。这些标准（也称为 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTGlzdF9vZl93ZWJfc2VydmljZV9zcGVjaWZpY2F0aW9ucw==">Web 服务规范<i class="fa fa-external-link-alt"></i></span>）还提供了更强的互操作性以及对锁定到专有供应商软件的一些保护。但是，也可以使用任何其他基于服务的技术（如 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSmluaQ==">Jini<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ09SQkE=">CORBA<i class="fa fa-external-link-alt"></i></span> 或者 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUmVwcmVzZW50YXRpb25hbF9TdGF0ZV9UcmFuc2Zlcg==">REST<i class="fa fa-external-link-alt"></i></span>）实现 SOA</p>
+<p>架构可以独立于特定技术运行，因此可以使用多种技术实现，包括：</p>
+<ul>
+<li>基于 WSDL 和 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU09BUA==">SOAP<i class="fa fa-external-link-alt"></i></span> 的 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2ViX3NlcnZpY2Vz">Web 服务<i class="fa fa-external-link-alt"></i></span></li>
+<li>消息传递，例如，使用 ActiveMQ, JMS, RabbitMQ</li>
+<li>RESTful HTTP，具有 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUmVwcmVzZW50YXRpb25hbF9zdGF0ZV90cmFuc2Zlcg==">Representational 状态转移<i class="fa fa-external-link-alt"></i></span>（REST），构成自己的基于约束的架构风格</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvT1BDX1VuaWZpZWRfQXJjaGl0ZWN0dXJl">OPC-UA<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2luZG93c19Db21tdW5pY2F0aW9uX0ZvdW5kYXRpb24=">WCF<i class="fa fa-external-link-alt"></i></span>（Microsoft 的 Web 服务实现，构成 WCF 的一部分）</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQXBhY2hlX1RocmlmdA==">Apache Thrift<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvR1JQQw==">gRPC<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU09SQ0VS">SORCER<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<p>实现可以使用这些协议中的一个或多个，例如，可以使用文件系统机制来遵循符合 SOA 概念的进程间定义的接口规范来传递数据。关键是具有已定义接口的独立服务，可以调用它们以标准方式执行其任务，而无需预先知道调用应用程序的服务，并且没有应用程序具有或需要知道服务如何实际执行其任务。SOA 支持开发通过松耦合和可<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJvcGVyYWJsZQ==">互操作<i class="fa fa-external-link-alt"></i></span>的服务构建的应用程序</p>
+<p>这些服务独立于底层平台和编程语言的正式定义（或契约，例如 WSDL）进行互操作。接口定义<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW5mb3JtYXRpb25faGlkaW5n">隐藏了实施<i class="fa fa-external-link-alt"></i></span>特定语言的服务实现。因此，基于 SOA 的系统可以独立于开发技术和平台（例如Java，.NET等）运行。例如，运行在.NET平台上的 C# 和 用 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSmF2YV9QbGF0Zm9ybSxfRW50ZXJwcmlzZV9FZGl0aW9u">JavaEE<i class="fa fa-external-link-alt"></i></span> 平台上运行的 Java 编写的服务都可以公共复合应用程序（或客户端）使用。在任一平台上运行的应用程序也可以使用在另一个平台上运行的服务作为重用的 Web 服务。托管环境还可以包括 COBOL 遗留系统并将其作为软件服务提供。<sup class="footnote-ref"><a href="#fn22" id="fnref22">[22]</a></sup></p>
+<p>诸如 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQlBFTA==">BPEL<i class="fa fa-external-link-alt"></i></span> 之类的<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSGlnaC1sZXZlbF9wcm9ncmFtbWluZ19sYW5ndWFnZQ==">高级编程语言<i class="fa fa-external-link-alt"></i></span>以及诸如 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV1MtQ0RM">WS-CDL<i class="fa fa-external-link-alt"></i></span> 和 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV1MtQ29vcmRpbmF0aW9u">WS-Coordination<i class="fa fa-external-link-alt"></i></span> 之类的规范通过提供一种定义和支持将细粒度服务编排成更粗粒度的业务服务的方法来扩展服务的概念，架构师可以将其合并到<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ29tcG9zaXRlX2FwcGxpY2F0aW9ucw==">复合应用<i class="fa fa-external-link-alt"></i></span>程序或<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRW50ZXJwcmlzZV9wb3J0YWw=">门户<i class="fa fa-external-link-alt"></i></span>中实现的工作流和业务流中。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9tb2RlbGluZw==">面向服务的建模<i class="fa fa-external-link-alt"></i></span>是一个 SOA 架构，可识别指导 SOA 从业者对其面向服务的资产进行概念化，分析，设计和构建的各种规程。<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9tb2RlbGluZyNTZXJ2aWNlLW9yaWVudGVkX21vZGVsaW5nX2ZyYW1ld29yaw==">面向服务的建模框架（SOMF）<i class="fa fa-external-link-alt"></i></span>提供了一种建模语言和一个工作架构映射，描述了有助于成功的面向服务的建模方法的各种组件。它说明了识别服务开发方案的“做什么”方面的主要元素。该模型使从业者能够制定<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUHJvamVjdF9wbGFu">项目计划<i class="fa fa-external-link-alt"></i></span>并确定面向服务的计划的里程碑。SOMF 还提供了一种通用的建模符号，已解决业务和 IT 组织之间的一致性问题。</p>
+<h2 id="组织利益"><a class="header-anchor" href="#组织利益"></a>组织利益</h2>
+<p>一些<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRW50ZXJwcmlzZV9hcmNoaXRlY3Q=">企业架构师<i class="fa fa-external-link-alt"></i></span>认为，SOA 可以帮助企业更快，更经济地响应不断变化的市场条件。<sup class="footnote-ref"><a href="#fn23" id="fnref23">[23]</a></sup>这种体系结构促进了宏（服务）级别的重用，而不是微（类）级别的重用。它还可以简化现有 IT（传统）资产的互联和使用。</p>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1561944855/blog/elements_of_soa.png" alt="SOA的元素，由Dirk Krafzig，Karl Banke和Dirk Slama撰写 "></p>
+<p>使用SOA，我们的想法是组织可以从整体上看待问题。企业拥有更多地整体控制权。从理论上讲，不会有大量的开发人员使用任何工具集让他们满意，但他们将编码为业务中设定标准。他们还可以开发企业级 SOA，封装面向业务的基础架构。SOA 被描述为汽车驾驶员提供效率的高速公路系统。关键在于，如果每个人都有车，但在任何地方都没有高速公路，那么事情就会受到限制和混乱，无论是视图快速或有效地到达任何地方。IBM Web 服务副总裁 Michael Liebow 表示 SOA 是“建设的高速公路”。<sup class="footnote-ref"><a href="#fn25" id="fnref25">[25]</a></sup></p>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1561944919/blog/soa_meta-model.svg" alt="SOA元模型，The Linthicum Group，2007"></p>
+<p><font color=#FF0000>在某些方面，SOA可以被视为架构演变而不是革命</font>。它捕获了以前软件架构的许多<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQmVzdF9wcmFjdGljZQ==">最佳实践<i class="fa fa-external-link-alt"></i></span>。例如，在通信系统中，很少开发使用真正静态绑定与网络中的其他设备通信的解决方案。通过采用 SOA 方法，此类系统可以将自己定位为强调定义明确，高度可互操作的接口的重要性。SOA 的其他前身包括<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ29tcG9uZW50LWJhc2VkX3NvZnR3YXJlX2VuZ2luZWVyaW5n">基于组件的软件工程<i class="fa fa-external-link-alt"></i></span>和远程对象的面向对象分析和设计（OOAD），例如，在 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ09SQkE=">CORBA<i class="fa fa-external-link-alt"></i></span> 中。</p>
+<p>服务包括仅通过正式定义的页面可用的独立功能单元。服务可以是某种易于生产和改进的“纳米企业”。服务也可以是作为子下属服务的协调工作而构建的“大型企业”。SOA 的成熟部署有效地定义了组织的 API。</p>
+<p>将服务实施视为大型项目的单独项目的原因包括：</p>
+<ol>
+<li>分离将业务概念推广到业务，即服务可以快速独立地从组织中常见的较大且移动较慢的项目中提供。业务开始了解回调服务的系统和简化的用户界面。这提倡<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQWdpbGl0eQ==">敏捷<i class="fa fa-external-link-alt"></i></span>。也就是说，它促进了业务创新并加快了产品上市时间<sup class="footnote-ref"><a href="#fn26" id="fnref26">[26]</a></sup>。</li>
+<li>分离促进了服务于消费项目的脱钩。这样可以鼓励良好的设计，因为服务的设计不需要知道消费者是谁。</li>
+<li>服务的文档和测试文件未嵌入较大项目的详细信息中。当服务需要在后续需要重用时，这很重要。</li>
+</ol>
+<p>SOA 承诺间接简化测试。服务是自治的，无状态的，具有完全记录的接口，并且与实现的关注点是分开的。如果组织拥有适当定义的测试数据，则会构建响应的存根，以便在构建服务时对测试数据做出反应。可以构建测试环境，其中原始和超出范围的服务是存根，而网格的其余ubuf 是完整服务的测试部署。由于每个接口都有完整的文档，并附有完整的回归测试文档，因此可以轻松识别测试服务中的问题。测试演变为仅仅验证测试服务是否根据其文档运行，并发现环境中所有服务的文档和测试用例存在的差距。管理<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQWdpbGl0eQ==">幂等<i class="fa fa-external-link-alt"></i></span>服务的数据状态是唯一的复杂性。</p>
+<p>实例可能有助于将服务记录到有用的级别。Java community Process 中的一些 API 文档提供了良好的示例。由于这些是详尽无遗漏的，工作人员通常只使用重要的子集。JSR-89 的 ossjsa.pdf 文件中举例说明了这样做一个文件<sup class="footnote-ref"><a href="#fn27" id="fnref27">[27]</a></sup>。</p>
+<h2 id="批评"><a class="header-anchor" href="#批评"></a>批评</h2>
+<p>SOA 已与 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2ViX3NlcnZpY2U=">Web 服务<i class="fa fa-external-link-alt"></i></span>混淆<sup class="footnote-ref"><a href="#fn28" id="fnref28">[28]</a></sup>，但是，Web 服务只是实现构成 SOA 风格的模式的一种选择。在非本机或二进制形式的远程过程调用（RPC）的情况下，应用程序可能运行的更慢并且需要更多地处理能力，从而增加了成本。大多数实现都会产生这些开销，但 SOA 可以使用技术实现（例如，<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSmF2YV9CdXNpbmVzc19JbnRlZ3JhdGlvbg==">Java Business Integration（JBI）<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2luZG93c19Db21tdW5pY2F0aW9uX0ZvdW5kYXRpb24=">Windows Communication Foundation（WCF）<i class="fa fa-external-link-alt"></i></span>和 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGF0YV9kaXN0cmlidXRpb25fc2VydmljZQ==">data distribution service（DDS）<i class="fa fa-external-link-alt"></i></span>），它们不依赖与远程过程调用或通过 XML 进行转换。与此同时，新兴的开源 XML 解析技术（如 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVlRELVhNTA==">VTD-XML<i class="fa fa-external-link-alt"></i></span>）和各种 XML 兼容的二进制格式有望显著提高 SOA 性能。使用 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSlNPTg==">JSON<i class="fa fa-external-link-alt"></i></span> 而不是 XML 实现的服务不会受到这种性能的问题的影响<sup class="footnote-ref"><a href="#fn29" id="fnref29">[29]</a></sup> <sup class="footnote-ref"><a href="#fn30" id="fnref30">[30]</a></sup> <sup class="footnote-ref"><a href="#fn31" id="fnref31">[31]</a></sup>。</p>
+<p>有状态服务要求消费者和提供者共享相同的特定于消费者的上下文，该上下文包含在提供者和消费者之间交换的消息中或由其引入。如果服务提供者需要为每个消费者保留共享上下文，则此约束的缺点是它可能会降低服务提供者的整体可伸缩性。它还增加了服务提供者和消费者之间的耦合，使交换服务提供者更加困难<sup class="footnote-ref"><a href="#fn32" id="fnref32">[32]</a></sup>。最终，一些批评者认为 SOA 服务仍然受到他们所代表的应用程序的限制<sup class="footnote-ref"><a href="#fn33" id="fnref33">[33]</a></sup>。</p>
+<p>SOA 的体系结构面临的主要挑战是管理元数据。基于 SOA 的环境包括许多彼此之间进行通信以执行任务的服务。由于设计可能涉及多个服务一起工作，因此应用程序可能会产生数百万条消息。进一步的服务可能属于不同的组织甚至是竞争公司，造成巨大的信任问题。因此 SOA 治理进入了事务的计划<sup class="footnote-ref"><a href="#fn34" id="fnref34">[34]</a></sup>。</p>
+<p>SOA 面临的另一个主要问题是缺乏统一的测试架构。没有工具可以提供在 SOA 的体系结构中测试这些服务所需的功能。困难的主要原因是：<sup class="footnote-ref"><a href="#fn35" id="fnref35">[35]</a></sup></p>
+<ul>
+<li>异质性和解决方案的复杂性</li>
+<li>由于自主服务的集成，大量的测试组合</li>
+<li>包含来自不同和竞争供应商的服务</li>
+<li>由于新功能和服务的可用性，<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUGxhdGZvcm1fYXNfYV9zZXJ2aWNl">平台<i class="fa fa-external-link-alt"></i></span>不断变化</li>
+</ul>
+<p>请参阅 <span class="exturl" data-url="aHR0cDovL2Ryb3BzLmRhZ3N0dWhsLmRl">drops.dagstuhl.de<i class="fa fa-external-link-alt"></i></span><sup class="footnote-ref"><a href="#fn36" id="fnref36">[36]</a></sup>，了解有关<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9tb2RlbGluZw==">软件服务工程<i class="fa fa-external-link-alt"></i></span>的其他挑战，部分解决方案和研究路线图</p>
+<h2 id="扩展和变体"><a class="header-anchor" href="#扩展和变体"></a>扩展和变体</h2>
+<h3 id="事件驱动的体系结构"><a class="header-anchor" href="#事件驱动的体系结构"></a>事件驱动的体系结构</h3>
+<p>主要文章：<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRXZlbnQtZHJpdmVuX2FyY2hpdGVjdHVyZQ==">事件驱动的架构<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="Web2-0"><a class="header-anchor" href="#Web2-0"></a>Web2.0</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVGltX08lMjdSZWlsbHk=">Tim O’Reilly<i class="fa fa-external-link-alt"></i></span> 创造了“<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvV2ViXzIuMA==">Web2.0<i class="fa fa-external-link-alt"></i></span>”一词来描述一种快速增长的基于网络的应用程序<sup class="footnote-ref"><a href="#fn37" id="fnref37">[37]</a></sup>。经历了广泛报道的主题涉及 Web2.0与 SOA 体系机构之间的关系。</p>
+<p>SOA 是将应用程序逻辑封装在具有统一定义的接口的服务中并通过发现机制公开可用的哲学。复杂性-隐藏和重用的概念，以及松耦合服务的概念，激发了研究人员详细阐述两种哲学，SOA 和 Web2.0及其各自应用之间的相似性。一些人认为 Web2.0和 SOA 具有显著不同的元素，因此不能被视为“平行哲学”，而其他人认为这两个概念是互补的，并将 Web2.0视为全球 SOA<sup class="footnote-ref"><a href="#fn38" id="fnref38">[38]</a></sup>。</p>
+<p>Web2.0和 SOA 的理念满足了不同的用户需求，从而暴露了设计方面的差异以及实际应用中使用的技术。但是，截止 2008 年，用例展示了结合 Web2.0和 SOA 技术和原则的潜力<sup class="footnote-ref"><a href="#fn38" id="fnref38:1">[38:1]</a></sup>。</p>
+<h3 id="微服务"><a class="header-anchor" href="#微服务"></a>微服务</h3>
+<p>主要文章：<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTWljcm9zZXJ2aWNlcw==">微服务<i class="fa fa-external-link-alt"></i></span></p>
+<p>微服务是对用于构建<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGlzdHJpYnV0ZWRfY29tcHV0aW5n">分布式软件系统<i class="fa fa-external-link-alt"></i></span>的面向服务的体系结构的现代解释。微服务架构<sup class="footnote-ref"><a href="#fn39" id="fnref39">[39]</a></sup>中的服务是通过<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ29tcHV0ZXJfbmV0d29yaw==">网络<i class="fa fa-external-link-alt"></i></span>互相通信以实现目标的<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvUHJvY2Vzc18oY29tcHV0aW5nKQ==">过程<i class="fa fa-external-link-alt"></i></span>。这些服务使用技术不可知<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQ29tbXVuaWNhdGlvbnNfcHJvdG9jb2w=">协议<i class="fa fa-external-link-alt"></i></span><sup class="footnote-ref"><a href="#fn40" id="fnref40">[40]</a></sup>，这有助于封装语言和框架的选择，使他们的选择成为服务内部的一个问题。<font color=#FF0000>微服务是 SOA 的一种新的实现方法</font>，自 2014 年（以及 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGV2T3Bz">DevOps<i class="fa fa-external-link-alt"></i></span> 推出以后）开始流行，并且强调持续部署和其他的=敏捷实践<sup class="footnote-ref"><a href="#fn41" id="fnref41">[41]</a></sup>。</p>
+<p>微服务没有一个共同商定的定义。在文献中可以找到以下特征和原理：</p>
+<ul>
+<li>细粒度接口（可独立部署的服务）</li>
+<li>业务驱动的开发（例如域驱动设计）</li>
+<li>IDEAL 云应用架构</li>
+<li>多语言编程和持久化存储</li>
+<li>轻量级容器部署</li>
+<li>分散的持续交付</li>
+<li>DevOps 提供全面的服务监控</li>
+</ul>
+<h2 id="其他"><a class="header-anchor" href="#其他"></a>其他</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTG9vc2VfY291cGxpbmc=">松耦合<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvT0FTSVNfU09BX1JlZmVyZW5jZV9Nb2RlbA==">OASIS SOA 参考模型<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZV9ncmFudWxhcml0eV9wcmluY2lwbGU=">服务粒度原则<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU09BX2dvdmVybmFuY2U=">SOA 治理<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU29mdHdhcmVfYXJjaGl0ZWN0dXJl">软件架构<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9jb21tdW5pY2F0aW9ucw==">面向服务的通信<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9kZXZlbG9wbWVudF9vZl9hcHBsaWNhdGlvbnM=">面向服务的应用程序开发<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9kaXN0cmlidXRlZF9hcHBsaWNhdGlvbnM=">面向服务的分布式应用程序<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwMjA2MTMyNTQyL2h0dHBzOi8vbXNkbi5taWNyb3NvZnQuY29tL2VuLXVzL2xpYnJhcnkvYmI4MzMwMjIuYXNweA==">Chapter 1: Service Oriented Architecture (SOA)<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL21zZG4ubWljcm9zb2Z0LmNvbQ==">msdn.microsoft.com<i class="fa fa-external-link-alt"></i></span>. Archived from <span class="exturl" data-url="aHR0cHM6Ly9tc2RuLm1pY3Jvc29mdC5jb20vZW4tdXMvbGlicmFyeS9iYjgzMzAyMi5hc3B4">the original<i class="fa fa-external-link-alt"></i></span> on February 6, 2016. Retrieved September 21, 2016. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cHM6Ly9wdWJsaWNhdGlvbnMub3Blbmdyb3VwLm9yZy9zdGFuZGFyZHMvc29h">Service-Oriented Architecture Standards - The Open Group<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL3d3dy5vcGVuZ3JvdXAub3Jn">www.opengroup.org<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTYwODE5MTQxMzAzL2h0dHA6Ly9vcGVuZ3JvdXAub3JnL3NvYS9zb3VyY2UtYm9vay9zb2Evc29hLmh0bQ==">What Is SOA?<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL3d3dy5vcGVuZ3JvdXAub3Jn">www.opengroup.org<i class="fa fa-external-link-alt"></i></span>. Archived from <span class="exturl" data-url="aHR0cDovL3d3dy5vcGVuZ3JvdXAub3JnL3NvYS9zb3VyY2UtYm9vay9zb2Evc29hLmh0bQ==">the original<i class="fa fa-external-link-alt"></i></span> on August 19, 2016. Retrieved September 21, 2016. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Velte, Anthony T. (2010). Cloud Computing: A Practical Approach. McGraw Hill. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJuYXRpb25hbF9TdGFuZGFyZF9Cb29rX051bWJlcg==">ISBN<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU3BlY2lhbDpCb29rU291cmNlcy85NzgtMC0wNy0xNjI2OTQtMQ==">978-0-07-162694-1<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMDgxMjA5MTIwOTE2L2h0dHA6Ly93d3ctMTI4LmlibS5jb20vZGV2ZWxvcGVyd29ya3MvbGlicmFyeS93cy1taWdyYXRlc29hLw==">Migrating to a service-oriented architecture, Part 1<i class="fa fa-external-link-alt"></i></span>”. December 9, 2008. Archived from the original on December 9, 2008. Retrieved September 21, 2016. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Michael Bell (2008). “Introduction to Service-Oriented Modeling”. Service-Oriented Modeling: Service Analysis, Design, and Architecture. Wiley &amp; Sons. p. 3. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJuYXRpb25hbF9TdGFuZGFyZF9Cb29rX051bWJlcg==">ISBN<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU3BlY2lhbDpCb29rU291cmNlcy85NzgtMC00NzAtMTQxMTEtMw==">978-0-470-14111-3<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Thomas Erl (June 2005). About the Principles. <span class="exturl" data-url="aHR0cDovL1NlcnZpY2VvcmllbnRhdGlvbi5vcmc=">Serviceorientation.org<i class="fa fa-external-link-alt"></i></span> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cDovL2Fwc2Jsb2cuYnVydG9uZ3JvdXAuY29tLzIwMDkvMDEvc29hLWlzLWRlYWQtbG9uZy1saXZlLXNlcnZpY2VzLmh0bWw=">Application Platform Strategies Blog: SOA is Dead; Long Live Services<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL0Fwc2Jsb2cuYnVydG9uZ3JvdXAuY29t">Apsblog.burtongroup.com<i class="fa fa-external-link-alt"></i></span>. January 5, 2009. Retrieved August 13, 2012. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>Yvonne Balzer <span class="exturl" data-url="aHR0cDovL3d3dy0xMjguaWJtLmNvbS9kZXZlbG9wZXJ3b3Jrcy93ZWJzZXJ2aWNlcy9saWJyYXJ5L3dzLWltcHJvdmVzb2Ev">Improve your SOA project plans<i class="fa fa-external-link-alt"></i></span>, IBM, July 16, 2004 <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>Microsoft Windows Communication Foundation team (2012). “<span class="exturl" data-url="aHR0cDovL21zZG4ubWljcm9zb2Z0LmNvbS9lbi11cy9saWJyYXJ5L2JiOTcyOTU0LmFzcHg=">Principles of Service Oriented Design<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL21zZG4ubWljcm9zb2Z0LmNvbQ==">msdn.microsoft.com<i class="fa fa-external-link-alt"></i></span>. Retrieved September 3, 2012. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Principles by <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvVGhvbWFzX0VybA==">Thomas<i class="fa fa-external-link-alt"></i></span> Erl of SOA Systems Inc. <span class="exturl" data-url="aHR0cDovL3NvYXByaW5jaXBsZXMuY29t">eight specific service-orientation principles<i class="fa fa-external-link-alt"></i></span> <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>M. Hadi Valipour; Bavar AmirZafari; Kh. Niki Maleki; Negin Daneshpour (2009). “A brief survey of software architecture concepts and service oriented architecture”. 2009 2nd IEEE International Conference on Computer Science and Information Technology. pp. 34–38. <span class="exturl" data-url="aHR0cHM6Ly9kb2kub3JnLzEwLjExMDklMkZJQ0NTSVQuMjAwOS41MjM1MDA0">doi:10.1109/ICCSIT.2009.5235004<i class="fa fa-external-link-alt"></i></span>. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJuYXRpb25hbF9TdGFuZGFyZF9Cb29rX051bWJlcg==">ISBN<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU3BlY2lhbDpCb29rU291cmNlcy85NzgtMS00MjQ0LTQ1MTktNg==">978-1-4244-4519-6<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p>Tony Shan (2004). “Building a service-oriented e Banking platform”. IEEE International Conference on Services Computing, 2004. (SCC 2004). Proceedings. 2004. pp. 237–244. <span class="exturl" data-url="aHR0cHM6Ly9kb2kub3JnLzEwLjExMDklMkZTQ0MuMjAwNC4xMzU4MDEx">doi:10.1109/SCC.2004.1358011<i class="fa fa-external-link-alt"></i></span>. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJuYXRpb25hbF9TdGFuZGFyZF9Cb29rX051bWJlcg==">ISBN<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU3BlY2lhbDpCb29rU291cmNlcy85NzgtMC03Njk1LTIyMjUtOA==">978-0-7695-2225-8.2004<i class="fa fa-external-link-alt"></i></span> <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>Duan, Yucong; Narendra, Nanjangud; Du, Wencai; Wang, Yongzhi; Zhou, Nianjun. “<span class="exturl" data-url="aHR0cDovL2llZWV4cGxvcmUuaWVlZS5vcmcvZG9jdW1lbnQvNjkyODkxNS8=">Exploring Cloud Service Brokering from an Interface Perspective<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSUVFRQ==">IEEE<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p>Duan, Yucong. “<span class="exturl" data-url="aHR0cDovL2llZWV4cGxvcmUuaWVlZS5vcmcvZG9jdW1lbnQvNjI5OTM3NS8=">A Survey on Service Contract<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSUVFRQ==">IEEE<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn16" class="footnote-item"><p>Olaf Zimmermann, Cesare Pautasso, Gregor Hohpe, Bobby Woolf (2016). “<span class="exturl" data-url="aHR0cDovL2llZWV4cGxvcmUuaWVlZS5vcmcvZG9jdW1lbnQvNzM2ODAwNy8=">A Decade of Enterprise Integration Patterns<i class="fa fa-external-link-alt"></i></span>”. IEEE Software. 33 (1): 13–19. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGlnaXRhbF9vYmplY3RfaWRlbnRpZmllcg==">doi<i class="fa fa-external-link-alt"></i></span>:<span class="exturl" data-url="aHR0cHM6Ly9kb2kub3JnLzEwLjExMDklMkZNUy4yMDE2LjEx">10.1109/MS.2016.11<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn17" class="footnote-item"><p>Rotem-Gal-Oz, Arnon (2012). SOA Patterns. Manning Publications. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJuYXRpb25hbF9TdGFuZGFyZF9Cb29rX051bWJlcg==">ISBN<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU3BlY2lhbDpCb29rU291cmNlcy85NzgtMTkzMzk4ODI2OQ==">978-1933988269<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn18" class="footnote-item"><p>K. Julisch et al., <span class="exturl" data-url="aHR0cDovL3NvYWRlY2lzaW9ucy5vcmcvZG93bmxvYWQvQ29tcGxpYW5jZUJ5RGVzaWduLUFBTS5wZGY=">Compliance by Design – Bridging the Chasm between Auditors and IT Architects<i class="fa fa-external-link-alt"></i></span>. Computers &amp; Security, Elsevier. Volume 30, Issue 6-7, Sep.-Oct. 2011. <a href="#fnref18" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn19" class="footnote-item"><p>Brandner, M., Craes, M., Oellermann, F., Zimmermann, O., Web Services-Oriented Architecture in Production in the Finance Industry, Informatik-Spektrum 02/2004, Springer-Verlag, 2004 <a href="#fnref19" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn20" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cDovL3d3dy5pYm0uY29tL3N1cHBvcnQva25vd2xlZGdlY2VudGVyL2VuL1NTRVFUUF82LjEuMC9jb20uaWJtLndlYnNwaGVyZS5iYXNlLmlzZXJpZXMuZG9jL2luZm8vaXNlcmllcy9hZS9jd2JzX3NvYXdicy5odG1s">www.ibm.com<i class="fa fa-external-link-alt"></i></span>”. Retrieved September 10, 2016. <a href="#fnref20" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn21" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cDovL3d3dy53My5vcmcvMjAwMy8wNi9zb2FwMTItcHJlc3NyZWxlYXNl">SOAP Version 1.2 の公開について (W3C 勧告)<i class="fa fa-external-link-alt"></i></span>” (in Japanese). <span class="exturl" data-url="aHR0cDovL1czLm9yZw==">W3.org<i class="fa fa-external-link-alt"></i></span>. Retrieved August 13, 2012. <a href="#fnref21" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn22" class="footnote-item"><p>Okishima, Haruhiru (2006). “. <span class="exturl" data-url="aHR0cDovL3d3dy5mdWppdHN1LmNvbS9nbG9iYWwvZG9jdW1lbnRzL2Fib3V0L3Jlc291cmNlcy9wdWJsaWNhdGlvbnMvZnN0ai9hcmNoaXZlcy92b2w0Mi0zL3BhcGVyMTgucGRm">“Case Study of System Architecture that use COBOL assets”<i class="fa fa-external-link-alt"></i></span>” (PDF). <a href="#fnref22" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn23" class="footnote-item"><p>Christopher Koch <span class="exturl" data-url="aHR0cDovL3d3dy5jaW8uY29tLmF1L2luZGV4LnBocC9pZDsxMzUwMTQwNzA4">A New Blueprint For The Enterprise<i class="fa fa-external-link-alt"></i></span>, CIO Magazine, March 1, 2005 <a href="#fnref23" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn24" class="footnote-item"><p>Enterprise SOA. Prentice Hall, 2005 <a href="#fnref24" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn25" class="footnote-item"><p>Elizabeth Millard (January 2005). “Building a Better Process”. Computer User. Page 20. <a href="#fnref25" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn26" class="footnote-item"><p>Brayan Zimmerli (November 11, 2009) <span class="exturl" data-url="aHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTAxMTA1MDYzNTQ1L2h0dHA6Ly93d3cuYnJheWFuLmNvbS9wcm9qZWN0cy9CZW5lZml0c09mU09BL2RlZmF1bHQuaHRt">Business Benefits of SOA<i class="fa fa-external-link-alt"></i></span>, University of Applied Science of Northwestern Switzerland, School of Business <a href="#fnref26" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn27" class="footnote-item"><p>J<span class="exturl" data-url="aHR0cHM6Ly93ZWIuYXJjaGl2ZS5vcmcvd2ViLzIwMTEwNzI2MDcwODEwL2h0dHBzOi8vY2RzLnN1bi5jb20vaXMtYmluL0lOVEVSU0hPUC5lbmZpbml0eS9XRlMvQ0RTLUNEU19EZXZlbG9wZXItU2l0ZS9lbl9VUy8tL1VTRC9WaWV3UHJvZHVjdERldGFpbC1TdGFydD9Qcm9kdWN0UmVmPTc4NTQtb3NzX3NlcnZpY2VfYWN0aXZhdGlvbi0xLjAtZnItc3BlYy1vdGgtSlNwZWMlNDBDRFMtQ0RTX0RldmVsb3Blcg==">SR-000089 OSS Service Activation API Specification 1.0 Final Release<i class="fa fa-external-link-alt"></i></span>. <span class="exturl" data-url="aHR0cDovL3N1bi5jb20=">sun.com<i class="fa fa-external-link-alt"></i></span> <a href="#fnref27" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn28" class="footnote-item"><p>Joe McKendrick. “<span class="exturl" data-url="aHR0cDovL3d3dy56ZG5ldC5jb20vYmxvZy9zZXJ2aWNlLW9yaWVudGVkL2JyYXktc29hLXRvby1jb21wbGV4LWp1c3QtdmVuZG9yLWJzLzU5Nw==">Bray: SOA too complex; ‘just vendor BS’<i class="fa fa-external-link-alt"></i></span>”. ZDNet. <a href="#fnref28" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn29" class="footnote-item"><p>Jimmy Zhang (February 20, 2008) “<span class="exturl" data-url="aHR0cDovL3htbC5zeXMtY29uLmNvbS9yZWFkLzQ1MzA4Mi5odG0=">Index XML Documents with VTD-XML<i class="fa fa-external-link-alt"></i></span>”. XML Journal. <a href="#fnref29" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn30" class="footnote-item"><p>Jimmy Zhang (August 5, 2008) “<span class="exturl" data-url="aHR0cDovL3NvYS5zeXMtY29uLmNvbS9yZWFkLzI1MDUxMi5odG0=">i-Technology Viewpoint: The Performance Woe of Binary XML<i class="fa fa-external-link-alt"></i></span>”. Microservices Journal. <a href="#fnref30" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn31" class="footnote-item"><p>Jimmy Zhang (January 9, 2008) “<span class="exturl" data-url="aHR0cDovL3d3dy5kZXZ4LmNvbS94bWwvQXJ0aWNsZS8zNjM3OQ==">Manipulate XML Content the Ximple Way<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL2RldnguY29t">devx.com<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref31" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn32" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cDovL3d3dy5qcG1vcmdlbnRoYWwuY29tL21vcmdlbnRoYWwvP3A9MzE=">The Reason SOA Isn’t Delivering Sustainable Software<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL2pwbW9yZ2VudGhhbC5jb20=">jpmorgenthal.com<i class="fa fa-external-link-alt"></i></span>. June 19, 2009. Retrieved June 27, 2009. <a href="#fnref32" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn33" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cDovL3d3dy56ZG5ldC5jb20vYXJ0aWNsZS9zb2Etc2VydmljZXMtc3RpbGwtdG9vLWNvbnN0cmFpbmVkLWJ5LWFwcGxpY2F0aW9ucy10aGV5LXJlcHJlc2VudC8=">SOA services still too constrained by applications they represent<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL3pkbmV0LmNvbQ==">zdnet.com<i class="fa fa-external-link-alt"></i></span>. June 27, 2009. Retrieved June 27, 2009. <a href="#fnref33" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn34" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cHM6Ly93d3cub3Blbmdyb3VwLm9yZy9zb2Evc291cmNlLWJvb2svc29hX3JlZmFyY2gvZ292ZXJuYW5jZS5odG0=">Governance Layer<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL3d3dy5vcGVuZ3JvdXAub3Jn">www.opengroup.org<i class="fa fa-external-link-alt"></i></span>. Retrieved September 22, 2016. <a href="#fnref34" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn35" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cDovL3dzbzIuY29tL2xpYnJhcnkvYXJ0aWNsZXMvMjAxNC8wNC9ob3ctdG8tZWZmaWNpZW50bHktdGVzdC1zZXJ2aWNlLW9yaWVudGVkLWFyY2hpdGVjdHVyZS8=">How to Efficiently Test Service Oriented Architecture | WSO2 Inc<i class="fa fa-external-link-alt"></i></span>”. <span class="exturl" data-url="aHR0cDovL3dzbzIuY29t">wso2.com<i class="fa fa-external-link-alt"></i></span>. Retrieved September 22, 2016. <a href="#fnref35" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn36" class="footnote-item"><p><span class="exturl" data-url="aHR0cDovL2Ryb3BzLmRhZ3N0dWhsLmRlL29wdXMvdm9sbHRleHRlLzIwMDkvMjA0Ni9wZGYvMDkwMjFfYWJzdHJhY3RzX2NvbGxlY3Rpb24uMjA0Ni5wZGY=">http://drops.dagstuhl.de/opus/volltexte/2009/2046/pdf/09021_abstracts_collection.2046.pdf<i class="fa fa-external-link-alt"></i></span> <a href="#fnref36" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn37" class="footnote-item"><p>“<span class="exturl" data-url="aHR0cDovL3d3dy5vcmVpbGx5bmV0LmNvbS9wdWIvYS9vcmVpbGx5L3RpbS9uZXdzLzIwMDUvMDkvMzAvd2hhdC1pcy13ZWItMjAuaHRtbA==">What Is Web 2.0<i class="fa fa-external-link-alt"></i></span>”. Tim O’Reilly. September 30, 2005. Retrieved June 10, 2008. <a href="#fnref37" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn38" class="footnote-item"><p>Christoph Schroth &amp; Till Janner (2007). “<span class="exturl" data-url="aHR0cDovL3d3dy5hbGV4YW5kcmlhLnVuaXNnLmNoL1B1Ymxpa2F0aW9uZW4vMzcyNzA=">Web 2.0 and SOA: Converging Concepts Enabling the Internet of Services<i class="fa fa-external-link-alt"></i></span>”. IT Professional 9 (2007), Nr. 3, pp. 36–41, IEEE Computer Society. Retrieved February 23, 2008. <a href="#fnref38" class="footnote-backref">↩︎</a> <a href="#fnref38:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn39" class="footnote-item"><p>Dragoni, Nicola; Giallorenzo, Saverio; Alberto Lluch Lafuente; Mazzara, Manuel; Montesi, Fabrizio; Mustafin, Ruslan; Safina, Larisa (2016). “Microservices: yesterday, today, and tomorrow”. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQXJYaXY=">arXiv<i class="fa fa-external-link-alt"></i></span>:<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE2MDYuMDQwMzZ2MQ==">1606.04036v1<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYXJjaGl2ZS9jcy5TRQ==">cs.SE<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref39" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn40" class="footnote-item"><p>James Lewis and Martin Fowler. “<span class="exturl" data-url="aHR0cDovL21hcnRpbmZvd2xlci5jb20vYXJ0aWNsZXMvbWljcm9zZXJ2aWNlcy5odG1s">Microservices<i class="fa fa-external-link-alt"></i></span>”. <a href="#fnref40" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn41" class="footnote-item"><p>Balalaie, A.; Heydarnoori, A.; Jamshidi, P. (May 1, 2016). “<span class="exturl" data-url="aHR0cDovL2llZWV4cGxvcmUuaWVlZS5vcmcvbHBkb2NzL2VwaWMwMy93cmFwcGVyLmh0bT9hcm51bWJlcj03NDM2NjU5">Microservices Architecture Enables DevOps: Migration to a Cloud-Native Architecture<i class="fa fa-external-link-alt"></i></span>”. IEEE Software. 33 (3): 42–52. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGlnaXRhbF9vYmplY3RfaWRlbnRpZmllcg==">doi<i class="fa fa-external-link-alt"></i></span>:<span class="exturl" data-url="aHR0cHM6Ly9kb2kub3JnLzEwLjExMDklMkZNUy4yMDE2LjY0">10.1109/MS.2016.64<i class="fa fa-external-link-alt"></i></span>. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSGFuZGxlX1N5c3RlbQ==">hdl<i class="fa fa-external-link-alt"></i></span>:<span class="exturl" data-url="aHR0cHM6Ly9oZGwuaGFuZGxlLm5ldC8xMDA0NCUyRjElMkY0MDU1Nw==">10044/1/40557<i class="fa fa-external-link-alt"></i></span>. <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJuYXRpb25hbF9TdGFuZGFyZF9TZXJpYWxfTnVtYmVy">ISSN<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly93d3cud29ybGRjYXQub3JnL2lzc24vMDc0MC03NDU5">0740-7459<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref41" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2019/06/19/soa/" title="【译】• 面向服务的架构">https://incoder.org/2019/06/19/soa/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+              <a href="/tags/SOA/" rel="tag"><i class="fa fa-tag"></i> SOA</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/06/01/microservices/" rel="prev" title="【译】• 微服务">
+                  <i class="fa fa-chevron-left"></i> 【译】• 微服务
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/06/23/springboot1/" rel="next" title="SpringBoot（一） 初识">
+                  SpringBoot（一） 初识 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="NexT 是 Hexo 非常受欢迎的博客主题，方便简洁，但却不简单的功能，你可以在提供的强大功能基础上进行扩展或者自定义，来满足你的个性化需求。本篇文章主要是对应 NexT 提供的一些高级功能的使用，作为一个持续更新的文章吧，记录自己 SX 操作，当然也是我平时在使用 NexT 时遇到的一些问题的记录。好了废话不多说了，我们直接进入正题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo Blog 高级指南">
+<meta property="og:url" content="https://incoder.org/2020/11/20/hexo-advanced/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="NexT 是 Hexo 非常受欢迎的博客主题，方便简洁，但却不简单的功能，你可以在提供的强大功能基础上进行扩展或者自定义，来满足你的个性化需求。本篇文章主要是对应 NexT 提供的一些高级功能的使用，作为一个持续更新的文章吧，记录自己 SX 操作，当然也是我平时在使用 NexT 时遇到的一些问题的记录。好了废话不多说了，我们直接进入正题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-20T18:18:18.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.811Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="Build">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://incoder.org/2020/11/20/hexo-advanced/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2020/11/20/hexo-advanced/","path":"2020/11/20/hexo-advanced/","title":"Hexo Blog 高级指南"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hexo Blog 高级指南 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7"><span class="nav-number">1.</span> <span class="nav-text">博客升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-%E6%94%B9%E6%88%90-yarn%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">npm 改成 yarn（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9-NexT-%E4%B8%BB%E9%A2%98%E4%BB%93%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">更改 NexT 主题仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#node-trace-warnings"><span class="nav-number">1.4.1.</span> <span class="nav-text">node --trace-warnings</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E4%BF%A1%E6%81%AF"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">异常信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-douban"><span class="nav-number">1.4.2.</span> <span class="nav-text">hexo-douban</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E8%AF%84%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">博客评论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86"><span class="nav-number">3.</span> <span class="nav-text">文章加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%EF%BC%88-config-yml%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">站点配置（_config.yml）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text">简单配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text">更多配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E6%96%87%E7%AB%A0%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">单文章配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%AF%AD%E8%A8%80"><span class="nav-number">4.</span> <span class="nav-text">多语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Action"><span class="nav-number">5.</span> <span class="nav-text">GitHub Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-PWA"><span class="nav-number">6.</span> <span class="nav-text">Hexo PWA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2020/11/20/hexo-advanced/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo Blog 高级指南
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-20 18:18:18" itemprop="dateCreated datePublished" datetime="2020-11-20T18:18:18+00:00">2020-11-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/11/20/hexo-advanced/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo Blog 高级指南" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT<i class="fa fa-external-link-alt"></i></span> 是 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2luZGV4Lmh0bWw=">Hexo<i class="fa fa-external-link-alt"></i></span> 非常受欢迎的博客主题，方便简洁，但却不简单的功能，你可以在提供的强大功能基础上进行扩展或者自定义，来满足你的个性化需求。本篇文章主要是对应 NexT 提供的一些高级功能的使用，作为一个持续更新的文章吧，记录自己 SX 操作，当然也是我平时在使用 NexT 时遇到的一些问题的记录。好了废话不多说了，我们直接进入正题</p>
+<span id="more"></span>
+<h2 id="博客升级"><a class="header-anchor" href="#博客升级"></a>博客升级</h2>
+<p>每次对于 NexT 的升级或多或少都会遇到些问题，这次也不例外，首先是对于不同版本的管理，由于一些历史原因有三个组织仓库分别对应不同的版本域，升级是需要注意下，本次我是从 7.8.0 版本升级到 8.0.x 版本，以后跟随官方，每月更新 NexT</p>
+<h3 id="npm-改成-yarn（可选）"><a class="header-anchor" href="#npm-改成-yarn（可选）"></a>npm 改成 yarn（可选）</h3>
+<blockquote>
+<p>yarn 的安装，请自行根据你的系统去安装，我这里 macOS 使用命令即可 <code>brew install yarn</code></p>
+</blockquote>
+<ol>
+<li>删除根目录的 <code>package-lock.json</code>，并在根目录执行 <code>hexo clean &amp;&amp; rm -rf node_modules/</code></li>
+<li>根目录下执行 <code>yarn install</code></li>
+</ol>
+<h3 id="更改-NexT-主题仓库"><a class="header-anchor" href="#更改-NexT-主题仓库"></a>更改 NexT 主题仓库</h3>
+<ol>
+<li>删除当前主题，在根目录下执行 <code>rm -rf themes/</code></li>
+<li>安装新的主题，
+<ul>
+<li>方案一：在根目录下执行命令添加主题</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方案二：通过 yarn 来管理主题</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add hexo-theme-next</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="修改配置"><a class="header-anchor" href="#修改配置"></a>修改配置</h3>
+<p>之前为了使主题更新不受影响，在项目的根目录 <code>source/_data</code> 路径下有一个 <code>next.yml</code> 文件来进行对 NexT 的自定义设置，那么在 8.0 版本开始，在项目根目录 <code>_config.&#123;theme&#125;.yml</code> 文件来代替之前在 <code>source/_data</code> 路径下的 <code>next.yml</code> 文件</p>
+<h3 id="问题"><a class="header-anchor" href="#问题"></a>问题</h3>
+<h4 id="node-trace-warnings"><a class="header-anchor" href="#node-trace-warnings"></a>node --trace-warnings</h4>
+<h5 id="异常信息"><a class="header-anchor" href="#异常信息"></a>异常信息</h5>
+<p>由于 NexT 需要 Hexo5.0+，在升级到 NexT 8.0.x 版本警告信息如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(node:17336) Warning: Accessing non-existent property &#x27;lineno&#x27; of module exports inside circular dependency</span><br><span class="line">(Use `node --trace-warnings ...` to show where the warning was created)</span><br><span class="line">(node:17336) Warning: Accessing non-existent property &#x27;column&#x27; of module exports inside circular dependency</span><br><span class="line">(node:17336) Warning: Accessing non-existent property &#x27;filename&#x27; of module exports inside circular dependency</span><br><span class="line">(node:17336) Warning: Accessing non-existent property &#x27;lineno&#x27; of module exports inside circular dependency</span><br><span class="line">(node:17336) Warning: Accessing non-existent property &#x27;column&#x27; of module exports inside circular dependency</span><br><span class="line">(node:17336) Warning: Accessing non-existent property &#x27;filename&#x27; of module exports inside circular dependency</span><br></pre></td></tr></table></figure>
+<h5 id="原因分析"><a class="header-anchor" href="#原因分析"></a>原因分析</h5>
+<p>是由于 Hexo 项目嵌套依赖了 <code>stylus</code> 包，而对于 <code>0.54.5</code> 版本在 Node 14+ 版本存在问题，比如这里 <code>hexo-renderer-stylus</code> 包的依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">……</span><br><span class="line">│ │</span><br><span class="line">├─┬ hexo-renderer-stylus@2.0.1</span><br><span class="line">│ ├─┬ nib@1.1.2</span><br><span class="line">│ │ └─┬ stylus@0.54.5</span><br><span class="line">│ │   │ </span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<h5 id="解决方法"><a class="header-anchor" href="#解决方法"></a>解决方法</h5>
+<ol>
+<li>可以降低你的 Node 版本到 12 版本 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew uninstall node</span><br><span class="line">brew install node@12</span><br><span class="line">brew link --overwrite --force node@12</span><br></pre></td></tr></table></figure>
+</li>
+<li>推荐，更改替换 stylus 版本，在你的 <code>package.json</code> 文件中，添加如下配置 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;resolutions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;stylus&quot;</span>: <span class="string">&quot;^0.54.8&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="总结"><a class="header-anchor" href="#总结"></a>总结</h5>
+<p>🌀 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3N0eWx1cy9zdHlsdXMvcHVsbC8yNTM4">pull-2538<i class="fa fa-external-link-alt"></i></span><br>
+🐞 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3N0eWx1cy9zdHlsdXMvaXNzdWVzLzI1MzQ=">issues-2534<i class="fa fa-external-link-alt"></i></span><br>
+🛠 <span class="exturl" data-url="aHR0cHM6Ly93d3cuaGFveWl6ZWJvLmNvbS9wb3N0cy83MTA5ODRkMC8=">solve-Accessing non-existent property<i class="fa fa-external-link-alt"></i></span></p>
+<h4 id="hexo-douban"><a class="header-anchor" href="#hexo-douban"></a>hexo-douban</h4>
+<p>之前用了 hexo-douban 插件来进行对 books 和 movies 进行管理，在升级到 Node 14+版本上，当前的插件也停止工作了，异常日志如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INFO  0 books have been loaded in 1130 ms, because you are offline or your network is bad</span><br><span class="line">INFO  0 movies have been loaded in 1329 ms, because you are offline or your network is bad</span><br><span class="line">INFO  0 games have been loaded in 1004 ms, because you are offline or your network is bad</span><br></pre></td></tr></table></figure>
+<p>作者在🐞 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL215dGhzbWFuL2hleG8tZG91YmFuL2lzc3Vlcy83Nw==">issues-2534<i class="fa fa-external-link-alt"></i></span> 做了回复，暂时没有替代方案，故在新版中，我停止了 <code>hexo-douban</code> 插件的使用，挖个坑，等自己有时间或者有人修复此问题再或者有替代插件后再重新启用</p>
+<ol>
+<li>移除 hexo-douban 插件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yarn</span></span><br><span class="line">yarn remove hexo-douban</span><br><span class="line"><span class="comment"># npm</span></span><br><span class="line">npm uninstall hexo-douban</span><br></pre></td></tr></table></figure>
+</li>
+<li>移除 <code>_config.yml</code> 配置文件中，douban 的相关的配置</li>
+<li>移除 <code>_config.&#123;theme&#125;.yml</code> 配置文件中，<code>menu</code> 配置的站点入口设置</li>
+</ol>
+<h2 id="博客评论"><a class="header-anchor" href="#博客评论"></a>博客评论</h2>
+<p>在 NexT version 8.1.0 版本，由于安全问题，<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25leHQtdGhlbWUvaGV4by10aGVtZS1uZXh0L2lzc3Vlcy80I3Y4LjEuMCUyMCVFNyVBNyVCQiVFOSU5OSVBNCUyMFZhbGluZQ==">Valine被移除<i class="fa fa-external-link-alt"></i></span>，<s>暂时我并未迁移 Valine 的评论</s></p>
+<p>博客已启用 <span class="exturl" data-url="aHR0cHM6Ly91dHRlcmFuYy5lcw==">utterances<i class="fa fa-external-link-alt"></i></span> 评论支持，配置也比较简单，如下</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">BladeCode/BladeCode.github.io</span> <span class="comment"># Github repository name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">title</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
+<h2 id="文章加密"><a class="header-anchor" href="#文章加密"></a>文章加密</h2>
+<p>对于 NexT 的文章，有时需要进行加密访问，那么该怎么去处理呢，其实这一点在 NexT 的生态里已经有了这样的插件，我们可以直接在使用在我们的 NexT 里面，只需要简单的配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm </span></span><br><span class="line">npm i hexo-blog-encrypt --save</span><br><span class="line"><span class="comment"># yarn</span></span><br><span class="line">yarn add hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
+<p>加密优先级：文章信息头 &gt; 按标签加密</p>
+<h3 id="站点配置（-config-yml）"><a class="header-anchor" href="#站点配置（-config-yml）"></a>站点配置（_config.yml）</h3>
+<h4 id="简单配置"><a class="header-anchor" href="#简单配置"></a>简单配置</h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章密码访问 hexo-blog-encrypt</span></span><br><span class="line"><span class="attr">encrypt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h4 id="更多配置"><a class="header-anchor" href="#更多配置"></a>更多配置</h4>
+<p>可以对一类（标签）来进行统一的密码设置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章密码访问 hexo-blog-encrypt</span></span><br><span class="line"><span class="attr">encrypt:</span> </span><br><span class="line">  <span class="attr">abstract:</span> <span class="string">有东西被加密了,</span> <span class="string">请输入密码查看.</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">您好,</span> <span class="string">这里需要密码.</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> &#123;<span class="attr">name:</span> <span class="string">tagNameA</span>, <span class="attr">password:</span> <span class="string">密码A</span>&#125;</span><br><span class="line">  <span class="bullet">-</span> &#123;<span class="attr">name:</span> <span class="string">tagNameB</span>, <span class="attr">password:</span> <span class="string">密码B</span>&#125;</span><br><span class="line">  <span class="attr">template:</span> <span class="string">&lt;div</span> <span class="string">id=&quot;hexo-blog-encrypt&quot;</span> <span class="string">data-wpm=&quot;&#123;&#123;hbeWrongPassMessage&#125;&#125;&quot;</span> <span class="string">data-whm=&quot;&#123;&#123;hbeWrongHashMessage&#125;&#125;&quot;&gt;&lt;div</span> <span class="string">class=&quot;hbe-input-container&quot;&gt;&lt;input</span> <span class="string">type=&quot;password&quot;</span> <span class="string">id=&quot;hbePass&quot;</span> <span class="string">placeholder=&quot;&#123;&#123;hbeMessage&#125;&#125;&quot;</span> <span class="string">/&gt;&lt;label&gt;&#123;&#123;hbeMessage&#125;&#125;&lt;/label&gt;&lt;div</span> <span class="string">class=&quot;bottom-line&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;script</span> <span class="string">id=&quot;hbeData&quot;</span> <span class="string">type=&quot;hbeData&quot;</span> <span class="string">data-hmacdigest=&quot;&#123;&#123;hbeHmacDigest&#125;&#125;&quot;&gt;&#123;&#123;hbeEncryptedData&#125;&#125;&lt;/script&gt;&lt;/div&gt;</span></span><br><span class="line">  <span class="attr">wrong_pass_message:</span> <span class="string">抱歉,</span> <span class="string">这个密码看着不太对,</span> <span class="string">请再试试.</span></span><br><span class="line">  <span class="attr">wrong_hash_message:</span> <span class="string">抱歉,</span> <span class="string">这个文章不能被校验,</span> <span class="string">不过您还是能看看解密后的内容.</span></span><br></pre></td></tr></table></figure>
+<h3 id="单文章配置"><a class="header-anchor" href="#单文章配置"></a>单文章配置</h3>
+<p>在你需要加密的文章前面，根据需要添加对应的参数，这里仅是一个示例</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">-</span> 加密文章tag</span><br><span class="line">date: 2020-11-20 18:18:18</span><br><span class="line">password: helloworld</span><br><span class="line">abstract: 该文章已加密, 请输入密码查看。</span><br><span class="line">message: 该文章已加密, 请输入密码查看。</span><br><span class="line">wrong<span class="emphasis">_pass_</span>message: 密码不正确，请重新输入！</span><br><span class="line"><span class="section">wrong<span class="emphasis">_hash_</span>message: 文章不能被校验, 不过您还是能看看解密后的内容！</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<p>各参数说明</p>
+<ul>
+<li>password：文章密码</li>
+<li>abstract：文章摘要，会显示在博客的列表页</li>
+<li>message：文章查看时，密码输入框上面的描述性文字</li>
+<li>wrong_pass_message：校验失败提示</li>
+<li>wrong_hash_message：hash 验证失败</li>
+</ul>
+<h2 id="多语言"><a class="header-anchor" href="#多语言"></a>多语言</h2>
+<p>对于多语言，根据自身需要添加，默认，修改博客项目根目录 <code>_connfig.yml</code> 文件 <code>language</code> 属性即可</p>
+<ol>
+<li>对于单语言：language: xxx（具体语言可查看下方的官方说明）</li>
+<li>对于多语言：
+<ul>
+<li>语言添加   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">zh-CN</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">en</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>更改语言切换，<code>_config.&#123;theme&#125;.yml</code> 文件，<code>language_switcher</code>设置为 true</li>
+</ul>
+</li>
+<li>字段定义，如果一些字段的翻译不是你想要的，你可以自行修改
+<ul>
+<li>在根目录的 <code>source/_data</code> 文件夹下，创建 <code>languages.yml</code> 文件</li>
+<li>在文件中，修改对应语言的字段   <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">zh-CN:</span></span><br><span class="line">  <span class="comment"># items</span></span><br><span class="line">  <span class="attr">post:</span></span><br><span class="line">    <span class="attr">copyright:</span></span><br><span class="line">      <span class="comment"># the translation you perfer</span></span><br><span class="line">      <span class="attr">author:</span> <span class="string">本文博主</span></span><br><span class="line"><span class="attr">en:</span></span><br><span class="line">  <span class="attr">menu:</span></span><br><span class="line">    <span class="attr">schedule:</span> <span class="string">Calendar</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9waXNjZXMvZG9jcy90aGVtZS1zZXR0aW5ncy9pbnRlcm5hdGlvbmFsaXphdGlvbi5odG1sP2hpZ2hsaWdodD1sYW5ndWFnZQ==">多语言配置<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h2 id="GitHub-Action"><a class="header-anchor" href="#GitHub-Action"></a>GitHub Action</h2>
+<h2 id="Hexo-PWA"><a class="header-anchor" href="#Hexo-PWA"></a>Hexo PWA</h2>
+<blockquote>
+<p>由于暂未支持 Hexo5.0+版本，先占坑</p>
+</blockquote>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25leHQtdGhlbWUvaGV4by10aGVtZS1uZXh0L2lzc3Vlcy80">更新说明及常见问题<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly90b21teS5uZXQuY24vMjAyMC8wOC8wOC91cGdyYWRlLWhleG8tdG8tdjUtMC0wLw==">将 Hexo 升级到 v5.0.0<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly90b21teS5uZXQuY24vMjAyMC8wOC8wNi9kZXBsb3ktaGV4by13aXRoLWdpdGh1Yi1hY3Rpb25zLw==">用 GitHub Actions 来自动部署 Hexo<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9saW53aGl0ZWhhdC5naXRodWIuaW8vQmxvZy8yMDIwLzAyLzA5L0hleG8lRTUlOEQlOUElRTUlQUUlQTIlRTklODMlQTglRTclQkQlQjJQV0EuaHRtbA==">Hexo博客部署PWA<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zaXRvaS5jbi9wb3N0cy80OTExNS5odG1s">博客完美支持 PWA<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRlY2F5LmZ1bi8yMDE5LzA4LzE5L2VuaGFuY2UtaGV4by13aXRoLXB3YS1pbi10aHJlZS1zdGVwcy8=">三步，让 Hexo 轻松支持 PWA<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucHdhYnVpbGRlci5jb20v">Pwabuilder<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNzY3MDQxL2FydGljbGUvZGV0YWlscy8xMDMyODUxNDc=">Hexo 相关问题和优化<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2020/11/20/hexo-advanced/" title="Hexo Blog 高级指南">https://incoder.org/2020/11/20/hexo-advanced/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Build/" rel="tag"><i class="fa fa-tag"></i> Build</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/15/interview-2020/" rel="prev" title="2020 年秋季面试经历">
+                  <i class="fa fa-chevron-left"></i> 2020 年秋季面试经历
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/11/25/open-license/" rel="next" title="开源协议，该如何选择">
+                  开源协议，该如何选择 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

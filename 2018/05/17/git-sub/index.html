@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在使用 NexT 作为 Hexo 博客的主题时，不能 友好 的支持其主题的更新，以及 多设备 之间的主题同步。 按照官方提供的导入主题操作指引 12$ cd hexo$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next 发现commit并push到GitHub的远程服务器上，发现 themes&#x2F;next 路径下并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 子仓库管理">
+<meta property="og:url" content="https://incoder.org/2018/05/17/git-sub/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="在使用 NexT 作为 Hexo 博客的主题时，不能 友好 的支持其主题的更新，以及 多设备 之间的主题同步。 按照官方提供的导入主题操作指引 12$ cd hexo$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next 发现commit并push到GitHub的远程服务器上，发现 themes&#x2F;next 路径下并">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-17T10:30:50.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.811Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="git subtree">
+<meta property="article:tag" content="git submodule">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://incoder.org/2018/05/17/git-sub/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2018/05/17/git-sub/","path":"2018/05/17/git-sub/","title":"Git 子仓库管理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Git 子仓库管理 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-submodule-%E4%B8%8E-git-subtree"><span class="nav-number">1.</span> <span class="nav-text">git submodule 与 git subtree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-submodule-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">git submodule 常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-%E4%B8%80%E4%B8%AAsubmodule"><span class="nav-number">2.1.</span> <span class="nav-text">add 一个submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone-%E5%B8%A6-submodule-%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.2.</span> <span class="nav-text">clone 带 submodule 的项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update-%E5%B8%A6-submodule-%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.3.</span> <span class="nav-text">update 带 submodule 的项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84-submodule"><span class="nav-number">2.4.</span> <span class="nav-text">remove 项目中的 submodule</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-subtree-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C-%E9%87%8D%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">git subtree 常用操作(重点)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add%E4%B8%80%E4%B8%AAsubtree"><span class="nav-number">3.1.</span> <span class="nav-text">add一个subtree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pull-%E5%AD%90%E4%BB%93%E5%BA%93%E6%9B%B4%E6%96%B0"><span class="nav-number">3.2.</span> <span class="nav-text">pull 子仓库更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push-%E5%AD%90%E4%BB%93%E5%BA%93%E4%BF%AE%E6%94%B9"><span class="nav-number">3.3.</span> <span class="nav-text">push 子仓库修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subtree-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.4.</span> <span class="nav-text">subtree 常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2018/05/17/git-sub/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git 子仓库管理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-05-17 10:30:50" itemprop="dateCreated datePublished" datetime="2018-05-17T10:30:50+00:00">2018-05-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/05/17/git-sub/" class="post-meta-item leancloud_visitors" data-flag-title="Git 子仓库管理" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在使用 NexT 作为 Hexo 博客的主题时，不能 <strong>友好</strong> 的支持其主题的更新，以及 <strong>多设备</strong> 之间的主题同步。</p>
+<p>按照官方提供的导入主题操作指引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> hexo</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>发现commit并push到GitHub的远程服务器上，发现 <code>themes/next</code> 路径下并不能打开和查看该路径下的文件，原因是NexT是当前项目的一个子仓库(项目)，在 Github 上对于之仓库项目的引用，推荐使用 <code>git subtree</code> 命令来进行对子仓库的管理，不推荐直接拷贝需要子仓库的代码到自己的项目中</p>
+<span id="more"></span>
+<p>原因是我是使用 Travis CI 来部署自己的项目，具体的<a href="https://incoder.org/2018/05/02/hexo-iterative">构建脚本和介绍</a>请看，下面分别使用 <code>git submodule</code>、<code>git subtree</code> 的方式进行 NexT 主题的管理</p>
+<h2 id="git-submodule-与-git-subtree"><a class="header-anchor" href="#git-submodule-与-git-subtree"></a>git submodule 与 git subtree</h2>
+<div class="note primary"><p><code>git submodule</code>、<code>git subtree</code>都可以实现一个仓库作为其他仓库的子仓库的管理</p>
+</div>
+<ul>
+<li><code>git submodule</code>：是 Git 官方以前的推荐方案</li>
+<li><code>git subtree</code>：Git <span class="exturl" data-url="aHR0cHM6Ly9sd24ubmV0L0FydGljbGVzLzIzNTEwOQ==">1.5.2<i class="fa fa-external-link-alt"></i></span> 开始，Git 新增并推荐使用这个功能来管理子项目</li>
+<li><code>git subtree</code>与<code>git submodule</code>不同，它不增加任何像 <code>.gitmodule</code> 这样的新的元数据文件</li>
+<li><code>git subtree</code>对于项目中的其他成员透明，意味着可以不知道 <code>git subtree</code> 的存在</li>
+</ul>
+<h2 id="git-submodule-常用操作"><a class="header-anchor" href="#git-submodule-常用操作"></a>git submodule 常用操作</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS9ib29rL3poL3YyL0dpdC0lRTUlQjclQTUlRTUlODUlQjctJUU1JUFEJTkwJUU2JUE4JUExJUU1JTlEJTk3">Git Submodule<i class="fa fa-external-link-alt"></i></span>功能官方操作指引</p>
+<h3 id="add-一个submodule"><a class="header-anchor" href="#add-一个submodule"></a>add 一个submodule</h3>
+<ol>
+<li>
+<p>Fork Repository<br>
+<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0">hexo-theme-next<i class="fa fa-external-link-alt"></i></span>项目右上角 <code>Fork</code> 按钮即可</p>
+</li>
+<li>
+<p>Clone Repository</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:RootCluster/hexo-theme-test.git</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Add Submodule</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入项目</span></span><br><span class="line"><span class="built_in">cd</span> hexo-theme-test </span><br><span class="line"><span class="comment"># 注册 next 项目是一个submodule，并把数据拷贝到 `themes/next` 路径</span></span><br><span class="line">git submodule add git@github.com:RootCluster/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>status</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前 submodule 已被注册并指向了某个 commit</span></span><br><span class="line">git submodule status</span><br><span class="line">1f5643061ec5257269673bd6159403c24015c53d themes/next (v6.3.0)</span><br><span class="line"><span class="comment"># 查看在父仓库中有哪些变化被注册</span></span><br><span class="line">git status</span><br><span class="line">On branch submodule</span><br><span class="line">Changes to be committed:</span><br><span class="line">(use <span class="string">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage)</span><br><span class="line">      new file:   .gitmodules</span><br><span class="line">      new file:   themes/next</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有2个文件被修改过：<code>.gitmodules</code>,<code>themes/next</code>，当在父仓库时，Git 不会跟踪 submodule 中的文件，Git 只把它当成一个单一的文件</p>
+</blockquote>
+<ul>
+<li><code>.gitmodules</code>:存有 submodule 的信息</li>
+<li><code>themes/next</code>:submodule 它自己</li>
+</ul>
+</li>
+<li>
+<p>commint</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 推送到远程 submodule 分支</span></span><br><span class="line">git commit -am <span class="string">&quot;add next submodule&quot;</span></span><br><span class="line">[submodule a5a612b] add next submodule</span><br><span class="line">2 files changed, 4 insertions(+)</span><br><span class="line">create mode 100644 .gitmodules</span><br><span class="line">create mode 160000 themes/next</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>push</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git push origin submodule</span><br><span class="line">Counting objects: 4, <span class="keyword">done</span>.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (4/4), <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (4/4), 451 bytes | 451.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Total 4 (delta 1), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (1/1), completed with 1 <span class="built_in">local</span> object.</span><br><span class="line">To github.com:RootCluster/hexo-themes-test.git</span><br><span class="line">  71879a8..a5a612b  submodule -&gt; submodule</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>查看 Github 上的仓库，发现父仓库里有一个指向 submodule 的链接，表示你已经成功添加了一个 submodule</p>
+<h3 id="clone-带-submodule-的项目"><a class="header-anchor" href="#clone-带-submodule-的项目"></a>clone 带 submodule 的项目</h3>
+<p>新路径下，clone 项目，submodule 分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># clone 项目</span></span><br><span class="line">git <span class="built_in">clone</span> -b submodule git@github.com:RootCluster/hexo-themes-test.git</span><br><span class="line"><span class="comment"># 进入项目路径</span></span><br><span class="line"><span class="built_in">cd</span> hexo-themes-test/</span><br><span class="line"><span class="comment"># 项目注册 submodule</span></span><br><span class="line">git submodule init</span><br><span class="line"><span class="comment"># clone submodule 代码</span></span><br><span class="line">git submodule update</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="update-带-submodule-的项目"><a class="header-anchor" href="#update-带-submodule-的项目"></a>update 带 submodule 的项目</h3>
+<p>只要在 submodule 路径下，所有的常规Git操作，如 <code>push</code>, <code>pull</code>, <code>reset</code>, <code>status</code> 等，都可以正常工作，如果要保证 submodule 和远程仓库保存同步，在 submodule 路径下运行 <code>git pull</code></p>
+<ul>
+<li>如果你得到一个错误信息, 说你不在任何分支之上, 只要运行 <code>git checkout master</code> 就可修复</li>
+<li>如果你在 <code>pull</code> 后 <code>submodule</code> 有一些更新, 父仓库会告诉你有一些变动需要 <code>commit</code> 了, <code>submodule</code>自身指向一个指定的 <code>commit</code>, 并且如果这个 <code>commit</code> 改变了, 父仓库会得知这个改变. 如果你的 <code>submodule</code> 需要在一个指定 <code>commit</code> 上工作, 可用 <code>git reset</code> 来设置</li>
+</ul>
+<p>例如：我需要把NexT的版本改变到上一个 Tag 6.2.0 (目前是6.3.0)</p>
+<blockquote>
+<p>git reset --hard (commit hash)</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入项目路径</span></span><br><span class="line"><span class="built_in">cd</span> hexo-themes-test/</span><br><span class="line"><span class="comment"># 重新指向 submodule 关联的 commit 记录</span></span><br><span class="line">git reset --hard 206d463</span><br><span class="line"><span class="comment"># 回到父目录</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="comment"># commit 本次的修改</span></span><br><span class="line">git commit -am <span class="string">&quot;set next version to 6.2.0&quot;</span></span><br></pre></td></tr></table></figure>
+<div class="note info"><p>推送到远程仓库后，<code>submodule</code> 会和指定的<code>commit</code> 关联起来。如果你和别人一起工作在同一个项目，别人也可以在<code>submodule</code>下<code>pull</code>并且<code>commit</code>，因此改变了<code>submodule</code>的<code>commit</code>指向，这个问题，可以通过<code>git reset</code> 来解决</p>
+</div>
+<h3 id="remove-项目中的-submodule"><a class="header-anchor" href="#remove-项目中的-submodule"></a>remove 项目中的 submodule</h3>
+<ul>
+<li>项目的根目录下(不是 submodule 的目录)，编辑 .gitmodules 文件，删除submodule配置<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[submodule <span class="string">&quot;themes/next&quot;</span>]</span><br><span class="line">    path = themes/next</span><br><span class="line">    url = https://github.com/RootCluster/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
+</li>
+<li>项目根目录下，编辑 <code>.git</code> 文件夹下 <code>config</code> 文件，删除 submodule 配置<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[submodule <span class="string">&quot;themes/next&quot;</span>]</span><br><span class="line">    url = https://github.com/RootCluster/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
+</li>
+<li>清除 submodule 缓存<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached themes/next</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="git-subtree-常用操作-重点"><a class="header-anchor" href="#git-subtree-常用操作-重点"></a>git subtree 常用操作(重点)</h2>
+<h3 id="add一个subtree"><a class="header-anchor" href="#add一个subtree"></a>add一个subtree</h3>
+<ul>
+<li>
+<p>在父仓库中新增子仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加子仓库</span></span><br><span class="line">git subtree add --prefix=themes/next https://github.com/RootCluster/hexo-theme-next.git master --squash</span><br><span class="line">git fetch https://github.com/RootCluster/hexo-theme-next.git master</span><br><span class="line">warning: no common commits</span><br><span class="line">remote: Counting objects: 3407, <span class="keyword">done</span>.</span><br><span class="line">remote: Total 3407 (delta 0), reused 0 (delta 0), pack-reused 3406</span><br><span class="line">Receiving objects: 100% (3407/3407), 1.21 MiB | 36.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (2192/2192), <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/RootCluster/hexo-theme-next</span><br><span class="line">* branch            master     -&gt; FETCH_HEAD</span><br><span class="line">Added dir <span class="string">&#x27;themes/next&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>--squash</code>参数表示不拉取历史信息，而只生成一条 commit 信息</p>
+</blockquote>
+</li>
+<li>
+<p>查看项目状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看项目状态</span></span><br><span class="line">git status</span><br><span class="line">On branch subtree</span><br><span class="line">Your branch is ahead of <span class="string">&#x27;origin/subtree&#x27;</span> by 2 commits.</span><br><span class="line">  (use <span class="string">&quot;git push&quot;</span> to publish your <span class="built_in">local</span> commits)</span><br><span class="line"></span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>推送更改到远程仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git push origin subtree</span><br><span class="line">Counting objects: 381, <span class="keyword">done</span>.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (334/334), <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (381/381), 650.26 KiB | 34.22 MiB/s, <span class="keyword">done</span>.</span><br><span class="line">Total 381 (delta 23), reused 225 (delta 19)</span><br><span class="line">remote: Resolving deltas: 100% (23/23), completed with 1 <span class="built_in">local</span> object.</span><br><span class="line">To https://github.com/RootCluster/hexo-themes-test.git</span><br><span class="line">  8ed2e2e..405af42  subtree -&gt; subtree</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="pull-子仓库更新"><a class="header-anchor" href="#pull-子仓库更新"></a>pull 子仓库更新</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新子仓库</span></span><br><span class="line">git subtree pull --prefix=themes/next https://github.com/RootCluster/hexo-theme-next.git master --squash</span><br><span class="line">From https://github.com/RootCluster/hexo-theme-next</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">Subtree is already at commit 1f5643061ec5257269673bd6159403c24015c53d.</span><br></pre></td></tr></table></figure>
+<h3 id="push-子仓库修改"><a class="header-anchor" href="#push-子仓库修改"></a>push 子仓库修改</h3>
+<p>在引用子仓库的项目中修改了子仓库的相关代码，推送修改到源仓库</p>
+<ul>
+<li>commit 修改记录</li>
+<li>push 到源仓库<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 推送子仓库修改到源仓库master分支</span></span><br><span class="line">git subtree push --prefix=themes/next https://github.com/RootCluster/hexo-theme-next.git master</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="subtree-常用命令"><a class="header-anchor" href="#subtree-常用命令"></a>subtree 常用命令</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git subtree add   --prefix=&lt;prefix&gt; &lt;commit&gt;</span><br><span class="line">git subtree add   --prefix=&lt;prefix&gt; &lt;repository&gt; &lt;ref&gt;</span><br><span class="line">git subtree pull  --prefix=&lt;prefix&gt; &lt;repository&gt; &lt;ref&gt;</span><br><span class="line">git subtree push  --prefix=&lt;prefix&gt; &lt;repository&gt; &lt;ref&gt;</span><br><span class="line">git subtree merge --prefix=&lt;prefix&gt; &lt;commit&gt;</span><br><span class="line">git subtree split --prefix=&lt;prefix&gt; [OPTIONS] [&lt;commit&gt;]</span><br></pre></td></tr></table></figure>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cDovL2xpbmxleHVzLmNvbS9naXQtc3VibW9kdWxlLXVzYWdl">如何使用 Git Submodule<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9kNDJkMzMwYmZlYWQ=">git subtree教程<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2018/05/17/git-sub/" title="Git 子仓库管理">https://incoder.org/2018/05/17/git-sub/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/git-subtree/" rel="tag"><i class="fa fa-tag"></i> git subtree</a>
+              <a href="/tags/git-submodule/" rel="tag"><i class="fa fa-tag"></i> git submodule</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/05/15/linux-build/" rel="prev" title="Linux 常用应用安装">
+                  <i class="fa fa-chevron-left"></i> Linux 常用应用安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/05/20/ssm/" rel="next" title="构建基础SSM框架">
+                  构建基础SSM框架 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="本篇我们来看 MQ 系列的另一个广泛使用的中间件 RocketMQ。官方介绍到 “Apache RocketMQ™ 是一个统一的消息传递引擎，轻量级的数据处理平台。Apache RocketMQ 是一个分布式消息传递和流媒体平台，具有低延迟，高性能和可靠性，万亿级容量和灵活的可伸缩性” 。更重要的是在分布式消息队列中，目前唯一提供完整的事务消息的，只有 RocketMQ。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MQ 系列 — RocketMQ（一）环境搭建">
+<meta property="og:url" content="https://incoder.org/2020/11/10/mq-rocket1/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="本篇我们来看 MQ 系列的另一个广泛使用的中间件 RocketMQ。官方介绍到 “Apache RocketMQ™ 是一个统一的消息传递引擎，轻量级的数据处理平台。Apache RocketMQ 是一个分布式消息传递和流媒体平台，具有低延迟，高性能和可靠性，万亿级容量和灵活的可伸缩性” 。更重要的是在分布式消息队列中，目前唯一提供完整的事务消息的，只有 RocketMQ。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-10T21:30:30.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="RocketMQ">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://incoder.org/2020/11/10/mq-rocket1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2020/11/10/mq-rocket1/","path":"2020/11/10/mq-rocket1/","title":"MQ 系列 — RocketMQ（一）环境搭建"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MQ 系列 — RocketMQ（一）环境搭建 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#name-servers"><span class="nav-number">1.1.</span> <span class="nav-text">name servers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#brokers"><span class="nav-number">1.2.</span> <span class="nav-text">brokers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#producers"><span class="nav-number">1.3.</span> <span class="nav-text">producers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#consumers"><span class="nav-number">1.4.</span> <span class="nav-text">consumers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">整体流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2"><span class="nav-number">4.</span> <span class="nav-text">单机部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E9%83%A8%E7%BD%B2"><span class="nav-number">4.1.</span> <span class="nav-text">普通部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RocketMQ-%E9%83%A8%E7%BD%B2"><span class="nav-number">4.1.1.</span> <span class="nav-text">RocketMQ 部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RocketMQ-Console-%E9%83%A8%E7%BD%B2"><span class="nav-number">4.1.2.</span> <span class="nav-text">RocketMQ-Console 部署</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E9%83%A8%E7%BD%B2"><span class="nav-number">4.2.</span> <span class="nav-text">Docker 部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%83%A8%E7%BD%B2"><span class="nav-number">5.</span> <span class="nav-text">分布式部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E9%83%A8%E7%BD%B2-v2"><span class="nav-number">5.1.</span> <span class="nav-text">普通部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker-%E9%83%A8%E7%BD%B2-v2"><span class="nav-number">5.2.</span> <span class="nav-text">Docker 部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2020/11/10/mq-rocket1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MQ 系列 — RocketMQ（一）环境搭建
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-10 21:30:30" itemprop="dateCreated datePublished" datetime="2020-11-10T21:30:30+00:00">2020-11-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/11/10/mq-rocket1/" class="post-meta-item leancloud_visitors" data-flag-title="MQ 系列 — RocketMQ（一）环境搭建" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本篇我们来看 MQ 系列的另一个广泛使用的中间件 <span class="exturl" data-url="aHR0cHM6Ly9yb2NrZXRtcS5hcGFjaGUub3Jn">RocketMQ<i class="fa fa-external-link-alt"></i></span>。官方介绍到 “Apache RocketMQ™ 是一个统一的消息传递引擎，轻量级的数据处理平台。Apache RocketMQ 是一个分布式消息传递和流媒体平台，具有低延迟，高性能和可靠性，万亿级容量和灵活的可伸缩性” 。更重要的是在分布式消息队列中，目前唯一提供<font color="red">完整的事务消息</font>的，只有 RocketMQ。</p>
+<span id="more"></span>
+<div class="note info"><ul>
+<li><s>RocketMQ 3.0.8 以及之前的版本是 支持分布式事务消息（找不到对应的提交记录）</s></li>
+<li><s>RocketMQ 3.0.8 之后，分布式事务的阉割了，不支持分布式事务消息（找不到对应的提交记录）</s></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yb2NrZXRtcS5hcGFjaGUub3JnL3JlbGVhc2Vfbm90ZXMvcmVsZWFzZS1ub3Rlcy00LjAuMC1pbmN1YmF0aW5nLw==">RocketMQ 4.0.0 开始 Apache 孵化，但是也不支持分布式事务消息<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yb2NrZXRtcS5hcGFjaGUub3JnL3JlbGVhc2Vfbm90ZXMvcmVsZWFzZS1ub3Rlcy00LjMuMC8=">RocketMQ 4.3.0 又开始支持分布式事务消息<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+</div>
+<h2 id="基本概念"><a class="header-anchor" href="#基本概念"></a>基本概念</h2>
+<p>RocketMQ 由四部分组成：name servers, brokers, producers and consumers。它们中的每一个都可以在没有单个故障点的情况下进行水平扩展</p>
+<h3 id="name-servers"><a class="header-anchor" href="#name-servers"></a>name servers</h3>
+<p>用来保存 Broker 相关 Topic 等元信息并给 Producer，提供 Consumer 查找 Broker 信息。主要包括两个功能：</p>
+<ol>
+<li>Broker 管理，NameServer 接受来自经纪人群集的注册，并提供心跳机制以检查经纪人是否还活着</li>
+<li>Routing 管理，每个NameServer 将保存有关代理群集的完整路由信息以及客户端查询的队列信息</li>
+</ol>
+<h3 id="brokers"><a class="header-anchor" href="#brokers"></a>brokers</h3>
+<p>负责消息的存储和传递，消息查询，HA 保证等（消息存储中心，主要作用是接收来自 Producer 的消息并存储， Consumer 从这里取得消息）。Broker 服务器具有几个重要的子模块：</p>
+<ul>
+<li>Remoting Module：处理来自客户端的请求</li>
+<li>Client Manager：管理客户（生产者/消费者）并维护消费者的主题订阅</li>
+<li>Store Service：提供简单的 API，以在物理磁盘中存储或查询消息</li>
+<li>HA Service：提供主代理（master broker）和从代理（slave broker）之间的数据同步功能</li>
+<li>Index Service：通过指定的键为消息建立索引并提供快速的消息查询</li>
+</ul>
+<h3 id="producers"><a class="header-anchor" href="#producers"></a>producers</h3>
+<p>负责产生消息，生产者向消息服务器发送由业务应用程序系统生成的消息。支持分布式部署，分布式生产者通过多种负载平衡模式将消息发送到 Broker 集群。发送过程支持快速失败并且延迟低</p>
+<h3 id="consumers"><a class="header-anchor" href="#consumers"></a>consumers</h3>
+<p>负责消费消息，消费者从消息服务器拉取信息并将其输入用户应用程序。支持 “推和拉” 模型中的分布式部署。它还支持集群使用和消息广播。它提供了实时消息订阅机制，可以满足大多数消费者的需求</p>
+<h2 id="整体流程"><a class="header-anchor" href="#整体流程"></a>整体流程</h2>
+<h2 id="准备工作"><a class="header-anchor" href="#准备工作"></a>准备工作</h2>
+<ul>
+<li>Linux</li>
+<li>JDK8+</li>
+<li>Maven3.2.x+</li>
+<li>Git</li>
+</ul>
+<blockquote>
+<p>相关工具没安装可参考 <a href="https://incoder.org/2018/05/15/linux-build/">Linux 常用应用安装</a></p>
+</blockquote>
+<h2 id="单机部署"><a class="header-anchor" href="#单机部署"></a>单机部署</h2>
+<p>单机部署，主要是进行 RocketMQ 的简单使用，因此没有必要分配较大内存空间，RocketMQ NameServer 默认会占用 <strong>4G</strong>，因此在启动部署时会调整 JVM 的相关参数，指定分配内存空间</p>
+<h3 id="普通部署"><a class="header-anchor" href="#普通部署"></a>普通部署</h3>
+<h4 id="RocketMQ-部署"><a class="header-anchor" href="#RocketMQ-部署"></a>RocketMQ 部署</h4>
+<ol>
+<li>Nameserver <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 程序存放位置，根据喜好</span></span><br><span class="line"><span class="built_in">cd</span> /home/application</span><br><span class="line"><span class="comment"># 下载应用</span></span><br><span class="line">wget https://archive.apache.org/dist/rocketmq/4.7.1/rocketmq-all-4.7.1-bin-release.zip</span><br><span class="line"><span class="comment"># 解压文件，并进入解压后的目录，进行查看目录概要等信息(没有 unzip 命令，请 yum install unzip)</span></span><br><span class="line">unzip rocketmq-all-4.7.1-bin-release.zip &amp;&amp; <span class="built_in">cd</span> rocketmq-all-4.7.1-bin-release/ &amp;&amp; ls -l</span><br><span class="line"><span class="comment"># 进入启动目录</span></span><br><span class="line"><span class="built_in">cd</span> bin/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑启动脚本文件，修个相应的 JVM 参数</span></span><br><span class="line">vim runserver.sh</span><br><span class="line"><span class="comment">### 定位到: JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms4g -Xmx4g -Xmn2g -XX:MetaspaceSize=1 28m -XX:MaxMetaspaceSize=320m&quot;</span></span><br><span class="line"><span class="comment">### 更改为: JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms512M -Xmx512M -Xmn256M -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修个完成后启动 nameserver 应用</span></span><br><span class="line">nohup ./mqnamesrv &amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li>启动 broker <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入 bin 目录</span></span><br><span class="line"><span class="built_in">cd</span> /home/application/rocketmq-all-4.7.1-bin-release/bin/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑启动脚本文件，修个相应的 JVM 参数</span></span><br><span class="line">vim runbroker.sh</span><br><span class="line"><span class="comment">### 定位到: JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms8g -Xmx8g -Xmn4g&quot;</span></span><br><span class="line"><span class="comment">### 更改为: JAVA_OPT=&quot;$&#123;JAVA_OPT&#125; -server -Xms1g -Xmx1g -Xmn512m&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修个完成后，后台启动 broker，-n 指定 NameServer 服务ip地址</span></span><br><span class="line">nohup ./mqbroker -n localhost:9876 &amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li>验证 RocketMQ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 clusterList 命令来查看集群的状态</span></span><br><span class="line">sh /home/application/rocketmq-all-4.7.1-bin-release/bin/mqadmin clusterList -n 127.0.0.1:9876</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="RocketMQ-Console-部署"><a class="header-anchor" href="#RocketMQ-Console-部署"></a>RocketMQ-Console 部署</h4>
+<p>通过命令去操作 RocketMQ，其实是比较麻烦，没有图形化来的直观和方法。为此 RocketMQ 官方提供了一个运维管理界面 RokcetMQ-Console-Ng，用于对 RocketMQ 集群提供常用的运维功能</p>
+<blockquote>
+<p>基于 SpringBoot 开发</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/apache/rocketmq-externals/archive/rocketmq-console-1.0.0.tar.gz</span><br><span class="line">tar -xf rocketmq-console-1.0.0.tar.gz</span><br><span class="line"><span class="comment"># 重命名，为了方便后续操作</span></span><br><span class="line">mv rocketmq-externals-rocketmq-console-1.0.0/rocketmq-console rocketmq-consoe</span><br><span class="line"><span class="built_in">cd</span> rocketmq-console</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑配置文件</span></span><br><span class="line">vim src/main/resources/applications.properties</span><br><span class="line"><span class="comment">### 修改指向的 nameserver 地址</span></span><br><span class="line"><span class="comment">### rocketmq.config.namesrvAddr=127.0.0.1:9876</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 maven 命令编译源代码</span></span><br><span class="line">mvn clean package -DskipTests</span><br><span class="line"><span class="comment"># 复制包到自己常用的软件安装目录</span></span><br><span class="line">cp rocketmq-console-ng-1.0.0.jar /opt/application/</span><br><span class="line"><span class="comment"># 启动 rocketmq-conolse</span></span><br><span class="line">nohup java -jar rocketmq-console-ng-1.0.0.jar &amp;</span><br></pre></td></tr></table></figure>
+<p>正常启动后，访问：<span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo4MDgw">http://localhost:8080<i class="fa fa-external-link-alt"></i></span> 查看是否安装成功</p>
+<div class="note info"><p>如果你使用的 root 用户启动 rocketmq, rocketmq-console 应用，那么他们的日志分别在</p>
+<ul>
+<li>rocketmq: /home/root/logs/rocketmqlogs/</li>
+<li>rocketmq-console: /home/root/logs/consolelogs</li>
+</ul>
+</div>
+<h3 id="Docker-部署"><a class="header-anchor" href="#Docker-部署"></a>Docker 部署</h3>
+<p>截止 2020-11-10，官方的镜像依然还是 4.6 版本，难道又是阿里没人维护的 KPI 🙄</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwYWNoZS9yb2NrZXRtcS1kb2NrZXI=">RocketMQ-Docker<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="分布式部署"><a class="header-anchor" href="#分布式部署"></a>分布式部署</h2>
+<h3 id="普通部署-v2"><a class="header-anchor" href="#普通部署-v2"></a>普通部署</h3>
+<h3 id="Docker-部署-v2"><a class="header-anchor" href="#Docker-部署-v2"></a>Docker 部署</h3>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9lYm9vay9yYW5raW5n">《Apache RocketMQ 从入门到实战》.pdf<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaW9jb2Rlci5jbi9Sb2NrZXRNUS9pbnN0YWxsLw==">芋道 RocketMQ 极简入门<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaW9jb2Rlci5jbi9TcHJpbmctQm9vdC9Sb2NrZXRNUS8=">芋道 Spring Boot 消息队列 RocketMQ 入门<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY2hlbnlhbmJpbi9wLzEzNzk4OTUyLmh0bWw=">RocketMQ 4.7.1 环境搭建、集群、SpringBoot整合MQ<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2020/11/10/mq-rocket1/" title="MQ 系列 — RocketMQ（一）环境搭建">https://incoder.org/2020/11/10/mq-rocket1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/RocketMQ/" rel="tag"><i class="fa fa-tag"></i> RocketMQ</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/10/mq-rabbit1/" rel="prev" title="MQ 系列 — RabbitMQ（一）环境搭建">
+                  <i class="fa fa-chevron-left"></i> MQ 系列 — RabbitMQ（一）环境搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/11/11/microservices-alibaba1/" rel="next" title="微服务架构 - Alibaba 生态整合（一）">
+                  微服务架构 - Alibaba 生态整合（一） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

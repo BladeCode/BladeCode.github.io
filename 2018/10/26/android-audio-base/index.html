@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="关于音频技术是一门庞大且很专业的学术，这里不会阐述该知识的底层原理知识（比如：声音的原理，音波的正弦平面波合成等等），主要介绍音频相关的一些基本的知识概念，以及在实际开发过程中需要掌握关键API等。 声音 “声音是振动产生的声波，通过介质（气体，固体，液体）传播并能被人或动物听觉器官所感知的波动现象”。声音的频率一般以赫兹表示，记为Hz，指每秒周期性震动的次数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 音频基础知识">
+<meta property="og:url" content="https://incoder.org/2018/10/26/android-audio-base/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="关于音频技术是一门庞大且很专业的学术，这里不会阐述该知识的底层原理知识（比如：声音的原理，音波的正弦平面波合成等等），主要介绍音频相关的一些基本的知识概念，以及在实际开发过程中需要掌握关键API等。 声音 “声音是振动产生的声波，通过介质（气体，固体，液体）传播并能被人或动物听觉器官所感知的波动现象”。声音的频率一般以赫兹表示，记为Hz，指每秒周期性震动的次数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1541400788/blog/trasound_range_diagram.png">
+<meta property="article:published_time" content="2018-10-26T10:14:20.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.811Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="media">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1541400788/blog/trasound_range_diagram.png">
+
+
+<link rel="canonical" href="https://incoder.org/2018/10/26/android-audio-base/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2018/10/26/android-audio-base/","path":"2018/10/26/android-audio-base/","title":"Android 音频基础知识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android 音频基础知识 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3"><span class="nav-number">1.</span> <span class="nav-text">声音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">音频开发应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%BC%80%E5%8F%91%E5%85%B7%E4%BD%93%E5%86%85%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">音频开发具体内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">4.</span> <span class="nav-text">音频基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E8%BD%AC%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7"><span class="nav-number">4.1.</span> <span class="nav-text">模拟信号转数字信号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.1.1.</span> <span class="nav-text">转换步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PCM"><span class="nav-number">4.1.2.</span> <span class="nav-text">PCM</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">编码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%BC%80%E5%8F%91%E4%B8%AD%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">音频开发中重要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%8E%87%EF%BC%88samplerate%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">采样率（samplerate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8F%E5%8C%96%E7%B2%BE%E5%BA%A6%EF%BC%88%E4%BD%8D%E5%AE%BD%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">量化精度（位宽）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E9%81%93%E6%95%B0%EF%BC%88channels%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">声道数（channels）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E7%89%B9%E7%8E%87"><span class="nav-number">5.4.</span> <span class="nav-text">比特率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%B8%A7%EF%BC%88frame%EF%BC%89"><span class="nav-number">5.5.</span> <span class="nav-text">音频帧（frame）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E9%9F%B3%E9%A2%91%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">5.6.</span> <span class="nav-text">理论音频的大小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"><span class="nav-number">6.</span> <span class="nav-text">音频处理开源项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VoIP%E7%9B%B8%E5%85%B3"><span class="nav-number">6.1.</span> <span class="nav-text">VoIP相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3"><span class="nav-number">6.2.</span> <span class="nav-text">算法相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">6.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E6%8F%90%E4%BE%9B%E7%9B%B8%E5%85%B3API"><span class="nav-number">7.</span> <span class="nav-text">Android提供相关API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">8.</span> <span class="nav-text">附录</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2018/10/26/android-audio-base/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android 音频基础知识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-10-26 10:14:20" itemprop="dateCreated datePublished" datetime="2018-10-26T10:14:20+00:00">2018-10-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/10/26/android-audio-base/" class="post-meta-item leancloud_visitors" data-flag-title="Android 音频基础知识" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>关于音频技术是一门庞大且很专业的学术，这里不会阐述该知识的底层原理知识（比如：声音的原理，音波的正弦平面波合成等等），主要介绍音频相关的一些基本的知识概念，以及在实际开发过程中需要掌握关键API等。</p>
+<h2 id="声音"><a class="header-anchor" href="#声音"></a>声音</h2>
+<p>“声音是振动产生的<code>声波</code>，通过<code>介质</code>（<code>气体</code>，<code>固体</code>，<code>液体</code>）传播并能被人或动物<code>听觉器官</code>所感知的<code>波动</code>现象”。声音的频率一般以<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JUI1JUFCJUU1JTg1JUI5">赫兹<i class="fa fa-external-link-alt"></i></span>表示，记为<code>Hz</code>，指每秒周期性震动的次数</p>
+<span id="more"></span>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1541400788/blog/trasound_range_diagram.png" alt="trasound_range_diagram"></p>
+<blockquote>
+<p>图片来自<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU1JUEzJUIwJUU5JTlGJUIz">Wikipedia<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<ul>
+<li>红：次声波（由火山爆发、龙卷风、雷暴、台风等许多灾害性事件发生前都会产生出次声波，人们就可以利用这种前兆来预报灾害事件的发生）</li>
+<li>蓝：可听声波（20~20000Hz）</li>
+<li>绿：超声波（广泛应用于工业、军事、医疗等行业。在工业上，常用超声波来清洗精密零件，原理是利用超声波在清洗液中产生震荡波，使清洗液产生瞬间的小气泡，从而冲洗零件的每个角落）</li>
+</ul>
+<h2 id="音频开发应用场景"><a class="header-anchor" href="#音频开发应用场景"></a>音频开发应用场景</h2>
+<ul>
+<li>音频播放器，录音机</li>
+<li>语音电话</li>
+<li>音视频监控</li>
+<li>音视频直播</li>
+<li>音视频编辑/处理软件</li>
+<li>蓝牙耳机/音响等</li>
+</ul>
+<h2 id="音频开发具体内容"><a class="header-anchor" href="#音频开发具体内容"></a>音频开发具体内容</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5jb2Rlci5vcmcvMjAxOC8xMC8yNy9hbmRyb2lkLWF1ZGlvLw==">音频采集/播放<i class="fa fa-external-link-alt"></i></span></li>
+<li>音频算法处理（去噪，静音检测，回声消除，音效处理，功放/增强，混音/分离，等等）</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5jb2Rlci5vcmcvMjAxOC8xMS8wNy9hbmRyb2lkLWF1ZGlvLWNvbnZlcnQv">音频的编解码和格式转换<i class="fa fa-external-link-alt"></i></span></li>
+<li>音频传输协议的开发（<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU0JUJDJTlBJUU4JUFGJTlEJUU1JThGJTkxJUU4JUI1JUI3JUU1JThEJThGJUU4JUFFJUFF">SIP<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JTk3JThEJUU3JTg5JTk5JUU4JUE2JThGJUU3JUFGJTg0IyVFOCU5NyU4RCVFNyU4OSU5OSVFNyVBQiU4QiVFOSVBQiU5NCVFOCU4MSVCMiVFOSU5RiVCMyVFOCVBOCU4QSVFNSU4MiVCMyVFOCVCQyVCOCVFOCVBNiU4RiVFNyVBRiU4NCVFRiVCQyU4OEEyRFAlRUYlQkMlODk=">A2DP<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JTk3JThEJUU3JTg5JTk5JUU4JUE2JThGJUU3JUFGJTg0IyVFOSU5RiVCMyVFOSVBMiU5MSVFRiVCQyU4RiVFOCVBNyU4NiVFOSVBMiU5MSVFOCVCRiU5QyVFNyVBOCU4QiVFNiU4RSVBNyVFNSU4OCVCNiVFOSU4NSU4RCVFNyVCRCVBRSVFNiU5NiU4NyVFNCVCQiVCNiVFRiVCQyU4OEFWUkNQJUVGJUJDJTg5">AVRCP<i class="fa fa-external-link-alt"></i></span>，等等）
+<ul>
+<li>SIP（Session Initiation Protocol：会话发起协议）：一个由IETF MMUSIC工作组开发的协议，作为标准被提议用于建立，修改和终止包括视频，语音，即时通信，在线游戏和虚拟现实等多种多媒体元素在内的交互式用户会话</li>
+<li>A2DP（Advance Audio Distribution Profile：蓝牙立体声音频传输规范）：规定了使用蓝牙异步传输信道方式，传输高质量音乐文件数据的协议堆栈软件和使用方法，基于该协议就能通过以蓝牙方式传输高质量的立体声音乐</li>
+<li>AVRCP（Audio Video Remote Control Profile：音频／视频远程控制配置文件）：用于提供控制 TV、Hi-Fi 设备等的标准接口。此配置文件用于许可单个远程控制设备。</li>
+</ul>
+</li>
+</ul>
+<h2 id="音频基础知识"><a class="header-anchor" href="#音频基础知识"></a>音频基础知识</h2>
+<p>声音经过麦克风采集后，得到是模拟信号，接着我们需要用程序将采集得到模拟型号，进行转换得到数字信号，这样我们才可以存储，交换等</p>
+<blockquote>
+<p>关于声音信息得到模拟信号的转换，我们一般是无需关心，设备的麦克风这些都已经帮我们转换好了，我们需要关心的是从麦克风得到的模拟信号，如何去转换为数字信号，最终保存为音频文件</p>
+</blockquote>
+<h3 id="模拟信号转数字信号"><a class="header-anchor" href="#模拟信号转数字信号"></a>模拟信号转数字信号</h3>
+<p>模拟信号一般通过<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JTg0JTg4JUU4JUExJTlEJUU3JUI3JUE4JUU3JUEyJUJDJUU4JUFBJUJGJUU4JUFFJThB">PCM（Pulse-code modulation：脉冲编码调制）<i class="fa fa-external-link-alt"></i></span>方法转换为数字信号</p>
+<h4 id="转换步骤"><a class="header-anchor" href="#转换步骤"></a>转换步骤</h4>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU1JThGJTk2JUU2JUE4JUEz">采样<i class="fa fa-external-link-alt"></i></span>：将一段时间内的连续信号转为离散信号
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JUJGJTlFJUU3JUJCJUFEJUU0JUJGJUExJUU1JThGJUI3">模拟信号<i class="fa fa-external-link-alt"></i></span>本身是一种连续信号，它在一定的时间范围内可以有无限多个不同的取值</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU3JUE2JUJCJUU2JTk1JUEzJUU0JUJGJUExJUU1JThGJUI3">数值信号<i class="fa fa-external-link-alt"></i></span>指在取值上是离散的，不连续的信号</li>
+</ul>
+</li>
+<li>量化：值采样得到后的数据，我们用多少位的二进制数字来表示声音的振幅</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JUFBJTlFJUU5JTlGJUIzJUU3JUI3JUE4JUU3JUEyJUJD">编码<i class="fa fa-external-link-alt"></i></span>：将采样量化后的数据按照一定的格式进行记录</li>
+</ol>
+<h4 id="PCM"><a class="header-anchor" href="#PCM"></a>PCM</h4>
+<p>音频编码最多只能做到无限接近，至少目前的技术只能这样，相对自然界的信号，任何数字音频编码方式都是有损，因为无法完全还原。在计算机应用中，能够达到最高保真的就是PCM编码，因此PCM约定俗成了无损编码（PCM代表了数字音频中最佳的保真水平，并不意味着PCM就能够确保信号绝对保真，PCM也只能做到最大程度的无限接近）</p>
+<p>经过采集和量化后的声音信号已经是数字形式了，但是为了便于计算机的存储，处理，传输，还必须按照一定的要求进行数据<code>压缩</code>和<code>编码</code></p>
+<h5 id="压缩"><a class="header-anchor" href="#压缩"></a>压缩</h5>
+<p>一种音频文件格式可以支持多种编码，例如AVI文件格式，但多数的音频文件仅支持一种音频编码</p>
+<p>主要的音频文件格式：</p>
+<ul>
+<li>无损格式，例如：<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvV0FW">WAV<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvRkxBQw==">FLAC<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvTW9ua2V5JTI3c19BdWRpbw==">APE<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvQXBwbGVfTG9zc2xlc3M=">ALAC<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvV2F2UGFjaw==">WavPack(WV)<i class="fa fa-external-link-alt"></i></span></li>
+<li>有损格式，例如：<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvTVAz">MP3<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU5JTgwJUIyJUU5JTlBJThFJUU5JTlGJUIzJUU4JUE4JThBJUU3JUI3JUE4JUU3JUEyJUJD">AAC<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvVm9yYmlz">Ogg Vorbis<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvT3B1c18lMjglRTklOUYlQjMlRTklQTIlOTElRTYlQTAlQkMlRTUlQkMlOEYlMjk=">Opus<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h5 id="编码"><a class="header-anchor" href="#编码"></a>编码</h5>
+<p>根据编码方式的不同，音频编码技术分为三种</p>
+<ul>
+<li>波形编码：音质质量高，编码速率也很高。脉冲编码调变(PCM)、自适应增量调制( ADM )、Adaptive( ADPCM )等都属于该类编码器。</li>
+<li>参数编码：音质质量低，编码速率也很低</li>
+<li>混合编码：音质和速率介于波形编码，参数编码之间</li>
+</ul>
+<blockquote>
+<p>为什么音频需要编码</p>
+</blockquote>
+<ol>
+<li>PCM所量化得到的数据是原始无损的数据，文件很大，不利于传播，存储等</li>
+<li>如果都是未压缩的文件，那么基本无法做到差异化即部分需要知识产权保护的组织或机构等</li>
+</ol>
+<h2 id="音频开发中重要参数"><a class="header-anchor" href="#音频开发中重要参数"></a>音频开发中重要参数</h2>
+<h3 id="采样率（samplerate）"><a class="header-anchor" href="#采样率（samplerate）"></a><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU5JTg3JTg3JUU2JUEwJUI3JUU3JThFJTg3">采样率（samplerate）<i class="fa fa-external-link-alt"></i></span></h3>
+<p>指每秒从连续信号中提取并组成离散信号的采样个数，也就是1S内，对模拟信号进行多少次采样；采样频率越高，说明采样点之间越密集，记录这段音频所用的数据量就越大，因此音质也就越好</p>
+<blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzIyMDI3NzIy">为什么通用的采样率是44.1kHz？<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h3 id="量化精度（位宽）"><a class="header-anchor" href="#量化精度（位宽）"></a>量化精度（位宽）</h3>
+<p>用二进位来表示每一个采样值，也称为量化位数，声音信号的量化位数一般是4，6，8，12或16 bits.</p>
+<p>这个数值的数据类型大小可以是：4bit，8bit，16bit，32bit等等，位数越多，表示的就越精细，声音的质量也就越好，当然文件大小也会成倍增大</p>
+<h3 id="声道数（channels）"><a class="header-anchor" href="#声道数（channels）"></a>声道数（channels）</h3>
+<p>由于音频的采集和播放是可以叠加的，因此，可以同时从多个音频源采集声音，并分别输出到不同的扬声器，故声道数一般表示声音录制时的音源数量或回放时相应的扬声器数量</p>
+<ul>
+<li>单声道（Mono）：1</li>
+<li>双声道（Stereo）：2</li>
+</ul>
+<h3 id="比特率"><a class="header-anchor" href="#比特率"></a>比特率</h3>
+<p>比特率是音频文件每秒占据的字节数（比特数）</p>
+<p>比特率规定适用“比特每秒”（<code>bit/s</code>或<code>bps</code>）为单位，其中<code>ps</code>指的是<code>/s</code>，即每秒。</p>
+<p>通常我们在音乐播放软件中看到的音乐质量『标准(128kbit/s)，较高(198kbit/s)，极高(320kbit/s)』表述的即比特率</p>
+<h3 id="音频帧（frame）"><a class="header-anchor" href="#音频帧（frame）"></a>音频帧（frame）</h3>
+<p>视频每一帧就是一张图像，而音频数据是流式，本身没有明确的一帧帧的概念，在实际的应用中，为了音频算法处理/传输的方便，一般约定俗称2.5ms~60ms为单位的数据量为一帧音频。</p>
+<h3 id="理论音频的大小"><a class="header-anchor" href="#理论音频的大小"></a>理论音频的大小</h3>
+<p>假设某通道的音频信号是采样率为8kHz，位宽为16bit，20ms一帧，双通道，则一帧音频数据的大小为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 一帧音频的大小</span><br><span class="line"><span class="keyword">int</span> size = <span class="number">8000</span> x 16bit x <span class="number">0.</span>02s  x <span class="number">2</span> = <span class="number">5120</span> bit = <span class="number">640</span> <span class="keyword">byte</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="音频处理开源项目"><a class="header-anchor" href="#音频处理开源项目"></a>音频处理开源项目</h2>
+<h3 id="VoIP相关"><a class="header-anchor" href="#VoIP相关"></a>VoIP相关</h3>
+<p>基于IP的语音传输（英语：Voice over Internet Protocol，缩写为VoIP）是一种语音通话技术，经由网际协议（IP）来达成语音通话与多媒体会议，也就是经由互联网来进行通信。其他非正式的名称有IP电话（IP telephony）、互联网电话（Internet telephony）、宽带电话（broadband telephony）以及宽带电话服务（broadband phone service）。</p>
+<ul>
+<li>imsdroid</li>
+<li>sipdroid</li>
+<li>csipsimple</li>
+<li>linphone</li>
+<li>WebRTC</li>
+</ul>
+<h3 id="算法相关"><a class="header-anchor" href="#算法相关"></a>算法相关</h3>
+<ul>
+<li>ffmpeg</li>
+<li>speex</li>
+</ul>
+<h3 id="其他"><a class="header-anchor" href="#其他"></a>其他</h3>
+<p>MP3编码库</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2Vmb3JnZS5uZXQvcHJvamVjdHMvbGFtZQ==">Lame<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h2 id="Android提供相关API"><a class="header-anchor" href="#Android提供相关API"></a>Android提供相关API</h2>
+<ul>
+<li>音频采集：MediaRecoder，AudioRecord</li>
+<li>音频播放：SoundPool，MediaPlayer，AudioTrack</li>
+<li>音频编解码：MediaCodec</li>
+<li>NDK API：OpenSL ES</li>
+</ul>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU4JUFBJTlFJUU5JTlGJUIzJUU3JUI3JUE4JUU3JUEyJUJD">语音编码<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU5JTgwJUIyJUU5JTlBJThFJUU5JTlGJUIzJUU4JUE4JThBJUU3JUI3JUE4JUU3JUEyJUJD">高级音频编码 ● AAC<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly95cS5hbGl5dW4uY29tL2FydGljbGVzLzYyODEwOQ==">音频技术可以延展众多应用场景<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2018/10/26/android-audio-base/" title="Android 音频基础知识">https://incoder.org/2018/10/26/android-audio-base/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/media/" rel="tag"><i class="fa fa-tag"></i> media</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/10/25/fiddler/" rel="prev" title="Fiddler 初体验">
+                  <i class="fa fa-chevron-left"></i> Fiddler 初体验
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/10/27/android-audio/" rel="next" title="Android 音频录制与播放">
+                  Android 音频录制与播放 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot（一） 初识">
+<meta property="og:url" content="https://incoder.org/2019/06/23/springboot1/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1561906733/blog/spring-initializr.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1616526451/blog/spring-init.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png">
+<meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1561259381/blog/springboot-deploy-jar-unzip.png">
+<meta property="article:published_time" content="2019-06-23T09:10:11.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg">
+
+
+<link rel="canonical" href="https://incoder.org/2019/06/23/springboot1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2019/06/23/springboot1/","path":"2019/06/23/springboot1/","title":"SpringBoot（一） 初识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SpringBoot（一） 初识 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%8A%E7%89%88%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">环境及版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">2.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Initializr"><span class="nav-number">2.1.</span> <span class="nav-text">Spring Initializr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA-Init"><span class="nav-number">2.2.</span> <span class="nav-text">IDEA Init</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E8%BF%90%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">Spring 运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="nav-number">3.1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#macOS-or-Linux"><span class="nav-number">3.1.1.</span> <span class="nav-text">macOS or Linux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows"><span class="nav-number">3.1.2.</span> <span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.</span> <span class="nav-text">运行说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E6%89%93%E5%8C%85"><span class="nav-number">4.</span> <span class="nav-text">Spring 打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jar-%E5%88%86%E6%9E%90"><span class="nav-number">4.1.</span> <span class="nav-text">jar 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MANIFEST-MF"><span class="nav-number">4.1.1.</span> <span class="nav-text">MANIFEST.MF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org-springframework-%E2%80%A6%E2%80%A6%E7%9B%AE%E5%BD%95"><span class="nav-number">4.1.2.</span> <span class="nav-text">org&#x2F;springframework&#x2F;……目录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E5%85%B6%E4%BB%96"><span class="nav-number">5.</span> <span class="nav-text">Spring 其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">配置文件格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gradle-tasks"><span class="nav-number">5.2.1.</span> <span class="nav-text">gradle tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Application-tasks"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">Application tasks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Build-tasks"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">Build tasks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Run-jar"><span class="nav-number">5.2.1.3.</span> <span class="nav-text">Run jar</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Other"><span class="nav-number">5.2.1.4.</span> <span class="nav-text">Other</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2019/06/23/springboot1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SpringBoot（一） 初识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-23 09:10:11" itemprop="dateCreated datePublished" datetime="2019-06-23T09:10:11+00:00">2019-06-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/23/springboot1/" class="post-meta-item leancloud_visitors" data-flag-title="SpringBoot（一） 初识" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg" alt=""></p>
+<span id="more"></span>
+<p>从本篇文章开始，记录学习 SpringBoot 框架在实践，源码方面的知识，本节是第一篇，因此不涉及相关复杂知识的学习。众所周知，随着微服务的广泛流行，Spring 系列的 SpringBoot 和 SpringCloud 的应用也更受欢迎，那么请跟随我的脚本来一步步解开 SpringBoot 她神秘的面纱</p>
+<p>熟悉后端服务开发的小伙伴，在使用 SpringBoot 时一定会有这样的感受，咦，以前繁琐的配置，现在都不用再去配置一大堆东西了，以前跑起来一个 demo，感觉真是千辛万苦，错一步就 game over，以前服务基本都是已 war 包的形式运行在 Tomcat 中，而现在，你基本不需要手动写太多的代码，一个应用服务就可以运行起来，其次现在应用基本已 jar 包方式直接运行，虽然本质还是运行在 Tomcat 中，但现在 jar 包中已经有了服务运行的基础环境，可以直接使用 jar 相关的运行命令就可以运行起服务。好了，废话了这么多，先看看我们如何运行起一个 DEMO 应用。</p>
+<h2 id="环境及版本"><a class="header-anchor" href="#环境及版本"></a>环境及版本</h2>
+<ul>
+<li>SpringBoot Version：2.1.6.RELEASE</li>
+<li>System：macOS Mojave</li>
+<li>JDK Version：1.8</li>
+<li>Gradle：5.4.1</li>
+<li>IDE：IntelliJ IDEA</li>
+</ul>
+<blockquote>
+<p>本系列应用使用如上环境，其次应用包管理，小伙伴可以选择自己熟悉的 Maven 进行管理，而这里都使用 Gradle 进行管理</p>
+</blockquote>
+<h2 id="Demo"><a class="header-anchor" href="#Demo"></a>Demo</h2>
+<h3 id="Spring-Initializr"><a class="header-anchor" href="#Spring-Initializr"></a><span class="exturl" data-url="aHR0cHM6Ly9zdGFydC5zcHJpbmcuaW8=">Spring Initializr<i class="fa fa-external-link-alt"></i></span></h3>
+<p>为了让开发者快速上手，官方提供了一建生成 SpringBoot 项目，你按需选择你需要的依赖即可。操作步骤如下截图<br>
+<img data-src="https://res.cloudinary.com/incoder/image/upload/v1561906733/blog/spring-initializr.png" alt="spring-initializ"></p>
+<h3 id="IDEA-Init"><a class="header-anchor" href="#IDEA-Init"></a>IDEA Init</h3>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1616526451/blog/spring-init.png" alt=""></p>
+<p>IDEA分为四步完成初始</p>
+<ol>
+<li>选择 Spring Initializr 初始化向导</li>
+<li>填写项目坐标信息，构建工具，版本，报名等</li>
+<li>选择需要的组件（会自动添加依赖）</li>
+<li>选择项目存放路径</li>
+</ol>
+<h2 id="Spring-运行"><a class="header-anchor" href="#Spring-运行"></a>Spring 运行</h2>
+<h3 id="命令"><a class="header-anchor" href="#命令"></a>命令</h3>
+<h4 id="macOS-or-Linux"><a class="header-anchor" href="#macOS-or-Linux"></a>macOS or Linux</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">gradlew bootRun</span><br></pre></td></tr></table></figure>
+<h4 id="Windows"><a class="header-anchor" href="#Windows"></a>Windows</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">./gradlew bootRun</span><br></pre></td></tr></table></figure>
+<h3 id="运行说明"><a class="header-anchor" href="#运行说明"></a>运行说明</h3>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png" alt="spring-running-logo"></p>
+<h2 id="Spring-打包"><a class="header-anchor" href="#Spring-打包"></a>Spring 打包</h2>
+<h3 id="jar-分析"><a class="header-anchor" href="#jar-分析"></a>jar 分析</h3>
+<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1561259381/blog/springboot-deploy-jar-unzip.png" alt="springboot-deploy-jar-unzip"></p>
+<p>目录说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">project/</span><br><span class="line">├── BOOT-INF/                                                                   </span><br><span class="line">│   ├── classes                                 # 当前项目结果文件放置在 classes 路径下</span><br><span class="line">│   │   │   └── application.properties          # 项目中配置文件</span><br><span class="line">│   │   ├── org/                                # 项目中 java 路径下，编译成 class 文件路径</span><br><span class="line">│   │   ├── static/                             # 项目中 resources 路径下的静态文件夹</span><br><span class="line">│   │   └── templates/                          # 项目中 resources 路径下的模板文件夹</span><br><span class="line">│   └── lib/                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）</span><br><span class="line">├── META-INF/                                                                   </span><br><span class="line">│   └── MANIFEST.MF                             # 清单文件，用于描述可执行 jar 的一些基本信息</span><br><span class="line">└── org/springframework/boot/loader/            # jar 包启动相关的引导</span><br><span class="line">    ├── archive/</span><br><span class="line">    ├── data</span><br><span class="line">    ├── ExectableArchiveLauncher.class</span><br><span class="line">    ├── jar/</span><br><span class="line">    ├── JarLauncher.class</span><br><span class="line">    ├── LaunchedURLClassLoader.class</span><br><span class="line">    ├── LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class</span><br><span class="line">    ├── Launcher.class</span><br><span class="line">    ├── MainMethodRunner.class</span><br><span class="line">    ├── PropertiesLauncher.class</span><br><span class="line">    ├── PropertiesLauncher$1.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── PropertiesLauncher$PrefixMatchingArchiveFilter.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── util/</span><br><span class="line">    └── WarLauncher.class</span><br></pre></td></tr></table></figure>
+<h4 id="MANIFEST-MF"><a class="header-anchor" href="#MANIFEST-MF"></a>MANIFEST.MF</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: 1.0                                       # 清单版本号</span><br><span class="line">Start-Class: org.incoder.start.SpringbootStartApplication   # 项目 main 方法所在的类</span><br><span class="line">Spring-Boot-Classes: BOOT-INF/classes/                      # 项目相关代码在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Lib: BOOT-INF/lib/                              # 项目中所依赖的第三方 jar 在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Version: 2.1.6.RELEASE                          # 项目  SpringBoot 版本</span><br><span class="line">Main-Class: org.springframework.boot.loader.JarLauncher     # 当前 jar 文件的执行入口类（main 方法所在的类）</span><br><span class="line">回车换行（在清单文件中，必须有，否则会出错）</span><br></pre></td></tr></table></figure>
+<h4 id="org-springframework-……目录"><a class="header-anchor" href="#org-springframework-……目录"></a>org/springframework/……目录</h4>
+<p>项目中引入的第三方 jar 中并不包含<code>org/springframework/boot/loader</code>内容，那这个目录是从哪里来的呢？</p>
+<p>寻找最终发现是项目中我们的<code>build.gradle</code>文件中，引入的<code>org.springframework.boot:spring-boot-gradle-plugin</code>依赖，而这个依赖位于<code>classpath</code>下，说明引入的这个插件 <strong>仅仅</strong> 是在项目构建时才起作用，当项目进行打包后，并不会把插件包打入到项目的依赖库中，也就是<code>BOOT-INF/lib/</code>路径下</p>
+<p>如何去研究在<code>org/springframework/boot/loader</code>下的源码内容呢？<br>
+最好的方式是在项目的依赖中导入<code>org.springframework.boot:spring-boot-loader</code>依赖</p>
+<blockquote>
+<p>原则上，在项目开发过程中是不需要引入<code>org.springframework.boot:spring-boot-loader</code>依赖，这里只是为了方便阅读源码进行学习</p>
+</blockquote>
+<h2 id="Spring-其他"><a class="header-anchor" href="#Spring-其他"></a>Spring 其他</h2>
+<h3 id="配置文件格式"><a class="header-anchor" href="#配置文件格式"></a>配置文件格式</h3>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvLnByb3BlcnRpZXM=">properties<i class="fa fa-external-link-alt"></i></span></li>
+<li><strong>推荐</strong> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvWUFNTA==">yml<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<blockquote>
+<p>配置文件学习可参考 <a href="https://incoder.org/2019/07/28/springboot4/">SpringBoot（四）配置文件</a></p>
+</blockquote>
+<h3 id="常用命令"><a class="header-anchor" href="#常用命令"></a>常用命令</h3>
+<h4 id="gradle-tasks"><a class="header-anchor" href="#gradle-tasks"></a>gradle tasks</h4>
+<p>表示获取当前工程可用的 gradle tasks 命令</p>
+<h5 id="Application-tasks"><a class="header-anchor" href="#Application-tasks"></a>Application tasks</h5>
+<ul>
+<li>bootRun：Runs this project as a Spring Boot application.（以 bootJar 的形式运行当前项目）</li>
+</ul>
+<h5 id="Build-tasks"><a class="header-anchor" href="#Build-tasks"></a>Build tasks</h5>
+<ul>
+<li>bootJar：Assembles an executable jar archive containing the main classes and their dependencies.（装配一个可执行的 jar（自包含的 jar 包，不依赖其他容器） 归档，这个归档 jar 中包含了所需的依赖以及主类等）</li>
+</ul>
+<h5 id="Run-jar"><a class="header-anchor" href="#Run-jar"></a>Run jar</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jar-name.jar</span><br></pre></td></tr></table></figure>
+<h5 id="Other"><a class="header-anchor" href="#Other"></a>Other</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解压 jar 到当前 start 目录下</span></span><br><span class="line">unzip start-0.0.1-SNAPSHOT.jar -d ./start</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2019/06/23/springboot1/" title="SpringBoot（一） 初识">https://incoder.org/2019/06/23/springboot1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/06/19/soa/" rel="prev" title="【译】• 面向服务的架构">
+                  <i class="fa fa-chevron-left"></i> 【译】• 面向服务的架构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/07/05/springboot2/" rel="next" title="SpringBoot（二） 启动分析JarLauncher">
+                  SpringBoot（二） 启动分析JarLauncher <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="自从Android4.4的源码中可以看到HttpURLConnection已经替换成OkHttp开始( JakeWharton曾在Twitter表示 ) ，OkHttp+Retrofit+RxJava的组合网络请求一直经久不衰，主流app的网络架构基本都是这样的组合模式，存在即合理，说明OkHttp+Retrofit+RxJava的方式确实给开发，用户体验等带来可观的优势，那么这个系列文章围绕An">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network（一） 之OkHttp 入门">
+<meta property="og:url" content="https://incoder.org/2018/06/23/network-okhttp1/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="自从Android4.4的源码中可以看到HttpURLConnection已经替换成OkHttp开始( JakeWharton曾在Twitter表示 ) ，OkHttp+Retrofit+RxJava的组合网络请求一直经久不衰，主流app的网络架构基本都是这样的组合模式，存在即合理，说明OkHttp+Retrofit+RxJava的方式确实给开发，用户体验等带来可观的优势，那么这个系列文章围绕An">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-23T12:44:25.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="OkHttp">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://incoder.org/2018/06/23/network-okhttp1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2018/06/23/network-okhttp1/","path":"2018/06/23/network-okhttp1/","title":"Network（一） 之OkHttp 入门"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Network（一） 之OkHttp 入门 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttp%E4%BC%98%E5%8A%BF"><span class="nav-number">1.</span> <span class="nav-text">OkHttp优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OkHttp%E8%AF%B7%E6%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">OkHttp请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OkHttp%E5%93%8D%E5%BA%94"><span class="nav-number">2.2.</span> <span class="nav-text">OkHttp响应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5"><span class="nav-number">3.</span> <span class="nav-text">同步与异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">3.1.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5"><span class="nav-number">3.2.</span> <span class="nav-text">异步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttp-Get"><span class="nav-number">4.</span> <span class="nav-text">OkHttp Get</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OkHttp-Post"><span class="nav-number">5.</span> <span class="nav-text">OkHttp Post</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Posting-a-String"><span class="nav-number">5.1.</span> <span class="nav-text">Posting a String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Post-Streaming"><span class="nav-number">5.2.</span> <span class="nav-text">Post Streaming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Posting-a-File"><span class="nav-number">5.3.</span> <span class="nav-text">Posting a File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Posting-form-parameters"><span class="nav-number">5.4.</span> <span class="nav-text">Posting form parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Posting-a-multipart-request"><span class="nav-number">5.5.</span> <span class="nav-text">Posting a multipart request</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Header"><span class="nav-number">6.</span> <span class="nav-text">Header</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Response-Caching"><span class="nav-number">6.1.</span> <span class="nav-text">Response Caching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Canceling-a-Call"><span class="nav-number">6.2.</span> <span class="nav-text">Canceling a Call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Timeouts"><span class="nav-number">6.3.</span> <span class="nav-text">Timeouts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Per-call-Configuration"><span class="nav-number">6.4.</span> <span class="nav-text">Per-call Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-authentication"><span class="nav-number">6.5.</span> <span class="nav-text">Handling authentication</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">7.</span> <span class="nav-text">附录</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2018/06/23/network-okhttp1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Network（一） 之OkHttp 入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-23 12:44:25" itemprop="dateCreated datePublished" datetime="2018-06-23T12:44:25+00:00">2018-06-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2018/06/23/network-okhttp1/" class="post-meta-item leancloud_visitors" data-flag-title="Network（一） 之OkHttp 入门" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>16k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>15 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>自从Android4.4的源码中可以看到<code>HttpURLConnection</code>已经替换成<code>OkHttp</code>开始( <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9KYWtlV2hhcnRvbi9zdGF0dXMvNDgyNTYzMjk5NTExMjUwOTQ0">JakeWharton曾在Twitter表示<i class="fa fa-external-link-alt"></i></span> ) ，<code>OkHttp</code>+<code>Retrofit</code>+<code>RxJava</code>的组合网络请求一直经久不衰，主流app的网络架构基本都是这样的组合模式，存在即合理，说明<code>OkHttp</code>+<code>Retrofit</code>+<code>RxJava</code>的方式确实给开发，用户体验等带来可观的优势，那么这个系列文章围绕Android的网络展开.</p>
+<p>OkHttp：An HTTP &amp; HTTP/2 client for Android and Java applications</p>
+<span id="more"></span>
+<blockquote>
+<p>Android 历史网络库</p>
+</blockquote>
+<ul>
+<li><code>HttpClient</code> 是 Apache 提供的HTTP网络访问接口，从一开始的时候就被引入到了Android的API中；</li>
+<li><code>HttpURLConnection</code> 是一种多用途, 轻量极的HTTP客户端, 提供的API比较简单, 可以容易地去使用和扩展.</li>
+</ul>
+<h2 id="OkHttp优势"><a class="header-anchor" href="#OkHttp优势"></a>OkHttp优势</h2>
+<ul>
+<li>支持HTTP/2, HTTP/2通过使用多路复用技术在一个单独的TCP连接上支持并发, 通过在一个连接上一次性发送多个请求来发送或接收数据</li>
+<li>如果HTTP/2不可用, 连接池复用技术也可以极大减少延时</li>
+<li>支持GZIP, 可以压缩下载体积</li>
+<li>响应缓存可以直接避免重复请求</li>
+<li>会从很多常用的连接问题中自动恢复</li>
+<li>如果您的服务器配置了多个IP地址, 当第一个IP连接失败的时候, OkHttp会自动尝试下一个IP</li>
+<li>OkHttp还处理了代理服务器问题和SSL握手失败问题，等等…</li>
+</ul>
+<h2 id="基本使用"><a class="header-anchor" href="#基本使用"></a>基本使用</h2>
+<p>该系列版本说明</p>
+<ul>
+<li>OkHttp版本统一：<strong>3.10.0</strong></li>
+<li>JDK：<strong>1.8+</strong></li>
+</ul>
+<p>Gradle包导入</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// okhttp核心库</span></span><br><span class="line">implementation <span class="string">&#x27;com.squareup.okhttp3:okhttp:3.10.0&#x27;</span></span><br><span class="line"><span class="comment">// okhttp网络请求拦截日志库</span></span><br><span class="line">implementation <span class="string">&#x27;com.squareup.okhttp3:logging-interceptor:3.10.0&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于网络请求<br>
+基本网络请求由请求（<code>请求行</code>，<code>请求头</code>，<code>请求内容</code>），响应（<code>响应行</code>，<code>响应头</code>，<code>响应内容</code>）两大部分组成，具体的内容请查看<a href="https://incoder.org/2018/06/22/network-http">Http VS Https</a>这篇文章</p>
+</blockquote>
+<h3 id="OkHttp请求"><a class="header-anchor" href="#OkHttp请求"></a>OkHttp请求</h3>
+<p>已在<a href="https://incoder.org/2018/06/22/network-http/#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87">Http VS Https</a>文章中介绍了，HTTP请求相关内容</p>
+<h3 id="OkHttp响应"><a class="header-anchor" href="#OkHttp响应"></a>OkHttp响应</h3>
+<p>已在<a href="https://incoder.org/2018/06/22/network-http/#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87">Http VS Https</a>文章中介绍了，HTTP响应相关内容</p>
+<h2 id="同步与异步"><a class="header-anchor" href="#同步与异步"></a>同步与异步</h2>
+<p>网络请求执行方式为：同步与异步；<code>同步</code>和<code>异步</code>关注的是消息通信机制 (synchronous communication/ asynchronous communication)</p>
+<h3 id="同步"><a class="header-anchor" href="#同步"></a>同步</h3>
+<p>就是在发出一个 <strong>调用</strong> 时，在没有得到结果之前，该 <strong>调用</strong> 就不返回，但是一旦调用返回，就得到返回值了。<br>
+换句话说，就是由 <strong>调用者</strong> 主动等待这个 <strong>调用</strong> 的结果。<br>
+Okhttp同步(<code>execute()</code>)：Invokes the request immediately, and blocks until the response can be processed or is in error.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String url = <span class="string">&quot;https://api.github.com/users/BladeCode&quot;</span>;</span><br><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"> </span><br><span class="line"><span class="function">String <span class="title">run</span><span class="params">(String url)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">    <span class="comment">// 执行同步操作</span></span><br><span class="line">    Response response = client.newCall(request).execute();   </span><br><span class="line">    <span class="keyword">if</span> (response.isSuccessful()) &#123;</span><br><span class="line">          <span class="keyword">return</span> response.body().string();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="异步"><a class="header-anchor" href="#异步"></a>异步</h3>
+<p><strong>异步</strong> 则与同步相反，<strong>调用</strong> 在发出之后，这个调用就直接返回了，所以没有返回结果。<br>
+换句话说，当一个异步过程调用发出后，<strong>调用者</strong> 不会立刻得到结果。而是在 <strong>调用</strong> 发出后，<strong>被调用者</strong> 通过状态、通知来通知 <strong>调用者</strong>，或通过回调函数处理这个调用。<br>
+Okhttp同步(<code>enqueue(Callback responseCallback)</code>)：Schedules the request to be executed at some point in the future.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">String url = <span class="string">&quot;https://api.github.com/users/BladeCode&quot;</span>;</span><br><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line">Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line"><span class="comment">// 返回response 对象</span></span><br><span class="line">Response response = client.newCall(request).enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call, IOException e)</span> </span>&#123;</span><br><span class="line">        System.out.println(e.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 字符串形式表达响应</span></span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">        <span class="comment">// 或流的形式表达响应</span></span><br><span class="line">        System.out.println(response.body().charStream());</span><br><span class="line">        System.out.println(response.body().byteStream());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：</p>
+</blockquote>
+<ul>
+<li>响应体太大（超过1MB）, 应避免使用 string()方法, 因为它会将把整个文档加载到内存中.</li>
+<li>对于超过1MB的响应body, 应使用流的方式来处理响应body. 这和我们处理xml文档的逻辑是一致的, 小文件可以载入内存树状解析, 大文件就必须流式解析</li>
+</ul>
+<h2 id="OkHttp-Get"><a class="header-anchor" href="#OkHttp-Get"></a>OkHttp Get</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String url = <span class="string">&quot;https://api.github.com/users/BladeCode&quot;</span>;</span><br><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"> </span><br><span class="line"><span class="function">String <span class="title">run</span><span class="params">(String url)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">    Response response = client.newCall(request).execute();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (response.isSuccessful()) &#123;        </span><br><span class="line">        <span class="keyword">return</span> response.body().string();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="OkHttp-Post"><a class="header-anchor" href="#OkHttp-Post"></a>OkHttp Post</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType JSON = MediaType.parse(<span class="string">&quot;application/json; charset=utf-8&quot;</span>);</span><br><span class="line"></span><br><span class="line">OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line"><span class="function">String <span class="title">post</span><span class="params">(String url, String json)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    RequestBody body = RequestBody.create(JSON, json);</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">      .url(url)</span><br><span class="line">      .post(body)</span><br><span class="line">      .build();</span><br><span class="line">    </span><br><span class="line">    Response response = client.newCall(request).execute();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (response.isSuccessful()) &#123;</span><br><span class="line">        <span class="keyword">return</span> response.body().string();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Posting-a-String"><a class="header-anchor" href="#Posting-a-String"></a>Posting a String</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse(<span class="string">&quot;text/x-markdown; charset=utf-8&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    String postBody = <span class="string">&quot;&quot;</span></span><br><span class="line">        + <span class="string">&quot;Releases\n&quot;</span></span><br><span class="line">        + <span class="string">&quot;--------\n&quot;</span></span><br><span class="line">        + <span class="string">&quot;\n&quot;</span></span><br><span class="line">        + <span class="string">&quot; * _1.0_ May 6, 2013\n&quot;</span></span><br><span class="line">        + <span class="string">&quot; * _1.1_ June 15, 2013\n&quot;</span></span><br><span class="line">        + <span class="string">&quot; * _1.2_ August 11, 2013\n&quot;</span>;</span><br><span class="line"> </span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;https://api.github.com/markdown/raw&quot;</span>)</span><br><span class="line">        .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, postBody))</span><br><span class="line">        .build();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">try</span>(Response response = client.newCall(request).execute())&#123;</span><br><span class="line">        <span class="keyword">if</span> (!response.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line"> </span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：当提交数据大于1MB，请使用流的方式</p>
+</blockquote>
+<h3 id="Post-Streaming"><a class="header-anchor" href="#Post-Streaming"></a>Post Streaming</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse(<span class="string">&quot;text/x-markdown; charset=utf-8&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    RequestBody requestBody = <span class="keyword">new</span> RequestBody() &#123;</span><br><span class="line">      <span class="meta">@Override</span> </span><br><span class="line">      <span class="function"><span class="keyword">public</span> MediaType <span class="title">contentType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> MEDIA_TYPE_MARKDOWN;</span><br><span class="line">      &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="meta">@Override</span> </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeTo</span><span class="params">(BufferedSink sink)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        sink.writeUtf8(<span class="string">&quot;Numbers\n&quot;</span>);</span><br><span class="line">        sink.writeUtf8(<span class="string">&quot;-------\n&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">997</span>; i++) &#123;</span><br><span class="line">          sink.writeUtf8(String.format(<span class="string">&quot; * %s = %s\n&quot;</span>, i, factor(i)));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="function"><span class="keyword">private</span> String <span class="title">factor</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> x = n / i;</span><br><span class="line">          <span class="keyword">if</span> (x * i == n) <span class="keyword">return</span> factor(x) + <span class="string">&quot; × &quot;</span> + i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Integer.toString(n);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"> </span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;https://api.github.com/markdown/raw&quot;</span>)</span><br><span class="line">        .post(requestBody)</span><br><span class="line">        .build();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">try</span>(Response response = client.newCall(request).execute())&#123;</span><br><span class="line">        <span class="keyword">if</span> (!response.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line"> </span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Posting-a-File"><a class="header-anchor" href="#Posting-a-File"></a>Posting a File</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse(<span class="string">&quot;text/x-markdown; charset=utf-8&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    File file = <span class="keyword">new</span> File(<span class="string">&quot;README.md&quot;</span>);</span><br><span class="line"> </span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;https://api.github.com/BladeCode/raw&quot;</span>)</span><br><span class="line">        .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, file))</span><br><span class="line">        .build();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">try</span>(Response response = client.newCall(request).execute())&#123;</span><br><span class="line">        <span class="keyword">if</span> (!response.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line"> </span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Posting-form-parameters"><a class="header-anchor" href="#Posting-form-parameters"></a>Posting form parameters</h3>
+<p>使用<code>FormEncodingBuilder</code>来构建和HTML<form>标签相同效果的请求体。键值对将使用一种HTML兼容形式的URL编码来进行编码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    RequestBody formBody = <span class="keyword">new</span> FormEncodingBuilder()</span><br><span class="line">        .add(<span class="string">&quot;search&quot;</span>, <span class="string">&quot;Jurassic Park&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;https://en.wikipedia.org/w/index.php&quot;</span>)</span><br><span class="line">        .post(formBody)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>(Response response = client.newCall(request).execute())&#123;</span><br><span class="line">        <span class="keyword">if</span> (!response.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line"> </span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Posting-a-multipart-request"><a class="header-anchor" href="#Posting-a-multipart-request"></a>Posting a multipart request</h3>
+<p><code>MultipartBuilder</code>可以构建复杂的请求体，与HTML文件上传形式兼容。多块请求体中每块请求都是一个请求体，可以定义自己的请求头。这些请求头可以用来描述这块请求，例如他的<code>Content-Disposition</code>。如果<code>Content-Length</code>和<code>Content-Type</code>可用的话，他们会被自动添加到请求头中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String IMGUR_CLIENT_ID = <span class="string">&quot;...&quot;</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> MediaType MEDIA_TYPE_PNG = MediaType.parse(<span class="string">&quot;image/png&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">// Use the imgur image upload API as documented at https://api.imgur.com/endpoints/image</span></span><br><span class="line">    RequestBody requestBody = <span class="keyword">new</span> MultipartBuilder()</span><br><span class="line">        .type(MultipartBuilder.FORM)</span><br><span class="line">        .addPart(</span><br><span class="line">            Headers.of(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">&quot;form-data; name=\&quot;title\&quot;&quot;</span>),</span><br><span class="line">            RequestBody.create(<span class="keyword">null</span>, <span class="string">&quot;Square Logo&quot;</span>))</span><br><span class="line">        .addPart(</span><br><span class="line">            Headers.of(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">&quot;form-data; name=\&quot;image\&quot;&quot;</span>),</span><br><span class="line">            RequestBody.create(MEDIA_TYPE_PNG, <span class="keyword">new</span> File(<span class="string">&quot;website/static/logo-square.png&quot;</span>)))</span><br><span class="line">        .build();</span><br><span class="line"> </span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .header(<span class="string">&quot;Authorization&quot;</span>, <span class="string">&quot;Client-ID &quot;</span> + IMGUR_CLIENT_ID)</span><br><span class="line">        .url(<span class="string">&quot;https://api.imgur.com/3/image&quot;</span>)</span><br><span class="line">        .post(requestBody)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>(Response response = client.newCall(request).execute())&#123;</span><br><span class="line">        <span class="keyword">if</span> (!response.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line"> </span><br><span class="line">        System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Header"><a class="header-anchor" href="#Header"></a>Header</h2>
+<p>通常，HTTP headers 的工作方式类似于 <code>Map&lt;String, String&gt;</code>：每个字段都有一个值或没有，但是一些headers允许多个值</p>
+<ul>
+<li>例如：Guava’s Multimap.</li>
+<li>例如：提供多个vary headers的HTTP响应是合法且常见的。OkHttp的API试图使用两种情况都很舒适</li>
+</ul>
+<p>在编写请求headers时</p>
+<ul>
+<li>使用 <code>header(name, value)</code>将 <code>name</code> 的唯一内容设置为 <code>value</code>。如果 <code>name</code> 存在现有值，则在添加新值之前将删除它。</li>
+<li>使用 <code>addHeader(name, value)</code> 添加 <code>headers</code> 不会删除已存在的 <code>header</code></li>
+</ul>
+<p>在读取headers响应时，使用 <code>header(name)</code> 返回最后异常出现的命名值。通常这也是唯一发生，如果没有值，则 <code>header(name)</code> 返回null。将所有字段的值作为列表读取，请使用 <code>headers(name)</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;https://api.github.com/repos/square/okhttp/issues&quot;</span>)</span><br><span class="line">        .header(<span class="string">&quot;User-Agent&quot;</span>, <span class="string">&quot;OkHttp Headers.java&quot;</span>)</span><br><span class="line">        .addHeader(<span class="string">&quot;Accept&quot;</span>, <span class="string">&quot;application/json; q=0.5&quot;</span>)</span><br><span class="line">        .addHeader(<span class="string">&quot;Accept&quot;</span>, <span class="string">&quot;application/vnd.github.v3+json&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> (Response response = client.newCall(request).execute()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!response.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">&quot;Server: &quot;</span> + response.header(<span class="string">&quot;Server&quot;</span>));</span><br><span class="line">      System.out.println(<span class="string">&quot;Date: &quot;</span> + response.header(<span class="string">&quot;Date&quot;</span>));</span><br><span class="line">      System.out.println(<span class="string">&quot;Vary: &quot;</span> + response.headers(<span class="string">&quot;Vary&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Response-Caching"><a class="header-anchor" href="#Response-Caching"></a>Response Caching</h3>
+<p>实现缓存响应，你需要一个可以读写的缓存目录，以及缓存大小的限制。缓存目录应该是私有的，不受信任的应用程序不应该读取其内容</p>
+<p>让多个缓存同时访问同一缓存目录是错误的。大多数应用程序应该只调用一次 <code>new OkHttpClient()</code>，使用它们的缓存配置它，并在任何地方使用相同的实例。否则，两个缓存实例将互相踩踏，破坏响应缓存，并可能导致程序奔溃</p>
+<p>响应缓存使用HTTP headers进行所有的配置。你可以添加headers，如：<code>Cache-Control: max-stale=3600</code>，OkHttp的缓存将遵循它。你的Web服务器使用自己的响应headers配置缓存响应的时间，例如：<code>Cache-Control: max-age=9600</code>。有缓存headers可强制缓存响应，强制网络响应，或者强制使用条件GET验证网络响应</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CacheResponse</span><span class="params">(File cacheDirectory)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">// 设置缓存大小 10 MiB</span></span><br><span class="line">    <span class="keyword">int</span> cacheSize = <span class="number">10</span> * <span class="number">1024</span> * <span class="number">1024</span>; </span><br><span class="line">    <span class="comment">// 实例化Cache对象</span></span><br><span class="line">    Cache cache = <span class="keyword">new</span> Cache(cacheDirectory, cacheSize);</span><br><span class="line"></span><br><span class="line">    client = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">        .cache(cache)</span><br><span class="line">        .build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;http://publicobject.com/helloworld.txt&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    String response1Body;</span><br><span class="line">    <span class="keyword">try</span> (Response response1 = client.newCall(request).execute()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!response1.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response1);</span><br><span class="line"></span><br><span class="line">      response1Body = response1.body().string();</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 1 response:          &quot;</span> + response1);</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 1 cache response:    &quot;</span> + response1.cacheResponse());</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 1 network response:  &quot;</span> + response1.networkResponse());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String response2Body;</span><br><span class="line">    <span class="keyword">try</span> (Response response2 = client.newCall(request).execute()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!response2.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response2);</span><br><span class="line"></span><br><span class="line">      response2Body = response2.body().string();</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 2 response:          &quot;</span> + response2);</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 2 cache response:    &quot;</span> + response2.cacheResponse());</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 2 network response:  &quot;</span> + response2.networkResponse());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;Response 2 equals Response 1? &quot;</span> + response1Body.equals(response2Body));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>要阻止响应使用缓存，请使用 <code>CacheControl.FORCE_NETWORK</code></li>
+<li>要阻止它使用网络，请使用 <code>CacheControl.FORCE_CACHE</code></li>
+</ul>
+<blockquote>
+<p>警告：如果你使用 <code>FORCE_CACHE</code> 且响应需要网络，OkHttp将返回504不满意请求响应</p>
+</blockquote>
+<h3 id="Canceling-a-Call"><a class="header-anchor" href="#Canceling-a-Call"></a>Canceling a Call</h3>
+<p>使用 <code>Call.cancel()</code> 立即停止正在进行的请求，如果线程当前正在请求或读取响应，则它将收到 <code>IOException</code>。当不在需要call时，使用它来保护网络，例如，当你的用户导航离开应用程序时，同步和异步调用都可以取消</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ScheduledExecutorService executor = Executors.newScheduledThreadPool(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;http://httpbin.org/delay/2&quot;</span>) <span class="comment">// This URL is served with a 2 second delay.</span></span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">long</span> startNanos = System.nanoTime();</span><br><span class="line">    <span class="keyword">final</span> Call call = client.newCall(request);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Schedule a job to cancel the call in 1 second.</span></span><br><span class="line">    executor.schedule(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">      <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.printf(<span class="string">&quot;%.2f Canceling call.%n&quot;</span>, (System.nanoTime() - startNanos) / <span class="number">1e9f</span>);</span><br><span class="line">        call.cancel();</span><br><span class="line">        System.out.printf(<span class="string">&quot;%.2f Canceled call.%n&quot;</span>, (System.nanoTime() - startNanos) / <span class="number">1e9f</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">1</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">    System.out.printf(<span class="string">&quot;%.2f Executing call.%n&quot;</span>, (System.nanoTime() - startNanos) / <span class="number">1e9f</span>);</span><br><span class="line">    <span class="keyword">try</span> (Response response = call.execute()) &#123;</span><br><span class="line">      System.out.printf(<span class="string">&quot;%.2f Call was expected to fail, but completed: %s%n&quot;</span>,</span><br><span class="line">          (System.nanoTime() - startNanos) / <span class="number">1e9f</span>, response);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      System.out.printf(<span class="string">&quot;%.2f Call failed as expected: %s%n&quot;</span>,</span><br><span class="line">          (System.nanoTime() - startNanos) / <span class="number">1e9f</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Timeouts"><a class="header-anchor" href="#Timeouts"></a>Timeouts</h3>
+<p>当无法访问时，使用超时来使call失败。网络分区可能是由于客户端连接问题，服务器可读性问题或其他任何问题时。OkHttp支持连接，读取和写入超时配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ConfigureTimeouts</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    client = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">        .connectTimeout(<span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">        .writeTimeout(<span class="number">10</span>, TimeUnit.SECONDS)</span><br><span class="line">        .readTimeout(<span class="number">30</span>, TimeUnit.SECONDS)</span><br><span class="line">        .build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;http://httpbin.org/delay/2&quot;</span>) <span class="comment">// This URL is served with a 2 second delay.</span></span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> (Response response = client.newCall(request).execute()) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Response completed: &quot;</span> + response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Per-call-Configuration"><a class="header-anchor" href="#Per-call-Configuration"></a>Per-call Configuration</h3>
+<p>所有的HTTP 客户端配置都在 <code>OkHttpClient</code> 中，包括代理设置，超时和缓存。当你需要修改单个调用时的配置时，请调用 <code>OkHttpClient.newBuilder()</code>。这将返回与原始客户端共享相同连接池，调度程序和配置的构建器（<code>Builder</code>）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例：我们发出一个请求，其中500毫秒超时，另一个请求超时3000毫秒</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        <span class="comment">// This URL is served with a 1 second delay.</span></span><br><span class="line">        .url(<span class="string">&quot;http://httpbin.org/delay/1&quot;</span>) </span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Copy to customize OkHttp for this request.</span></span><br><span class="line">    OkHttpClient client1 = client.newBuilder()</span><br><span class="line">        .readTimeout(<span class="number">500</span>, TimeUnit.MILLISECONDS)</span><br><span class="line">        .build();</span><br><span class="line">    <span class="keyword">try</span> (Response response = client1.newCall(request).execute()) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 1 succeeded: &quot;</span> + response);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 1 failed: &quot;</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Copy to customize OkHttp for this request.</span></span><br><span class="line">    OkHttpClient client2 = client.newBuilder()</span><br><span class="line">        .readTimeout(<span class="number">3000</span>, TimeUnit.MILLISECONDS)</span><br><span class="line">        .build();</span><br><span class="line">    <span class="keyword">try</span> (Response response = client2.newCall(request).execute()) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 2 succeeded: &quot;</span> + response);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Response 2 failed: &quot;</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Handling-authentication"><a class="header-anchor" href="#Handling-authentication"></a>Handling authentication</h3>
+<p>OkHttp可以自动重试未经身份验证的请求。如果响应为401 Not Authorized，则要求Authenticator提供凭证。实现应该构建一个包含缺少凭证的新请求。如果没有可用的凭证，则返回null以跳过重试。</p>
+<p>使用 <code>Response.challenges()</code>来获取任何身份验证挑战的方案和领域。在完成基本挑战时，使用 <code>Credentials.basic(username, password)</code> 对请求header进行编码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> OkHttpClient client;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Authenticate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    client = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">        .authenticator(<span class="keyword">new</span> Authenticator() &#123;</span><br><span class="line">          <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Request <span class="title">authenticate</span><span class="params">(Route route, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (response.request().header(<span class="string">&quot;Authorization&quot;</span>) != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="keyword">null</span>; <span class="comment">// Give up, we&#x27;ve already attempted to authenticate.</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">&quot;Authenticating for response: &quot;</span> + response);</span><br><span class="line">            System.out.println(<span class="string">&quot;Challenges: &quot;</span> + response.challenges());</span><br><span class="line">            String credential = Credentials.basic(<span class="string">&quot;jesse&quot;</span>, <span class="string">&quot;password1&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> response.request().newBuilder()</span><br><span class="line">                .header(<span class="string">&quot;Authorization&quot;</span>, credential)</span><br><span class="line">                .build();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">        .build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;http://publicobject.com/secrets/hellosecret.txt&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> (Response response = client.newCall(request).execute()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!response.isSuccessful()) <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">&quot;Unexpected code &quot;</span> + response);</span><br><span class="line"></span><br><span class="line">      System.out.println(response.body().string());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为避免在身份验证不起作用时进行多次重试，你可以在返回null以放弃，例如，你可能希望在尝试这些确切凭证时跳过重试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (credential.equals(response.request().header(<span class="string">&quot;Authorization&quot;</span>))) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>; <span class="comment">// If we already failed with these credentials, don&#x27;t retry.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当你达到应用程序定义的尝试限制时，你也可以跳过重试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">responseCount</span><span class="params">(Response response)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> ((response = response.priorResponse()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">      result++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (responseCount(response) &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="comment">// If we&#x27;ve failed 3 times, give up.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NxdWFyZS9va2h0dHAvd2lraQ==">OkHttp Wiki<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzE5NzMyNDcz">怎样理解阻塞非阻塞与同步异步的区别<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5qY29kZWNyYWVlci5jb20vYS9hbnpodW9rYWlmYS9hbmRyb2lka2FpZmEvMjAxNS8wMTA2LzIyNzUuaHRtbA==">OkHttp使用教程<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2018/06/23/network-okhttp1/" title="Network（一） 之OkHttp 入门">https://incoder.org/2018/06/23/network-okhttp1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/OkHttp/" rel="tag"><i class="fa fa-tag"></i> OkHttp</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/06/22/network-http/" rel="prev" title="Http VS Https">
+                  <i class="fa fa-chevron-left"></i> Http VS Https
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/07/03/security-rsa/" rel="next" title="非对称加密——RSA">
+                  非对称加密——RSA <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

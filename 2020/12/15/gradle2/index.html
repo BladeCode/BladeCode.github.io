@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在上一篇 Gradle 的文章中，已经对 Gradle 有了一定的认识，Gradle 在 Android 有着广泛的应用，用作 Android 包依赖管理，应用构建，测试，等一些列自动化，我们本篇就来了解下在 Android 领域 Gradle 的使用。其实 Android 项目结构和之前在第一篇 Gradle 项目结构基本相同，只是在 module 级别多了的 proguard-rules.pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle（二）Android">
+<meta property="og:url" content="https://incoder.org/2020/12/15/gradle2/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="在上一篇 Gradle 的文章中，已经对 Gradle 有了一定的认识，Gradle 在 Android 有着广泛的应用，用作 Android 包依赖管理，应用构建，测试，等一些列自动化，我们本篇就来了解下在 Android 领域 Gradle 的使用。其实 Android 项目结构和之前在第一篇 Gradle 项目结构基本相同，只是在 module 级别多了的 proguard-rules.pr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-15T09:00:46.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.811Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="Gradle">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://incoder.org/2020/12/15/gradle2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2020/12/15/gradle2/","path":"2020/12/15/gradle2/","title":"Gradle（二）Android"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Gradle（二）Android | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Project-%E7%BA%A7%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">Project 级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#build-gradle"><span class="nav-number">1.1.</span> <span class="nav-text">build.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#settings-gradle"><span class="nav-number">1.2.</span> <span class="nav-text">settings.gradle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module-%E7%BA%A7%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">Module 级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#apply-plugin"><span class="nav-number">2.1.</span> <span class="nav-text">apply plugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buildTypes"><span class="nav-number">2.2.</span> <span class="nav-text">buildTypes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#productFlavors"><span class="nav-number">2.3.</span> <span class="nav-text">productFlavors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#packagingOptions"><span class="nav-number">2.4.</span> <span class="nav-text">packagingOptions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E7%89%88%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">统一版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2020/12/15/gradle2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Gradle（二）Android
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-15 09:00:46" itemprop="dateCreated datePublished" datetime="2020-12-15T09:00:46+00:00">2020-12-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Gradle/" itemprop="url" rel="index"><span itemprop="name">Gradle</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/12/15/gradle2/" class="post-meta-item leancloud_visitors" data-flag-title="Gradle（二）Android" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>16k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在上一篇 Gradle 的文章中，已经对 Gradle 有了一定的认识，Gradle 在 Android 有着广泛的应用，用作 Android 包依赖管理，应用构建，测试，等一些列自动化，我们本篇就来了解下在 Android 领域 Gradle 的使用。其实 Android 项目结构和之前在第一篇 Gradle 项目结构基本相同，只是在 module 级别多了的 <span class="exturl" data-url="aHR0cDovL3Byb2d1YXJkLXJ1bGVzLnBybw==">proguard-rules.pro<i class="fa fa-external-link-alt"></i></span>。对于不管是 Android 项目或是 Spring 系列项目的子 module 都会有 build.gradle 文件</p>
+<span id="more"></span>
+<h2 id="Project-级别"><a class="header-anchor" href="#Project-级别"></a>Project 级别</h2>
+<h3 id="build-gradle"><a class="header-anchor" href="#build-gradle"></a>build.gradle</h3>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gradle 脚本执行所需依赖，分别是对应的maven库和插件</span></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 声明依赖 Android Gradle 插件版本</span></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">&#x27;com.android.tools.build:gradle:3.5.3&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></span><br><span class="line">        <span class="comment">// in the individual module build.gradle files</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 项目所有 module 配置需要的依赖</span></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个 clean 任务，用于删除 build 目录的文件</span></span><br><span class="line">task clean(<span class="attr">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="settings-gradle"><a class="header-anchor" href="#settings-gradle"></a>settings.gradle</h3>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认指的是创建 Android 项目生成的 app 模块，也是默认的应用启动模块</span></span><br><span class="line">include <span class="string">&#x27;:app&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Module-级别"><a class="header-anchor" href="#Module-级别"></a>Module 级别</h2>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 表示这是一个应用程序模块，可直接运行</span></span><br><span class="line">apply <span class="attr">plugin:</span> <span class="string">&#x27;com.android.application&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译时间</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">def</span> releaseTime() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Date().format(<span class="string">&#x27;yyyy-MM-dd&#x27;</span>, TimeZone.getTimeZone(<span class="string">&#x27;UTC&#x27;</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    <span class="comment">// 编译 Android 版本</span></span><br><span class="line">    compileSdkVersion <span class="number">29</span></span><br><span class="line">    <span class="comment">// 默认配置</span></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        <span class="comment">// 应用 ID，手机中用于识别应用的唯一标识</span></span><br><span class="line">        applicationId <span class="string">&quot;org.incoder.android&quot;</span></span><br><span class="line">        <span class="comment">// 目标 Android 版本</span></span><br><span class="line">        targetSdkVersion <span class="number">29</span></span><br><span class="line">        <span class="comment">// 申明应用可超过 65536 的方法，可参考：https://developer.android.google.cn/studio/build/multidex?hl=zh_cn</span></span><br><span class="line">        multiDexEnabled <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 申明要使用AndroidJUnitRunner进行单元测试</span></span><br><span class="line">        testInstrumentationRunner <span class="string">&quot;android.support.test.runner.AndroidJUnitRunner&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">&#x27;proguard-android.txt&#x27;</span>), <span class="string">&#x27;proguard-rules.pro&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 签名配置，相关信息放置在 gradle.properties 文件中</span></span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line">            storeFile file(DEBUG_STORE_FILE)</span><br><span class="line">            storePassword DEBUG_STORE_PASSWORD</span><br><span class="line">            keyAlias DEBUG_KEY_ALIAS</span><br><span class="line">            keyPassword DEBUG_KEY_PASSWORD</span><br><span class="line">        &#125;</span><br><span class="line">        release &#123;</span><br><span class="line">            storeFile file(RELEASE_STORE_FILE)</span><br><span class="line">            storePassword RELEASE_STORE_PASSWORD</span><br><span class="line">            keyAlias RELEASE_KEY_ALIAS</span><br><span class="line">            keyPassword RELEASE_KEY_PASSWORD</span><br><span class="line">            v2SigningEnabled <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            zipAlignEnabled <span class="literal">false</span></span><br><span class="line">            shrinkResources <span class="literal">false</span></span><br><span class="line">            <span class="comment">// 签名</span></span><br><span class="line"><span class="comment">//            signingConfig signingConfigs.debug</span></span><br><span class="line">            manifestPlaceholders = [</span><br><span class="line">                    <span class="comment">//JPush</span></span><br><span class="line">                    <span class="attr">JPUSH_APPKEY :</span> <span class="string">&quot;&quot;</span>,</span><br><span class="line">                    <span class="symbol">JPUSH_CHANNEL:</span> <span class="string">&quot;&quot;</span>,</span><br><span class="line">                    <span class="comment">// Pgy</span></span><br><span class="line">                    <span class="attr">PGYER_APPID  :</span> <span class="string">&quot;7907554687e4c116316feedb3820ce52&quot;</span>,</span><br><span class="line">                    <span class="comment">// Bugly</span></span><br><span class="line">                    <span class="attr">BUGLY_APPID  :</span> <span class="string">&quot;&quot;</span>,</span><br><span class="line">                    <span class="attr">VERSION_NAME :</span> <span class="string">&quot;0.1.0&quot;</span>,</span><br><span class="line">            ]</span><br><span class="line">            ndk &#123;</span><br><span class="line">                <span class="comment">// 设置支持的SO库架构</span></span><br><span class="line">                abiFilters <span class="string">&#x27;armeabi&#x27;</span>, <span class="string">&#x27;x86&#x27;</span>, <span class="string">&#x27;armeabi-v7a&#x27;</span>, <span class="string">&#x27;x86_64&#x27;</span>, <span class="string">&#x27;arm64-v8a&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        release &#123;</span><br><span class="line">            <span class="comment">// 混淆</span></span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            <span class="comment">// Zipalign优化</span></span><br><span class="line">            zipAlignEnabled <span class="literal">true</span></span><br><span class="line">            <span class="comment">// 移除无用的resource文件</span></span><br><span class="line">            shrinkResources <span class="literal">false</span></span><br><span class="line">            <span class="comment">// 前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">&#x27;proguard-android.txt&#x27;</span>), <span class="string">&#x27;proguard-rules.pro&#x27;</span></span><br><span class="line">            <span class="comment">// 签名</span></span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">            <span class="comment">// AppAnalytics key</span></span><br><span class="line">            manifestPlaceholders = [</span><br><span class="line">                    <span class="comment">// JPush</span></span><br><span class="line">                    <span class="attr">JPUSH_APPKEY :</span> <span class="string">&quot;&quot;</span>,</span><br><span class="line">                    <span class="symbol">JPUSH_CHANNEL:</span> <span class="string">&quot;&quot;</span>,</span><br><span class="line">                    <span class="comment">// Pgy</span></span><br><span class="line">                    <span class="attr">PGYER_APPID  :</span> <span class="string">&quot;7907554687e4c116316feedb3820ce52&quot;</span>,</span><br><span class="line">                    <span class="comment">// Bugly</span></span><br><span class="line">                    <span class="attr">BUGLY_APPID  :</span> <span class="string">&quot;&quot;</span>,</span><br><span class="line">                    <span class="attr">VERSION_NAME :</span> <span class="string">&quot;0.1.0&quot;</span>,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重命名安装包</span></span><br><span class="line">    android.applicationVariants.all &#123;</span><br><span class="line">        variant -&gt;</span><br><span class="line">            variant.outputs.all &#123;</span><br><span class="line">                output -&gt;</span><br><span class="line">                    output.outputFileName = variant.flavorName + buildType.name +</span><br><span class="line">                            <span class="string">&quot;_&quot;</span> + releaseTime() + <span class="string">&quot;.apk&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 产品变种</span></span><br><span class="line">    flavorDimensions <span class="string">&quot;minSDK&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 针对不同渠道的配置</span></span><br><span class="line">    productFlavors &#123;</span><br><span class="line">        <span class="comment">// 测试环境渠道包</span></span><br><span class="line">        dev &#123;</span><br><span class="line">            applicationId <span class="string">&#x27;org.incoder.test&#x27;</span></span><br><span class="line">            minSdkVersion <span class="number">19</span></span><br><span class="line">            <span class="comment">// 测试环境IP配置 API 接口地址</span></span><br><span class="line">            buildConfigField <span class="string">&#x27;String&#x27;</span>, <span class="string">&#x27;API&#x27;</span>, <span class="string">&#x27;&quot;http://xxx.xxx.xxx.xxx:8888&quot;&#x27;</span></span><br><span class="line">            versionCode <span class="number">2020122501</span></span><br><span class="line">            versionName <span class="string">&quot;2.0&quot;</span></span><br><span class="line">            <span class="comment">// 指定产品变种</span></span><br><span class="line">            dimension <span class="string">&quot;minSDK&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 正式环境渠道包</span></span><br><span class="line">        rel &#123;</span><br><span class="line">            applicationId <span class="string">&quot;org.incoder.android&quot;</span></span><br><span class="line">            minSdkVersion <span class="number">16</span></span><br><span class="line">            <span class="comment">// 正式环境域名 API 接口地址</span></span><br><span class="line">            buildConfigField <span class="string">&#x27;String&#x27;</span>, <span class="string">&#x27;API&#x27;</span>, <span class="string">&#x27;&quot;http://api.xxx.xxx/&quot;&#x27;</span></span><br><span class="line">            versionCode <span class="number">2020122501</span></span><br><span class="line">            versionName <span class="string">&quot;2.1&quot;</span></span><br><span class="line">            <span class="comment">// 指定产品变种</span></span><br><span class="line">            dimension <span class="string">&quot;minSDK&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 过滤指定产品变种（渠道，构建类型）</span></span><br><span class="line"><span class="comment">//    variantFilter &#123; variant -&gt;</span></span><br><span class="line"><span class="comment">//        def names = variant.flavors*.name</span></span><br><span class="line"><span class="comment">//        def isDebug = variant.buildType.debuggable</span></span><br><span class="line"><span class="comment">//        // To check for a certain build type, use variant.buildType.name == &quot;&lt;buildType&gt;&quot;</span></span><br><span class="line"><span class="comment">//        if (names.contains(&quot;rel&quot;) &amp;&amp; isDebug) &#123;</span></span><br><span class="line"><span class="comment">//            // Gradle ignores any variants that satisfy the conditions above.</span></span><br><span class="line"><span class="comment">//            setIgnore(true)</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 多渠道配置</span></span><br><span class="line">    productFlavors.all &#123;</span><br><span class="line">        flavor -&gt;</span><br><span class="line">            flavor.manifestPlaceholders = [<span class="attr">CHANNEL_VALUE:</span> name]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行lint检查，有任何的错误或者警告提示，都会终止构建</span></span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        disable <span class="string">&#x27;MissingTranslation&#x27;</span>, <span class="string">&#x27;ExtraTranslation&#x27;</span></span><br><span class="line">        <span class="comment">// abortOnError一定要设为false，这样即使有报错也不会停止打包了</span></span><br><span class="line">        abortOnError <span class="literal">false</span></span><br><span class="line">        <span class="comment">// 在打包Release版本的时候进行检测,可以打开，这样报错还会显示出来</span></span><br><span class="line">        checkReleaseBuilds <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dexOptions &#123;</span><br><span class="line">        jumboMode <span class="literal">true</span></span><br><span class="line">        javaMaxHeapSize <span class="string">&quot;4g&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打包时的配置</span></span><br><span class="line">    packagingOptions &#123;</span><br><span class="line">        exclude <span class="string">&#x27;META-INF/LICENSE&#x27;</span></span><br><span class="line">        exclude <span class="string">&#x27;META-INF/NOTICE&#x27;</span></span><br><span class="line">        exclude <span class="string">&#x27;META-INF/rxjava.properties&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    aaptOptions.cruncherEnabled = <span class="literal">false</span></span><br><span class="line">    aaptOptions.useNewCruncher = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        sourceCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">        targetCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 项目依赖的包</span></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(<span class="attr">include:</span> [<span class="string">&#x27;*.jar&#x27;</span>], <span class="attr">dir:</span> <span class="string">&#x27;libs&#x27;</span>)</span><br><span class="line">    implementation <span class="string">&#x27;com.android.support:appcompat-v7:28.0.0&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.android.support:design:28.0.0&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.android.support:support-v4:28.0.0&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.android.support:support-v13:28.0.0&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.android.support.constraint:constraint-layout:1.1.3&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.android.support:support-vector-drawable:28.0.0&#x27;</span></span><br><span class="line">    androidTestImplementation <span class="string">&#x27;com.android.support.test:runner:1.0.2&#x27;</span></span><br><span class="line">    androidTestImplementation <span class="string">&#x27;com.android.support.test.espresso:espresso-core:3.0.2&#x27;</span></span><br><span class="line">    testImplementation <span class="string">&#x27;junit:junit:4.12&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于 module 中的 build.gradle 配置文件中的各项已在示例中加入了注释说明，其中一些配置，这里再简单的说明下</p>
+<h3 id="apply-plugin"><a class="header-anchor" href="#apply-plugin"></a>apply plugin</h3>
+<p>这里的 <code>apply plugin</code> 有两种模式：</p>
+<ol>
+<li>com.android.application：表示这是一个应用程序模块</li>
+<li>com.android.library：表示这是一个库模块</li>
+</ol>
+<p>前者可以直接运行，后着是依附别的应用程序运行</p>
+<h3 id="buildTypes"><a class="header-anchor" href="#buildTypes"></a>buildTypes</h3>
+<p>这里主要是生成安装文件的配置信息，一个 debug 类型，用于指定生成测试版安装文件配置，可忽略不写；另一个是 release，用于指定生成正式版安装文件的配置。</p>
+<ul>
+<li>minifyEnabled：是否对代码进行混淆，默认 false</li>
+<li>proguardFiles：指定混淆的规则文件，默认指定了 proguard-android.txt 文件和 <span class="exturl" data-url="aHR0cDovL3Byb2d1YXJkLXJ1bGVzLnBybw==">proguard-rules.pro<i class="fa fa-external-link-alt"></i></span> 文件。
+<ul>
+<li>proguard-android.txt：默认的混淆文件，里面定义了一些通用的混淆规则</li>
+<li><span class="exturl" data-url="aHR0cDovL3Byb2d1YXJkLXJ1bGVzLnBybw==">proguard-rules.pro<i class="fa fa-external-link-alt"></i></span>：位于当前项目的根目录下，可以在该文件中定义一些项目特有的混淆规则</li>
+</ul>
+</li>
+<li>buildConfigField：可用于解决不同渠道不同的服务地址，或不同渠道 LOG 打印控制等</li>
+<li>debuggable：是否支持断点调试，release 默认为 false，debug 默认 true</li>
+<li>jniDebuggable：是否可以调试 NDK 代码，使用 lldb 进行 C 和 C++ 代码调试，release 默认为 false</li>
+<li>signingConfig：设置签名信息，通过 singingConfig.release 或 singingConfig.debug，配置相应的签名，但是添加此配置前需要先添加 singingConfig 闭包</li>
+<li>renderscriptDebuggable：是否开启渲染脚本，就是一些 C 写的渲染方法，默认为 false</li>
+<li>renderscriptOptimLevel：渲染等级，默认为 3</li>
+<li>zipAlignEnabled：是否对 apk 包执行 zip 对齐优化，减少 zip 体积，提高运行效率，release 和 debug 都默认 true</li>
+<li>pseudoLocalesEnabled：是否在 apk 中生成伪语言环境，帮助国际化，一般很少使用</li>
+<li>applicationIdSuffix：和 defaultConfig 中配置一样，指在 applicationId 中添加一个后缀</li>
+<li>versionNameSuffix：添加版本名称的后缀，一般使用较少</li>
+</ul>
+<h3 id="productFlavors"><a class="header-anchor" href="#productFlavors"></a>productFlavors</h3>
+<p>这个配置主要是解决应用发布在不同应用市场，而需要对不同应用市场做一些不同配置，比如包名，应用名，以及一些统计，而需要不同渠道统计 ID 等</p>
+<h3 id="packagingOptions"><a class="header-anchor" href="#packagingOptions"></a>packagingOptions</h3>
+<p>packagingOptions 常见的设置项有 exclude、pickFirst、doNotStrip、merge</p>
+<ol>
+<li>exclude：过滤掉某些文件或者目录不添加到APK中，作用于APK，不能过滤aar和jar中的内容<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">    exclude <span class="string">&#x27;META-INF/**&#x27;</span></span><br><span class="line">    exclude <span class="string">&#x27;lib/arm64-v8a/libmediaplayer.so&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>pickFirst：匹配到多个相同文件，只提取第一个。只作用于APK，不能过滤aar和jar中的文件<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">    pickFirst <span class="string">&quot;lib/armeabi-v7a/libaaa.so&quot;</span></span><br><span class="line">    pickFirst <span class="string">&quot;lib/armeabi-v7a/libbbb.so&quot;</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>doNotStrip：可以设置某些动态库不被优化压缩<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions&#123;</span><br><span class="line">    doNotStrip <span class="string">&quot;*/armeabi/*.so&quot;</span></span><br><span class="line">    doNotStrip <span class="string">&quot;*/armeabi-v7a/*.so&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>merge：将匹配的文件都添加到APK中，和pickFirst有些相反，会合并所有文件<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">packagingOptions &#123;</span><br><span class="line">    merge <span class="string">&#x27;**/LICENSE.txt&#x27;</span></span><br><span class="line">    merge <span class="string">&#x27;**/NOTICE.txt&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="统一版本"><a class="header-anchor" href="#统一版本"></a>统一版本</h2>
+<p>应用由多个 module 构成，而不同地方引用的包，需要做到全局的统一时，可以创建一个 <code>xxx.gradle</code> 的文件（这里的 xxx，自行取一个表明含义的内容即可），然后在使用的地方时，统一调用定义的版本即可，使用步骤如下</p>
+<ol>
+<li>创建 <code>xxx.gradle</code> 文件（一般放在项目的根目录，和顶级 build.gradle 文件在同一层级），并添加如下内容，可根据自身需要调整 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line"></span><br><span class="line">    android = [</span><br><span class="line">            <span class="symbol">compileSdkVersion:</span> <span class="number">29</span>,</span><br><span class="line">            <span class="symbol">buildToolsVersion:</span> <span class="string">&quot;29.0.2&quot;</span>,</span><br><span class="line">            <span class="attr">minSdkVersion    :</span> <span class="number">19</span>,</span><br><span class="line">            <span class="attr">targetSdkVersion :</span> <span class="number">29</span>,</span><br><span class="line">            <span class="attr">versionCode      :</span> <span class="number">2020010102</span>,</span><br><span class="line">            <span class="attr">versionName      :</span> <span class="string">&quot;0.1.0&quot;</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    version = [</span><br><span class="line">            <span class="symbol">androidSupportSdkVersion:</span> <span class="string">&quot;29.0.0&quot;</span>,</span><br><span class="line">            <span class="attr">retrofitSdkVersion      :</span> <span class="string">&quot;2.6.3&quot;</span>,</span><br><span class="line">            <span class="attr">okhttpSdkVersion        :</span> <span class="string">&quot;4.3.0&quot;</span>,</span><br><span class="line">            <span class="attr">dagger2SdkVersion       :</span> <span class="string">&quot;2.22.1&quot;</span>,</span><br><span class="line">            <span class="attr">glideSdkVersion         :</span> <span class="string">&quot;4.9.0&quot;</span>,</span><br><span class="line">            <span class="attr">butterknifeSdkVersion   :</span> <span class="string">&quot;10.2.1&quot;</span>,</span><br><span class="line">            <span class="attr">rxlifecycle2SdkVersion  :</span> <span class="string">&quot;2.2.1&quot;</span>,</span><br><span class="line">            <span class="attr">espressoSdkVersion      :</span> <span class="string">&quot;3.0.2&quot;</span>,</span><br><span class="line">            <span class="attr">canarySdkVersion        :</span> <span class="string">&quot;1.5.4&quot;</span></span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Android support 与 AndroidX support 对比</span></span><br><span class="line">    <span class="comment">// https://developer.android.google.cn/jetpack/androidx/migrate</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// support 库说明</span></span><br><span class="line">    <span class="comment">// https://developer.android.com/topic/libraries/support-library/features?hl=zh-cn</span></span><br><span class="line">    dependencies = [</span><br><span class="line">            <span class="comment">// support</span></span><br><span class="line">            <span class="string">&quot;appcompat&quot;</span>                   : <span class="string">&quot;androidx.appcompat:appcompat:1.1.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;annotations&quot;</span>                 : <span class="string">&quot;androidx.annotation:annotation:1.0.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;cardview-v7&quot;</span>                 : <span class="string">&quot;androidx.cardview:cardview:1.0.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;constraint-layout&quot;</span>           : <span class="string">&quot;androidx.constraintlayout:constraintlayout:1.1.3&quot;</span>,</span><br><span class="line">            <span class="string">&quot;swiperefreshlayout&quot;</span>          : <span class="string">&quot;androidx.swiperefreshlayout:swiperefreshlayout:1.0.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material&quot;</span>                    : <span class="string">&quot;com.google.android.material:material:1.1.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;viewpager&quot;</span>                   : <span class="string">&quot;androidx.viewpager:viewpager:1.0.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;recyclerview&quot;</span>                : <span class="string">&quot;androidx.recyclerview:recyclerview:1.1.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;vectordrawable&quot;</span>              : <span class="string">&quot;androidx.vectordrawable:vectordrawable:1.1.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;support-v4&quot;</span>                  : <span class="string">&quot;androidx.legacy:legacy-support-v4:1.0.0&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// network</span></span><br><span class="line">            <span class="string">&quot;retrofit&quot;</span>                    : <span class="string">&quot;com.squareup.retrofit2:retrofit:$&#123;version[&quot;</span>retrofitSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;retrofit-converter-gson&quot;</span>     : <span class="string">&quot;com.squareup.retrofit2:converter-gson:$&#123;version[&quot;</span>retrofitSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;retrofit-converter-simplexml&quot;</span>: <span class="string">&quot;com.squareup.retrofit2:converter-simplexml:$&#123;version[&quot;</span>retrofitSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;retrofit-adapter-rxjava2&quot;</span>    : <span class="string">&quot;com.squareup.retrofit2:adapter-rxjava2:$&#123;version[&quot;</span>retrofitSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;okhttp3&quot;</span>                     : <span class="string">&quot;com.squareup.okhttp3:okhttp:$&#123;version[&quot;</span>okhttpSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;okhttp3-logging-interceptor&quot;</span> : <span class="string">&quot;com.squareup.okhttp3:logging-interceptor:$&#123;version[&quot;</span>okhttpSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;mockwebserver&quot;</span>               : <span class="string">&quot;com.squareup.okhttp3:mockwebserver:$&#123;version[&quot;</span>okhttpSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;glide&quot;</span>                       : <span class="string">&quot;com.github.bumptech.glide:glide:$&#123;version[&quot;</span>glideSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="comment">// （annotationProcessor）</span></span><br><span class="line">            <span class="string">&quot;glide-compiler&quot;</span>              : <span class="string">&quot;com.github.bumptech.glide:compiler:$&#123;version[&quot;</span>glideSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;glide-loader-okhttp3&quot;</span>        : <span class="string">&quot;com.github.bumptech.glide:okhttp3-integration:$&#123;version[&quot;</span>glideSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// view</span></span><br><span class="line">            <span class="string">&quot;butterknife&quot;</span>                 : <span class="string">&quot;com.jakewharton:butterknife:$&#123;version[&quot;</span>butterknifeSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;butterknife-compiler&quot;</span>        : <span class="string">&quot;com.jakewharton:butterknife-compiler:$&#123;version[&quot;</span>butterknifeSdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;brvah&quot;</span>                       : <span class="string">&quot;com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.49-androidx&quot;</span>,</span><br><span class="line">            <span class="string">&quot;psid&quot;</span>                        : <span class="string">&quot;com.oushangfeng:PinnedSectionItemDecoration:1.3.2-androidx&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material-dialogs&quot;</span>            : <span class="string">&quot;com.afollestad.material-dialogs:core:2.8.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material-input&quot;</span>              : <span class="string">&quot;com.afollestad.material-dialogs:input:2.8.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material-files&quot;</span>              : <span class="string">&quot;com.afollestad.material-dialogs:files:2.8.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material-color&quot;</span>              : <span class="string">&quot;com.afollestad.material-dialogs:color:2.8.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;material-datetime&quot;</span>           : <span class="string">&quot;com.afollestad.material-dialogs:datetime:2.8.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;pickerview&quot;</span>                  : <span class="string">&quot;com.contrarywind:Android-PickerView:4.1.8&quot;</span>,</span><br><span class="line">            <span class="string">&quot;photoview&quot;</span>                   : <span class="string">&quot;com.github.chrisbanes.photoview:library:2.0.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;lottie&quot;</span>                      : <span class="string">&quot;com.airbnb.android:lottie:3.0.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;badge-view&quot;</span>                  : <span class="string">&quot;q.rorbin:badgeview:1.1.3&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// rx2</span></span><br><span class="line">            <span class="string">&quot;rxandroid2&quot;</span>                  : <span class="string">&quot;io.reactivex.rxjava2:rxandroid:2.1.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;rxjava2&quot;</span>                     : <span class="string">&quot;io.reactivex.rxjava2:rxjava:2.2.16&quot;</span>,</span><br><span class="line">            <span class="comment">// https://github.com/VictorAlbertos/RxCache</span></span><br><span class="line">            <span class="string">&quot;rxcache2&quot;</span>                    : <span class="string">&quot;com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x&quot;</span>,</span><br><span class="line">            <span class="comment">// https://github.com/tbruyelle/RxPermissions</span></span><br><span class="line">            <span class="string">&quot;rxpermissions2&quot;</span>              : <span class="string">&quot;com.github.tbruyelle:rxpermissions:0.10.2&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// tools（implementation）</span></span><br><span class="line">            <span class="string">&quot;dagger2&quot;</span>                     : <span class="string">&quot;com.google.dagger:dagger:$&#123;version[&quot;</span>dagger2SdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;dagger2-android&quot;</span>             : <span class="string">&quot;com.google.dagger:dagger-android:$&#123;version[&quot;</span>dagger2SdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;dagger2-android-support&quot;</span>     : <span class="string">&quot;com.google.dagger:dagger-android-support:$&#123;version[&quot;</span>dagger2SdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;eventbus&quot;</span>                    : <span class="string">&quot;org.greenrobot:eventbus:3.1.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;gson&quot;</span>                        : <span class="string">&quot;com.google.code.gson:gson:2.8.5&quot;</span>,</span><br><span class="line">            <span class="comment">// https://projectlombok.org/setup/android</span></span><br><span class="line">            <span class="string">&quot;lombok&quot;</span>                      : <span class="string">&quot;org.projectlombok:lombok:1.18.8&quot;</span>,</span><br><span class="line">            <span class="string">&quot;multidex&quot;</span>                    : <span class="string">&quot;com.android.support:multidex:1.0.3&quot;</span>,</span><br><span class="line">            <span class="string">&quot;arouter-api&quot;</span>                 : <span class="string">&quot;com.alibaba:arouter-api:1.4.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;arouter-compiler&quot;</span>            : <span class="string">&quot;com.alibaba:arouter-compiler:1.2.2&quot;</span>,</span><br><span class="line">            <span class="comment">//（annotationProcessor）</span></span><br><span class="line">            <span class="string">&quot;dagger2-compiler&quot;</span>            : <span class="string">&quot;com.google.dagger:dagger-compiler:$&#123;version[&quot;</span>dagger2SdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;dagger2-android-processor&quot;</span>   : <span class="string">&quot;com.google.dagger:dagger-android-processor:$&#123;version[&quot;</span>dagger2SdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// test</span></span><br><span class="line">            <span class="string">&quot;junit&quot;</span>                       : <span class="string">&quot;junit:junit:4.12&quot;</span>,</span><br><span class="line">            <span class="string">&quot;androidJUnitRunner&quot;</span>          : <span class="string">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span>,</span><br><span class="line">            <span class="string">&quot;runner&quot;</span>                      : <span class="string">&quot;androidx.test:runner:1.1.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;espresso-core&quot;</span>               : <span class="string">&quot;androidx.test.espresso:espresso-core:3.2.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;espresso-contrib&quot;</span>            : <span class="string">&quot;androidx.test.espresso:espresso-contrib:3.2.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;espresso-intents&quot;</span>            : <span class="string">&quot;androidx.test.espresso:espresso-intents:3.3.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;canary-debug&quot;</span>                : <span class="string">&quot;com.squareup.leakcanary:leakcanary-android:$&#123;version[&quot;</span>canarySdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;canary-release&quot;</span>              : <span class="string">&quot;com.squareup.leakcanary:leakcanary-android-no-op:$&#123;version[&quot;</span>canarySdkVersion<span class="string">&quot;]&#125;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;umeng-analytics&quot;</span>             : <span class="string">&quot;com.umeng.analytics:analytics:6.0.1&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// util</span></span><br><span class="line">            <span class="comment">// https://github.com/Blankj/AndroidUtilCode/blob/master/utilcode/README-CN.md</span></span><br><span class="line">            <span class="string">&quot;utilcode&quot;</span>                    : <span class="string">&quot;com.blankj:utilcode:1.23.7&quot;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// help</span></span><br><span class="line">            <span class="string">&quot;logger&quot;</span>                      : <span class="string">&quot;com.orhanobut:logger:2.2.0&quot;</span>,</span><br><span class="line">            <span class="comment">// https://www.pgyer.com/doc/view/new_sdk_android_guide</span></span><br><span class="line">            <span class="string">&quot;pgy&quot;</span>                         : <span class="string">&quot;com.pgyersdk:sdk:3.0.3&quot;</span>,</span><br><span class="line">            <span class="comment">// SDK 包</span></span><br><span class="line">            <span class="comment">// https://bugly.qq.com/docs/release-notes/release-android-bugly/?v=20180709165613</span></span><br><span class="line">            <span class="comment">// https://jcenter.bintray.com/com/tencent/bugly/crashreport/</span></span><br><span class="line">            <span class="string">&quot;crashreport&quot;</span>                 : <span class="string">&quot;com.tencent.bugly:crashreport:3.1.0&quot;</span>,</span><br><span class="line">            <span class="comment">// 升级 SDK 包</span></span><br><span class="line">            <span class="comment">// https://bugly.qq.com/docs/release-notes/release-android-bugly/?v=20180709165613</span></span><br><span class="line">            <span class="comment">// https://jcenter.bintray.com/com/tencent/bugly/crashreport_upgrade/</span></span><br><span class="line">            <span class="string">&quot;bugly-crash-upgrade&quot;</span>         : <span class="string">&quot;com.tencent.bugly:crashreport_upgrade:1.4.2&quot;</span>,</span><br><span class="line">            <span class="comment">// NDK 动态库</span></span><br><span class="line">            <span class="comment">// https://bugly.qq.com/docs/release-notes/release-android-ndk/?v=20180709165613</span></span><br><span class="line">            <span class="comment">// https://jcenter.bintray.com/com/tencent/bugly/nativecrashreport/</span></span><br><span class="line">            <span class="string">&quot;bugly-ndk&quot;</span>                   : <span class="string">&quot;com.tencent.bugly:nativecrashreport:3.7.1&quot;</span>,</span><br><span class="line"></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>在顶级的 <code>build.gradle</code> 文件底部，表明添加对 <code>xxx.gradle</code> 的使用<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="attr">from:</span> <span class="string">&quot;xxx.gradle&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>在 module 级别的 <code>build.gradle</code> 文件中，修改哪些固定写死的依赖版本<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 之前固定的版本</span></span><br><span class="line">minSdkVersion <span class="number">19</span></span><br><span class="line"><span class="comment">// 修改通过 xxx.gradle 中定义的版本</span></span><br><span class="line">minSdkVersion rootProject.ext.android[<span class="string">&quot;minSdkVersion&quot;</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vc3R1ZGlvL3JlbGVhc2VzL2dyYWRsZS1wbHVnaW4/aGw9emhfY24=">Android Gradle 插件版本说明<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vc3R1ZGlvL2J1aWxkP2hsPXpoX2Nu">配置构建<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vc3R1ZGlvL2J1aWxkL2J1aWxkLXZhcmlhbnRzP2hsPXpoX2NuI3Byb2R1Y3QtZmxhdm9ycw==">配置构建变体<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2020/12/15/gradle2/" title="Gradle（二）Android">https://incoder.org/2020/12/15/gradle2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Gradle/" rel="tag"><i class="fa fa-tag"></i> Gradle</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/10/gradle1/" rel="prev" title="Gradle（一）基础">
+                  <i class="fa fa-chevron-left"></i> Gradle（一）基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/16/gradle3/" rel="next" title="Gradle（三）SpringBoot 单工程">
+                  Gradle（三）SpringBoot 单工程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

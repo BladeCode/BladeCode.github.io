@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="msvalidate.01" content="24D43F00CD6C02717E897A3C151C498D">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="这是第一篇翻译文章，用于学习近些年火热的微服务，这篇是微服务概念是由 James Lewis 所著，虽然官网已有中文翻译，但是在学习过程中，应该应该动手输出，这样有助于对知识的理解和记忆，废话不多说，开始翻译 微服务  近些年术语“微服务架构”就像雨后春笋般蓬勃的发展，微服务描述软件应用设计是独立可部署服务一个特殊方式。虽然这些都不够准确的去定义一个架构风格，但存在一些通用的特质（大家达成共识的特">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】• 微服务">
+<meta property="og:url" content="https://incoder.org/2019/06/01/microservices/index.html">
+<meta property="og:site_name" content="BladeCode">
+<meta property="og:description" content="这是第一篇翻译文章，用于学习近些年火热的微服务，这篇是微服务概念是由 James Lewis 所著，虽然官网已有中文翻译，但是在学习过程中，应该应该动手输出，这样有助于对知识的理解和记忆，废话不多说，开始翻译 微服务  近些年术语“微服务架构”就像雨后春笋般蓬勃的发展，微服务描述软件应用设计是独立可部署服务一个特殊方式。虽然这些都不够准确的去定义一个架构风格，但存在一些通用的特质（大家达成共识的特">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://martinfowler.com/articles/microservices/images/sketch.png">
+<meta property="og:image" content="https://martinfowler.com/articles/microservices/images/conways-law.png">
+<meta property="og:image" content="https://martinfowler.com/articles/microservices/images/PreferFunctionalStaffOrganization.png">
+<meta property="og:image" content="https://martinfowler.com/articles/microservices/images/decentralised-data.png">
+<meta property="og:image" content="https://martinfowler.com/articles/microservices/images/basic-pipeline.png">
+<meta property="og:image" content="https://martinfowler.com/articles/microservices/images/micro-deployment.png">
+<meta property="og:image" content="https://martinfowler.com/articles/microservices/images/sam-book.jpg">
+<meta property="article:published_time" content="2019-06-01T10:00:00.000Z">
+<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:author" content="Jerry xu">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://martinfowler.com/articles/microservices/images/sketch.png">
+
+
+<link rel="canonical" href="https://incoder.org/2019/06/01/microservices/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://incoder.org/2019/06/01/microservices/","path":"2019/06/01/microservices/","title":"【译】• 微服务"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【译】• 微服务 | BladeCode</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="BladeCode" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">BladeCode</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#James-Lewis"><span class="nav-number">1.1.</span> <span class="nav-text">James Lewis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Martin-Fowler"><span class="nav-number">1.2.</span> <span class="nav-text">Martin Fowler</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">2.</span> <span class="nav-text">微服务架构的特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="nav-number">2.1.</span> <span class="nav-text">服务组件化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%B4%E7%BB%95%E4%B8%9A%E5%8A%A1%E8%83%BD%E5%8A%9B%E8%BF%9B%E8%A1%8C%E7%BB%84%E7%BB%87"><span class="nav-number">2.2.</span> <span class="nav-text">围绕业务能力进行组织</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E4%B8%8D%E6%98%AF%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.3.</span> <span class="nav-text">产品不是项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E7%AB%AF%E7%82%B9%E5%92%8C%E5%93%91%E7%9A%84-pips"><span class="nav-number">2.4.</span> <span class="nav-text">智能端点和哑的 pips</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E7%9A%84%E6%B2%BB%E7%90%86"><span class="nav-number">2.5.</span> <span class="nav-text">去中心化的治理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="nav-number">2.6.</span> <span class="nav-text">去中心化数据管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E5%BB%BA%E8%AE%BE%E6%96%BD%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="nav-number">2.7.</span> <span class="nav-text">基建设施自动化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%B9%E9%94%99%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.8.</span> <span class="nav-text">容错设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C%E6%BC%94%E8%BF%9B%E5%BC%8F%E2%80%9D%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.9.</span> <span class="nav-text">“演进式”设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E7%9A%84%E6%96%B9%E5%90%91%E6%98%AF%E2%80%9C%E5%BE%AE%E6%9C%8D%E5%8A%A1%E2%80%9D%E5%90%97%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">未来的方向是“微服务”吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8"><span class="nav-number">5.1.</span> <span class="nav-text">单体应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">5.1.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">5.1.2.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1-v2"><span class="nav-number">5.2.</span> <span class="nav-text">微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%80%A7-v2"><span class="nav-number">5.2.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-v2"><span class="nav-number">5.2.2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">5.2.3.</span> <span class="nav-text">设计原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">6.</span> <span class="nav-text">附录</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+      src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmluY29kZXIueHVAZ21haWwuY29t" title="E-Mail → mailto:incoder.xu@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vb25ibGFkZQ==" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;onblade"><i class="fab fa-weibo fa-fw"></i>Weibo</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9faW5jb2Rlcg==" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;_incoder"><i class="fab fa-twitter fa-fw"></i>Twitter</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://incoder.org/2019/06/01/microservices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
+      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BladeCode">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【译】• 微服务
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-01 10:00:00" itemprop="dateCreated datePublished" datetime="2019-06-01T10:00:00+00:00">2019-06-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Translation/" itemprop="url" rel="index"><span itemprop="name">Translation</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/06/01/microservices/" class="post-meta-item leancloud_visitors" data-flag-title="【译】• 微服务" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>17k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>15 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这是第一篇翻译文章，用于学习近些年火热的微服务，这篇是<code>微服务</code>概念是由 <code>James Lewis</code> 所著，虽然官网已有<span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3MvY2xiUlFaNi01WW9YNjhNendCZlFfUQ==">中文翻译<i class="fa fa-external-link-alt"></i></span>，但是在学习过程中，应该应该动手输出，这样有助于对知识的理解和记忆，废话不多说，开始翻译</p>
+<h2 id="微服务"><a class="header-anchor" href="#微服务"></a>微服务</h2>
+<blockquote>
+<p>近些年术语“微服务架构”就像雨后春笋般蓬勃的发展，微服务描述软件应用设计是独立可部署服务一个特殊方式。虽然这些都不够准确的去定义一个架构风格，但存在一些通用的特质（大家达成共识的特征），如何去组织围绕业务能力，如何自动化部署，端点的智能发现，以及语言和数据去中心化的控制</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="James-Lewis"><a class="header-anchor" href="#James-Lewis"></a>James Lewis</h3>
+<p>James Lewis 是 ThoughtWorks 的首席顾问，也是技术顾问委员会的成员。James 利用小型协作服务构建应用程序的兴趣起源于大规模集成企业系统的背景。他构建数量级的系统都使用微服务，并且几年来，他一直积极参与不断地社区发展</p>
+<h3 id="Martin-Fowler"><a class="header-anchor" href="#Martin-Fowler"></a>Martin Fowler</h3>
+<p>Martin Fowler 是一个作者，演讲家，和普通的软件开发，他一直对如何组件化软件系统的问题感到困惑，他希望微服务能够实现其倡导者所发现的早期承诺</p>
+<hr>
+<p>“微服务”在当时任然是一个新的名词。虽然我们的自然倾向是通过这些构建，这个技术分隔软件系统，这个术语描述了一种我们发现越来越有吸引力的软件系统风格。我们已经看到很多项目在过去的几年中使用这种风格，到目前为止的结果是积极的，以至于对于我们的许多同事而言，这已成为构建企业级应用的默认样式。然而，遗憾的是，没有太多信息可以描述微服务的风格以及微服务是如何实现</p>
+<p>简而言之，<strong>微服务架构风格</strong><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>是一个开发单应用作为小型服务套件开发模式，<font color=#FF0000>每个应用运行在自己的进程中并且他们之间通过轻量级的机制进行通信，通常的如 HTTP 资源 API</font>。这些服务围绕业务能力并且这些都是<font color=#FF0000>可以独立的自动化部署</font>。这些服务我们进行<strong>去中心化</strong>的集中管理。<font color=#FF0000>这些服务可以使用不同的编程语言来编写，同样也可以使用不同的数据存储技术</font></p>
+<p>开始解释微服务风格，将它与单体风格进行比较是有用的：作为单元构建的单片应用程序。企业应用程序通常由 3 个之上主要构成部分：</p>
+<ul>
+<li>客户端（由用户机器上的浏览器中运行的 HTML 页面和 JavaScript 组成）</li>
+<li>数据库（由插入到公共中的许多表组成，通常是关系型，数据库管理系统）</li>
+<li>服务端应用程序。<br>
+这个服务端应用程序处理 HTTP 请求，执行域逻辑，从数据库中检索和更新数据，并选择装配发送到浏览器的 HTML 视图。这个服务端应用程序是一个单体的，一个逻辑可执行文件<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> ，任何一次更改都生成一个新的版本去构建和部署</li>
+</ul>
+<p>这种单体服务是构建这种系统的自然方式。所有的请求逻辑处理都运行在一个进程中，允许你使用语言的基本特性将应用划分为类，功能和命名空间。对于一些其他样例，你可以运行和测试应用在开发者的笔记本上，并使用部署管道确保已正确测试并部署到生成环境中。你可以通过负载均衡运行许多实例来进行水平扩展（常见单体应用模式 前面通过Nginx负载均衡，在 Nginx 后面运行多个应用实例）</p>
+<p>单体应用程序可以成功，但是越来越多的人感到沮丧-特别是随着更多应用程序部署到云端。更改周期紧密相连-对应用程序的一小部分更改，需要重新构建和部署整个应用。随着时间的推移，通常很难保持良好的模块化结构，是的更难以保持改变只影响模块中的一个模块的更改。扩展需要扩展整个应用程序，而不是需要更多资源的部分扩展</p>
+<p><img data-src="https://martinfowler.com/articles/microservices/images/sketch.png" alt="图 1：单体应用和微服务"><br>
+从上图可知单体应用和微服务在部署的角度（可升缩角度）来讲：</p>
+<ul>
+<li>单体应用：进行可升缩，是将单体应用整个进行升缩，每台机器上的应用都是相同的</li>
+<li>微服务：每个服务都是独立的单元，可根据需要对服务单元进行任意组合进行升缩，每台机器上的应用是不相同的</li>
+</ul>
+<p>这些挫折导致了微服务架构的风格：构建应用程序作为服务套件。事实上服务是独立部署和可扩展的，每个服务之间也提供坚实模块的边界，甚至允许不同的编程语言编写不同的服务。它们也可以由不同的团队来管理</p>
+<p>我们并不认为微服务风格是新颖的或创新的，其根源可以归结为 Unix 的设计原则。但是我们认为这些没有足够的人考虑微服务架构风格，如果使用它们，许多软件的开发会更好，从中获益匪浅</p>
+<h2 id="微服务架构的特征"><a class="header-anchor" href="#微服务架构的特征"></a>微服务架构的特征</h2>
+<p>我们不能说微服务架构风格有正式的定义，但我们可以尝试描述我们认为合适标签的架构的共同特性。与概述共同特征的任何定义一样，并非所有的微服务架构都具备所有的特征，但我们确实希望大多数微服务架构都具有大多数的特性。虽然我们的作者一直是这个相当宽松社区的积极成员，我们的目的是尝试描述我们在自己的工作中所看到的以及我们所知道的团队的努力，特别是我们没有规定一些符合的定义</p>
+<h3 id="服务组件化"><a class="header-anchor" href="#服务组件化"></a>服务组件化</h3>
+<p>只要我们参与软件行业，人们一直希望通过将组件集成在一起来构建系统，我们在物质世界中看待事物的方式有很多类似，在过去的几十年中，我们已经看到了大多数语言平台的大型公共 libraries 的大量进展</p>
+<p>在谈论组件时，我们遇到了组件构成的困难定义，我们的定义<strong>组件</strong>是一个可独立更换和升级的软件单元</p>
+<p>微服务架构会使用到这些 libraries，但他们讲自己的软件组件化的主要方式是分解为服务。我们定义 <strong>libraries</strong> 作为组件链接到程序中，也可以使用内存函数中调用的组件，而<strong>服务</strong>是进程外的组件，它们与诸如 Web 服务请求或远程调用之类的机制进行通信。（这与许多 OOP<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> 中的服务对象感念不同）</p>
+<blockquote>
+<p>所谓的库都是调用在同一个进程当中，而服务的调用是跨进程的，要通过 Web 请求的方式或者是 RPC 的方式进行通信</p>
+</blockquote>
+<p>将服务用作组件（而不是 libraries）的一个主要原因是服务可以独立部署。如果你在单个进程中有多个 libraries组成的应用程序<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>，则对任何单个组件的更改都会导致必须重新部署整个应用程序。但如果一个应用由多个服务组成，你可以期望任何单服务的改变仅需要更新自己。这不是绝对的，一些更改改变了部分服务接口，从而导致一定的协调，但良好的微服务架构的目标是通过服务合同中的内聚服务边界和演化机制来最小化这些架构</p>
+<p>将服务用作组件的另一个结果是更明确的组件接口，多数语言没有很好的机制来定义已<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL1B1Ymxpc2hlZEludGVyZmFjZS5odG1s">发布的接口<i class="fa fa-external-link-alt"></i></span>。通常这并不仅仅只有文档和原则性问题，来防止客户破坏组件的封装原则，而且会导致组件间过度紧密耦合。通过使用显示远程调用机制，服务可以更容易地避免这种情况</p>
+<p>使用这种服务也有一些缺点。远程调用通常要比进程内调用成本要高，因此远程调用需要更粗粒度的，这通常更难以使用。如果你需要去更改组件间的职责分配，那么当你跨越流程边界时，这种行为的变化就更难</p>
+<p>在第一次中，我们可以观察到服务可以映射到运行时的进程，但这只是一个大致的描述。一个服务可能包含多个进程，这些进程始终一起开发和部署，这样的应用进程和数据库是这个服务所独有的</p>
+<h3 id="围绕业务能力进行组织"><a class="header-anchor" href="#围绕业务能力进行组织"></a>围绕业务能力进行组织</h3>
+<p>在寻找将大型应用程序拆分为多个部分时，通常管理侧重于技术层，导致 UI 团队，服务器逻辑团队和数据库团队。当团队按照这些方式分开时，即使是简单的更改也可能导致跨团队项目需要时间和预算批准。一个聪明的团队围绕这个进行优化，并未减少这两个情况的发生——会强制将逻辑放置到可以访问的应用中。换句话说，逻辑无处不在。这就是康威定律<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> 的一个例子</p>
+<blockquote>
+<p>Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization’s communication structure<br>
+——Melvyn Conway, 1967</p>
+</blockquote>
+<p><img data-src="https://martinfowler.com/articles/microservices/images/conways-law.png" alt="Conway's Law in action"><br>
+微服务划分方法是不同的，分为围绕<strong>业务能力</strong>组织的服务。此类服务为该业务领域采用广泛的软件实现，包括用户页面，持久存储，以及任何额外协作。因此，团队是跨职能的，包括开发所需的全部技能：用户体验，数据库和项目管理</p>
+<p><img data-src="https://martinfowler.com/articles/microservices/images/PreferFunctionalStaffOrganization.png" alt="Service boundaries reinforced by team boundaries"></p>
+<blockquote>
+<p>微服务有多大？<br>
+虽然“微服务”已经成为这种架构风格的流行名称，但它的名字确实导致了对微服务的不关注以及关于什么构成“micro”的争论。在我们与微服务从业者的对话中，我们看到了一系列服务规模。报道的最大数量遵循亚马逊的 Two Pizza Team 的概念（比如：整个团队都可以讨厌两个披萨），意味着不超过十二人。对于规模较小的服务，我们已经看到一个6人的团队在支持6个服务。</p>
+<p>这导致了这样的问题：在这个尺寸范围内是否存在足够大的差异，每个人的服务和每个服务的尺寸不应该集中在一个微服务的标签下。目前我们认为将它们组合在一起会更好，但当我们进一步探索这种风格时，我们肯定会改变主意</p>
+</blockquote>
+<p>以这种方式组建的一家公司是 <span class="exturl" data-url="aHR0cDovL3d3dy5jb21wYXJldGhlbWFya2V0LmNvbQ==">www.comparethemarket.com<i class="fa fa-external-link-alt"></i></span>。跨职能团队负责构建和运营每个产品，每个产品分为多个通过消息总线进行通信的单独服务。</p>
+<p>大型单机应用程序也可以围绕业务功能进行模块化，尽管这不是常见的情况。当然，我们会敦促一个庞大的团队构建一个单体的应用，以便在业务线上划分自己。我们在这里看到的主要问题是，它们往往围绕太多的背景进行组织。如果整体跨许多这些模块化边界，那么团队中的个体成员很难将它们适应其短期组织中。此外，我们看到模块化生产线需要大量的规范来执行。服务组件所需要的更明确的分离是的更容易保持团队边界清晰</p>
+<h3 id="产品不是项目"><a class="header-anchor" href="#产品不是项目"></a>产品不是项目</h3>
+<p>我们看到的大多数应用程序开发工作都使用项目模型：其目的是提供一些软件然后被认为是完成的。完成后，软件将移交给维护组织，构建他的项目团队将被解散。</p>
+<p>微服务支持者倾向于避免这种模式，而是倾向于认为团队应该在其整个生命周期内拥有产品。对此的一个共同启示是亚马逊的概念<span class="exturl" data-url="aHR0cHM6Ly9xdWV1ZS5hY20ub3JnL2RldGFpbC5jZm0/aWQ9MTE0MjA2NQ==">“你构建，运行它”<i class="fa fa-external-link-alt"></i></span>，开发团队对生产中的软件负全部责任。这使的开发人员能够日常接触他们的软件在生成中的行为，并增加与用户的联系，因此他们必须承担至少一些支持工作。</p>
+<p>产品心态，与业务能力的联系紧密相连。不是将软件视为一组要完成的功能，而是存在一种持续的关系，其中的问题是软件如何帮助其用户增强业务能力</p>
+<p>没有理由不采用单一应用程序采用相同的方法，但较小的服务粒度可以更容易地在服务开发人员和用户之间创建个人关系</p>
+<h3 id="智能端点和哑的-pips"><a class="header-anchor" href="#智能端点和哑的-pips"></a>智能端点和哑的 pips</h3>
+<p>在构建不同进程间通信结构时，我们已经看到许多产品和方法都强调将重要的<code>smarts</code>放入沟通机制本身。一个很好的例子是企业服务总线（ESB），其中 ESB 产品通常包括用于消息路由，编排，转换和应用业务规则的复杂工具。</p>
+<blockquote>
+<p>微服务和 SOA<br>
+当我们谈到微服务时，一个常见的问题，这是否是我们十年前看到的面向服务的体系结构（SOA），这一点是有道理的，因为微服务风格非常类似于 SOA 的一些拥护者所支持的。然而，问题在于 SOA 意味着<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL1NlcnZpY2VPcmllbnRlZEFtYmlndWl0eS5odG1s">太多不同的东西<i class="fa fa-external-link-alt"></i></span>，并且大多数时候我们遇到称为“SOA”的东西，它与我们在这里描述的样式有很大不同，通常是由于专注于用于集成单片应用程序的 ESB</p>
+<p>特别是我们已经看到了许多拙劣的服务导向实现——从隐藏 ESB<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> 中的复杂性的趋势，失败的多年计划，耗资数百万美元，没有任何价值，积极治理模式，积极抑制变化，有时很难看到过去的这些问题</p>
+<p>当然，微服务社区中使用的许多技术都是从开发人员在大型组织中集成服务的经验中发展而来的。<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL1RvbGVyYW50UmVhZGVyLmh0bWw=">容忍读者<i class="fa fa-external-link-alt"></i></span>模式就是一个例子。使用网络努力做出了贡献，使用简单的协议是从这些经验中得到的另一种方法——远离中心标准的反应，这种标准已达到复杂性，坦率地说，<span class="exturl" data-url="aHR0cDovL3dpa2kuYXBhY2hlLm9yZy93cy9XZWJTZXJ2aWNlU3BlY2lmaWNhdGlvbnM=">令人叹为观止<i class="fa fa-external-link-alt"></i></span>（只要你需要一个本体来管理你的本体，你就知道你遇到了很大的麻烦）</p>
+<p>SOA 的这种场景表现导致一些服务提倡者完全拒绝 SOA 标签，尽管其他人认为服务是 SOA 的一种形式，也许正确的服务向导，无论哪种方式，SOA<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup> 意味着这些不同的事物意味着有一个更清晰地定义这种建筑风格的术语是有价值的</p>
+</blockquote>
+<p>微服务社区倾向于采用另一种方法：智能端点和愚蠢的 pips。从微服务构建的应用程序旨在尽可能地分离和聚集——他们拥有自己的域逻辑，在经典的 Unix 意义上更像是过滤器——接收请求，适当地应用逻辑并产生响应。这些是使用简单的 RESTish 协议而不是复杂的协议（如 WS-Choregoraphy 或 BPEL 中央工具的编排）编排的。</p>
+<p>最常用的两个协议是 HTTP 请求——响应资源 API 和轻量级消息<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup> 传递。第一个最好的表达方式是</p>
+<blockquote>
+<p>Be of the web, not behind the wed<br>
+– lan Robinson</p>
+</blockquote>
+<p>微服务团队使用万维网（在很大程度上，Unix）构建的原则和协议。经常使用的资源可以通过开发人员或操作人员的非常小的努力来缓存。</p>
+<p>常用的第二种方法是通过轻量级消息总线进行消息传递。选择的基础设施通常是哑的（哑仅作为消息路由器的行为）—— 向 RabbitMQ 或者 ZeroMQ 这样的简单实现不仅仅提供可靠的异步结构——智能功能存在于那些生产和消费诸多消息的各个端点中，即存在于各个服务中。</p>
+<p>在一个单体应用中，组件在进程中执行，它们之间通信是通过方法调用或函数调用。将整体变为微服务的最大问题在于改变通信模式。从内存中方法调用到 RPC 的简单转换导致繁琐的通信，这种通信效果不佳。相反，您需要粗粒度的方法替换细粒度的通信。</p>
+<h3 id="去中心化的治理"><a class="header-anchor" href="#去中心化的治理"></a>去中心化的治理</h3>
+<p>集中治理的后果之一是在单个技术平台上实现标准化的趋势。经验表明，这种方法是有限的——不是每个平台是一样的，不是每个平台的解决方案是一致的。我们推荐使用正确的工具来完成工作，而单体应用程序在一定程度上利用不同的语言，但这并不常见</p>
+<p>将单个应用组件拆分为多个服务，我们可以在构建每个组件时做出选择。你希望使用 Node.js 建立一个简单的报告页面？没问题。想通过 C++ 来实现出彩的实时组件？没毛病。想换不同风格的数据库，以更好地适应一个组件的读取行为？可以重建</p>
+<p>当然，只是因为你可以做某件事，并不意味着你可以应该——但以这种方式划分你的系统意味着你可以选择</p>
+<p>构建微服务的团队也更喜欢采用不同的标准方法。他们更倾向于其他开发人员可以使用的有用工具来解决与他们面临的类似问题，而不是使用在纸上某处写下的一组定义标准。这些工具通常从实现中收集并广泛的共享，有时，但不仅仅是使用内部开源模型。现在 Git 和 GitHub 已经成为事实上的版本控制系统，开源实践在内部变得越来越普遍。</p>
+<p>Netflix 是遵循这一理念的组织的一个很好的例子。共享有用的，尤其是经过实战考验的代码，因为鼓励其他开发人员以类似的方式解决类似问题，但如果需要，可以选择不同的方法。共享库往往侧重于数据存储，进程间通信的常见问题，我们将在下面进一步讨论基础架构自动化</p>
+<p>对于微服务社区来说，管理费用特别缺乏吸引力。这并不是说社区不重视服务契约。恰恰相反，因为往往会有更多。只是他们正在寻找管理这些契约的不同方式。像<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL1RvbGVyYW50UmVhZGVyLmh0bWw=">容错读取<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL2NvbnN1bWVyRHJpdmVuQ29udHJhY3RzLmh0bWw=">消费者驱动的契约<i class="fa fa-external-link-alt"></i></span>这样的模式通常应用于微服务。这些援助服务契约独立发展。在构建过程中执行消费者驱动的契约可以增强信心，并提供有关您的服务是否正常运行的快速反馈。事实上，我们知道澳大利亚的一个团队通过消费者驱动的契约推动服务的建设。他们使用简单的工具来定义合同服务。在编写新服务的代码之前，这将成为自动构建的一部分。然后，该服务仅构建在满足合同的程度——在构建新软件时避免“YAGNI”<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup> 困境的优雅方法。这些技术和围绕他们成长的工具通过减少服务间的时间耦合来限制重要合同管理的需要</p>
+<blockquote>
+<p>多语言，多选择<br>
+JVM 作为平台的发展只是在一个通用平台中混合语言的最新例子。近十年依赖，通常的做法是采用更高级别的语言来更高级别的抽象。同样，在平台底层以更低层次的编程语言编写性能敏感的代码也很普遍。然而，许多单块系统并不需要这种级别的性能优化，另外 DSL 和更高层次的抽象也不常用（这令我们感到失望）。相反，许多单体应用通常就使用单一编程语言，并且对所用的技术数量进行限制的趋势<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup></p>
+</blockquote>
+<p>也许去中心化治理的最高点就是建立它/运行它，由亚马逊推广的精神。团队负责他们构建的软件的所有方面，包括全天候运行软件。这种责任水平的下放绝对不是常态，但我们确实看到越来越多的公司将责任推向开发团队。Netflix 是另一个采用这种精神<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup> 的组织。每天晚上凌晨 3 点您被你的寻呼机唤醒，无疑是在编写代码时专注于质量的强大动力。这些想法与传统的集中治理模式相差甚远</p>
+<h3 id="去中心化数据管理"><a class="header-anchor" href="#去中心化数据管理"></a>去中心化数据管理</h3>
+<p>去中心化数据管理以多种不同的方式呈现。在最抽象的层面上，它意味着世界的概念模型在不同系统之间会有所不同。在整个大型企业时，这是一个常见问题，客户的销售视角将与支持视角不同。从销售视角中称为“客户”的某些内容，可能根本不会出现在支持视角中。那些在两个视角中具有相同属性的事物，或许在语义上有微妙的不同</p>
+<blockquote>
+<p>经过实战检验的标准和强制执行的标准<br>
+微服务团队倾向于避开企业架构小组制定的严格执行标准，但很乐意使用甚至宣传 HTTP，ATOM 和其他微格式等开放标准的使用，这有点很二分法</p>
+<p>关键的区别在于如何制定标准以及如何实施标准。有 IETF 等团体管理的标准只有在更广泛的世界中有多高实施时才能成为标准，并且通常来至于成功的开源项目</p>
+<p>这些标准与企业的许多标准不同，后者通常由最近没有编程或受供应商过度影响的团体开发</p>
+</blockquote>
+<p>此问题在应用程序间很常见，但也可能在应用程序中发生，特别是将应用程序划分为单独的组件时。一种有用的思考方式是“领域驱动设计”中的<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL0JvdW5kZWRDb250ZXh0Lmh0bWw=">“限定上下文”<i class="fa fa-external-link-alt"></i></span>的概念。DDD 将复杂领域划分为多个限界上下文，并映射出他们之间的关系。此过程对单体和微服务架构两者都很有用，而且就像前面有关“业务功能”一节中所讨论的那样，在服务和各个限界上下文之间所存在的自然的联动关系，能有助于澄清和强化这种划分。</p>
+<p>除了关于概念模型的分散决策之外，微服务还分散了数据存储决策。虽然单一应用程序更喜欢使用单个逻辑数据库来存储持久性数据，但企业通常更喜欢在一系列应用程序中使用单个数据库——其中许多决策是通过供应商的商业模式来实现。微服务更喜欢让每个服务管理自己的数据库，可以是同一数据库技术的不同实例，也可以是完全不同的数据库系统——这种方法称为<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL1BvbHlnbG90UGVyc2lzdGVuY2UuaHRtbA==">&quot;Polyglot Persistence&quot;<i class="fa fa-external-link-alt"></i></span>。你可以在整体中使用多语言持久性，但它在微服务中更常出现。<br>
+<img data-src="https://martinfowler.com/articles/microservices/images/decentralised-data.png" alt=""></p>
+<p>跨服务分散数据责任对管理更新有影响。处理更新的常用方法是在更新多个资源时使用事务来保证一致性。这种方法通常用于整体结构中。</p>
+<p>使用这样的事务有助于保持一致性，但会产生显著的时间耦合，在多个服务中是有问题。众所周知，分布式事务很难实现，因此微服务架构<span class="exturl" data-url="aHR0cDovL3d3dy5lYWlwYXR0ZXJucy5jb20vcmFtYmxpbmdzLzE4X3N0YXJidWNrcy5odG1s">强调服务之间的无事务协调<i class="fa fa-external-link-alt"></i></span>，明确承认一致性可能只有最终的一致性，而问题则通过补偿操作来处理。</p>
+<p>选择以这种方式管理不一致是许多开发团队面临的新挑战，但它通常与业务实践相匹配。企业通常会处理一定程度的不一致，以便快速响应需求，同时采取某种逆转流程来应对错误。只要修复错误的成本低于在更大的一致性下丢失业务的成本，那么权衡是值得的。</p>
+<h3 id="基建设施自动化"><a class="header-anchor" href="#基建设施自动化"></a>基建设施自动化</h3>
+<p>基础设施自动糊技术在过去几年中发生了巨大变化——特别是云和 AWS 的发展降低了构建，部署和运行微服务的操作复杂性。</p>
+<p>许多使用微服务构建的产品或系统都是由具有丰富的<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL0NvbnRpbnVvdXNEZWxpdmVyeS5odG1s">持续交付(Continuous Delivery)<i class="fa fa-external-link-alt"></i></span>经验的团队构建的，并且是前身的<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL2NvbnRpbnVvdXNJbnRlZ3JhdGlvbi5odG1s">持续集成(Continuous Integration)<i class="fa fa-external-link-alt"></i></span>。以这种方式构建软件的团队广泛使用基础设施自动化技术。这在下面显示的构建管道中说明</p>
+<p><img data-src="https://martinfowler.com/articles/microservices/images/basic-pipeline.png" alt="basic build pipeline"></p>
+<p>由于这不是关于持续交付的文章，我们将在这里引起注意几个关键功能。我们希望尽可能地信心使我们的软件正常工作，因此我们进行了大量的<strong>自动化测试</strong>。推广工作软件“向上”管道意味着我们<strong>自动化部署</strong>到每个新环境。</p>
+<blockquote>
+<p>做正取的事情很容易<br>
+我们发现由于持续交付和部署而增加自动化的一个副作用是创建有用的工具来帮助开发人员和操作人员。用于创建人工制品，管理代码库，提供简单服务或添加标准监视器和日志记录的工具现在非常普遍。网上最好的例子可能是 <span class="exturl" data-url="aHR0cHM6Ly9uZXRmbGl4LmdpdGh1Yi5pby8=">Netflix 的开源工具集<i class="fa fa-external-link-alt"></i></span>，但还有其他一些，包括我们官方使用的 <span class="exturl" data-url="aHR0cDovL2Ryb3B3aXphcmQuY29kYWhhbGUuY29tLw==">Dropwizard<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p>一个单一的应用程序将非常愉快地构建，测试和推动通过这些环境。事实证明，一旦你投资自动化整个生产的生产之路，那么部署更多地应用程序视乎不再那么可怕。请记住，CD的目标之一就是使用部署无聊，所以无论是一个还是多个应用，只要它任然无聊就无聊无所谓<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup></p>
+<p>我们看到团队使用广泛的基础设施自动化的另一个领域是管理生产中的微服务。与我们上面的断言相反，只要部署很无聊，单块和微服务之间没有太大的区别，每个部署的运营环境可能会截然不同<br>
+<img data-src="https://martinfowler.com/articles/microservices/images/micro-deployment.png" alt="Module deployment often differs"></p>
+<h3 id="容错设计"><a class="header-anchor" href="#容错设计"></a>容错设计</h3>
+<p>使用服务作为组件的结果是，应用需要设计以便他们能够容忍服务的失败。由于提供者不可用（不可达）等，任何服务调用都可能失败，客户端必须尽可能优雅地对此作出响应。与单体设计相比，这是一个缺点，因为它引入了额外的复杂性来处理它。结果是微服务团队持续不断反思服务失败如何影响用户体验。Netflix 的 Simian Army 在工作日引发服务甚至数据中心的故障，以测试应用程序的弹性和监控。</p>
+<blockquote>
+<p>断路器和“可随时上线的代码”<br>
+断路器一词与其他一些模式一起出现发布，如 Bulkhead 和 Timeout。在构建彼此通信的应用系统时，将这些模式加以综合运用变得至关重要。<span class="exturl" data-url="aHR0cDovL3RlY2hibG9nLm5ldGZsaXguY29tLzIwMTIvMDIvZmF1bHQtdG9sZXJhbmNlLWluLWhpZ2gtdm9sdW1lLmh0bWw=">Netflix 博客<i class="fa fa-external-link-alt"></i></span>这篇文章很好的解释了这些模式如何应用。</p>
+</blockquote>
+<p>这种在生产环境中所进行自动化测试，足以让大多数运维组织兴奋地浑身颤栗，就像在一周的长假即将到来前那样。这并不是说单体式架构风格不具备复杂的监控设置——在我们的经验中，这在单体系统中并不常见罢了。</p>
+<p>由于服务可能随时发生故障，因此能够快速检测故障并在可能情况下自动恢复服务非常重要。微服务应用程序非常重视应用程序的实时监控，检查“架构元素指标”（数据库每秒获得多少请求）和“业务相关指标”（例如每分钟收到多少订单）。当系统某个地方出现问题，语义监控可以提供一个预警，从而触发开发团队跟进和调查工作。</p>
+<p>这对于微服务架构尤为重要，因为微服务对编排和事件协作的偏好会导致紧急行为。虽然许多权威人士赞扬偶然出现的价值，但事实是，新兴行为有时可能是一件坏事。监控对于快速发现下不良紧急行为至关重要，因此可以修复。</p>
+<blockquote>
+<p>“同步调用”有害<br>
+每当您在服务之间进行多次同步调用时，您将遇到停机的乘法效应。简而言之，就是系统停机时间成为各个组件停机时间的产物。您面临一个选择，使您的呼叫异步或管理停机时间。在 <code>www.guardian.co.uk</code>网站上，他们在新平台上实施了一条简单的规则——每个用户请求一次同步调用，而在 Netflix，他们的平台 API 重新设计已经在 API 结构中建立了异步性。</p>
+</blockquote>
+<p>monoliths 可以像微服务一样透明——事实上，他们应该是。不同之处在于您绝对需要知道在不同进程中运行的服务何时断开连接。对于同一过程中的库，这种透明性不太可能有用。</p>
+<p>微服务团队希望看到针对每个服务的复杂监控和日志记录设置，例如显示上/下状态的仪表板以及各种运营和业务相关指标。有关断路器状态，当前吞吐量和延迟的详细信息是我们经常遇到的其他示例。</p>
+<h3 id="“演进式”设计"><a class="header-anchor" href="#“演进式”设计"></a>“演进式”设计</h3>
+<p>微服务从业者通常拥有“演进式”设计背景，而且通常将服务分解视为额外的工具，使应用程序开发人员能够控制应用程序中的更改而不会减慢变更。变更控制并不一定意味着改变——通过正确的态度和工具，你可以对软件进行频繁，快速和良好控制的变更。</p>
+<p>每当你尝试将软件系统分解为组件时，就面临着如何进行划分各个部分的决定——我们决定将应用程序切分的遵循的原则是什么？组件的关键属性是独立替换和可升级性<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup> 的特点——这意味着需要寻找这些点，即想象在不影响其合作者的情况下重写组件。事实上，许多微服务团队通过明确预期服务将来会废弃，而不是守着这些服务做长期的演进。</p>
+<p>Guardian 网站是一个设计和构建为单体的应用程序的一个很好例子，然而它已经开始向在微服务方向进行演进了。原先的单体系统依然是网站的核心，但在添加新特性时他们愿意以构建一些微服务的方式来进行添加，而这些微服务会去调用原先那个单体系统的 API。这种方法对于本质上是临时的功能尤其方便，例如报道体育赛事的专用页面。当使用快速开发语言时，像这样的网站就能被快速整合在一起，并在时间结束后删除。我们在金融机构看到了类似的做法，针对一个市场机会，添加新服务进来，并在几个月甚至几周后丢弃。</p>
+<p>这种对可替换性的强调是模块化设计一般性原则的一个特例，即通过“演进式”模式推动模块化实现。大家都愿意将那些在同时发生变化<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup> 的东西，放到同一个模块中。很少变化的部分，应该放在不同的服务中，以区别那些当前正在经历大量变动的部分。如果您发现需要同时反复变更的两个服务时，那就表明他们应该合并。</p>
+<p>将组件放入服务中可以为更细粒度的发布计划添加机会。对于单体应用，任何更改都需要完整构建和部署整个应用程序。但是对使用微服务，您只需要重新部署您修改的服务。这可以简化并加快发布过程。缺点是：必须考虑当一个服务发生变化时，依赖它并对其进行消费的其他服务将无法工作。传统的集成方法是尝试使用版本控制来解决这个问题，但微服务领域中，大家更喜欢使用版本控制作为<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL2VudGVycHJpc2VSRVNULmh0bWwjdmVyc2lvbmluZw==">最后不得已的手段<i class="fa fa-external-link-alt"></i></span>。我们可以通过将服务设计为对提供者变更，尽量能够容错来避免大量版本控制</p>
+<h2 id="未来的方向是“微服务”吗？"><a class="header-anchor" href="#未来的方向是“微服务”吗？"></a>未来的方向是“微服务”吗？</h2>
+<p>我们写这篇文章的主要目的是解释微服务的主要思想和原则。通过花时间来做到这一点，我们清楚地认为微服务架构风格是一个重要的想法——值得认真考虑企业应用程序。我们最近使用这种方式构建了几个系统，并了解其他团队已经使用并支持这种方法。</p>
+<p>我们了解到那些在某种程度上做为这种架构风格的实践先驱包括：亚马逊，Netflix，<span class="exturl" data-url="aHR0cHM6Ly93d3cudGhlZ3VhcmRpYW4uY29tLw==">Guardian<i class="fa fa-external-link-alt"></i></span> 和 <span class="exturl" data-url="aHR0cHM6Ly9nZHMuYmxvZy5nb3YudWsv">UK Government Digital Service<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL3JlYWxlc3RhdGUuY29tLmF1">realeastate.com.au<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cDovL3d3dy5jb21wYXJldGhlbWFya2V0LmNvbS8=">comparethemarket.com<i class="fa fa-external-link-alt"></i></span>。2013 年的技术大会圈子充满了各种各样的，正在转向可以归类为微服务的公司——包括 Travis CI。此外，有很多组织长期以来一直在做我们称为微服务的东西，但没有使用过这个名字（通常被标记为 SOA——尽管如我们所说，SOA 有许多互相矛盾的形式<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup> ）</p>
+<p>然而，尽管有这些积极的经验，但我们并不认为我们确信微服务是软件架构的未来发展方向。虽然到目前为止我们的经验与单体应用相比是积极的，但我们意识到没有足够的时间让我们做出充分的判断。</p>
+<p><img data-src="https://martinfowler.com/articles/microservices/images/sam-book.jpg" alt=""></p>
+<blockquote>
+<p>我们的同事 Sam Newman 在 2014 年的大部分时间都在撰写一本书，该书描述了我们构建微服务的经验。如果想进一步了解该主题，这应该是您的下一步</p>
+</blockquote>
+<p>通常，您的架构决策的真正后果只有在开发它几年后才会明显。我们已经由带着强烈模块化愿望的优秀团队所做的一些项目，最终却构建出一个单体架构，并在几年内不断腐化。许多人认为微服务不太可能出现这种衰退，因为服务边界是明确的，很难随意捣乱。然而，对于那些开发时间足够长的各种系统，除非我们已经见识的足够多，否则我们无法真正评估微服务架构是如何成熟的。</p>
+<p>人们可能会期望微服务成熟得很好。在组件化的任何努力中，成功取决于在组件中的适用程度。很难弄清楚组件边界的确切位置。“演进式”设计承认难以对边界进行正确定位，因此它将工作的重点放到了易于对边界进行重构之上。但是当您的组件是具有远程通信的服务时。那么重构比适用进程内库要困难的多。跨服务边界移动代码很困难，任何接口更改都需要在参与者之间协调，需要添加向后兼容性，测试变得更加复杂。</p>
+<p>另一个问题是，如果组件没有干净利落地组成一个系统，那么您所做的就是将复杂性从组件内部转移到组件之间的连接。这样做的后果，不仅仅是移动复杂性，而是将其移动到一个不那么明确且难以控制的地方。当你在一个小而简单的组件内部查看时，人们很容易认为事情已经变得更好了，然而却忽略了服务之间的杂乱连接</p>
+<p>最后，还有团队技能的因素。新技术往往被技术更加过硬的团队所采用。对于技术更加过硬的团队更更有效的一项技术，并不一定适用于技术略逊一筹的团队。我们已经看到很多不太熟练的团队构建混乱的单体架构，当微服务发生这种混乱时，会出现什么情况？这需要花时间来观察。一个糟糕的团队，总是会创建一个糟糕的系统——很难说微服务是减少了杂乱，还是让事情变得更糟。</p>
+<p>我们听到一个合理的说法，不应该一上来就以微服务架构作为起点。相反，从<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL01vbm9saXRoRmlyc3QuaHRtbA==">单体应用开始<i class="fa fa-external-link-alt"></i></span>，保持模块化。当单体系统出现问题时将其拆分为微服务。（虽然<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL2RvbnQtc3RhcnQtbW9ub2xpdGguaHRtbA==">这个建议并不理想<i class="fa fa-external-link-alt"></i></span>，但是好的进程内接口通常不是一个好的服务接口）</p>
+<p>因此，我们谨慎乐观地写下这一点。到目前为止，我们已经看到了足够多的微服务风格，觉得它是<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL21pY3Jvc2VydmljZXMv">一条值得走的路<i class="fa fa-external-link-alt"></i></span>。我们无法确定最终会在哪里结束，但软件开发的挑战之一是您只能根据您当前必须提供的不完善信息作出决策。</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<p>虽然这不是一个详尽的列表，但是它们是微服务从业者可以从中吸取灵感来源，或者是那些倡导的理念与本所述内容详实的一些资料</p>
+<p>博客和在线文章</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cDovL2Jsb2dzLm1zZG4uY29tL2IvY2xlbWVuc3Yv">Clemens Vasters’ blog on cloud at microsoft<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2RhdmlkbW9yZ2FudGluaS5ibG9nc3BvdC5jb20vMjAxMy8wOC9taWNyby1zZXJ2aWNlcy1pbnRyb2R1Y3Rpb24uaHRt">David Morgantini’s introduction to the topic on his blog<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovLzEyZmFjdG9yLm5ldC8=">12 factor apps from Heroku<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZ292LnVrL2Rlc2lnbi1wcmluY2lwbGVz">UK Government Digital Service design principles<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2ppbW15bmlsc3Nvbi5jb20vYmxvZy8=">Jimmy Nilsson’s blog<i class="fa fa-external-link-alt"></i></span> and <span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vYXJ0aWNsZXMvQ0NDLUppbW15LU5pbHNzb24=">article on infoq about Cloud Chunk Computing<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2FsaXN0YWlyLmNvY2tidXJuLnVzL0hleGFnb25hbCthcmNoaXRlY3R1cmU=">Alistair Cockburn on Hexagonal architectures<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<p>书籍</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzA5Nzg3MzkyMTM/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDk3ODczOTIxMw==">Release it<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzA1OTY4MDU4Mjk/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDU5NjgwNTgyOQ==">Rest in practice<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9wYWdlcy5hcGlnZWUuY29tL3dlYi1hcGktZGVzaWduLWVib29rLmh0bWw=">Web API Design (free ebook)<i class="fa fa-external-link-alt"></i></span>. Brian Mulloy, Apigee.</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAzMjEyMDA2ODM/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDMyMTIwMDY4Mw==">Enterprise Integration Patterns<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAxMzE0MjkwMTk/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDEzMTQyOTAxOQ==">Art of unix programming<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAzMjE1MDM2Mjc/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDMyMTUwMzYyNw==">Growing Object Oriented Software, Guided by Tests<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAxOTgyOTM3NTU/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDE5ODI5Mzc1NQ==">The Modern Firm: Organizational Design for Performance and Growth<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAzMjE2MDE5MTI/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDMyMTYwMTkxMg==">Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAzMjExMjUyMTU/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDMyMTEyNTIxNQ==">Domain-Driven Design: Tackling Complexity in the Heart of Software<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<p>简报</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1xVnl0M3FRXzdUQQ==">Architecture without Architects<i class="fa fa-external-link-alt"></i></span>. Erik Doernenburg</li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vcHJlc2VudGF0aW9ucy9zb2Etd2l0aG91dC1lc2I=">Does my bus look big in this?<i class="fa fa-external-link-alt"></i></span>. Jim Webber and Martin Fowler, QCon 2008</li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vcHJlc2VudGF0aW9ucy93ZWJiZXItZ3VlcmlsbGEtc29h">Guerilla SOA<i class="fa fa-external-link-alt"></i></span>. Jim Webber, 2006</li>
+<li><span class="exturl" data-url="aHR0cDovL3ZpbWVvLmNvbS80MzY1OTA3MA==">Patterns of Effective Delivery<i class="fa fa-external-link-alt"></i></span>.Daniel Terhorst-North, 2011.</li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5zbGlkZXNoYXJlLm5ldC9hZHJpYW5jbw==">Adrian Cockcroft’s slideshare channel.<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3ZpbWVvLmNvbS8yODYwODY2Nw==">Hydras and Hypermedia<i class="fa fa-external-link-alt"></i></span>. Ian Robinson, JavaZone 2010</li>
+<li>Justice will take a million intricate moves Leonard Richardson, Qcon 2008.</li>
+<li><span class="exturl" data-url="aHR0cDovL3ZpbWVvLmNvbS83NDQ1MjU1MA==">Java, the UNIX way<i class="fa fa-external-link-alt"></i></span>. James Lewis, JavaZone 2012</li>
+<li><span class="exturl" data-url="aHR0cDovL3lvdy5ldmVudGVyLmNvbS95b3ctMjAxMi0xMDEyL21pY3JvLXNlcnZpY2VzLWFyY2hpdGVjdHVyZS1ieS1mcmVkLWdlb3JnZS0xMjg2">Micro services architecture<i class="fa fa-external-link-alt"></i></span>. Fred George, YOW! 2012</li>
+<li><span class="exturl" data-url="aHR0cDovL2dvdG9jb24uY29tL3ZpZGVvIzE4">Democratising attention data at guardian.co.uk<i class="fa fa-external-link-alt"></i></span>. Graham Tackley, GOTO Aarhus 2013</li>
+<li><span class="exturl" data-url="aHR0cDovL2dvdG9jb24uY29tL3ZpZGVvIzY=">Functional Reactive Programming with RxJava<i class="fa fa-external-link-alt"></i></span>. Ben Christensen, GOTO Aarhus 2013 (registration required).</li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vcHJlc2VudGF0aW9ucy9CcmVha2luZy10aGUtTW9ub2xpdGg=">Breaking the Monolith<i class="fa fa-external-link-alt"></i></span>. Stefan Tilkov, May 2012.</li>
+</ul>
+<p>论文</p>
+<ul>
+<li>L. Lamport,<span class="exturl" data-url="aHR0cDovL3Jlc2VhcmNoLm1pY3Jvc29mdC5jb20vZW4tdXMvdW0vcGVvcGxlL2xhbXBvcnQvcHVicy9pbXBsZW1lbnRhdGlvbi5wZGY=">“The Implementation of Reliable Distributed Multiprocess Systems”<i class="fa fa-external-link-alt"></i></span>, 1978</li>
+<li>L. Lamport, R. Shostak, M. Pease,<span class="exturl" data-url="aHR0cDovL3d3dy5jcy5jb3JuZWxsLmVkdS9jb3Vyc2VzL2NzNjE0LzIwMDRzcC9wYXBlcnMvbHNwODIucGRm">“The Byzantine Generals Problem”<i class="fa fa-external-link-alt"></i></span>, 1982</li>
+<li>R.T. Fielding, <span class="exturl" data-url="aHR0cDovL3d3dy5pY3MudWNpLmVkdS9+ZmllbGRpbmcvcHVicy9kaXNzZXJ0YXRpb24vdG9wLmh0bQ==">“Architectural Styles and the Design of Network-based Software Architectures”<i class="fa fa-external-link-alt"></i></span>, 2000</li>
+<li>E. A. Brewer, <span class="exturl" data-url="aHR0cDovL3d3dy5jcy5iZXJrZWxleS5lZHUvfmJyZXdlci9jczI2MmItMjAwNC9QT0RDLWtleW5vdGUucGRm">“Towards Robust Distributed Systems”<i class="fa fa-external-link-alt"></i></span>, 2000</li>
+<li>E. Brewer, <span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vYXJ0aWNsZXMvY2FwLXR3ZWx2ZS15ZWFycy1sYXRlci1ob3ctdGhlLXJ1bGVzLWhhdmUtY2hhbmdlZA==">“CAP Twelve Years Later: How the ‘Rules’ Have Changed”<i class="fa fa-external-link-alt"></i></span>, 2012</li>
+</ul>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
+<p>单体应用与微服务比较</p>
+<h3 id="单体应用"><a class="header-anchor" href="#单体应用"></a>单体应用</h3>
+<h4 id="特性"><a class="header-anchor" href="#特性"></a>特性</h4>
+<ul>
+<li>调用方便，都是在一个进程内进行调用（针对于 Java 来说，就是运行在一个 JVM 上的应用）</li>
+<li>部署方式简单，</li>
+<li>事务处理方式可以容易处理</li>
+<li>由于都在一个进程内API 调用，不涉及网络的访问，因此出错的可能性要低很多</li>
+</ul>
+<h4 id="优缺点"><a class="header-anchor" href="#优缺点"></a>优缺点</h4>
+<ul>
+<li>优点
+<ul>
+<li>为人所熟知</li>
+<li>便于共享</li>
+<li>易于测试</li>
+<li>容易部署</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>复杂性逐渐变高</li>
+<li>技术债务逐渐上升</li>
+<li>部署速度逐渐变慢</li>
+<li>阻碍技术创新</li>
+<li><strong>无法按需伸缩</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="微服务-v2"><a class="header-anchor" href="#微服务-v2"></a>微服务</h3>
+<h4 id="特性-v2"><a class="header-anchor" href="#特性-v2"></a>特性</h4>
+<ul>
+<li>每个微服务可独立运行在自己的进程里</li>
+<li>一系列独立运行的微服务共同构建起了这个系统</li>
+<li>每个服务为独立的业务开发，一个微服务一般玩某个特定的功能，比如：订单管理，用户管理等</li>
+<li>微服务之间通过一些轻量的通讯机制进行通信，比如通过 REST API 或者 RPC 的方式调用</li>
+</ul>
+<h4 id="优缺点-v2"><a class="header-anchor" href="#优缺点-v2"></a>优缺点</h4>
+<ul>
+<li>优点
+<ul>
+<li>易于开发和维护</li>
+<li>启动较快</li>
+<li>局部修改容易部署</li>
+<li>技术栈不受限</li>
+<li>按需伸缩</li>
+<li>DevOps</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>运维复杂</li>
+<li>数据一致性问题</li>
+<li>集成测试复杂</li>
+<li><strong>重复代码</strong></li>
+<li>监控困难</li>
+</ul>
+</li>
+<li>挑战
+<ul>
+<li><strong>运维要求较高</strong></li>
+<li>分布式的复杂性</li>
+<li>接口调整成本高</li>
+<li>重复你劳动</li>
+</ul>
+</li>
+</ul>
+<h4 id="设计原则"><a class="header-anchor" href="#设计原则"></a>设计原则</h4>
+<ul>
+<li>单一职责原则</li>
+<li>服务自治原则</li>
+<li>轻量级通信原则</li>
+<li>接口明确原则</li>
+</ul>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL21pY3Jvc2VydmljZXMuaHRtbA==">Microservices<i class="fa fa-external-link-alt"></i></span></li>
+<li>校验 • <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzExNTY3MjE4NzQ=">CeaserWang<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>The term “microservice” was discussed at a workshop of software architects near Venice in May, 2011 to describe what the participants saw as a common architectural style that many of them had been recently exploring. In May 2012, the same group decided on “microservices” as the most appropriate name. James presented some of these ideas as a case study in March 2012 at 33rd Degree in Krakow in <span class="exturl" data-url="aHR0cDovLzIwMTIuMzNkZWdyZWUub3JnL3RhbGsvc2hvdy82Nw==">Microservices - Java, the Unix Way<i class="fa fa-external-link-alt"></i></span> as did Fred George <span class="exturl" data-url="aHR0cHM6Ly93d3cuc2xpZGVzaGFyZS5uZXQvZnJlZGdlb3JnZS9taWNyby1zZXJ2aWNlLWFyY2hpdGVjdXJl">about the same time<i class="fa fa-external-link-alt"></i></span>. Adrian Cockcroft at Netflix, describing this approach as “fine grained SOA” was pioneering the style at web scale as were many of the others mentioned in this article - Joe Walnes, Daniel Terhorst-North, Evan Botcher and Graham Tackley. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>The term monolith has been in use by the Unix community for some time. It appears in <span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0L0IwMDNVMlQ1QkE/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49QjAwM1UyVDVCQQ==">The Art of Unix Programming<i class="fa fa-external-link-alt"></i></span> to describe systems that get too big. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Many object-oriented designers, including ourselves, use the term service object in the <span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAzMjExMjUyMTU/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDMyMTEyNTIxNQ==">Domain-Driven Design<i class="fa fa-external-link-alt"></i></span> sense for an object that carries out a significant process that isn’t tied to an entity. This is a different concept to how we’re using “service” in this article. Sadly the term service has both meanings and we have to live with the polyseme. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>We consider <span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL0FwcGxpY2F0aW9uQm91bmRhcnkuaHRtbA==">an application to be a social construction<i class="fa fa-external-link-alt"></i></span> that binds together a code base, group of functionality, and body of funding. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>The original paper can be found on Melvyn Conway’s website <span class="exturl" data-url="aHR0cDovL3d3dy5tZWxjb253YXkuY29tL0hvbWUvQ29tbWl0dGVlc19QYXBlci5odG1s">here<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>We can’t resist mentioning Jim Webber’s statement that ESB stands for <span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vcHJlc2VudGF0aW9ucy9zb2Etd2l0aG91dC1lc2I=">“Egregious Spaghetti Box”<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Netflix makes the link explicit - until recently referring to their architectural style as fine-grained SOA. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>At extremes of scale, organisations often move to binary protocols - <span class="exturl" data-url="aHR0cHM6Ly9jb2RlLmdvb2dsZS5jb20vcC9wcm90b2J1Zi8=">protobufs<i class="fa fa-external-link-alt"></i></span> for example. Systems using these still exhibit the characteristic of smart endpoints, dumb pipes - and trade off transparency for scale. Most web properties and certainly the vast majority of enterprises don’t need to make this tradeoff - transparency can be a big win. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>“YAGNI” or “You Aren’t Going To Need It” is an <span class="exturl" data-url="aHR0cDovL2MyLmNvbS9jZ2kvd2lraT9Zb3VBcmVudEdvbm5hTmVlZEl0">XP principle<i class="fa fa-external-link-alt"></i></span> and exhortation to not add features until you know you need them. <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>It’s a little disengenuous of us to claim that monoliths are single language - in order to build systems on todays web, you probably need to know JavaScript and XHTML, CSS, your server side language of choice, SQL and an ORM dialect. Hardly single language, but you know what we mean. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Adrian Cockcroft specifically mentions “developer self-service” and “Developers run what they wrote”(sic) in <span class="exturl" data-url="aHR0cDovL3d3dy5zbGlkZXNoYXJlLm5ldC9hZHJpYW5jby9mbG93Y29uLWFkZGVkLXRvLWZvci1jbWcta2V5bm90ZS10YWxrLW9uLWhvdy1zcGVlZC13aW5zLWFuZC1ob3ctbmV0ZmxpeC1pcy1kb2luZy1jb250aW51b3VzLWRlbGl2ZXJ5">this excellent presentation<i class="fa fa-external-link-alt"></i></span> delivered at Flowcon in November, 2013. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>We are being a little disengenuous here. Obviously deploying more services, in more complex topologies is more difficult than deploying a single monolith. Fortunately, patterns reduce this complexity - investment in tooling is still a must though. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p>In fact, Daniel Terhorst-North refers to this style as Replaceable Component Architecture rather than microservices. Since this seems to talk to a subset of the characteristics we prefer the latter. <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>Kent Beck highlights this as one his design principles in <span class="exturl" data-url="aHR0cHM6Ly93d3cuYW1hem9uLmNvbS9ncC9wcm9kdWN0LzAzMjE0MTMwOTE/aWU9VVRGOCZhbXA7dGFnPW1hcnRpbmZvd2xlcmMtMjAmYW1wO2xpbmtDb2RlPWFzMiZhbXA7Y2FtcD0xNzg5JmFtcDtjcmVhdGl2ZT05MzI1JmFtcDtjcmVhdGl2ZUFTSU49MDMyMTQxMzA5MQ==">Implementation Patterns<i class="fa fa-external-link-alt"></i></span>. <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p>And SOA is hardly the root of this history. I remember people saying “we’ve been doing this for years” when the SOA term appeared at the beginning of the century. One argument was that this style sees its roots as the way COBOL programs communicated via data files in the earliest days of enterprise computing. In another direction, one could argue that microservices are the same thing as the Erlang programming model, but applied to an enterprise application context. <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Jerry xu
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://incoder.org/2019/06/01/microservices/" title="【译】• 微服务">https://incoder.org/2019/06/01/microservices/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/05/27/ooad-uml/" rel="prev" title="OOAD 与 UML">
+                  <i class="fa fa-chevron-left"></i> OOAD 与 UML
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/06/19/soa/" rel="next" title="【译】• 面向服务的架构">
+                  【译】• 面向服务的架构 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">350k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:19</span>
+  </span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"3ShrIGfQL4TLamd48UtbdDEK-gzGzoHsz","app_key":"cW8VJrB2yJiIBLtYA0KdE8vW","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"BladeCode/BladeCode.github.io","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
