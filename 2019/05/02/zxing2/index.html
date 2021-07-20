@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="ZXing（“Zebra Crossing”）用于Java，Android的条形码扫描库。虽然当前开源库仅处于维护模式，意味着更改是由贡献的补丁来驱动，只会考虑错误修复和次要的增强功能 本篇开启 ZXing项目Android 模块的探索学习之路，那么首先我们要集成该模块到项目中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zxing（二）Android 模块应用源码探索">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/project_problem.png">
 <meta property="og:image" content="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/zxing_error_log.png">
 <meta property="article:published_time" content="2019-05-02T22:41:10.000Z">
-<meta property="article:modified_time" content="2021-07-19T01:56:33.819Z">
+<meta property="article:modified_time" content="2021-07-20T06:34:10.602Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="Zxing">
 <meta name="twitter:card" content="summary">
@@ -107,9 +107,10 @@
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -314,7 +315,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+        <time title="修改时间：2021-07-20 06:34:10" itemprop="dateModified" datetime="2021-07-20T06:34:10+00:00">2021-07-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -380,28 +381,28 @@
 <h3 id="导入步骤"><a class="header-anchor" href="#导入步骤"></a>导入步骤</h3>
 <ul>
 <li>导入 module<br>
-<img data-src="https://raw.githubusercontent.com/RootCluster/rc-android-zxing/zxing/images/import_module.png" alt="import_module"></li>
+<img src="https://raw.githubusercontent.com/RootCluster/rc-android-zxing/zxing/images/import_module.png" alt="import_module"></li>
 <li>选择 module<br>
-<img data-src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/select_import_module.png" alt="select_import_module"></li>
+<img src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/select_import_module.png" alt="select_import_module"></li>
 <li>移除最小及目标版本设置<br>
-<img data-src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/remove_min_target_version.png" alt="remove_min_target_version"></li>
+<img src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/remove_min_target_version.png" alt="remove_min_target_version"></li>
 <li>添加项目核心依赖<br>
-<img data-src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/import_dependencies.png" alt="import_dependencies"><br>
+<img src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/import_dependencies.png" alt="import_dependencies"><br>
 <code>com.google.zxing:android-core:3.3.0</code>：实质是<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3p4aW5nL3p4aW5nL3RyZWUvbWFzdGVyL2FuZHJvaWQtY29yZQ==">android-core<i class="fa fa-external-link-alt"></i></span>模块<br>
 <code>com.google.zxing:core:3.3.3</code>：实质是<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3p4aW5nL3p4aW5nL3RyZWUvbWFzdGVyL2NvcmU=">core<i class="fa fa-external-link-alt"></i></span>模块</li>
 <li>删除<code>app</code>module（可选）</li>
 </ul>
 <h3 id="项目展示"><a class="header-anchor" href="#项目展示"></a>项目展示</h3>
-<p><img data-src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/zxing.gif" alt="zxing"></p>
+<p><img src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/zxing.gif" alt="zxing"></p>
 <p>当然你也可以下载官方提供的应用<span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWNvbS5nb29nbGUuenhpbmcuY2xpZW50LmFuZHJvaWQ=">google play<i class="fa fa-external-link-alt"></i></span></p>
 <h3 id="异常问题处理"><a class="header-anchor" href="#异常问题处理"></a>异常问题处理</h3>
 <h4 id="相机出现问题"><a class="header-anchor" href="#相机出现问题"></a>相机出现问题</h4>
 <h5 id="表现"><a class="header-anchor" href="#表现"></a>表现</h5>
 <p>如果你运行的设备是 Android 6.0 以上版本，那么在启动应用程序后，应该会提示你“很遗憾，Android 相机出现问题，你可能需要重启设备”，如下图<br>
-<img data-src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/project_problem.png" alt="project_problem"></p>
+<img src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/project_problem.png" alt="project_problem"></p>
 <h5 id="分析"><a class="header-anchor" href="#分析"></a>分析</h5>
 <p>分析运行日志，进行定位<code>CaptureActivity.java</code>类，在初始化相机时，由于没有相机权限，因此无法正常运行应用<br>
-<img data-src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/zxing_error_log.png" alt="zxing_error_log"></p>
+<img src="https://github.com/RootCluster/rc-android-zxing/raw/zxing/images/zxing_error_log.png" alt="zxing_error_log"></p>
 <h5 id="解决方式"><a class="header-anchor" href="#解决方式"></a>解决方式</h5>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CaptureActivity.jaca</span></span><br><span class="line"><span class="comment">// line 266 &amp;&amp; line 443</span></span><br><span class="line">mHolder = surfaceHolder;</span><br><span class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt; Build.VERSION_CODES.LOLLIPOP_MR1) &#123;</span><br><span class="line">    <span class="keyword">if</span> (ContextCompat.checkSelfPermission(CaptureActivity.<span class="keyword">this</span>,</span><br><span class="line">           android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="comment">// 先判断有没有权限 ，没有就在这里进行权限的申请</span></span><br><span class="line">        ActivityCompat.requestPermissions(CaptureActivity.<span class="keyword">this</span>,</span><br><span class="line">            <span class="keyword">new</span> String[]&#123;Manifest.permission.CAMERA&#125;, CAMERA_OK);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             <span class="comment">// 说明已经获取到摄像头权限了</span></span><br><span class="line">             initCamera(surfaceHolder);</span><br><span class="line">         &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        initCamera(surfaceHolder);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// line 803</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRequestPermissionsResult</span><span class="params">(<span class="keyword">int</span> requestCode</span></span></span><br><span class="line"><span class="params"><span class="function">        , <span class="meta">@NonNull</span> String[] permissions, <span class="meta">@NonNull</span> <span class="keyword">int</span>[] grantResults)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// If request is cancelled, the result arrays are empty.</span></span><br><span class="line">    <span class="keyword">if</span> (requestCode == CAMERA_OK) &#123;</span><br><span class="line">        <span class="keyword">if</span> (grantResults.length &gt; <span class="number">0</span></span><br><span class="line">                &amp;&amp; grantResults[<span class="number">0</span>] == PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">            <span class="comment">// permission was granted, yay! Do the</span></span><br><span class="line">            <span class="comment">// contacts-related task you need to do.</span></span><br><span class="line">            initCamera(mHolder);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="其他问题"><a class="header-anchor" href="#其他问题"></a>其他问题</h4>
@@ -460,12 +461,12 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+        <a target="_blank" class="social-link" href="https://incoder.slack.com">
           <span class="icon">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-slack"></i>
           </span>
 
-          <span class="label">Twitter</span>
+          <span class="label">Slack</span>
         </a>
       </div>
 
@@ -552,9 +553,6 @@
 </div>
   <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
   </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
-  </div>
 
     </div>
   </footer>
@@ -564,7 +562,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   

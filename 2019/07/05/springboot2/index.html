@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="我们在开发过程中，使用 java -jar you-jar-name.jar 命令来启动应用，它是如何启动？以及它如何去寻找 .class 文件并执行这些文件？本节就带着这两个问题，让我们一层层解开 SpringBoot 项目的 jar 启动过程，废话不多说，跟着我的脚步一起去探索 spring-boot-load 的秘密。 在 SpringBoot（一）初识 已经解释了为什么在编译后的 jar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot（二） 启动分析JarLauncher">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1562399159/blog/jarlauncher.png">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1604881134/blog/summary-jarlauncher.jpg">
 <meta property="article:published_time" content="2019-07-05T11:10:11.000Z">
-<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:modified_time" content="2021-07-20T06:34:10.598Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
@@ -103,9 +103,10 @@
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -310,7 +311,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+        <time title="修改时间：2021-07-20 06:34:10" itemprop="dateModified" datetime="2021-07-20T06:34:10+00:00">2021-07-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -358,10 +359,10 @@
         <p>我们在开发过程中，使用 <mark class="label info">java -jar you-jar-name.jar</mark> 命令来启动应用，它是如何启动？以及它如何去寻找 <code>.class</code> 文件并执行这些文件？本节就带着这两个问题，让我们一层层解开 SpringBoot 项目的 jar 启动过程，废话不多说，跟着我的脚步一起去探索 <mark class="label danger">spring-boot-load</mark> 的秘密。</p>
 <p>在 <a href="https://incoder.org/2019/06/23/springboot1/">SpringBoot（一）初识</a> 已经解释了为什么在编译后的 jar 中根目录存在 <strong><font color="red">org/springframework/boot/loader</font></strong> 内容，以及为了方便学习研究，我们需要在项目的依赖中导入 <mark class="label success">org.springframework.boot:spring-boot-loader</mark> 依赖。同时我们在解压的 <mark class="label info">you-jar-name.jar</mark> 文件中，查看对应的清单文件 <mark class="label primary">MANIFEST.MF</mark> 内容，其中明确指出了应用的入口 <strong><mark class="label ">org.springframework.boot.loader.JarLauncher</mark></strong> 因此我们就从 <strong><font color="red">JarLauncher</font></strong> 开始一步步深入</p>
 <span id="more"></span>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1562394534/blog/spring-boot-loader-jarlauncher.png" alt="spring-boot-loader-jarlauncher"></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1562394534/blog/spring-boot-loader-jarlauncher.png" alt="spring-boot-loader-jarlauncher"></p>
 <h2 id="结构"><a class="header-anchor" href="#结构"></a>结构</h2>
 <p>先用Diagrams来表述 <strong><font color="red">JarLauncher</font></strong> 类之间的结构及方法等相关信息<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1562399159/blog/jarlauncher.png" alt="jarlauncher"></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1562399159/blog/jarlauncher.png" alt="jarlauncher"></p>
 <p>从Diagrams可知</p>
 <ul>
 <li>继承关系：JarLauncher <mark>extends</mark> ExecutableArchiveLauncher <mark>extends</mark> Launcher</li>
@@ -410,7 +411,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Utility class that is used by &#123;<span class="doctag">@link</span> Launcher&#125;s to call a main method. The class</span></span><br><span class="line"><span class="comment"> * containing the main method is loaded using the thread context class loader.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 被 Launcher 使用来调用 main 方法的辅助类，使用线程类加载来加载包含 main 方法的类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Phillip Webb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Andy Wilkinson</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainMethodRunner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String mainClassName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String[] args;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Create a new &#123;<span class="doctag">@link</span> MainMethodRunner&#125; instance.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mainClass the main class</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args incoming arguments</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MainMethodRunner</span><span class="params">(String mainClass, String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mainClassName = mainClass;</span><br><span class="line">        <span class="keyword">this</span>.args = (args != <span class="keyword">null</span>) ? args.clone() : <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关键方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 获取到当前线程上下文的类加载器，实际就是 springboot 自定义的加载器（LaunchedURLClassLoader）</span></span><br><span class="line">        <span class="comment">// 加载 this.mainClassName所对应的类，实际也就是清单文件中对应 Start-Class 属性的类</span></span><br><span class="line">        Class&lt;?&gt; mainClass = Thread.currentThread().getContextClassLoader().loadClass(<span class="keyword">this</span>.mainClassName);</span><br><span class="line">        <span class="comment">// 通过反射获取到 main 方法和参数</span></span><br><span class="line">        Method mainMethod = mainClass.getDeclaredMethod(<span class="string">&quot;main&quot;</span>, String[].class);</span><br><span class="line">        <span class="comment">// 调用目标方法运行</span></span><br><span class="line">        <span class="comment">// invoke 方法参数一：是被调用方法所在对象，这里为 null，原因是我们所调用的目标方法是一个静态方法</span></span><br><span class="line">        <span class="comment">// invoke 方法参数二：被调用方法所接收的参数</span></span><br><span class="line">        mainMethod.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> Object[] &#123; <span class="keyword">this</span>.args &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>到此为止，invoke 方法成功调用，那么我们项目中的main 方法就执行了，这时我们的所编写的 springboot 应用就正式的启动了。那么关于 springboot 的 loader 加载过程已经分析完</p>
 <h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1604881134/blog/summary-jarlauncher.jpg" alt="summary-jarlauncher"></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1604881134/blog/summary-jarlauncher.jpg" alt="summary-jarlauncher"></p>
 <p>从 jar 规范的角度出发，我们深入分析了 springboot 项目启动的整个过程，这个过程到底对不对，我们口说无凭，需要实际检验我们分析<br>
 首先，我们先思考，项目的应用启动入口是不是必须是 <mark class="label success">main.class</mark> 方法，以及为什么要默认这么做？<br>
 其次，我们再思考，在编辑器中通过图标运行启动程序（或者是通过命令启动程序），比较将程序编译成 jar 包，然后通过命令启动程序他们之间是否相同，如果不同请解释为什么？</p>
@@ -480,12 +481,12 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+        <a target="_blank" class="social-link" href="https://incoder.slack.com">
           <span class="icon">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-slack"></i>
           </span>
 
-          <span class="label">Twitter</span>
+          <span class="label">Slack</span>
         </a>
       </div>
 
@@ -572,9 +573,6 @@
 </div>
   <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
   </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
-  </div>
 
     </div>
   </footer>
@@ -584,7 +582,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   

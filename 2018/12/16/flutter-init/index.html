@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="这两年随着前端的高速发展，大前端的趋势下，Native移动应用开发市场在一定程度上被前端瓜分，加之硬件的快速迭代，性能已不存在明显的短板，React Native，Vue，Angular等等这些Web框架，对移动端也有了较大的提升，毕竟这样的开发效率会直线上升，并且大大减少了成本。技术的革新真的好快，如果不去学习，很快就会被淘汰 那就直接进入正题，flutter是一站式跨平台解决方案，一次开发，适">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flutter（一）之环境搭建">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1544994676/blog/flutter-finish.png">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1544994898/blog/flutter-node.png">
 <meta property="article:published_time" content="2018-12-16T02:14:59.000Z">
-<meta property="article:modified_time" content="2021-07-19T01:56:33.811Z">
+<meta property="article:modified_time" content="2021-07-20T06:34:10.594Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="flutter">
 <meta name="twitter:card" content="summary">
@@ -103,9 +103,10 @@
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -310,7 +311,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+        <time title="修改时间：2021-07-20 06:34:10" itemprop="dateModified" datetime="2021-07-20T06:34:10+00:00">2021-07-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -378,7 +379,7 @@
 <li>
 <p>检查开发环境，第一次执行，应该提示如下图所示说明</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter doctor</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1544994568/blog/flutter-doctor.png" alt="flutter-doctor"><br>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1544994568/blog/flutter-doctor.png" alt="flutter-doctor"><br>
 其实不难，看出我们需要安装一下其他辅助工具等</p>
 </li>
 <li>
@@ -388,7 +389,7 @@
 <li>
 <p>以上步骤都正常运行后，再次检查环境，如下图所示结果，表示已完成flutter环境搭建</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter doctor</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1544994676/blog/flutter-finish.png" alt="flutter-finish"></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1544994676/blog/flutter-finish.png" alt="flutter-finish"></p>
 </li>
 </ol>
 <h2 id="辅助"><a class="header-anchor" href="#辅助"></a>辅助</h2>
@@ -411,7 +412,7 @@
 <h3 id="libusbmuxd-version-error-during-flutter-install"><a class="header-anchor" href="#libusbmuxd-version-error-during-flutter-install"></a>libusbmuxd version error during flutter install</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew uninstall --ignore-dependencies libimobiledevice</span><br><span class="line">brew uninstall --ignore-dependencies usbmuxd</span><br><span class="line">brew install --HEAD usbmuxd</span><br><span class="line">brew unlink usbmuxd</span><br><span class="line">brew link usbmuxd</span><br><span class="line">brew install --HEAD libimobiledevice</span><br></pre></td></tr></table></figure>
 <h3 id="Unbrewed-header-files-were-found-in-usr-local-include"><a class="header-anchor" href="#Unbrewed-header-files-were-found-in-usr-local-include"></a>Unbrewed header files were found in /usr/local/include</h3>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1544994898/blog/flutter-node.png" alt="flutter-node"></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1544994898/blog/flutter-node.png" alt="flutter-node"></p>
 <h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9mbHV0dGVyLmlvL2RvY3M=">flutter docs<i class="fa fa-external-link-alt"></i></span></li>
@@ -469,12 +470,12 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+        <a target="_blank" class="social-link" href="https://incoder.slack.com">
           <span class="icon">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-slack"></i>
           </span>
 
-          <span class="label">Twitter</span>
+          <span class="label">Slack</span>
         </a>
       </div>
 
@@ -561,9 +562,6 @@
 </div>
   <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
   </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
-  </div>
 
     </div>
   </footer>
@@ -573,7 +571,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   

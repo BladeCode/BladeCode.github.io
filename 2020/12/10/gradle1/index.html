@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="GitHub 上 Gralde 是这样描述，“Adaptable, fast automation for all”（让一切都能快速的自动化） Gradle是一个构建工具，专注于构建自动化和对多语言开发的支持。对于在任何平台上的构建，测试，发布和部署，Gralde 提供了一种灵活的模型，可以支持从编译和打包代码到发布网站的整个生命周期。Gralde 旨在支持跨多种语言和平台的构建自动化，包括 Ja">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gradle（一）基础">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradle-path.png">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradlew-or-gradle.png">
 <meta property="article:published_time" content="2020-12-10T10:11:46.000Z">
-<meta property="article:modified_time" content="2021-07-19T01:56:33.811Z">
+<meta property="article:modified_time" content="2021-07-20T06:34:10.594Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="Gradle">
 <meta name="twitter:card" content="summary">
@@ -103,9 +103,10 @@
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -310,7 +311,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+        <time title="修改时间：2021-07-20 06:34:10" itemprop="dateModified" datetime="2021-07-20T06:34:10+00:00">2021-07-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -388,10 +389,10 @@ Gradle是一个构建工具，专注于构建自动化和对多语言开发的�
 <h3 id="配置"><a class="header-anchor" href="#配置"></a>配置</h3>
 <p>手动下载解压的文件进行安装，则需要配置 Gradle 的环境，这样方便我们在任何地方都可以调用 Gradle 的命令，对于 macOS 上手动安装配置 Gradle 环境的操作，可以参考 <a href="https://incoder.org/2018/11/10/mac-init/#Gradle%E9%85%8D%E7%BD%AE">MacBook Pro 初始化</a> 这篇文章 Gradle 配置</p>
 <p>对于 Windows 系统，按照如下步骤进行添加环境变量，我这里 Windows 上为了和项目中 Gradle 版本有所区分，配置的是 6.7 版本<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradle-home.png" alt=""><br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradle-path.png" alt=""><br>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradle-home.png" alt=""><br>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradle-path.png" alt=""><br>
 配置完成后，老规矩我们需要验证下我们的配置是否生效，在命令行中输入 <code>gradle  -v</code> 命令，查看有 Gradle 相关的版本信息提示，我们的配置就已成功<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradlew-or-gradle.png" alt=""></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1608634993/blog/gradlew-or-gradle.png" alt=""></p>
 <h4 id="GRADLE-HOME"><a class="header-anchor" href="#GRADLE-HOME"></a>GRADLE_HOME</h4>
 <p>GRADLE_HOME 这个环境变量，它主要是我们手动配置指定 GRADLE 使用的命令环境</p>
 <h4 id="GRADLE-USER-HOME"><a class="header-anchor" href="#GRADLE-USER-HOME"></a>GRADLE_USER_HOME</h4>
@@ -599,12 +600,12 @@ Gradle是一个构建工具，专注于构建自动化和对多语言开发的�
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+        <a target="_blank" class="social-link" href="https://incoder.slack.com">
           <span class="icon">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-slack"></i>
           </span>
 
-          <span class="label">Twitter</span>
+          <span class="label">Slack</span>
         </a>
       </div>
 
@@ -691,9 +692,6 @@ Gradle是一个构建工具，专注于构建自动化和对多语言开发的�
 </div>
   <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
   </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
-  </div>
 
     </div>
   </footer>
@@ -703,7 +701,6 @@ Gradle是一个构建工具，专注于构建自动化和对多语言开发的�
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   

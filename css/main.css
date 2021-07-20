@@ -187,14 +187,6 @@ body {
   min-height: 100%;
   position: relative;
   transition: padding 0.2s ease-in-out;
-  overflow-x: hidden;
-  width: 100vw;
-  overflow-y: scroll;
-}
-@supports (overflow-x: clip) {
-  body {
-    overflow-x: clip;
-  }
 }
 h1,
 h2,
@@ -999,15 +991,6 @@ pre code {
 .post-body .note img:last-child {
   margin-bottom: 0;
 }
-.post-body .note:not(.no-icon) {
-  padding-left: 2.5em;
-}
-.post-body .note:not(.no-icon)::before {
-  font-size: 1.5em;
-  left: 0.3em;
-  position: absolute;
-  top: calc(50% - 1em);
-}
 .post-body .note.default {
   border-left-color: #777;
 }
@@ -1016,12 +999,6 @@ pre code {
 .post-body .note.default h4,
 .post-body .note.default h5,
 .post-body .note.default h6 {
-  color: #777;
-}
-.post-body .note.default:not(.no-icon)::before {
-  content: '\f0a9';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
   color: #777;
 }
 .post-body .note.primary {
@@ -1034,12 +1011,6 @@ pre code {
 .post-body .note.primary h6 {
   color: #6f42c1;
 }
-.post-body .note.primary:not(.no-icon)::before {
-  content: '\f055';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: #6f42c1;
-}
 .post-body .note.info {
   border-left-color: #428bca;
 }
@@ -1048,12 +1019,6 @@ pre code {
 .post-body .note.info h4,
 .post-body .note.info h5,
 .post-body .note.info h6 {
-  color: #428bca;
-}
-.post-body .note.info:not(.no-icon)::before {
-  content: '\f05a';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
   color: #428bca;
 }
 .post-body .note.success {
@@ -1066,12 +1031,6 @@ pre code {
 .post-body .note.success h6 {
   color: #5cb85c;
 }
-.post-body .note.success:not(.no-icon)::before {
-  content: '\f058';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: #5cb85c;
-}
 .post-body .note.warning {
   border-left-color: #f0ad4e;
 }
@@ -1082,12 +1041,6 @@ pre code {
 .post-body .note.warning h6 {
   color: #f0ad4e;
 }
-.post-body .note.warning:not(.no-icon)::before {
-  content: '\f06a';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: #f0ad4e;
-}
 .post-body .note.danger {
   border-left-color: #d9534f;
 }
@@ -1096,12 +1049,6 @@ pre code {
 .post-body .note.danger h4,
 .post-body .note.danger h5,
 .post-body .note.danger h6 {
-  color: #d9534f;
-}
-.post-body .note.danger:not(.no-icon)::before {
-  content: '\f056';
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
   color: #d9534f;
 }
 .mermaid {
@@ -1792,9 +1739,6 @@ pre code {
   .post-body .note {
     margin-bottom: 10px !important;
     padding: 10px !important;
-  }
-  .post-body .note:not(.no-icon) {
-    padding-left: 35px !important;
   }
   .post-body .tabs .tab-content .tab-pane {
     padding: 10px 10px 0 !important;
@@ -2901,7 +2845,7 @@ mark.search-keyword {
   transition: all 0.2s ease-in-out;
 }
 .links-of-author a::before {
-  background: #adffff;
+  background: #79367a;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);

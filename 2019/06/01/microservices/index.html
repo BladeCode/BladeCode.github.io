@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="这是第一篇翻译文章，用于学习近些年火热的微服务，这篇是微服务概念是由 James Lewis 所著，虽然官网已有中文翻译，但是在学习过程中，应该应该动手输出，这样有助于对知识的理解和记忆，废话不多说，开始翻译 微服务  近些年术语“微服务架构”就像雨后春笋般蓬勃的发展，微服务描述软件应用设计是独立可部署服务一个特殊方式。虽然这些都不够准确的去定义一个架构风格，但存在一些通用的特质（大家达成共识的特">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【译】• 微服务">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://martinfowler.com/articles/microservices/images/micro-deployment.png">
 <meta property="og:image" content="https://martinfowler.com/articles/microservices/images/sam-book.jpg">
 <meta property="article:published_time" content="2019-06-01T10:00:00.000Z">
-<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:modified_time" content="2021-07-20T06:34:10.594Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
@@ -107,9 +107,10 @@
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -314,7 +315,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+        <time title="修改时间：2021-07-20 06:34:10" itemprop="dateModified" datetime="2021-07-20T06:34:10+00:00">2021-07-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -385,7 +386,7 @@
 </ul>
 <p>这种单体服务是构建这种系统的自然方式。所有的请求逻辑处理都运行在一个进程中，允许你使用语言的基本特性将应用划分为类，功能和命名空间。对于一些其他样例，你可以运行和测试应用在开发者的笔记本上，并使用部署管道确保已正确测试并部署到生成环境中。你可以通过负载均衡运行许多实例来进行水平扩展（常见单体应用模式 前面通过Nginx负载均衡，在 Nginx 后面运行多个应用实例）</p>
 <p>单体应用程序可以成功，但是越来越多的人感到沮丧-特别是随着更多应用程序部署到云端。更改周期紧密相连-对应用程序的一小部分更改，需要重新构建和部署整个应用。随着时间的推移，通常很难保持良好的模块化结构，是的更难以保持改变只影响模块中的一个模块的更改。扩展需要扩展整个应用程序，而不是需要更多资源的部分扩展</p>
-<p><img data-src="https://martinfowler.com/articles/microservices/images/sketch.png" alt="图 1：单体应用和微服务"><br>
+<p><img src="https://martinfowler.com/articles/microservices/images/sketch.png" alt="图 1：单体应用和微服务"><br>
 从上图可知单体应用和微服务在部署的角度（可升缩角度）来讲：</p>
 <ul>
 <li>单体应用：进行可升缩，是将单体应用整个进行升缩，每台机器上的应用都是相同的</li>
@@ -412,9 +413,9 @@
 <p>Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization’s communication structure<br>
 ——Melvyn Conway, 1967</p>
 </blockquote>
-<p><img data-src="https://martinfowler.com/articles/microservices/images/conways-law.png" alt="Conway's Law in action"><br>
+<p><img src="https://martinfowler.com/articles/microservices/images/conways-law.png" alt="Conway's Law in action"><br>
 微服务划分方法是不同的，分为围绕<strong>业务能力</strong>组织的服务。此类服务为该业务领域采用广泛的软件实现，包括用户页面，持久存储，以及任何额外协作。因此，团队是跨职能的，包括开发所需的全部技能：用户体验，数据库和项目管理</p>
-<p><img data-src="https://martinfowler.com/articles/microservices/images/PreferFunctionalStaffOrganization.png" alt="Service boundaries reinforced by team boundaries"></p>
+<p><img src="https://martinfowler.com/articles/microservices/images/PreferFunctionalStaffOrganization.png" alt="Service boundaries reinforced by team boundaries"></p>
 <blockquote>
 <p>微服务有多大？<br>
 虽然“微服务”已经成为这种架构风格的流行名称，但它的名字确实导致了对微服务的不关注以及关于什么构成“micro”的争论。在我们与微服务从业者的对话中，我们看到了一系列服务规模。报道的最大数量遵循亚马逊的 Two Pizza Team 的概念（比如：整个团队都可以讨厌两个披萨），意味着不超过十二人。对于规模较小的服务，我们已经看到一个6人的团队在支持6个服务。</p>
@@ -467,14 +468,14 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
 </blockquote>
 <p>此问题在应用程序间很常见，但也可能在应用程序中发生，特别是将应用程序划分为单独的组件时。一种有用的思考方式是“领域驱动设计”中的<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL0JvdW5kZWRDb250ZXh0Lmh0bWw=">“限定上下文”<i class="fa fa-external-link-alt"></i></span>的概念。DDD 将复杂领域划分为多个限界上下文，并映射出他们之间的关系。此过程对单体和微服务架构两者都很有用，而且就像前面有关“业务功能”一节中所讨论的那样，在服务和各个限界上下文之间所存在的自然的联动关系，能有助于澄清和强化这种划分。</p>
 <p>除了关于概念模型的分散决策之外，微服务还分散了数据存储决策。虽然单一应用程序更喜欢使用单个逻辑数据库来存储持久性数据，但企业通常更喜欢在一系列应用程序中使用单个数据库——其中许多决策是通过供应商的商业模式来实现。微服务更喜欢让每个服务管理自己的数据库，可以是同一数据库技术的不同实例，也可以是完全不同的数据库系统——这种方法称为<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL1BvbHlnbG90UGVyc2lzdGVuY2UuaHRtbA==">&quot;Polyglot Persistence&quot;<i class="fa fa-external-link-alt"></i></span>。你可以在整体中使用多语言持久性，但它在微服务中更常出现。<br>
-<img data-src="https://martinfowler.com/articles/microservices/images/decentralised-data.png" alt=""></p>
+<img src="https://martinfowler.com/articles/microservices/images/decentralised-data.png" alt=""></p>
 <p>跨服务分散数据责任对管理更新有影响。处理更新的常用方法是在更新多个资源时使用事务来保证一致性。这种方法通常用于整体结构中。</p>
 <p>使用这样的事务有助于保持一致性，但会产生显著的时间耦合，在多个服务中是有问题。众所周知，分布式事务很难实现，因此微服务架构<span class="exturl" data-url="aHR0cDovL3d3dy5lYWlwYXR0ZXJucy5jb20vcmFtYmxpbmdzLzE4X3N0YXJidWNrcy5odG1s">强调服务之间的无事务协调<i class="fa fa-external-link-alt"></i></span>，明确承认一致性可能只有最终的一致性，而问题则通过补偿操作来处理。</p>
 <p>选择以这种方式管理不一致是许多开发团队面临的新挑战，但它通常与业务实践相匹配。企业通常会处理一定程度的不一致，以便快速响应需求，同时采取某种逆转流程来应对错误。只要修复错误的成本低于在更大的一致性下丢失业务的成本，那么权衡是值得的。</p>
 <h3 id="基建设施自动化"><a class="header-anchor" href="#基建设施自动化"></a>基建设施自动化</h3>
 <p>基础设施自动糊技术在过去几年中发生了巨大变化——特别是云和 AWS 的发展降低了构建，部署和运行微服务的操作复杂性。</p>
 <p>许多使用微服务构建的产品或系统都是由具有丰富的<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2JsaWtpL0NvbnRpbnVvdXNEZWxpdmVyeS5odG1s">持续交付(Continuous Delivery)<i class="fa fa-external-link-alt"></i></span>经验的团队构建的，并且是前身的<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL2NvbnRpbnVvdXNJbnRlZ3JhdGlvbi5odG1s">持续集成(Continuous Integration)<i class="fa fa-external-link-alt"></i></span>。以这种方式构建软件的团队广泛使用基础设施自动化技术。这在下面显示的构建管道中说明</p>
-<p><img data-src="https://martinfowler.com/articles/microservices/images/basic-pipeline.png" alt="basic build pipeline"></p>
+<p><img src="https://martinfowler.com/articles/microservices/images/basic-pipeline.png" alt="basic build pipeline"></p>
 <p>由于这不是关于持续交付的文章，我们将在这里引起注意几个关键功能。我们希望尽可能地信心使我们的软件正常工作，因此我们进行了大量的<strong>自动化测试</strong>。推广工作软件“向上”管道意味着我们<strong>自动化部署</strong>到每个新环境。</p>
 <blockquote>
 <p>做正取的事情很容易<br>
@@ -482,7 +483,7 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
 </blockquote>
 <p>一个单一的应用程序将非常愉快地构建，测试和推动通过这些环境。事实证明，一旦你投资自动化整个生产的生产之路，那么部署更多地应用程序视乎不再那么可怕。请记住，CD的目标之一就是使用部署无聊，所以无论是一个还是多个应用，只要它任然无聊就无聊无所谓<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup></p>
 <p>我们看到团队使用广泛的基础设施自动化的另一个领域是管理生产中的微服务。与我们上面的断言相反，只要部署很无聊，单块和微服务之间没有太大的区别，每个部署的运营环境可能会截然不同<br>
-<img data-src="https://martinfowler.com/articles/microservices/images/micro-deployment.png" alt="Module deployment often differs"></p>
+<img src="https://martinfowler.com/articles/microservices/images/micro-deployment.png" alt="Module deployment often differs"></p>
 <h3 id="容错设计"><a class="header-anchor" href="#容错设计"></a>容错设计</h3>
 <p>使用服务作为组件的结果是，应用需要设计以便他们能够容忍服务的失败。由于提供者不可用（不可达）等，任何服务调用都可能失败，客户端必须尽可能优雅地对此作出响应。与单体设计相比，这是一个缺点，因为它引入了额外的复杂性来处理它。结果是微服务团队持续不断反思服务失败如何影响用户体验。Netflix 的 Simian Army 在工作日引发服务甚至数据中心的故障，以测试应用程序的弹性和监控。</p>
 <blockquote>
@@ -508,7 +509,7 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
 <p>我们写这篇文章的主要目的是解释微服务的主要思想和原则。通过花时间来做到这一点，我们清楚地认为微服务架构风格是一个重要的想法——值得认真考虑企业应用程序。我们最近使用这种方式构建了几个系统，并了解其他团队已经使用并支持这种方法。</p>
 <p>我们了解到那些在某种程度上做为这种架构风格的实践先驱包括：亚马逊，Netflix，<span class="exturl" data-url="aHR0cHM6Ly93d3cudGhlZ3VhcmRpYW4uY29tLw==">Guardian<i class="fa fa-external-link-alt"></i></span> 和 <span class="exturl" data-url="aHR0cHM6Ly9nZHMuYmxvZy5nb3YudWsv">UK Government Digital Service<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9tYXJ0aW5mb3dsZXIuY29tL2FydGljbGVzL3JlYWxlc3RhdGUuY29tLmF1">realeastate.com.au<i class="fa fa-external-link-alt"></i></span>，<span class="exturl" data-url="aHR0cDovL3d3dy5jb21wYXJldGhlbWFya2V0LmNvbS8=">comparethemarket.com<i class="fa fa-external-link-alt"></i></span>。2013 年的技术大会圈子充满了各种各样的，正在转向可以归类为微服务的公司——包括 Travis CI。此外，有很多组织长期以来一直在做我们称为微服务的东西，但没有使用过这个名字（通常被标记为 SOA——尽管如我们所说，SOA 有许多互相矛盾的形式<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup> ）</p>
 <p>然而，尽管有这些积极的经验，但我们并不认为我们确信微服务是软件架构的未来发展方向。虽然到目前为止我们的经验与单体应用相比是积极的，但我们意识到没有足够的时间让我们做出充分的判断。</p>
-<p><img data-src="https://martinfowler.com/articles/microservices/images/sam-book.jpg" alt=""></p>
+<p><img src="https://martinfowler.com/articles/microservices/images/sam-book.jpg" alt=""></p>
 <blockquote>
 <p>我们的同事 Sam Newman 在 2014 年的大部分时间都在撰写一本书，该书描述了我们构建微服务的经验。如果想进一步了解该主题，这应该是您的下一步</p>
 </blockquote>
@@ -728,12 +729,12 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+        <a target="_blank" class="social-link" href="https://incoder.slack.com">
           <span class="icon">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-slack"></i>
           </span>
 
-          <span class="label">Twitter</span>
+          <span class="label">Slack</span>
         </a>
       </div>
 
@@ -820,9 +821,6 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
 </div>
   <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
   </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
-  </div>
 
     </div>
   </footer>
@@ -832,7 +830,6 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   

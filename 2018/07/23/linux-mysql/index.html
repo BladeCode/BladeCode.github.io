@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="之前粗略的接触了Linux的基础使用和安装，这次准备在自购的服务器上跑些应用，纯属娱乐，废话不说，上来就先仍数据库。 数据库常用的Oracle,MySQL,SQL Server,MongoDB等，排名不分先后，自己平时接触最多的也就是MySQL，MongoDB，好MySQL先来一份。 介绍 MySQL是一个开源数据库管理系统，通常作为流行的LEMP（Linux，Nginx，MySQL &#x2F; Mari">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 之 MySQL">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1606418056/blog/didi-add-rule.png">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1607750118/blog/rpm-rebuild.png">
 <meta property="article:published_time" content="2018-07-23T22:30:10.000Z">
-<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:modified_time" content="2021-07-20T06:34:10.594Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -112,9 +112,10 @@
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -319,7 +320,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+        <time title="修改时间：2021-07-20 06:34:10" itemprop="dateModified" datetime="2021-07-20T06:34:10+00:00">2021-07-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -386,10 +387,10 @@
 <p>先检查服务器是否已经安装了mariadb</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查是否安装了 mariadb 客户端</span></span><br><span class="line">rpm -qa | grep mariadb</span><br><span class="line"><span class="comment"># 检查是否安装了 mariadb 服务端</span></span><br><span class="line">rpm -qa | grep mariadb-server</span><br></pre></td></tr></table></figure>
 <p>执行结果如下图，如果没有任何提示，则表示没有安装<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1606229882/blog/mariadb-check.png" alt=""></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1606229882/blog/mariadb-check.png" alt=""></p>
 <p>执行检查命令，发现有 mariadb 服务，则需要先卸载 <code>mariadb</code> 相关服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mariadb 相关卸载</span></span><br><span class="line">rpm -qa |grep mariadb |xargs yum remove -y</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1606235520/blog/mariadb-uninstall.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1606235520/blog/mariadb-uninstall.png" alt=""></p>
 <h2 id="清单"><a class="header-anchor" href="#清单"></a>清单</h2>
 <ul>
 <li>OS: CentOS 7</li>
@@ -404,10 +405,10 @@
 <p>官方下载 MySQL Community Server 地址：<span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2Rvd25sb2Fkcy9teXNxbC8=">https://dev.mysql.com/downloads/mysql/<i class="fa fa-external-link-alt"></i></span><br>
 清华镜像 MySQL 地址：<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuL215c3FsL3l1bS8=">https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1606147634/blog/mysql-download.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1606147634/blog/mysql-download.png" alt=""></p>
 <h3 id="在线安装（推荐方式）"><a class="header-anchor" href="#在线安装（推荐方式）"></a>在线安装（推荐方式）</h3>
 <p>适用于当前安装服务器可以正常互联网访问，如上图，选择方式进入<span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2Rvd25sb2Fkcy9yZXBvL3l1bQ==">MySQL Yum Repository<i class="fa fa-external-link-alt"></i></span>，选择对应系统的版本，比如 <code>mysql80-community-release-el7-3.noarch.rpm</code></p>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1606227057/blog/mysql-line-rpm.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1606227057/blog/mysql-line-rpm.png" alt=""></p>
 <p>根据自己设备网络情况选择使用的下载地址</p>
 <ul>
 <li>官方地址：<span class="exturl" data-url="aHR0cHM6Ly9yZXBvLm15c3FsLmNvbS8vbXlzcWw4MC1jb21tdW5pdHktcmVsZWFzZS1lbDctMy5ub2FyY2gucnBt">https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm<i class="fa fa-external-link-alt"></i></span></li>
@@ -422,11 +423,11 @@
 <p>按照<font color=red size=4>此顺序进行安装</font></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-common-8.0.22-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-plugins-8.0.22-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-8.0.22-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-compat-8.0.22-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-embedded-compat-8.0.22-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-devel-8.0.22-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-8.0.22-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-server-8.0.22-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 <p>安装 <code>mysql-community-devel-8.0.22-1.el7.x86_64.rpm</code> 时出错，需要先执行 <code>yum install openssl-devel</code> 命令进行安装 openssl-devel，如下图<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1606415382/blog/mysql-community-devel.png" alt=""></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1606415382/blog/mysql-community-devel.png" alt=""></p>
 <p>安装完上面的包，进行启动 MySQL 服务，并进行相应的配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果你需要设置不区分大小写，必须在第一次启动 mysqld 服务前设置，lower_case_table_names=1</span></span><br><span class="line"><span class="comment"># vim /etc/my.cnf</span></span><br><span class="line"><span class="comment"># 启动mysqld服务</span></span><br><span class="line">systemctl start mysqld</span><br><span class="line"><span class="comment"># 查看是否成功启动</span></span><br><span class="line">ps aux|grep mysqld</span><br><span class="line"><span class="comment"># 设置mysqld服务开机自启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> mysqld</span><br></pre></td></tr></table></figure>
 <p>整个安装设置过程如下图<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1607229288/blog/mysql-offline-install.png" alt=""></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1607229288/blog/mysql-offline-install.png" alt=""></p>
 <h2 id="配置"><a class="header-anchor" href="#配置"></a>配置</h2>
 <p>由于MySQL从5.7开始不允许在首次安装后，使用空密码进行登录，系统会随机生成一个密码以供管理员首次登录使用，这个密码记录在<code>/var/log/mysqld.log</code>文件中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 查看系统提供密码</span></span><br><span class="line">cat /var/<span class="built_in">log</span>/mysqld.log|grep <span class="string">&#x27;A temporary password&#x27;</span></span><br><span class="line"><span class="comment"># 2. 使用获取到的密码登录MySQL</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 3. 切换数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 4. 修改root密码 your_password 替换成你自己的密码就可以了，这个密码是强密码，要求密码包含大小写字母、数字及标点符号，长度大于6</span></span><br><span class="line">alter user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified by <span class="string">&#x27;your_password&#x27;</span>;</span><br><span class="line"><span class="comment"># 5. 刷新修改</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
@@ -436,21 +437,21 @@
 <h3 id="MySQL-安装路径"><a class="header-anchor" href="#MySQL-安装路径"></a>MySQL 安装路径</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 MySQL 安装的位置</span></span><br><span class="line"><span class="built_in">which</span> mysqld</span><br></pre></td></tr></table></figure>
 <h3 id="其他配置信息"><a class="header-anchor" href="#其他配置信息"></a>其他配置信息</h3>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1607229288/blog/mysql-cnf.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1607229288/blog/mysql-cnf.png" alt=""></p>
 <h2 id="连接"><a class="header-anchor" href="#连接"></a>连接</h2>
 <p>自己平时习惯使用 <span class="exturl" data-url="aHR0cHM6Ly93d3cubmF2aWNhdC5jb20uY24=">Navicat<i class="fa fa-external-link-alt"></i></span> 进行数据库操作，因此这里进行配置链接已在云端刚刚安装的MySQL服务<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1532362215/blog/linux-mysql.png" alt="linux-mysql"></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1532362215/blog/linux-mysql.png" alt="linux-mysql"></p>
 <h3 id="ERROR-2003"><a class="header-anchor" href="#ERROR-2003"></a>ERROR 2003</h3>
 <p>通过本地的工具无法连接到服务器上的 MySQL 服务，错误提示：<code>ERROR 2003 (HY000): Can't connect to MySQL server on '116.85.58.6' (60)</code></p>
 <p>进行原因排查，分别通过 <code>ping</code>，<code>telnet</code> 命令来检查网络连接情况，发现 IP 是通的，端口不同，那么去看服务器是不是开启了防火墙，如果开启了防火墙，需要将 MySQL 服务的端口排除</p>
 <div class="note warning"><p>对于开启了防火墙的，可以将防火墙关闭，或者设置端口白名单</p>
 </div>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看防火墙状态，结果显示为running或not running</span></span><br><span class="line"><span class="comment">## 如果显示，-bash: firewall-cmd: command not found，则表示当前服务器没有安装防火墙</span></span><br><span class="line">firewall-cmd --state</span><br><span class="line"><span class="comment"># 关闭防火墙firewall</span></span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br><span class="line"><span class="comment"># 关闭防火墙firewall后开启</span></span><br><span class="line">systemctl start firewalld.service</span><br><span class="line"><span class="comment"># 开启端口</span></span><br><span class="line"><span class="comment">## zone -- 作用域</span></span><br><span class="line"><span class="comment">## add-port=80/tcp -- 添加端口，格式为：端口/通讯协议</span></span><br><span class="line"><span class="comment">## permanent -- 永久生效，没有此参数重启后失效</span></span><br><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line"><span class="comment">## 开启3306端口后，workbench或naivcat 就能连接到MySQL数据库了</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1606417200/blog/mysql-link.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1606417200/blog/mysql-link.png" alt=""></p>
 <p>SSH 连接 MySQL 所在的服务器，查看防火墙情况，但发现压根没有防火墙，那么此时，要去看看你的云服务器的安全组设置规则，将 3306 暴露出来，查看云服务器安全组设置<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1606418056/blog/didi-rule.png" alt=""></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1606418056/blog/didi-rule.png" alt=""></p>
 <p>在已有安全组中添加安全规则或者新增安全组在新的安全组中添加安全规则<br>
-<img data-src="https://res.cloudinary.com/incoder/image/upload/v1606418056/blog/didi-add-rule.png" alt=""></p>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1606418056/blog/didi-add-rule.png" alt=""></p>
 <h3 id="ERROR-1130"><a class="header-anchor" href="#ERROR-1130"></a>ERROR 1130</h3>
 <p>按照上图图的配置信息链接MySQL，发现错误提示：<code>ERROR 1130: Host 'xxx.xxx.xxx.xxx' is not allowed to connect to this MySQL server</code></p>
 <h4 id="原因"><a class="header-anchor" href="#原因"></a>原因</h4>
@@ -470,7 +471,7 @@
 <h3 id="BDB1507"><a class="header-anchor" href="#BDB1507"></a>BDB1507</h3>
 <p>BDB1507 Thread died in Berkeley DB library，由于其他操作原因造成数据库被破坏问题，可以通过如下命令进行数据库修复</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/rpm/</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `ls | grep <span class="string">&#x27;db.&#x27;</span>`;<span class="keyword">do</span> mv <span class="variable">$i</span> <span class="variable">$i</span>.bak;<span class="keyword">done</span></span><br><span class="line">rpm --rebuilddb</span><br><span class="line">yum clean all</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1607750118/blog/rpm-rebuild.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1607750118/blog/rpm-rebuild.png" alt=""></p>
 <h2 id="卸载"><a class="header-anchor" href="#卸载"></a>卸载</h2>
 <h3 id="应用卸载"><a class="header-anchor" href="#应用卸载"></a>应用卸载</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 快速删除</span></span><br><span class="line">yum remove mysql mysql-server mysql-libs mysql-server</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查找残留文件（例如：mysql-community-server-8.0.22-1.el7.x86_64）</span></span><br><span class="line">rpm -qa | grep -i mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将查询出来的应用删除</span></span><br><span class="line">yum remove mysql-community-server-8.0.22-1.el7.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查找残余目录</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># /etc/selinux/targeted/active/modules/100/mysql</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># /etc/selinux/targeted/tmp/modules/100/mysql</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># /var/lib/mysql</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># /var/lib/mysql/mysql</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># /usr/share/mysql</span></span></span><br><span class="line">find / -name mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除残余目录</span></span><br><span class="line">rm -rf /etc/selinux/targeted/active/modules/100/mysql</span><br><span class="line">rm -rf /etc/selinux/targeted/tmp/modules/100/mysql</span><br><span class="line">rm -rf /var/lib/mysql</span><br><span class="line">rm -rf /var/lib/mysql/mysql</span><br><span class="line">rm -rf /usr/share/mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再次检查残余目录，确保没有残余</span></span><br><span class="line">find / -name mysql</span><br></pre></td></tr></table></figure>
@@ -532,12 +533,12 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+        <a target="_blank" class="social-link" href="https://incoder.slack.com">
           <span class="icon">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-slack"></i>
           </span>
 
-          <span class="label">Twitter</span>
+          <span class="label">Slack</span>
         </a>
       </div>
 
@@ -624,9 +625,6 @@
 </div>
   <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
   </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
-  </div>
 
     </div>
   </footer>
@@ -636,7 +634,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   

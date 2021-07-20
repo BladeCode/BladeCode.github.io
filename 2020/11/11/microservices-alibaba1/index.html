@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="曾几何时，市面上对于微服务，分两个派系，一个派系以阿里为主的 Dubbo 生态体系，还有一派以 Spring Cloud 生态为主的体系，这两个系列的讨论也一直没有停息过。但现在 Spring Cloud Alibaba 的出现，提供了一整套构建分布式应用开发的微服务组件，由于这些组件是构建在原生的 Spring Cloud 之上，因此其服务治理方面的能力可认为是 Spring Cloud Plu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务架构 - Alibaba 生态整合（一）">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1616514430/blog/gradle-openjre.png">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1616515361/blog/centos-openjdk.png">
 <meta property="article:published_time" content="2020-11-11T07:10:00.000Z">
-<meta property="article:modified_time" content="2021-07-19T01:56:33.815Z">
+<meta property="article:modified_time" content="2021-07-20T06:34:10.594Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="Microservices">
 <meta property="article:tag" content="Alibaba">
@@ -106,9 +106,10 @@
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pby8="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3JnLw=="><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmcv"><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
+        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
+        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
+        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
+        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
@@ -313,7 +314,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-19 01:56:33" itemprop="dateModified" datetime="2021-07-19T01:56:33+00:00">2021-07-19</time>
+        <time title="修改时间：2021-07-20 06:34:10" itemprop="dateModified" datetime="2021-07-20T06:34:10+00:00">2021-07-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -361,7 +362,7 @@
         <p>曾几何时，市面上对于微服务，分两个派系，一个派系以阿里为主的 Dubbo 生态体系，还有一派以 Spring Cloud 生态为主的体系，这两个系列的讨论也一直没有停息过。但现在 Spring Cloud Alibaba 的出现，提供了一整套构建分布式应用开发的微服务组件，由于这些组件是构建在原生的 Spring Cloud 之上，因此其服务治理方面的能力可认为是 Spring Cloud Plus， 不仅完全覆盖 Spring Cloud 原生特性，而且提供更为稳定和成熟的实现。那么从本系列就开始跟着我一起用阿里系的应用搭建分布式微服务应用，满足企业级的应用需要，而不是停留在 Dome 级别的应用框架使用。废话不多说，我们一起开始这一系列的实践</p>
 <span id="more"></span>
 <p>本篇文章主要讲一讲在构建分布式微服务应用时，经常遇到的问题以及对于同类型组件选择，以及在开发过程中相关问题的思考，对于在整个应用开发过程中，开发人员应该怎么去配合等等，那第一个问题是面对我们的业务场景该如何去做技术选型，我们先看 Spring 官方经典的微服务架构图</p>
-<p><img data-src="https://spring.io/images/diagram-microservices-88e01c7d34c688cb49556435c130d352.svg" alt=""></p>
+<p><img src="https://spring.io/images/diagram-microservices-88e01c7d34c688cb49556435c130d352.svg" alt=""></p>
 <p>微服务的核心组件由：网关，服务注册发现，服务配置，熔断限流等组成</p>
 <div class="note info"><p>注意这里微服务主要以 <code>Alibaba</code> 系相关的开源组件为基础构建，并非是 <a target="_blank" rel="noopener" href="https://github.com/alibaba/spring-cloud-alibaba"><code>Spring Cloud Alibaba</code></a> 项目的照搬，而是基于企业实际业务需求的抽象整合，只为提高效率、总结编程套路以及提升编程思想</p>
 </div>
@@ -379,10 +380,10 @@
 <li>部署发布：<span class="exturl" data-url="aHR0cHM6Ly93d3cuZG9ja2VyLmNvbQ==">Docker<i class="fa fa-external-link-alt"></i></span> + <span class="exturl" data-url="aHR0cHM6Ly93d3cuc29uYXR5cGUuY29tL25leHVzL3JlcG9zaXRvcnktb3Nz">Nexus Repository OSS<i class="fa fa-external-link-alt"></i></span></li>
 <li>运维监控：<span class="exturl" data-url="aHR0cHM6Ly9wcm9tZXRoZXVzLmlv">Prometheus<i class="fa fa-external-link-alt"></i></span> + <span class="exturl" data-url="aHR0cHM6Ly9ncmFmYW5hLmNvbQ==">Grafana<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1616294894/blog/Spring-Cloud-Alibaba.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616294894/blog/Spring-Cloud-Alibaba.png" alt=""></p>
 <h2 id="SpringCloud-VS-SpringCloud-Alibaba"><a class="header-anchor" href="#SpringCloud-VS-SpringCloud-Alibaba"></a>SpringCloud VS SpringCloud Alibaba</h2>
 <p>这里我汇总到表格中，方便查看比较</p>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1616302368/blog/Spring_Cloud_VS_Spring_Cloud_Alibaba.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616302368/blog/Spring_Cloud_VS_Spring_Cloud_Alibaba.png" alt=""></p>
 <h2 id="相关问题"><a class="header-anchor" href="#相关问题"></a>相关问题</h2>
 <h3 id="JDK"><a class="header-anchor" href="#JDK"></a>JDK</h3>
 <h4 id="OpenJDK"><a class="header-anchor" href="#OpenJDK"></a>OpenJDK</h4>
@@ -508,10 +509,10 @@ TCK：Technology Compatibility Kit，技术兼容性套件（TCK）是一套测�
 <h4 id="两者的区别"><a class="header-anchor" href="#两者的区别"></a>两者的区别</h4>
 <h4 id="问题"><a class="header-anchor" href="#问题"></a>问题</h4>
 <p>有人会说了，这有啥好说的，我们在公司开发都是用 OracleJDK 的。曾经我也以为这两个区别不是很大，看公司的使用情况了，直到我使用了 CentOS 7 系统默认带的 OpenJDK 来编译 Gradle 项目，死活是编译不过，总是提醒我找不到 <code>tools.jar</code> 包。有图有真相</p>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1616514430/blog/gradle-openjre.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616514430/blog/gradle-openjre.png" alt=""></p>
 <p>一开始，我把以为是环境配置的问题，但是经过一番折腾，卸载了自带的 OpenJDK，然后再用 <code>yum install java</code> 命令去安装 OpenJDK，发现并不是环境的问题，而是系统自带的这个 OpenJDK 是 JRE，所以并没有包含 <code>tools.jar</code> 文件。所以这个问题就是你系统 JDK 的问题了。建议卸载 JRE，重新安装 JDK</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以先查找 JDK，下面命令是我查找 java-1.8 的相关应用</span></span><br><span class="line">yum search java-1.8 | grep -i --color JDK</span><br><span class="line"><span class="comment"># 也可以直接安装 JDK，比如我这里提供的 java-1.8.0-openjdk-devel.x86_64</span></span><br><span class="line">yum install java-1.8.0-openjdk-devel.x86_64</span><br></pre></td></tr></table></figure>
-<p><img data-src="https://res.cloudinary.com/incoder/image/upload/v1616515361/blog/centos-openjdk.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616515361/blog/centos-openjdk.png" alt=""></p>
 <h3 id="Gradle-or-Maven"><a class="header-anchor" href="#Gradle-or-Maven"></a>Gradle or Maven</h3>
 <p>关于如何使用 Gradle 构建项目，以及使用 Gradle 配置符合企业敏捷开发需求，可查看我的 <a href="https://incoder.org/tags/Gradle">Gradle</a> 系列的文章</p>
 <h3 id="jar-与-bootJar"><a class="header-anchor" href="#jar-与-bootJar"></a>jar 与 bootJar</h3>
@@ -619,12 +620,12 @@ TCK：Technology Compatibility Kit，技术兼容性套件（TCK）是一套测�
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://twitter.com/_incoder">
+        <a target="_blank" class="social-link" href="https://incoder.slack.com">
           <span class="icon">
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-slack"></i>
           </span>
 
-          <span class="label">Twitter</span>
+          <span class="label">Slack</span>
         </a>
       </div>
 
@@ -712,9 +713,6 @@ TCK：Technology Compatibility Kit，技术兼容性套件（TCK）是一套测�
 </div>
   <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9tdXNlLw==">NexT.Muse</span> 强力驱动
   </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ca8705bf505f047" async="async"></script>
-  </div>
 
     </div>
   </footer>
@@ -724,7 +722,6 @@ TCK：Technology Compatibility Kit，技术兼容性套件（TCK）是一套测�
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
