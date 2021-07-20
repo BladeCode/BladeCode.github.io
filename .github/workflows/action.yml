@@ -24,6 +24,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.CI_TOKEN }}
-          external_repository: BladeCode/BladeCode.github.io.git
+          external_repository: BladeCode/BladeCode.github.io
           publish_branch: master
           publish_dir: ./public
