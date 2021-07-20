@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - hexo
+      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
