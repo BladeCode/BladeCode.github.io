@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
@@ -17,14 +17,15 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
-<meta name="description" content="随着云产品的普及推广，各路国际大场也是纷纷推出了相关云产品的试用，其中具有代表性的Google Cloud，Amazon，本篇主要讲解Googel Cloud产品的试用，并搭建SSR服务">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.12.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="随着云产品的普及推广，各路国际大场也是纷纷推出了相关云产品的试用，其中具有代表性的Google Cloud，Amazon，本篇主要讲解Googel Cloud产品的试用，并搭建SSR服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google Cloud Platform for VPN">
 <meta property="og:url" content="https://incoder.org/2018/11/07/cloud-gcp/index.html">
@@ -58,7 +59,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1542556345/blog/gcp-link-vm-ssh-finish.png">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1574530585/blog/gcp-v2ray-install.png">
 <meta property="article:published_time" content="2018-11-07T14:43:46.000Z">
-<meta property="article:modified_time" content="2021-07-20T06:45:09.400Z">
+<meta property="article:modified_time" content="2022-06-05T15:06:37.561Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="vpn">
 <meta name="twitter:card" content="summary">
@@ -77,6 +78,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
+
 
 
 
@@ -105,7 +107,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">BladeCode</h1>
+      <p class="site-title">BladeCode</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
@@ -121,16 +123,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">43</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">105</span></a></li><li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li><li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li><li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li><li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -187,13 +180,12 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCP"><span class="nav-number">2.</span> <span class="nav-text">GCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7Google-Cloud-Platform"><span class="nav-number">2.1.</span> <span class="nav-text">申请Google Cloud Platform</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VM%E5%88%9B%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">VM创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAVM%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">创建VM实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5VM"><span class="nav-number">4.</span> <span class="nav-text">连接VM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Xshell"><span class="nav-number">4.1.</span> <span class="nav-text">使用Xshell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90"><span class="nav-number">4.1.1.</span> <span class="nav-text">密钥生成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GCP%E6%B7%BB%E5%8A%A0%E5%AF%86%E9%92%A5"><span class="nav-number">4.1.2.</span> <span class="nav-text">GCP添加密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Xshell-%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.1.3.</span> <span class="nav-text">Xshell 连接服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-iTerm"><span class="nav-number">4.2.</span> <span class="nav-text">使用 iTerm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7"><span class="nav-number">5.1.</span> <span class="nav-text">内核升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1"><span class="nav-number">5.2.</span> <span class="nav-text">选择安装服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR"><span class="nav-number">6.</span> <span class="nav-text">SSR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SSR"><span class="nav-number">6.1.</span> <span class="nav-text">安装SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#span-id-%E4%BF%AE%E6%94%B9SSR%E9%85%8D%E7%BD%AE-%E4%BF%AE%E6%94%B9-SSR-%E9%85%8D%E7%BD%AE-span"><span class="nav-number">6.2.</span> <span class="nav-text">修改 SSR 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD-SSR"><span class="nav-number">6.3.</span> <span class="nav-text">卸载 SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSR-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">6.4.</span> <span class="nav-text">SSR 常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#span-id-v2ray-v2ray-span"><span class="nav-number">7.</span> <span class="nav-text">v2ray</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%A0%A1%E5%87%86"><span class="nav-number">7.1.</span> <span class="nav-text">时间校准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-v2ray"><span class="nav-number">7.2.</span> <span class="nav-text">安装 v2ray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">7.3.</span> <span class="nav-text">配置修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">7.4.</span> <span class="nav-text">客户端连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">8.</span> <span class="nav-text">问题排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">9.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">10.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCP"><span class="nav-number">2.</span> <span class="nav-text">GCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7Google-Cloud-Platform"><span class="nav-number">2.1.</span> <span class="nav-text">申请Google Cloud Platform</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VM%E5%88%9B%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">VM创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAVM%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">创建VM实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5VM"><span class="nav-number">4.</span> <span class="nav-text">连接VM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Xshell"><span class="nav-number">4.1.</span> <span class="nav-text">使用Xshell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E7%94%9F%E6%88%90"><span class="nav-number">4.1.1.</span> <span class="nav-text">密钥生成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GCP%E6%B7%BB%E5%8A%A0%E5%AF%86%E9%92%A5"><span class="nav-number">4.1.2.</span> <span class="nav-text">GCP添加密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Xshell-%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.1.3.</span> <span class="nav-text">Xshell 连接服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-iTerm"><span class="nav-number">4.2.</span> <span class="nav-text">使用 iTerm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7"><span class="nav-number">5.1.</span> <span class="nav-text">内核升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1"><span class="nav-number">5.2.</span> <span class="nav-text">选择安装服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSR"><span class="nav-number">6.</span> <span class="nav-text">SSR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SSR"><span class="nav-number">6.1.</span> <span class="nav-text">安装SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#span-id-%E4%BF%AE%E6%94%B9SSR%E9%85%8D%E7%BD%AE-%E4%BF%AE%E6%94%B9-SSR-%E9%85%8D%E7%BD%AE-span"><span class="nav-number">6.2.</span> <span class="nav-text">修改 SSR 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD-SSR"><span class="nav-number">6.3.</span> <span class="nav-text">卸载 SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSR-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">6.4.</span> <span class="nav-text">SSR 常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#span-id-v2ray-v2ray-span"><span class="nav-number">7.</span> <span class="nav-text">v2ray</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%A0%A1%E5%87%86"><span class="nav-number">7.1.</span> <span class="nav-text">时间校准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-v2ray"><span class="nav-number">7.2.</span> <span class="nav-text">安装 v2ray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">7.3.</span> <span class="nav-text">配置修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">7.4.</span> <span class="nav-text">客户端连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">8.</span> <span class="nav-text">问题排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">9.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95-v6"><span class="nav-number">10.</span> <span class="nav-text">附录</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
-          <div class="site-overview">
-            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jerry xu"
       src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
   <p class="site-author-name" itemprop="name">Jerry xu</p>
@@ -202,22 +194,19 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">104</span>
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">42</span>
+          <a href="/categories/">
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">73</span>
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -240,7 +229,7 @@
       </span>
   </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -270,7 +259,6 @@
     </ul>
   </div>
 
-          </div>
         </div>
       </div>
     </div>
@@ -308,11 +296,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
       <meta itemprop="name" content="Jerry xu">
-      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="BladeCode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Google Cloud Platform for VPN | BladeCode">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -329,13 +322,13 @@
 
       <time title="创建时间：2018-11-07 14:43:46" itemprop="dateCreated datePublished" datetime="2018-11-07T14:43:46+00:00">2018-11-07</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-20 06:45:09" itemprop="dateModified" datetime="2021-07-20T06:45:09+00:00">2021-07-20</time>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
       </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-05 15:06:37" itemprop="dateModified" datetime="2022-06-05T15:06:37+00:00">2022-06-05</time>
+    </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -354,8 +347,7 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-      </div>
-      <div class="post-meta">
+    <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
@@ -477,18 +469,18 @@
 </blockquote>
 <h2 id="准备工作"><a class="header-anchor" href="#准备工作"></a>准备工作</h2>
 <h3 id="内核升级"><a class="header-anchor" href="#内核升级"></a>内核升级</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到root用户</span></span><br><span class="line">sudo -i</span><br><span class="line"><span class="comment"># 安装wget</span></span><br><span class="line">yum install -y wget</span><br><span class="line"><span class="comment"># 安装bbr</span></span><br><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</span><br><span class="line"><span class="comment"># 给bbr.sh文件设置权限</span></span><br><span class="line">chmod +x bbr.sh</span><br><span class="line"><span class="comment"># 启动bbr.sh脚本</span></span><br><span class="line">./bbr.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到root用户</span></span><br><span class="line">sudo -i</span><br><span class="line"><span class="comment"># 安装wget</span></span><br><span class="line">yum install -y wget</span><br><span class="line"><span class="comment"># 安装bbr</span></span><br><span class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</span><br><span class="line"><span class="comment"># 给bbr.sh文件设置权限</span></span><br><span class="line"><span class="built_in">chmod</span> +x bbr.sh</span><br><span class="line"><span class="comment"># 启动bbr.sh脚本</span></span><br><span class="line">./bbr.sh</span><br></pre></td></tr></table></figure>
 <p>执行<code>./bbr.sh</code>安装过程如下<br>
 <img src="https://res.cloudinary.com/incoder/image/upload/v1574528726/blog/gcp-centos-bbr.png" alt="gcp-centos-bbr"></p>
 <p>执行完成后，会提示，输入<code>y</code>并<code>回车</code>后重启，这时需要等待几分钟</p>
 <p>重启完成后，重新连接服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到root用户</span></span><br><span class="line">sudo -i</span><br><span class="line"><span class="comment"># 查看内核（版本大于4.13或以上版本，就表示OK）</span></span><br><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到root用户</span></span><br><span class="line">sudo -i</span><br><span class="line"><span class="comment"># 查看内核（版本大于4.13或以上版本，就表示OK）</span></span><br><span class="line"><span class="built_in">uname</span> -r</span><br></pre></td></tr></table></figure>
 <h3 id="选择安装服务"><a class="header-anchor" href="#选择安装服务"></a>选择安装服务</h3>
 <p>对于 SSR 和 v2ray <strong>都</strong>可以提供不可描述的服务，由于v2ray 功能更加强大，并且更加隐蔽，不易被发现，因此<font color=red>极力推荐使用 v2ray </font>方式</p>
 <h2 id="SSR"><a class="header-anchor" href="#SSR"></a>SSR</h2>
 <p>通过以上的配置，我们可以使用Xshell进行SSR工具的安装，安装SSR工具前，需要先升级系统内核，按照如下执行命令</p>
 <h3 id="安装SSR"><a class="header-anchor" href="#安装SSR"></a>安装SSR</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到root用户</span></span><br><span class="line">sudo -i</span><br><span class="line"><span class="comment"># wget设置</span></span><br><span class="line">wget --no-check-certificate -O shadowsocks-all.sh</span><br><span class="line"><span class="comment"># 下载安装SSR</span></span><br><span class="line">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br><span class="line">chmod +x shadowsocks-all.sh</span><br><span class="line"><span class="comment"># 执行SSR运行脚本</span></span><br><span class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到root用户</span></span><br><span class="line">sudo -i</span><br><span class="line"><span class="comment"># wget设置</span></span><br><span class="line">wget --no-check-certificate -O shadowsocks-all.sh</span><br><span class="line"><span class="comment"># 下载安装SSR</span></span><br><span class="line">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br><span class="line"><span class="built_in">chmod</span> +x shadowsocks-all.sh</span><br><span class="line"><span class="comment"># 执行SSR运行脚本</span></span><br><span class="line">./shadowsocks-all.sh 2&gt;&amp;1 | <span class="built_in">tee</span> shadowsocks-all.log</span><br></pre></td></tr></table></figure>
 <p>安装过程步骤如下：</p>
 <ul>
 <li>选择版本：推荐ShadowsocksR，输入<code>2</code></li>
@@ -515,7 +507,7 @@
 <h2 id="span-id-v2ray-v2ray-span"><a class="header-anchor" href="#span-id-v2ray-v2ray-span"></a><span id = "v2ray">v2ray</span></h2>
 <h3 id="时间校准"><a class="header-anchor" href="#时间校准"></a>时间校准</h3>
 <p>对于 v2ray，它的验证方式包含时间，就算是配置没有任何问题，如果时间不正确，也无法连接 v2ray 服务器的，服务器会认为你这是不合法的请求。所以系统时间一定要正确，只要保证时间误差在90秒之内就没问题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 VPS 时间</span></span><br><span class="line">date -R</span><br><span class="line"><span class="comment"># +0000表示时区</span></span><br><span class="line">Sat, 23 Nov 2019 17:21:50 +0000</span><br><span class="line"><span class="comment"># 将系统服务时间设置成本地时间</span></span><br><span class="line">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line"><span class="comment"># 检查服务器系统时间是否和本地时间一样</span></span><br><span class="line">date -R</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 VPS 时间</span></span><br><span class="line"><span class="built_in">date</span> -R</span><br><span class="line"><span class="comment"># +0000表示时区</span></span><br><span class="line">Sat, 23 Nov 2019 17:21:50 +0000</span><br><span class="line"><span class="comment"># 将系统服务时间设置成本地时间</span></span><br><span class="line"><span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line"><span class="comment"># 检查服务器系统时间是否和本地时间一样</span></span><br><span class="line"><span class="built_in">date</span> -R</span><br></pre></td></tr></table></figure>
 <h3 id="安装-v2ray"><a class="header-anchor" href="#安装-v2ray"></a>安装 v2ray</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装脚本</span></span><br><span class="line">bash &lt;(curl -L -s https://install.direct/go.sh)</span><br><span class="line"><span class="comment"># 安装完成，v2ray 并不会自动运行，因此需要手动启动服务</span></span><br><span class="line">sudo systemctl start v2ray</span><br><span class="line"><span class="comment"># 查看 v2ray 运行状态</span></span><br><span class="line">service v2ray status</span><br></pre></td></tr></table></figure>
 <p>基本文件安装路径地址</p>
@@ -570,7 +562,7 @@
 每个月可用流量：$300-$5*12=$240/12/0.23 ≈ 86G</li>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9mb2xkZXIvYnRrZGJ4N2o5bHI5OC9TaGFkb3dzb2Nrc18lRTclOUIlQjglRTUlODUlQjMlRTUlQUUlQTIlRTYlODglQjclRTclQUIlQUYjbXlmaWxlcw==">SSR客户端<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<h2 id="附录-v6"><a class="header-anchor" href="#附录-v6"></a>附录</h2>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cud21zb2hvLmNvbS9nb29nbGUtY2xvdWQtcGxhdGZvcm0tc3NyLWJici10dXRvcmlhbA==">Google Cloud Platform免费申请&amp;一键搭建SSR &amp; BBR加速教程<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVsdHIuY29tL3R1dG9yaWFscy92cHMvMjMwMy5odG1s">Google Cloud使用VM虚拟机详细操作指南<i class="fa fa-external-link-alt"></i></span></li>
@@ -696,7 +688,7 @@
 
 <div class="copyright">
   &copy; 2018 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -708,7 +700,7 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">350k</span>
+    <span title="站点总字数">351k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
@@ -725,21 +717,23 @@
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.1/mermaid.min.js","integrity":"sha256-8L3O8tirFUa8Va4NSTAyIbHJeLd6OnlcxgupV9F77e0="}}</script>
   <script src="/js/third-party/tags/mermaid.js"></script>
 
-  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
-  <script src="/js/third-party/nprogress.js"></script>
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
 
   
 

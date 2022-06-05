@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
@@ -17,14 +17,15 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
-<meta name="description" content="在实际开发过程中，不管是服务端（Java），还是客户端（Android）都需要创建对应的实例bean对象，用来实例化对象，在对需要实例化的对象中，通常需要写 set，get 方法，字段少的时候，还能忍受，尤其当客户端字段多的时候，而且字段类型或者字段名称来回改动时，稍不注意，就很大机率修改不全面，就会造成一些隐藏bug，有没有不需要手动取写（快捷键生成）这些方法，当然有，本片文章，我们就来学习 L">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.12.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在实际开发过程中，不管是服务端（Java），还是客户端（Android）都需要创建对应的实例bean对象，用来实例化对象，在对需要实例化的对象中，通常需要写 set，get 方法，字段少的时候，还能忍受，尤其当客户端字段多的时候，而且字段类型或者字段名称来回改动时，稍不注意，就很大机率修改不全面，就会造成一些隐藏bug，有没有不需要手动取写（快捷键生成）这些方法，当然有，本片文章，我们就来学习 L">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lombok">
 <meta property="og:url" content="https://incoder.org/2019/08/21/lombok/index.html">
@@ -34,7 +35,7 @@
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1566701581/blog/idea-annotation-processors.png">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1567324868/blog/lombok-error.png">
 <meta property="article:published_time" content="2019-08-21T22:00:46.000Z">
-<meta property="article:modified_time" content="2021-07-20T06:45:09.404Z">
+<meta property="article:modified_time" content="2022-06-05T15:06:37.565Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="Util">
 <meta name="twitter:card" content="summary">
@@ -53,6 +54,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
+
 
 
 
@@ -81,7 +83,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">BladeCode</h1>
+      <p class="site-title">BladeCode</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
@@ -97,16 +99,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">43</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">105</span></a></li><li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li><li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li><li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li><li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -163,13 +156,12 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%9B%86%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">安装集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%B3%E5%AE%9A%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">稳定注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#val"><span class="nav-number">2.1.</span> <span class="nav-text">val</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">2.2.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NonNull"><span class="nav-number">2.3.</span> <span class="nav-text">@NonNull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cleanup"><span class="nav-number">2.4.</span> <span class="nav-text">@Cleanup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter-Setter"><span class="nav-number">2.5.</span> <span class="nav-text">@Getter&#x2F;@Setter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ToString"><span class="nav-number">2.6.</span> <span class="nav-text">@ToString</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EqualsAndHashCode"><span class="nav-number">2.7.</span> <span class="nav-text">@EqualsAndHashCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor"><span class="nav-number">2.8.</span> <span class="nav-text">Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data"><span class="nav-number">2.9.</span> <span class="nav-text">@Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value"><span class="nav-number">2.10.</span> <span class="nav-text">@Value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Builder"><span class="nav-number">2.11.</span> <span class="nav-text">@Builder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SneakyThrows"><span class="nav-number">2.12.</span> <span class="nav-text">@SneakyThrows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized"><span class="nav-number">2.13.</span> <span class="nav-text">@Synchronized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter-lazy-true"><span class="nav-number">2.14.</span> <span class="nav-text">@Getter(lazy&#x3D;true)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log"><span class="nav-number">2.15.</span> <span class="nav-text">@Log</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">实验注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accessors"><span class="nav-number">3.1.</span> <span class="nav-text">@Accessors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExtensionMethod"><span class="nav-number">3.2.</span> <span class="nav-text">@ExtensionMethod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldDefaults"><span class="nav-number">3.3.</span> <span class="nav-text">@FieldDefaults</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delegate"><span class="nav-number">3.4.</span> <span class="nav-text">@Delegate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wither"><span class="nav-number">3.5.</span> <span class="nav-text">@Wither</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onX"><span class="nav-number">3.6.</span> <span class="nav-text">onX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UtilityClass"><span class="nav-number">3.7.</span> <span class="nav-text">UtilityClass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Helper"><span class="nav-number">3.8.</span> <span class="nav-text">Helper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldNameConstants"><span class="nav-number">3.9.</span> <span class="nav-text">FieldNameConstants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SuperBuilder"><span class="nav-number">3.10.</span> <span class="nav-text">SuperBuilder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">进阶配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%9B%86%E6%88%90"><span class="nav-number">1.</span> <span class="nav-text">安装集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%B3%E5%AE%9A%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">稳定注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#val"><span class="nav-number">2.1.</span> <span class="nav-text">val</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">2.2.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NonNull"><span class="nav-number">2.3.</span> <span class="nav-text">@NonNull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cleanup"><span class="nav-number">2.4.</span> <span class="nav-text">@Cleanup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter-Setter"><span class="nav-number">2.5.</span> <span class="nav-text">@Getter&#x2F;@Setter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ToString"><span class="nav-number">2.6.</span> <span class="nav-text">@ToString</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EqualsAndHashCode"><span class="nav-number">2.7.</span> <span class="nav-text">@EqualsAndHashCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor"><span class="nav-number">2.8.</span> <span class="nav-text">Constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data"><span class="nav-number">2.9.</span> <span class="nav-text">@Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value"><span class="nav-number">2.10.</span> <span class="nav-text">@Value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Builder"><span class="nav-number">2.11.</span> <span class="nav-text">@Builder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SneakyThrows"><span class="nav-number">2.12.</span> <span class="nav-text">@SneakyThrows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized"><span class="nav-number">2.13.</span> <span class="nav-text">@Synchronized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter-lazy-true"><span class="nav-number">2.14.</span> <span class="nav-text">@Getter(lazy&#x3D;true)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log"><span class="nav-number">2.15.</span> <span class="nav-text">@Log</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">实验注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accessors"><span class="nav-number">3.1.</span> <span class="nav-text">@Accessors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExtensionMethod"><span class="nav-number">3.2.</span> <span class="nav-text">@ExtensionMethod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldDefaults"><span class="nav-number">3.3.</span> <span class="nav-text">@FieldDefaults</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delegate"><span class="nav-number">3.4.</span> <span class="nav-text">@Delegate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wither"><span class="nav-number">3.5.</span> <span class="nav-text">@Wither</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onX"><span class="nav-number">3.6.</span> <span class="nav-text">onX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UtilityClass"><span class="nav-number">3.7.</span> <span class="nav-text">UtilityClass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Helper"><span class="nav-number">3.8.</span> <span class="nav-text">Helper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FieldNameConstants"><span class="nav-number">3.9.</span> <span class="nav-text">FieldNameConstants</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SuperBuilder"><span class="nav-number">3.10.</span> <span class="nav-text">SuperBuilder</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">进阶配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-v8"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-v4"><span class="nav-number">5.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
-          <div class="site-overview">
-            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jerry xu"
       src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
   <p class="site-author-name" itemprop="name">Jerry xu</p>
@@ -178,22 +170,19 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">104</span>
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">42</span>
+          <a href="/categories/">
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">73</span>
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -216,7 +205,7 @@
       </span>
   </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -246,7 +235,6 @@
     </ul>
   </div>
 
-          </div>
         </div>
       </div>
     </div>
@@ -284,11 +272,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
       <meta itemprop="name" content="Jerry xu">
-      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="BladeCode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Lombok | BladeCode">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -305,13 +298,13 @@
 
       <time title="创建时间：2019-08-21 22:00:46" itemprop="dateCreated datePublished" datetime="2019-08-21T22:00:46+00:00">2019-08-21</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-20 06:45:09" itemprop="dateModified" datetime="2021-07-20T06:45:09+00:00">2021-07-20</time>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
       </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-05 15:06:37" itemprop="dateModified" datetime="2022-06-05T15:06:37+00:00">2022-06-05</time>
+    </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -330,8 +323,7 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-      </div>
-      <div class="post-meta">
+    <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
@@ -375,7 +367,7 @@ Never write another getter or equals method again, with one annotation your clas
 <li>0.10版本加入该功能</li>
 <li>使用场景：局部变量声明</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x 将被推断为 double 类型，并且是final</span></span><br><span class="line">val x = <span class="number">10.0</span>;</span><br><span class="line"><span class="comment">// y 将被推断为 ArrayList&lt;String&gt; 类型，并且是final</span></span><br><span class="line">val y = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"><span class="comment">// z 将被转换为 final int z = 10;</span></span><br><span class="line">val z = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x 将被推断为 double 类型，并且是final</span></span><br><span class="line"><span class="type">val</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">10.0</span>;</span><br><span class="line"><span class="comment">// y 将被推断为 ArrayList&lt;String&gt; 类型，并且是final</span></span><br><span class="line"><span class="type">val</span> <span class="variable">y</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line"><span class="comment">// z 将被转换为 final int z = 10;</span></span><br><span class="line"><span class="type">val</span> <span class="variable">z</span> <span class="operator">=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>官方示例<span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0bG9tYm9rLm9yZy9mZWF0dXJlcy92YWw=">val<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
@@ -385,7 +377,7 @@ Never write another getter or equals method again, with one annotation your clas
 <li>1.16.20版本加入该功能</li>
 <li>使用场景：局部变量声明</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x 将被推断为double，转换为 double x = 10.0d;</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">10.0</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x 将被推断为double，转换为 double x = 10.0d;</span></span><br><span class="line"><span class="type">var</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">10.0</span>;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>官方示例<span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0bG9tYm9rLm9yZy9mZWF0dXJlcy92YXI=">var<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
@@ -403,7 +395,7 @@ Never write another getter or equals method again, with one annotation your clas
 <ul>
 <li>支持局部变量</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(String in, String out)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="meta">@Cleanup</span> FileInputStream inStream = <span class="keyword">new</span> FileInputStream(in);</span><br><span class="line">    <span class="meta">@Cleanup</span> FileOutputStream outStream = <span class="keyword">new</span> FileOutputStream(out);</span><br><span class="line">    <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">65536</span>];</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> r = inStream.read(b);</span><br><span class="line">        <span class="keyword">if</span> (r == -<span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        outStream.write(b, <span class="number">0</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">copyFile</span><span class="params">(String in, String out)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="meta">@Cleanup</span> <span class="type">FileInputStream</span> <span class="variable">inStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(in);</span><br><span class="line">    <span class="meta">@Cleanup</span> <span class="type">FileOutputStream</span> <span class="variable">outStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(out);</span><br><span class="line">    <span class="type">byte</span>[] b = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">65536</span>];</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> inStream.read(b);</span><br><span class="line">        <span class="keyword">if</span> (r == -<span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        outStream.write(b, <span class="number">0</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>官方示例<span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0bG9tYm9rLm9yZy9mZWF0dXJlcy9DbGVhbnVw">@Cleanup<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
@@ -425,7 +417,7 @@ Never write another getter or equals method again, with one annotation your clas
 <li>doNotUseGetters，默认false：通常情况下，如果有可用的getter，那么就会调用它们。要禁止此操作并让生成的代码直接使用这些字段，请将其设置为true</li>
 <li>onlyExplicitlyIncluded，默认false：仅包含用明确标记的字段和方法。通常，默认情况下包含所有（非静态）字段</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 排除该字段一同生成在 toString()方法中</span></span><br><span class="line"><span class="meta">@ToString</span>.Exclude </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line"><span class="comment">// 配置在toString中呈现此成员的行为；如果在方法上，请在输出中包含方法的返回值</span></span><br><span class="line"><span class="comment">// rank(默认为0)：首先打印更高的等级。相同级别的成员按照它们在源文件中出现的顺序打印</span></span><br><span class="line"><span class="comment">// name(默认为&quot;&quot;)：默认为带注释的成员的 字段/方法 名称。如果名称等于默认包含字段的名称，则此成员将取代它</span></span><br><span class="line"><span class="meta">@ToString</span>.Include(rank = <span class="number">0</span>, name = <span class="string">&quot;&quot;</span>)</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> id;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 排除该字段一同生成在 toString()方法中</span></span><br><span class="line"><span class="meta">@ToString</span>.Exclude </span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"><span class="comment">// 配置在toString中呈现此成员的行为；如果在方法上，请在输出中包含方法的返回值</span></span><br><span class="line"><span class="comment">// rank(默认为0)：首先打印更高的等级。相同级别的成员按照它们在源文件中出现的顺序打印</span></span><br><span class="line"><span class="comment">// name(默认为&quot;&quot;)：默认为带注释的成员的 字段/方法 名称。如果名称等于默认包含字段的名称，则此成员将取代它</span></span><br><span class="line"><span class="meta">@ToString</span>.Include(rank = <span class="number">0</span>, name = <span class="string">&quot;&quot;</span>)</span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> id;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>官方示例<span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0bG9tYm9rLm9yZy9mZWF0dXJlcy9Ub1N0cmluZw==">@ToString<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
@@ -473,7 +465,7 @@ Never write another getter or equals method again, with one annotation your clas
 <li>捕获或抛出方法主体中语句声明它们生成的任何已检查异常</li>
 <li>SneakyThrows不会下沉，封装到RuntimeException中，或者以其他方式修改列出的已检查异常类型的任何异常</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lombok 写法</span></span><br><span class="line"><span class="meta">@SneakyThrows(UnsupportedEncodingException.class)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">utf8ToString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(bytes, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等价于下面写法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">utf8ToString</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">new</span> String(bytes, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (UnsupportedEncodingException $uniqueName) &#123;</span><br><span class="line">           <span class="keyword">throw</span> useMagicTrickeryToHideThisFromTheCompiler($uniqueName);</span><br><span class="line">           <span class="comment">// This trickery involves a bytecode transformer run automatically during the final stages of compilation;</span></span><br><span class="line">           <span class="comment">// there is no runtime dependency on lombok.</span></span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lombok 写法</span></span><br><span class="line"><span class="meta">@SneakyThrows(UnsupportedEncodingException.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">utf8ToString</span><span class="params">(<span class="type">byte</span>[] bytes)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(bytes, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等价于下面写法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">utf8ToString</span><span class="params">(<span class="type">byte</span>[] bytes)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(bytes, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (UnsupportedEncodingException $uniqueName) &#123;</span><br><span class="line">           <span class="keyword">throw</span> useMagicTrickeryToHideThisFromTheCompiler($uniqueName);</span><br><span class="line">           <span class="comment">// This trickery involves a bytecode transformer run automatically during the final stages of compilation;</span></span><br><span class="line">           <span class="comment">// there is no runtime dependency on lombok.</span></span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>官方示例<span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0bG9tYm9rLm9yZy9mZWF0dXJlcy9TbmVha3lUaHJvd3M=">@SneakyThrows<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
@@ -494,21 +486,21 @@ Never write another getter or equals method again, with one annotation your clas
 <h3 id="Log"><a class="header-anchor" href="#Log"></a>@Log</h3>
 <p>注解路径<code>lombok.extern.java</code>路径下，相关的 Log 有已下几种</p>
 <ul>
-<li>@CommonsLog  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(LogExample.class);</span><br></pre></td></tr></table></figure>
+<li>@CommonsLog  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.commons.logging.<span class="type">Log</span> <span class="variable">log</span> <span class="operator">=</span> org.apache.commons.logging.LogFactory.getLog(LogExample.class);</span><br></pre></td></tr></table></figure>
 </li>
-<li>@Flogger  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> com.google.common.flogger.FluentLogger log = com.google.common.flogger.FluentLogger.forEnclosingClass();</span><br></pre></td></tr></table></figure>
+<li>@Flogger  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> com.google.common.flogger.<span class="type">FluentLogger</span> <span class="variable">log</span> <span class="operator">=</span> com.google.common.flogger.FluentLogger.forEnclosingClass();</span><br></pre></td></tr></table></figure>
 </li>
-<li>@JBossLog  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.jboss.logging.Logger log = org.jboss.logging.Logger.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
+<li>@JBossLog  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.jboss.logging.<span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> org.jboss.logging.Logger.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
 </li>
-<li>@Log  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.logging.Logger log = java.util.logging.Logger.getLogger(LogExample.class.getName());</span><br></pre></td></tr></table></figure>
+<li>@Log  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.logging.<span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> java.util.logging.Logger.getLogger(LogExample.class.getName());</span><br></pre></td></tr></table></figure>
 </li>
-<li>@Log4j  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
+<li>@Log4j  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.log4j.<span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> org.apache.log4j.Logger.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
 </li>
-<li>@Log4j2  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
+<li>@Log4j2  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.logging.log4j.<span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> org.apache.logging.log4j.LogManager.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
 </li>
-<li>@Slf4j  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
+<li>@Slf4j  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.<span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> org.slf4j.LoggerFactory.getLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
 </li>
-<li>@XSlf4j  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.ext.XLogger log = org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
+<li>@XSlf4j  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.ext.<span class="type">XLogger</span> <span class="variable">log</span> <span class="operator">=</span> org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -533,11 +525,11 @@ Never write another getter or equals method again, with one annotation your clas
 <h3 id="SuperBuilder"><a class="header-anchor" href="#SuperBuilder"></a>SuperBuilder</h3>
 <h2 id="进阶配置"><a class="header-anchor" href="#进阶配置"></a>进阶配置</h2>
 <p><span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0bG9tYm9rLm9yZy9mZWF0dXJlcy9jb25maWd1cmF0aW9u">Configuration system<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="其他"><a class="header-anchor" href="#其他"></a>其他</h2>
+<h2 id="其他-v8"><a class="header-anchor" href="#其他-v8"></a>其他</h2>
 <p>如果在对Android项目进行升级使用 Lombok 代替原来的写法，在很大程度上还是会遇到如下截图问题<br>
 <img src="https://res.cloudinary.com/incoder/image/upload/v1567324868/blog/lombok-error.png" alt="lombok-error"><br>
 根据提示项目已经开启了 Annotation Processors，但是在每次打开项目都会提示错误信息</p>
-<h3 id="解决方法"><a class="header-anchor" href="#解决方法"></a>解决方法</h3>
+<h3 id="解决方法-v4"><a class="header-anchor" href="#解决方法-v4"></a>解决方法</h3>
 <p>Setting for all projects</p>
 <ol>
 <li>File -&gt; Other Settings -&gt; Settings for new projects -&gt; Build, Execution, Deployment -&gt; Compiler -&gt;Annotation Processors</li>
@@ -670,7 +662,7 @@ Never write another getter or equals method again, with one annotation your clas
 
 <div class="copyright">
   &copy; 2018 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -682,7 +674,7 @@ Never write another getter or equals method again, with one annotation your clas
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">350k</span>
+    <span title="站点总字数">351k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
@@ -699,21 +691,23 @@ Never write another getter or equals method again, with one annotation your clas
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.1/mermaid.min.js","integrity":"sha256-8L3O8tirFUa8Va4NSTAyIbHJeLd6OnlcxgupV9F77e0="}}</script>
   <script src="/js/third-party/tags/mermaid.js"></script>
 
-  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
-  <script src="/js/third-party/nprogress.js"></script>
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
 
   
 

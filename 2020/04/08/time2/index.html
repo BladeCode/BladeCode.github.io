@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-16x16.png">
@@ -17,14 +17,15 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
-<meta name="description" content="上一篇时间（一）文章，我们已经了解学习了时间相关的一些概念和时间相关的其他知识，那么本篇文章开始我们深入在计算机领域中关于时间的相关核心类的知识，先来让我们看看 JSR-310（JDK8+） 和之前（JDK7 之前）的比较">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.12.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="上一篇时间（一）文章，我们已经了解学习了时间相关的一些概念和时间相关的其他知识，那么本篇文章开始我们深入在计算机领域中关于时间的相关核心类的知识，先来让我们看看 JSR-310（JDK8+） 和之前（JDK7 之前）的比较">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间（二）之核心类">
 <meta property="og:url" content="https://incoder.org/2020/04/08/time2/index.html">
@@ -33,7 +34,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1586423539/blog/java-time-vs.png">
 <meta property="article:published_time" content="2020-04-08T22:01:00.000Z">
-<meta property="article:modified_time" content="2021-07-20T06:45:09.408Z">
+<meta property="article:modified_time" content="2022-06-05T15:06:37.565Z">
 <meta property="article:author" content="Jerry xu">
 <meta property="article:tag" content="JDK8">
 <meta property="article:tag" content="Time">
@@ -53,6 +54,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
+
 
 
 
@@ -81,7 +83,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">BladeCode</h1>
+      <p class="site-title">BladeCode</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
@@ -97,16 +99,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a></li>
-        <li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li>
-        <li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li>
-        <li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li>
-        <li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">43</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">105</span></a></li><li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li><li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li><li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li><li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -163,13 +156,12 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK7"><span class="nav-number">1.</span> <span class="nav-text">JDK7</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date"><span class="nav-number">1.1.</span> <span class="nav-text">Date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Calendar"><span class="nav-number">1.2.</span> <span class="nav-text">Calendar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleDateFormat"><span class="nav-number">1.3.</span> <span class="nav-text">SimpleDateFormat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%90%AB%E4%B9%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">格式化示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TimeZone"><span class="nav-number">1.4.</span> <span class="nav-text">TimeZone</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK8"><span class="nav-number">2.</span> <span class="nav-text">JDK8+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clock"><span class="nav-number">2.1.</span> <span class="nav-text">Clock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instant"><span class="nav-number">2.2.</span> <span class="nav-text">Instant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalDate"><span class="nav-number">2.3.</span> <span class="nav-text">LocalDate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalTime"><span class="nav-number">2.4.</span> <span class="nav-text">LocalTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalDateTime"><span class="nav-number">2.5.</span> <span class="nav-text">LocalDateTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OffsetTime"><span class="nav-number">2.6.</span> <span class="nav-text">OffsetTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OffsetDateTime"><span class="nav-number">2.7.</span> <span class="nav-text">OffsetDateTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZonedDateTime"><span class="nav-number">2.8.</span> <span class="nav-text">ZonedDateTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZoneId"><span class="nav-number">2.9.</span> <span class="nav-text">ZoneId</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Year"><span class="nav-number">2.10.</span> <span class="nav-text">Year</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Month"><span class="nav-number">2.11.</span> <span class="nav-text">Month</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DayOfWeek"><span class="nav-number">2.12.</span> <span class="nav-text">DayOfWeek</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MonthDay"><span class="nav-number">2.13.</span> <span class="nav-text">MonthDay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#YearMonth"><span class="nav-number">2.14.</span> <span class="nav-text">YearMonth</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK7"><span class="nav-number">1.</span> <span class="nav-text">JDK7</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date"><span class="nav-number">1.1.</span> <span class="nav-text">Date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Calendar"><span class="nav-number">1.2.</span> <span class="nav-text">Calendar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleDateFormat"><span class="nav-number">1.3.</span> <span class="nav-text">SimpleDateFormat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%90%AB%E4%B9%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">格式化示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TimeZone"><span class="nav-number">1.4.</span> <span class="nav-text">TimeZone</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK8"><span class="nav-number">2.</span> <span class="nav-text">JDK8+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Clock"><span class="nav-number">2.1.</span> <span class="nav-text">Clock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instant"><span class="nav-number">2.2.</span> <span class="nav-text">Instant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalDate"><span class="nav-number">2.3.</span> <span class="nav-text">LocalDate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalTime"><span class="nav-number">2.4.</span> <span class="nav-text">LocalTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LocalDateTime"><span class="nav-number">2.5.</span> <span class="nav-text">LocalDateTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OffsetTime"><span class="nav-number">2.6.</span> <span class="nav-text">OffsetTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OffsetDateTime"><span class="nav-number">2.7.</span> <span class="nav-text">OffsetDateTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZonedDateTime"><span class="nav-number">2.8.</span> <span class="nav-text">ZonedDateTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZoneId"><span class="nav-number">2.9.</span> <span class="nav-text">ZoneId</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Year"><span class="nav-number">2.10.</span> <span class="nav-text">Year</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Month"><span class="nav-number">2.11.</span> <span class="nav-text">Month</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DayOfWeek"><span class="nav-number">2.12.</span> <span class="nav-text">DayOfWeek</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MonthDay"><span class="nav-number">2.13.</span> <span class="nav-text">MonthDay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#YearMonth"><span class="nav-number">2.14.</span> <span class="nav-text">YearMonth</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-v10"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95-v32"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
-          <div class="site-overview">
-            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jerry xu"
       src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
   <p class="site-author-name" itemprop="name">Jerry xu</p>
@@ -178,22 +170,19 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">104</span>
+        <a href="/archives/">
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">42</span>
+          <a href="/categories/">
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">73</span>
+          <a href="/tags/">
+        <span class="site-state-item-count">74</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -216,7 +205,7 @@
       </span>
   </div>
   <div class="cc-license site-overview-item animated" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -246,7 +235,6 @@
     </ul>
   </div>
 
-          </div>
         </div>
       </div>
     </div>
@@ -284,11 +272,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
       <meta itemprop="name" content="Jerry xu">
-      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="BladeCode">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="时间（二）之核心类 | BladeCode">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -305,13 +298,13 @@
 
       <time title="创建时间：2020-04-08 22:01:00" itemprop="dateCreated datePublished" datetime="2020-04-08T22:01:00+00:00">2020-04-08</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-20 06:45:09" itemprop="dateModified" datetime="2021-07-20T06:45:09+00:00">2021-07-20</time>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
       </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-05 15:06:37" itemprop="dateModified" datetime="2022-06-05T15:06:37+00:00">2022-06-05</time>
+    </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -330,8 +323,7 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span class="leancloud-visitors-count"></span>
     </span>
-      </div>
-      <div class="post-meta">
+    <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
@@ -362,25 +354,25 @@
 <h3 id="Date"><a class="header-anchor" href="#Date"></a>Date</h3>
 <p>Date 是 Java 最早提供用来封装日期时间的类，由于不易于国际化且参数计算不符合日常认知或不正确，很多获取年、月、日、小时等数据的方法都已废弃（@Deprecated），被 Calendar 类的方法替代</p>
 <p>Date 类有两个关键的成员变量</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录当前时间戳</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">long</span> fastTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * If cdate is null, then fastTime indicates the time in millis.</span></span><br><span class="line"><span class="comment"> * If cdate.isNormalized() is true, then fastTime and cdate are in</span></span><br><span class="line"><span class="comment"> * synch. Otherwise, fastTime is ignored, and cdate indicates the</span></span><br><span class="line"><span class="comment"> * time.</span></span><br><span class="line"><span class="comment"> * cdate 对象是 BaseCalendar.Date 类，继承自 sun.util.calendar.CalendarDate 包含很多已计算好的日期时间相关变量，如 dayOfWeek(所在星期的第几天)，leapYear(是否闰年)等</span></span><br><span class="line"><span class="comment"> * 如果 cdate 对象为空，用 fastTime 变量代表精确到毫秒的时间</span></span><br><span class="line"><span class="comment"> * 如果 cdate.isNormalized() 方法返回 true，则 fastTime 和 cdate 已经同步过</span></span><br><span class="line"><span class="comment"> * 如果 cdate.isNormalized() 方法返回 false，则忽略 fastTime 的值，使用 cdate 代表时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> BaseCalendar.Date cdate;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录当前时间戳</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="type">long</span> fastTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * If cdate is null, then fastTime indicates the time in millis.</span></span><br><span class="line"><span class="comment"> * If cdate.isNormalized() is true, then fastTime and cdate are in</span></span><br><span class="line"><span class="comment"> * synch. Otherwise, fastTime is ignored, and cdate indicates the</span></span><br><span class="line"><span class="comment"> * time.</span></span><br><span class="line"><span class="comment"> * cdate 对象是 BaseCalendar.Date 类，继承自 sun.util.calendar.CalendarDate 包含很多已计算好的日期时间相关变量，如 dayOfWeek(所在星期的第几天)，leapYear(是否闰年)等</span></span><br><span class="line"><span class="comment"> * 如果 cdate 对象为空，用 fastTime 变量代表精确到毫秒的时间</span></span><br><span class="line"><span class="comment"> * 如果 cdate.isNormalized() 方法返回 true，则 fastTime 和 cdate 已经同步过</span></span><br><span class="line"><span class="comment"> * 如果 cdate.isNormalized() 方法返回 false，则忽略 fastTime 的值，使用 cdate 代表时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> BaseCalendar.Date cdate;</span><br></pre></td></tr></table></figure>
 <p>Date 类提供了两个构造函数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无参构造方法，创建当前时间的 Date 类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Date</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(System.currentTimeMillis());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传入一个 Unix 时间戳，创建特定的时间 Date 类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Date</span><span class="params">(<span class="keyword">long</span> date)</span></span>&#123;</span><br><span class="line">    fastTime = date;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他通过年月日创建的构造方法已被 Calendar.set() 和 DateFormat.parse() 等方法替代</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无参构造方法，创建当前时间的 Date 类</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Date</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>(System.currentTimeMillis());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传入一个 Unix 时间戳，创建特定的时间 Date 类</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Date</span><span class="params">(<span class="type">long</span> date)</span>&#123;</span><br><span class="line">    fastTime = date;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他通过年月日创建的构造方法已被 Calendar.set() 和 DateFormat.parse() 等方法替代</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>静态方法 <code>System.currentTimeMillis()</code> 返回 UTC 时间从 <font color=#FF0000>1970-01-01 00:00:00</font> 到现在的总<strong>毫秒</strong>数，返回类型为 <strong>long</strong>，也是我们最常见获取当前时间的方法</p>
 </blockquote>
 <p><code>java.sql.Date</code>，<code>java.sql.Time</code>，<code>java.sql.Timestamp</code> 类都继承自 <code>java.util.Date</code> 类，是专门用于数据库连接的，由于是继承关系，从数据结构来看它们和父类的区别不大。</p>
 <p>主要区别在于 <code>Timestamp</code> 类可以表示至纳秒级，其 <code>fastTime</code> 字段从秒之后被截断，毫秒至纳秒精度保持在特有的 <code>nanos</code> 字段中，需要注意 <code>Timestamp</code> 类的纳秒进度可能是 <font color=#FF0000>假的</font></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.sql.Timestamp;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs a Timestamp object</span></span><br><span class="line"><span class="comment"> * using a milliseconds time value. The</span></span><br><span class="line"><span class="comment"> * integral seconds are stored in the underlying date value; the</span></span><br><span class="line"><span class="comment"> * fractional seconds are stored in the nanos field of</span></span><br><span class="line"><span class="comment"> * the Timestamp object.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> time milliseconds since January 1, 1970, 00:00:00 GMT.</span></span><br><span class="line"><span class="comment"> *        A negative number is the number of milliseconds before</span></span><br><span class="line"><span class="comment"> *         January 1, 1970, 00:00:00 GMT.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> java.util.Calendar</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Timestamp</span><span class="params">(<span class="keyword">long</span> time)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>((time/<span class="number">1000</span>)*<span class="number">1000</span>);</span><br><span class="line">    nanos = (<span class="keyword">int</span>)((time%<span class="number">1000</span>) * <span class="number">1000000</span>);</span><br><span class="line">    <span class="keyword">if</span> (nanos &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        nanos = <span class="number">1000000000</span> + nanos;</span><br><span class="line">        <span class="keyword">super</span>.setTime(((time/<span class="number">1000</span>)-<span class="number">1</span>)*<span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.sql.Timestamp;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs a Timestamp object</span></span><br><span class="line"><span class="comment"> * using a milliseconds time value. The</span></span><br><span class="line"><span class="comment"> * integral seconds are stored in the underlying date value; the</span></span><br><span class="line"><span class="comment"> * fractional seconds are stored in the nanos field of</span></span><br><span class="line"><span class="comment"> * the Timestamp object.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> time milliseconds since January 1, 1970, 00:00:00 GMT.</span></span><br><span class="line"><span class="comment"> *        A negative number is the number of milliseconds before</span></span><br><span class="line"><span class="comment"> *         January 1, 1970, 00:00:00 GMT.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> java.util.Calendar</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Timestamp</span><span class="params">(<span class="type">long</span> time)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>((time/<span class="number">1000</span>)*<span class="number">1000</span>);</span><br><span class="line">    nanos = (<span class="type">int</span>)((time%<span class="number">1000</span>) * <span class="number">1000000</span>);</span><br><span class="line">    <span class="keyword">if</span> (nanos &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        nanos = <span class="number">1000000000</span> + nanos;</span><br><span class="line">        <span class="built_in">super</span>.setTime(((time/<span class="number">1000</span>)-<span class="number">1</span>)*<span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看出，在 <code>fastTime</code> 字段强行截断后，进行毫秒值直接乘以 1000000 的操作后赋给了 nanos 字段，成为了 “只能表示到毫秒的纳秒级精度” 。当然，还可以通过 <code>setNanos(int n)</code> 方法给纳秒数赋精确值。</p>
 <p>虽然从数据结构上看没有什么特别，但如果涉及到 Timestamp 类的父子类型转换或时间比较，就需要注意这里的“坑”</p>
 <ol>
 <li>
 <p>equals() 方法的不对称性 <code>java.sql.Timestamp</code> 类和其父类 <code>java.util.Date</code> 的 equals() 方法是不符合对称性</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Data date = <span class="keyword">new</span> Date();</span><br><span class="line">    Timestamp timestamp = <span class="keyword">new</span> Timestamp(date.getTime());</span><br><span class="line">    System.out.println(date.equals(timestamp));</span><br><span class="line">    System.out.println(timestamp.equals(date));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line"><span class="keyword">true</span></span><br><span class="line"><span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="type">Data</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">    <span class="type">Timestamp</span> <span class="variable">timestamp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Timestamp</span>(date.getTime());</span><br><span class="line">    System.out.println(date.equals(timestamp));</span><br><span class="line">    System.out.println(timestamp.equals(date));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>时间比较类方法的 “异常” 现象如下，两个有毫秒之差的时间点，<code>after()</code> 方法返回不符合客观事实</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Long current = System.currentTimeMillis();</span><br><span class="line">    Date t1 = <span class="keyword">new</span> Timestamp(current);</span><br><span class="line">    Date t2 = <span class="keyword">new</span> Timestamp(current + <span class="number">1</span>);</span><br><span class="line">    System.out.println(t2.after(t1));</span><br><span class="line">    System.out.println(t2.compareTo(t1) &gt; <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="type">Long</span> <span class="variable">current</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">    <span class="type">Date</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Timestamp</span>(current);</span><br><span class="line">    <span class="type">Date</span> <span class="variable">t2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Timestamp</span>(current + <span class="number">1</span>);</span><br><span class="line">    System.out.println(t2.after(t1));</span><br><span class="line">    System.out.println(t2.compareTo(t1) &gt; <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>如果在不确定类型的情况下进行时间的比较，尽量使用 <font color=#FF0000>compareTo()</font> 方法，可以保证正确性</p>
@@ -400,7 +392,7 @@
 </li>
 <li>
 <p>新建子类对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Calendar calendar = <span class="keyword">new</span> GregorianCalendar();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Calendar</span> <span class="variable">calendar</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GregorianCalendar</span>();</span><br></pre></td></tr></table></figure>
 <p>Calendar 类可以实现带时区的年月日时分秒星期等对 Unix 时间戳的转换，内部通过子类复杂的 computeTime() 方法进行计算。</p>
 <ul>
 <li>
@@ -464,7 +456,7 @@
 </li>
 </ul>
 <p>也可以通过多个 set 重载方法设定各种值，同时，add() 方法支持对单个值的加减，从而实现时间推移的计算，传入负数即为减</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Calendar calendar = Calendar.getInstance();</span><br><span class="line">    System.out.println(<span class="string">&quot;当前日期： &quot;</span> + calendar.getTime());</span><br><span class="line">    calendar.add(Calendar.DATE, <span class="number">10</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;日期+10： &quot;</span> + calendar.getTime());</span><br><span class="line">    calendar.add(Calendar.DATE, -<span class="number">5</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;日期-5： &quot;</span> + calendar.getTime());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">当前日期： Fri Apr <span class="number">10</span> <span class="number">15</span>:<span class="number">37</span>:<span class="number">46</span> CST <span class="number">2020</span></span><br><span class="line">日期+<span class="number">10</span>： Mon Apr <span class="number">20</span> <span class="number">15</span>:<span class="number">37</span>:<span class="number">46</span> CST <span class="number">2020</span></span><br><span class="line">日期-<span class="number">5</span>： Wed Apr <span class="number">15</span> <span class="number">15</span>:<span class="number">37</span>:<span class="number">46</span> CST <span class="number">2020</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="type">Calendar</span> <span class="variable">calendar</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">    System.out.println(<span class="string">&quot;当前日期： &quot;</span> + calendar.getTime());</span><br><span class="line">    calendar.add(Calendar.DATE, <span class="number">10</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;日期+10： &quot;</span> + calendar.getTime());</span><br><span class="line">    calendar.add(Calendar.DATE, -<span class="number">5</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;日期-5： &quot;</span> + calendar.getTime());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">当前日期： Fri Apr <span class="number">10</span> <span class="number">15</span>:<span class="number">37</span>:<span class="number">46</span> CST <span class="number">2020</span></span><br><span class="line">日期+<span class="number">10</span>： Mon Apr <span class="number">20</span> <span class="number">15</span>:<span class="number">37</span>:<span class="number">46</span> CST <span class="number">2020</span></span><br><span class="line">日期-<span class="number">5</span>： Wed Apr <span class="number">15</span> <span class="number">15</span>:<span class="number">37</span>:<span class="number">46</span> CST <span class="number">2020</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p><code>GregorianCalendar</code> 对象可以直接使用 <code>isLeapYear(int year)</code> 接口判断是否闰年。需要注意两点</p>
@@ -474,7 +466,7 @@
 </ol>
 <h3 id="SimpleDateFormat"><a class="header-anchor" href="#SimpleDateFormat"></a>SimpleDateFormat</h3>
 <p><code>SimpleDateFormat</code> 是一个以语言环境敏感的方式来格式化和分析日期的类，SimpleDateFormat允许选择任何用户自定义的日期时间格式来格式化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    Date date = <span class="keyword">new</span> Date();</span><br><span class="line">    System.out.println(<span class="string">&quot;格式化之前： &quot;</span> + date);</span><br><span class="line">    SimpleDateFormat ft = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;z yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;格式化之后： &quot;</span> +  ft.format(date));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">格式化之前： Fri Apr <span class="number">10</span> <span class="number">15</span>:<span class="number">55</span>:<span class="number">42</span> CST <span class="number">2020</span></span><br><span class="line">格式化之后： CST <span class="number">2020</span>-<span class="number">04</span>-<span class="number">10</span> <span class="number">15</span>:<span class="number">55</span>:<span class="number">42</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">    System.out.println(<span class="string">&quot;格式化之前： &quot;</span> + date);</span><br><span class="line">    <span class="type">SimpleDateFormat</span> <span class="variable">ft</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;z yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;格式化之后： &quot;</span> +  ft.format(date));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">格式化之前： Fri Apr <span class="number">10</span> <span class="number">15</span>:<span class="number">55</span>:<span class="number">42</span> CST <span class="number">2020</span></span><br><span class="line">格式化之后： CST <span class="number">2020</span>-<span class="number">04</span>-<span class="number">10</span> <span class="number">15</span>:<span class="number">55</span>:<span class="number">42</span></span><br></pre></td></tr></table></figure>
 <h4 id="字符含义"><a class="header-anchor" href="#字符含义"></a>字符含义</h4>
 <p>日期和时间格式由日期和时间模式字符串中的日期和时间模式字符串指定，从 <code>A</code> 到 <code>Z</code> 和从 <code>a</code> 到 <code>z</code> 的无引号字母被解释为表示日期或时间字符串组件的模式字母。可以使用单引号<code>'</code>引用文本以避免解释。&quot;<code>''</code>&quot;表示单引号。所有其他字符都不会被解释；它们只是在格式化期间复制到输出字符串中，或者在解析期间与输入字符串匹配。</p>
 <p>定义了以下模式字母（所有其他字符<code>A</code> — <code>Z</code> 和 <code>a</code> - <code>z</code> 保留），详细说明见 <code>SimpleDateFormat</code> 类 Java Doc 中注释明</p>
@@ -700,8 +692,8 @@
 <h3 id="DayOfWeek"><a class="header-anchor" href="#DayOfWeek"></a>DayOfWeek</h3>
 <h3 id="MonthDay"><a class="header-anchor" href="#MonthDay"></a>MonthDay</h3>
 <h3 id="YearMonth"><a class="header-anchor" href="#YearMonth"></a>YearMonth</h3>
-<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<h2 id="总结-v10"><a class="header-anchor" href="#总结-v10"></a>总结</h2>
+<h2 id="附录-v32"><a class="header-anchor" href="#附录-v32"></a>附录</h2>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cub3JhY2xlLmNvbS90ZWNobmV0d29yay9jbi9hcnRpY2xlcy9qYXZhL2pmMTQtZGF0ZS10aW1lLTIxMjUzNjctemhzLmh0bWw/cHJpbnRPbmx5PTE=">Java SE 8 日期和时间<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3Mvb01RLS1nTE9HTVhwYmxNNGc4VG5aQQ==">循序渐进解读计算机中的时间—应用篇（上）<i class="fa fa-external-link-alt"></i></span></li>
@@ -828,7 +820,7 @@
 
 <div class="copyright">
   &copy; 2018 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -840,7 +832,7 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">350k</span>
+    <span title="站点总字数">351k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
@@ -857,21 +849,23 @@
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":"forest","js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.11.0/dist/mermaid.min.js","integrity":"sha256-sVAx+v/Q7v0Q2xm5vN7h5ccSna6gaLREhG9sF8pKT6I="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.1/mermaid.min.js","integrity":"sha256-8L3O8tirFUa8Va4NSTAyIbHJeLd6OnlcxgupV9F77e0="}}</script>
   <script src="/js/third-party/tags/mermaid.js"></script>
 
-  <script class="next-config" data-name="nprogress" type="application/json">{"enable":true,"spinner":true}</script>
-  <script src="/js/third-party/nprogress.js"></script>
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
 
   
 
