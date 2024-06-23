@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
-
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
@@ -17,13 +15,13 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.12.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":true,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":300},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="float 和 double 同样也是可以表示浮点数，为啥在对于要求精确的进度计算时，尤其是关于币值相关，都采用 BigDecimal 类型来处理？  float 和 double 类型的主要设计目标是为了科学计算和工程计算。他们执行二进制浮点运算，这是为了在广域数值范围上提供较为精确的 快速近似 计算而精心设计的。然而，它们没有提供完全精确的结果，所以不应该用于要求精确结果的场合。——《Effe">
 <meta property="og:type" content="article">
@@ -33,8 +31,8 @@
 <meta property="og:description" content="float 和 double 同样也是可以表示浮点数，为啥在对于要求精确的进度计算时，尤其是关于币值相关，都采用 BigDecimal 类型来处理？  float 和 double 类型的主要设计目标是为了科学计算和工程计算。他们执行二进制浮点运算，这是为了在广域数值范围上提供较为精确的 快速近似 计算而精心设计的。然而，它们没有提供完全精确的结果，所以不应该用于要求精确结果的场合。——《Effe">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-20T10:04:00.000Z">
-<meta property="article:modified_time" content="2022-06-18T17:04:18.539Z">
-<meta property="article:author" content="Jerry xu">
+<meta property="article:modified_time" content="2024-06-23T12:45:18.193Z">
+<meta property="article:author" content="Jerry Xu">
 <meta property="article:tag" content="Util">
 <meta name="twitter:card" content="summary">
 
@@ -49,8 +47,11 @@
 <title>BigDecimal | BladeCode</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
 
 
 
@@ -66,8 +67,8 @@
   <div class="headband"></div>
 
   <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
@@ -83,11 +84,11 @@
       <p class="site-title">BladeCode</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+      <p class="site-subtitle" itemprop="description">Life's A Struggle!</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -96,7 +97,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">106</span></a></li><li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li><li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li><li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li><li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">106</span></a></li><li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li><li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li><li class="menu-item menu-item-backend"><span class="exturl" data-url="aHR0cHM6Ly9iYWNrZW5kLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Backend</span></li><li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-feather fa-fw"></i>Mobile</span></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -129,15 +130,9 @@
     </div>
   </div>
 
-</div>
+</header>
         
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
   <aside class="sidebar">
 
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
@@ -153,18 +148,18 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BigInteger"><span class="nav-number">1.</span> <span class="nav-text">BigInteger</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常用运算方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BigDecimal"><span class="nav-number">2.</span> <span class="nav-text">BigDecimal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-v2"><span class="nav-number">2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2-v2"><span class="nav-number">2.3.</span> <span class="nav-text">转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%88%8D%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">舍入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">2.5.</span> <span class="nav-text">格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96-v2"><span class="nav-number">2.6.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95%E9%97%AE%E9%A2%98"><span class="nav-number">2.6.1.</span> <span class="nav-text">科学计数法问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84-0"><span class="nav-number">2.6.2.</span> <span class="nav-text">去除无效的 0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E4%BD%8D"><span class="nav-number">2.6.3.</span> <span class="nav-text">保留小数位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83"><span class="nav-number">2.6.4.</span> <span class="nav-text">大小比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95-v4"><span class="nav-number">3.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BigInteger"><span class="nav-number">1.</span> <span class="nav-text">BigInteger</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常用运算方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BigDecimal"><span class="nav-number">2.</span> <span class="nav-text">BigDecimal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-v2"><span class="nav-number">2.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2-v2"><span class="nav-number">2.3.</span> <span class="nav-text">转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%88%8D%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">舍入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">2.5.</span> <span class="nav-text">格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.6.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95%E9%97%AE%E9%A2%98"><span class="nav-number">2.6.1.</span> <span class="nav-text">科学计数法问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84-0"><span class="nav-number">2.6.2.</span> <span class="nav-text">去除无效的 0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E4%BD%8D"><span class="nav-number">2.6.3.</span> <span class="nav-text">保留小数位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83"><span class="nav-number">2.6.4.</span> <span class="nav-text">大小比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">附录</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry Xu"
       src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
-  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <p class="site-author-name" itemprop="name">Jerry Xu</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-<div class="site-state-wrap site-overview-item animated">
+<div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
@@ -184,7 +179,7 @@
       </div>
   </nav>
 </div>
-  <div class="links-of-author site-overview-item animated">
+  <div class="links-of-author animated">
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
       </span>
@@ -201,57 +196,19 @@
         <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
       </span>
   </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
+  <div class="cc-license animated" itemprop="license">
     <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
-  </div>
-
-
-  <div class="links-of-blogroll site-overview-item animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
-        </li>
-    </ul>
   </div>
 
         </div>
       </div>
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
 
     
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
+  </aside>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
+    </div>
 
     <div class="main-inner post posts-expand">
 
@@ -268,7 +225,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
-      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="name" content="Jerry Xu">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -294,13 +251,6 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2019-10-20 10:04:00" itemprop="dateCreated datePublished" datetime="2019-10-20T10:04:00+00:00">2019-10-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-18 17:04:18" itemprop="dateModified" datetime="2022-06-18T17:04:18+00:00">2022-06-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -343,8 +293,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>float 和 double 同样也是可以表示浮点数，为啥在对于要求精确的进度计算时，尤其是关于币值相关，都采用 BigDecimal 类型来处理？</p>
+    <div class="post-body" itemprop="articleBody"><p>float 和 double 同样也是可以表示浮点数，为啥在对于要求精确的进度计算时，尤其是关于币值相关，都采用 BigDecimal 类型来处理？</p>
 <ol>
 <li>float 和 double 类型的主要设计目标是为了科学计算和工程计算。他们执行二进制浮点运算，这是为了在广域数值范围上提供较为精确的 <strong>快速近似</strong> 计算而精心设计的。然而，它们<font color=red>没有提供完全精确</font>的结果，所以不应该用于要求精确结果的场合。——《Effective Java》</li>
 <li>float 精度 7 位，double 精度 16 位</li>
@@ -489,7 +438,7 @@
 </tbody>
 </table>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建立货币格式化引用</span></span><br><span class="line"><span class="type">NumberFormat</span> <span class="variable">currency</span> <span class="operator">=</span> NumberFormat.getCurrencyInstance(); </span><br><span class="line"><span class="comment">// 建立百分比格式化引用</span></span><br><span class="line"><span class="type">NumberFormat</span> <span class="variable">percent</span> <span class="operator">=</span> NumberFormat.getPercentInstance(); </span><br><span class="line"><span class="comment">// 百分比小数点最多3位</span></span><br><span class="line">percent.setMaximumFractionDigits(<span class="number">3</span>); </span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">loanAmount</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">&quot;150.48&quot;</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">interestRate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">&quot;0.008&quot;</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">interest</span> <span class="operator">=</span> loanAmount.multiply(interestRate);</span><br><span class="line"><span class="comment">// 贷款金额: ￥150.48</span></span><br><span class="line">System.out.println(<span class="string">&quot;贷款金额:\t&quot;</span> + currency.format(loanAmount)); </span><br><span class="line"><span class="comment">// 利率: 0.8%</span></span><br><span class="line">System.out.println(<span class="string">&quot;利率:\t&quot;</span> + percent.format(interestRate)); </span><br><span class="line"><span class="comment">// 利息: ￥1.20</span></span><br><span class="line">System.out.println(<span class="string">&quot;利息:\t&quot;</span> + currency.format(interest)); </span><br><span class="line"></span><br><span class="line"><span class="comment">//===============================================================</span></span><br><span class="line"><span class="type">DecimalFormat</span> <span class="variable">df</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DecimalFormat</span>();</span><br><span class="line"><span class="comment">// 格式化之前的数字</span></span><br><span class="line"><span class="type">double</span> <span class="variable">data</span> <span class="operator">=</span> <span class="number">1234.56789</span>; </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 1.定义要显示的数字的格式（这种方式会四舍五入）</span></span><br><span class="line"><span class="type">String</span> <span class="variable">style</span> <span class="operator">=</span> <span class="string">&quot;0.0&quot;</span>;</span><br><span class="line">df.applyPattern(style);</span><br><span class="line"><span class="comment">// 1--&gt;1234.6</span></span><br><span class="line">System.out.println(<span class="string">&quot;1--&gt;&quot;</span> + df.format(data));  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.在格式后添加诸如单位等字符</span></span><br><span class="line">style = <span class="string">&quot;00000.000 kg&quot;</span>;</span><br><span class="line">df.applyPattern(style);</span><br><span class="line"><span class="comment">// 2--&gt;01234.568 kg</span></span><br><span class="line">System.out.println(<span class="string">&quot;2--&gt;&quot;</span> + df.format(data));  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.模式中的&quot;#&quot;表示如果该位存在字符，则显示字符，如果不存在，则不显示。</span></span><br><span class="line">style = <span class="string">&quot;##000.000 kg&quot;</span>;</span><br><span class="line">df.applyPattern(style);</span><br><span class="line"><span class="comment">// 3--&gt;1234.568 kg</span></span><br><span class="line">System.out.println(<span class="string">&quot;3--&gt;&quot;</span> + df.format(data));  </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 4.模式中的&quot;-&quot;表示输出为负数，要放在最前面</span></span><br><span class="line">style = <span class="string">&quot;-000.000&quot;</span>;</span><br><span class="line">df.applyPattern(style);</span><br><span class="line"><span class="comment">// 4--&gt;-1234.568</span></span><br><span class="line">System.out.println(<span class="string">&quot;4--&gt;&quot;</span> + df.format(data)); </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 5.模式中的&quot;,&quot;在数字中添加逗号，方便读数字</span></span><br><span class="line">style = <span class="string">&quot;-0,000.0#&quot;</span>;</span><br><span class="line">df.applyPattern(style);</span><br><span class="line"><span class="comment">// 5--&gt;-1,234.57</span></span><br><span class="line">System.out.println(<span class="string">&quot;5--&gt;&quot;</span> + df.format(data));  </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 6.模式中的&quot;E&quot;表示输出为指数，&quot;E&quot;之前的字符串是底数的格式，</span></span><br><span class="line"><span class="comment">// &quot;E&quot;之后的是字符串是指数的格式</span></span><br><span class="line">style = <span class="string">&quot;0.00E000&quot;</span>;</span><br><span class="line">df.applyPattern(style);</span><br><span class="line"><span class="comment">// 6--&gt;1.23E003</span></span><br><span class="line">System.out.println(<span class="string">&quot;6--&gt;&quot;</span> + df.format(data));  </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 7.模式中的&quot;%&quot;表示乘以100并显示为百分数，要放在最后。</span></span><br><span class="line">style = <span class="string">&quot;0.00%&quot;</span>;</span><br><span class="line">df.applyPattern(style);</span><br><span class="line"><span class="comment">// 7--&gt;123456.79%</span></span><br><span class="line">System.out.println(<span class="string">&quot;7--&gt;&quot;</span> + df.format(data));  </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 8.模式中的&quot;\u2030&quot;表示乘以1000并显示为千分数，要放在最后。</span></span><br><span class="line">style = <span class="string">&quot;0.00\u2030&quot;</span>;</span><br><span class="line"><span class="comment">// 在构造函数中设置数字格式</span></span><br><span class="line"><span class="type">DecimalFormat</span> <span class="variable">df1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DecimalFormat</span>(style);</span><br><span class="line"><span class="comment">// df.applyPattern(style);</span></span><br><span class="line"><span class="comment">// 8--&gt;1234567.89‰</span></span><br><span class="line">System.out.println(<span class="string">&quot;8--&gt;&quot;</span> + df1.format(data));  </span><br></pre></td></tr></table></figure>
-<h3 id="其他-v2"><a class="header-anchor" href="#其他-v2"></a>其他</h3>
+<h3 id="其他"><a class="header-anchor" href="#其他"></a>其他</h3>
 <h4 id="科学计数法问题"><a class="header-anchor" href="#科学计数法问题"></a>科学计数法问题</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">&quot;0.0000001&quot;</span>);</span><br><span class="line"><span class="comment">// 输出结果：1E-7</span></span><br><span class="line">System.out.println(b.toString());</span><br><span class="line"><span class="comment">// 输出结果：0.0000001</span></span><br><span class="line">System.out.println(b.toPlainString());</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -505,7 +454,7 @@
 <h4 id="大小比较"><a class="header-anchor" href="#大小比较"></a>大小比较</h4>
 <p>在比较两个BigDecimal的值是否相等时，要特别注意，使用 <code>equals()</code> 方法不但要求两个BigDecimal的 <strong>值相等</strong> ，还要求它们的 <strong>scale()相等</strong>，因此如果只是比较数值的大小，必须使用 <code>compareTo()</code> 方法来比较，它根据两个值的大小分别返回负数、正数和0，分别表示小于、大于和等于</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">d1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">&quot;123.456&quot;</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">d2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">&quot;123.45600&quot;</span>);</span><br><span class="line"><span class="comment">// false,因为scale不同</span></span><br><span class="line">System.out.println(d1.equals(d2)); </span><br><span class="line"><span class="comment">// true,因为d2去除尾部0后scale变为2</span></span><br><span class="line">System.out.println(d1.equals(d2.stripTrailingZeros())); </span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line">System.out.println(d1.compareTo(d2)); </span><br></pre></td></tr></table></figure>
-<h2 id="附录-v4"><a class="header-anchor" href="#附录-v4"></a>附录</h2>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vYmFpcWlhbnRhby9wLzc0NDkxNzYuaHRtbA==">Java中浮点类型的精度问题 double float<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvMTI1MjU5OTU0ODM0Mzc0NC8xMjc5NzY3OTg2ODMxMzkz">廖雪峰 BigInteger<i class="fa fa-external-link-alt"></i></span></li>
@@ -522,17 +471,17 @@
 
     <footer class="post-footer">
           <div class="reward-container">
-  <div></div>
+  <div>请我一杯咖啡吧！</div>
   <button>
     赞赏
   </button>
   <div class="post-reward">
       <div>
-        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry Xu 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry Xu 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -544,14 +493,14 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>Jerry xu
+      <strong>本文作者： </strong>Jerry Xu
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
       <a href="https://incoder.org/2019/10/20/bigdecimal/" title="BigDecimal">https://incoder.org/2019/10/20/bigdecimal/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -562,33 +511,35 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://incoder.slack.com">
-          <span class="icon">
-            <i class="fab fa-slack"></i>
-          </span>
+          <a target="_blank" class="social-link" href="https://incoder.slack.com">
+            <span class="icon">
+              <i class="fab fa-slack"></i>
+            </span>
 
-          <span class="label">Slack</span>
-        </a>
+            <span class="label">Slack</span>
+          </a>
       </div>
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
           </span>
 
-          <span class="label">WeChat</span>
-        </a>
+          <img class="social-item-img" src="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
       </div>
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="/atom.xml">
-          <span class="icon">
-            <i class="fa fa-rss"></i>
-          </span>
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
 
-          <span class="label">RSS</span>
-        </a>
+            <span class="label">RSS</span>
+          </a>
       </div>
   </div>
 </div>
@@ -602,12 +553,12 @@
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2019/09/25/windows-devtool/" rel="prev" title="Windows 之 常用应用安装">
-                  <i class="fa fa-chevron-left"></i> Windows 之 常用应用安装
+                  <i class="fa fa-angle-left"></i> Windows 之 常用应用安装
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2019/10/24/flowable2/" rel="next" title="Flowable（二）Modeler-UI 集成">
-                  Flowable（二）Modeler-UI 集成 <i class="fa fa-chevron-right"></i>
+                  Flowable（二）Modeler-UI 集成 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -627,15 +578,14 @@
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 2018 – 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
-</div>
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jerry Xu</span>
+  </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
@@ -659,23 +609,45 @@
   </footer>
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.1/mermaid.min.js","integrity":"sha256-8L3O8tirFUa8Va4NSTAyIbHJeLd6OnlcxgupV9F77e0="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
   <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js"></script>
 
   <script src="/js/third-party/fancybox.js"></script>
 
   <script src="/js/third-party/pace.js"></script>
+
 
   
 

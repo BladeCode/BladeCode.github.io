@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
-
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/incoder/image/upload/v1525515979/favicon-32x32.png">
@@ -17,13 +15,13 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.12.1","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"incoder.org","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":true,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":300},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="在计算机操作系统中Shell是用户与操作系统交互的媒介，而bash作为目前Linux\macOS系统中最常用的Shell，它支持的startup文件也并不单一，甚至让人感到费解，以下就是对Shell的学习 Shell：在计算机中，值“为用户提供用户界面”的软件，通常指的是 命令行界面 的解析器。一般来说，Shell指操作系统中提供访问内核所提供的服务程序。">
 <meta property="og:type" content="article">
@@ -35,8 +33,8 @@
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_general_structure_of_a_Linux_system.jpeg/250px-The_general_structure_of_a_Linux_system.jpeg">
 <meta property="og:image" content="https://res.cloudinary.com/incoder/image/upload/v1543141362/blog/flow.png">
 <meta property="article:published_time" content="2018-11-24T15:27:20.000Z">
-<meta property="article:modified_time" content="2022-06-18T17:04:18.543Z">
-<meta property="article:author" content="Jerry xu">
+<meta property="article:modified_time" content="2024-06-23T12:45:18.197Z">
+<meta property="article:author" content="Jerry Xu">
 <meta property="article:tag" content="Shell">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_general_structure_of_a_Linux_system.jpeg/250px-The_general_structure_of_a_Linux_system.jpeg">
@@ -52,8 +50,11 @@
 <title>应该知道的系统环境配置文件 | BladeCode</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100235665-1"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-100235665-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
 
 
 
@@ -69,8 +70,8 @@
   <div class="headband"></div>
 
   <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
@@ -86,11 +87,11 @@
       <p class="site-title">BladeCode</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Life's a struggle!</p>
+      <p class="site-subtitle" itemprop="description">Life's A Struggle!</p>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -99,7 +100,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">106</span></a></li><li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li><li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li><li class="menu-item menu-item-java"><span class="exturl" data-url="aHR0cHM6Ly9qYXZhLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Java</span></li><li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-sitemap fa-fw"></i>Mobile</span></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">44</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">106</span></a></li><li class="menu-item menu-item-app"><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA=="><i class="fas fa-seedling fa-fw"></i>App</span></li><li class="menu-item menu-item-music"><span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw=="><i class="fa fa-music fa-fw"></i>Music</span></li><li class="menu-item menu-item-backend"><span class="exturl" data-url="aHR0cHM6Ly9iYWNrZW5kLmluY29kZXIub3Jn"><i class="fa fa-coffee fa-fw"></i>Backend</span></li><li class="menu-item menu-item-mobile"><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc="><i class="fa fa-feather fa-fw"></i>Mobile</span></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -132,15 +133,9 @@
     </div>
   </div>
 
-</div>
+</header>
         
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
   <aside class="sidebar">
 
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
@@ -156,18 +151,18 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration-Files"><span class="nav-number">1.</span> <span class="nav-text">Configuration Files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#startup%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">startup文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E4%B8%8E%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">交互式与非交互式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95shell%E4%B8%8E%E9%9D%9E%E7%99%BB%E5%BD%95shell"><span class="nav-number">3.2.</span> <span class="nav-text">登录shell与非登录shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="nav-number">3.3.</span> <span class="nav-text">主要区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-v5"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Path%E8%AF%AD%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">Path语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">环境变量设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.1.</span> <span class="nav-text">全局设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">单用户设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zsh%E4%B8%AD%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">4.2.3.</span> <span class="nav-text">zsh中配置环境变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95-v15"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration-Files"><span class="nav-number">1.</span> <span class="nav-text">Configuration Files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#startup%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">startup文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E5%BC%8F%E4%B8%8E%E9%9D%9E%E4%BA%A4%E4%BA%92%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">交互式与非交互式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95shell%E4%B8%8E%E9%9D%9E%E7%99%BB%E5%BD%95shell"><span class="nav-number">3.2.</span> <span class="nav-text">登录shell与非登录shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="nav-number">3.3.</span> <span class="nav-text">主要区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Path%E8%AF%AD%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">Path语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">环境变量设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.1.</span> <span class="nav-text">全局设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">单用户设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zsh%E4%B8%AD%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">4.2.3.</span> <span class="nav-text">zsh中配置环境变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Jerry xu"
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry Xu"
       src="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
-  <p class="site-author-name" itemprop="name">Jerry xu</p>
+  <p class="site-author-name" itemprop="name">Jerry Xu</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-<div class="site-state-wrap site-overview-item animated">
+<div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
@@ -187,7 +182,7 @@
       </div>
   </nav>
 </div>
-  <div class="links-of-author site-overview-item animated">
+  <div class="links-of-author animated">
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0JsYWRlQ29kZQ==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;BladeCode"><i class="fab fa-github fa-fw"></i>GitHub</span>
       </span>
@@ -204,57 +199,19 @@
         <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BpbmNvZGVy" title="Medium → https:&#x2F;&#x2F;medium.com&#x2F;@incoder"><i class="fab fa-medium fa-fw"></i>Medium</span>
       </span>
   </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
+  <div class="cc-license animated" itemprop="license">
     <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></span>
-  </div>
-
-
-  <div class="links-of-blogroll site-overview-item animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-user-friends fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly90d29kcmFnb25sYWtlLmNvbQ==" title="https:&#x2F;&#x2F;twodragonlake.com">TwoDragonLake</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9yb290Y2x1c3Rlci5naXRodWIuaW8=" title="https:&#x2F;&#x2F;rootcluster.github.io">RootCluster</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9tdXNlZmxvdy5pbw==" title="https:&#x2F;&#x2F;museflow.io">MuseFlow</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZw==" title="https:&#x2F;&#x2F;ceaser.wang">南贺神社</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9rYWlmYS5kZXY=" title="https:&#x2F;&#x2F;kaifa.dev">Alyenc</span>
-        </li>
-        <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmRhemhpZGF5b25nLmNu" title="https:&#x2F;&#x2F;blog.dazhidayong.cn">大师傅</span>
-        </li>
-    </ul>
   </div>
 
         </div>
       </div>
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
 
     
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
+  </aside>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
+    </div>
 
     <div class="main-inner post posts-expand">
 
@@ -271,7 +228,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://res.cloudinary.com/incoder/image/upload/v1525515979/avatar.png">
-      <meta itemprop="name" content="Jerry xu">
+      <meta itemprop="name" content="Jerry Xu">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -297,13 +254,6 @@
       <span class="post-meta-item-text">发表于</span>
 
       <time title="创建时间：2018-11-24 15:27:20" itemprop="dateCreated datePublished" datetime="2018-11-24T15:27:20+00:00">2018-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-18 17:04:18" itemprop="dateModified" datetime="2022-06-18T17:04:18+00:00">2022-06-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -346,8 +296,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>在计算机操作系统中<code>Shell</code>是用户与操作系统交互的媒介，而<code>bash</code>作为目前<code>Linux\macOS</code>系统中最常用的<code>Shell</code>，它支持的<code>startup</code>文件也并不单一，甚至让人感到费解，以下就是对Shell的学习</p>
+    <div class="post-body" itemprop="articleBody"><p>在计算机操作系统中<code>Shell</code>是用户与操作系统交互的媒介，而<code>bash</code>作为目前<code>Linux\macOS</code>系统中最常用的<code>Shell</code>，它支持的<code>startup</code>文件也并不单一，甚至让人感到费解，以下就是对Shell的学习</p>
 <p>Shell：在计算机中，值“为用户提供用户界面”的软件，通常指的是 <strong>命令行界面</strong> 的解析器。一般来说，<code>Shell</code>指操作系统中提供访问内核所提供的服务程序。</p>
 <span id="more"></span>
 <p>通常将<code>Shell</code>分为两类</p>
@@ -661,7 +610,7 @@
 <li>其实<code>exit</code>命令会判断当前shell的登录属性，并且分别调用<code>logout</code>或<code>exit</code>指令</li>
 <li><strong>登录shell</strong>和<strong>非登录shell</strong>的主要区别在于启动shell时所执行的startup文件不同；登录shell执行的startup文件为<code>~/.bash_profile</code>，而<strong>非登录shell</strong>执行的startup文件为<code>~/.bashrc</code></li>
 </ul>
-<h2 id="总结-v5"><a class="header-anchor" href="#总结-v5"></a>总结</h2>
+<h2 id="总结"><a class="header-anchor" href="#总结"></a>总结</h2>
 <h3 id="Path语法"><a class="header-anchor" href="#Path语法"></a>Path语法</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 中间使用冒号分隔</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:&lt;PATH 1&gt;:&lt;PATH 2&gt;:&lt;PATH 3&gt;:------:&lt;PATH N&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="环境变量设置"><a class="header-anchor" href="#环境变量设置"></a>环境变量设置</h3>
@@ -691,7 +640,7 @@
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANDROID_HOME=/Users/blade/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> GRADLE_HOME=/Users/blade/Documents/DevTools/Gradle/gradle-4.6</span><br><span class="line"><span class="built_in">export</span> FLUTTER_HOME=/Users/blade/Documents/DevTools/flutter</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$ANDROID_HOME</span>/tools:<span class="variable">$ANDROID_HOME</span>/platform-tools:<span class="variable">$GRADLE_HOME</span>/bin:<span class="variable">$FLUTTER_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="附录-v15"><a class="header-anchor" href="#附录-v15"></a>附录</h2>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NjaDAxMjAvYXJ0aWNsZS9kZXRhaWxzLzcwMjU2MzE4">原关于“.bash_profile”和“.bashrc”区别的总结<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9oYW81NzQzLmdpdGh1Yi5pby8yMDE3LzA2LzI4LzIwMTctMDYtMjgv">Mac环境变量配置<i class="fa fa-external-link-alt"></i></span></li>
@@ -705,17 +654,17 @@
 
     <footer class="post-footer">
           <div class="reward-container">
-  <div></div>
+  <div>请我一杯咖啡吧！</div>
   <button>
     赞赏
   </button>
   <div class="post-reward">
       <div>
-        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry xu 微信">
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/wechatpay.png" alt="Jerry Xu 微信">
         <span>微信</span>
       </div>
       <div>
-        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry xu 支付宝">
+        <img src="https://res.cloudinary.com/incoder/image/upload/v1525515979/alipay.png" alt="Jerry Xu 支付宝">
         <span>支付宝</span>
       </div>
 
@@ -727,14 +676,14 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>Jerry xu
+      <strong>本文作者： </strong>Jerry Xu
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
       <a href="https://incoder.org/2018/11/24/mac-bash/" title="应该知道的系统环境配置文件">https://incoder.org/2018/11/24/mac-bash/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -745,33 +694,35 @@
   <div class="social-list">
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://incoder.slack.com">
-          <span class="icon">
-            <i class="fab fa-slack"></i>
-          </span>
+          <a target="_blank" class="social-link" href="https://incoder.slack.com">
+            <span class="icon">
+              <i class="fab fa-slack"></i>
+            </span>
 
-          <span class="label">Slack</span>
-        </a>
+            <span class="label">Slack</span>
+          </a>
       </div>
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
           </span>
 
-          <span class="label">WeChat</span>
-        </a>
+          <img class="social-item-img" src="https://res.cloudinary.com/incoder/image/upload/v1554537454/qrcode_incoder.jpg">
       </div>
 
       <div class="social-item">
-        <a target="_blank" class="social-link" href="/atom.xml">
-          <span class="icon">
-            <i class="fa fa-rss"></i>
-          </span>
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
 
-          <span class="label">RSS</span>
-        </a>
+            <span class="label">RSS</span>
+          </a>
       </div>
   </div>
 </div>
@@ -785,12 +736,12 @@
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2018/11/10/mac-init/" rel="prev" title="MacBook Pro 初始化">
-                  <i class="fa fa-chevron-left"></i> MacBook Pro 初始化
+                  <i class="fa fa-angle-left"></i> MacBook Pro 初始化
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2018/11/29/charles/" rel="next" title="Charles 使用教程">
-                  Charles 使用教程 <i class="fa fa-chevron-right"></i>
+                  Charles 使用教程 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -810,15 +761,14 @@
   <footer class="footer">
     <div class="footer-inner">
 
-
-<div class="copyright">
-  &copy; 2018 – 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Jerry xu</span>
-</div>
+  <div class="copyright">
+    &copy; 2018 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jerry Xu</span>
+  </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
@@ -842,23 +792,45 @@
   </footer>
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
 
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.1/mermaid.min.js","integrity":"sha256-8L3O8tirFUa8Va4NSTAyIbHJeLd6OnlcxgupV9F77e0="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
   <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js"></script>
 
   <script src="/js/third-party/fancybox.js"></script>
 
   <script src="/js/third-party/pace.js"></script>
+
 
   
 
