@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: BladeCode
+title: 星海
 subtitle: Life's A Struggle!
 description: ''
 keywords: incoder BladeCode
@@ -136,8 +136,12 @@ search:
 
 # https://github.com/mythsman/hexo-douban
 # douban:
-#   user: incoder
+#   id: 120640962
+#   # user: incoder
 #   builtin: true
+#   item_per_page: 10
+#   meta_max_line: 4
+#   customize_layout: page
 #   book:
 #     title: '书中自有黄金屋'
 #     quote: '只有学习才能让我得到真正的快乐~'

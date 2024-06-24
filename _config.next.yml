@@ -37,8 +37,8 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
-#scheme: Mist
+# scheme: Muse
+scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
 
@@ -106,10 +106,11 @@ menu:
   app: https://incoder.app || fas fa-seedling
   # books: /books/ || fa fa-book
   # movies: /movies || fa fa-film
-  music: https://museflow.io || fa fa-music
+  # music: https://museflow.io || fa fa-music
   # plan: https://www.notion.so/incoder/3d9638dbe2cb48a9a724a39bf9723717?v=e11c491037cd4fcda3a7b320bf996c5a || fa fa-calendar-check
-  backend: https://backend.incoder.org || fa fa-coffee
-  mobile: https://mobile.incoder.org || fa fa-feather
+  # backend: https://backend.incoder.org || fa fa-coffee
+  # mobile: https://mobile.incoder.org || fa fa-feather
+  links: /links/ || fa fa-user-friends
   about: /about/ || fa fa-user
 
 # Enable / Disable menu icons / item badges.
@@ -229,7 +230,7 @@ footer:
   copyright:
 
   # Powered by Hexo & NexT
-  powered: true
+  powered: false
 
   # Beian ICP and gongan information for Chinese users. See: https://beian.miit.gov.cn, https://beian.mps.gov.cn
   beian:
