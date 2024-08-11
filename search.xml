@@ -2069,34 +2069,6 @@ macOS 可以使用 IDEA 查看 maven 的路径，<code>/usr/local/Cellar/maven/3
       </tags>
   </entry>
   <entry>
-    <title>Flowable（二）Modeler-UI 集成</title>
-    <url>/2019/10/24/flowable2/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Flowable</category>
-      </categories>
-      <tags>
-        <tag>Flowable</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flowable（三）流程图绘制异常问题</title>
-    <url>/2020/07/01/flowable3/</url>
-    <content><![CDATA[<span id="more"></span>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC91LzM3NTkzNTcvYmxvZy80MjgxMTEw">HttpMediaTypeNotAcceptableException<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFlbGR1bmcuY29tL3NwcmluZy1odHRwbWVkaWF0eXBlbm90YWNjZXB0YWJsZQ==">HttpMediaTypeNotAcceptableException in Spring MVC<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Flowable</category>
-      </categories>
-      <tags>
-        <tag>Flowable</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Flowable（一）初识</title>
     <url>/2019/09/25/flowable1/</url>
     <content><![CDATA[<p>Flowable是一个使用Java编写的轻量级业务流程引擎。Flowable流程引擎可用于部署BPMN 2.0流程定义（用于定义流程的行业XML标准）， 创建这些流程定义的流程实例，进行查询，访问运行中或历史的流程实例与相关数据等，众所周知，Flowable是Activit的一个分叉，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmZsb3dhYmxlLm9yZy8yMDE2LzEwLzEzL2Zsb3dhYmxlLTUtMjItMC1yZWxlYXNlLw==">Flowable的第一个版本（5.22.0）是基于Activit（5.21.0）<i class="fa fa-external-link-alt"></i></span>，关于为什么Flowable会从Activit分叉，感兴趣可以查看Flowable官方的文章<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmZsb3dhYmxlLm9yZy8yMDE2LzEwLzEyL2Zsb3dhYmxlLWFuZC1hY3Rpdml0aS13aGF0LXRoZS1mb3JrLw==">Flowable and Activiti: What the Fork?!<i class="fa fa-external-link-alt"></i></span>，这里不在赘述这些内容</p>
@@ -2165,6 +2137,34 @@ macOS 可以使用 IDEA 查看 maven 的路径，<code>/usr/local/Cellar/maven/3
 <img src="https://res.cloudinary.com/incoder/image/upload/v1569556130/blog/flowable-aleady-bind.png" alt="flowable-aleady-bind"></p>
 <p>解决方法：查找占用端口进程<code>netstat -ano|findstr 端口号</code>，并kill它<code>taskkill -PID 进程号 -F</code><br>
 <img src="https://res.cloudinary.com/incoder/image/upload/v1569556500/blog/flowable-kill-task.png" alt="flowable-kill-task"></p>
+]]></content>
+      <categories>
+        <category>Flowable</category>
+      </categories>
+      <tags>
+        <tag>Flowable</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flowable（二）Modeler-UI 集成</title>
+    <url>/2019/10/24/flowable2/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Flowable</category>
+      </categories>
+      <tags>
+        <tag>Flowable</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flowable（三）流程图绘制异常问题</title>
+    <url>/2020/07/01/flowable3/</url>
+    <content><![CDATA[<span id="more"></span>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC91LzM3NTkzNTcvYmxvZy80MjgxMTEw">HttpMediaTypeNotAcceptableException<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFlbGR1bmcuY29tL3NwcmluZy1odHRwbWVkaWF0eXBlbm90YWNjZXB0YWJsZQ==">HttpMediaTypeNotAcceptableException in Spring MVC<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
 ]]></content>
       <categories>
         <category>Flowable</category>
@@ -3572,28 +3572,6 @@ Gradle是一个构建工具，专注于构建自动化和对多语言开发的�
       </categories>
       <tags>
         <tag>Gradle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>愿天堂没有病痛</title>
-    <url>/2022/06/15/granddad/</url>
-    <content><![CDATA[<p>仅以此篇文章记录，我对爷爷的思念，愿天堂没有病痛……</p>
-<span id="more"></span>
-<p>时间仿佛定格在这一天了，一向最不留情面的爷爷，在寂静的夜晚，悄悄地离开了我们。虽然对于爷爷感情并不是很深，但或多或少在我心里有不曾抹去的对与我的爱，也许只是在我看来是那么的保守和不近人情，可能这只是您独有的关爱方式罢了。</p>
-<p>不经想起上一次见面，是在上一次回家（2020 年劳动节假期），去探望了您，没想到这一见面竟然是天人永隔。您的连环追命问题，迫使我是连连败退，不敢轻易登上您的大门。听爸妈说，今年您身体不好，一直住在医院，原本计划等今年十一左右回家，然后再去看看您，这成了永远无法完成的计划😭。姐姐哭着告诉我想到的事情就要去做，不要等到了失去后才后悔莫及，是呀，人总是等到失去后才懂得珍惜，我只是感觉越是长大越是难以想到同时也能做到</p>
-<p>爷爷在那个时代属于中等个头，身材在我看来不胖不瘦，家里有琳琅满目各式各样稀奇古怪的东西，有手动给木头打孔的转，刨木头的刨子，标记线的墨斗还有好多好多我不知道的工具一副活脱脱的木工装备，但实际上爷爷并不是木工，只知道爷爷是有单位的人，是有文化的知识分子，在县城有单位分房子，在我印象中有三件事我记忆深刻</p>
-<p>第一件，小时候去您家玩，在桌子上看到了各式各样的桥梁图纸，不知道这些桥梁都修建在哪里，然后看到了有一个白色透明很高级的三角板，当然我也见到了不一样的东西，一种被称之为 “雷管” 的炸药，这些应该都是您当年工作中经常使用的一些工具吧，在现在来看应该属于土木工程系，后来上小学，那把三角尺成了小学生涯最长的使用工具。如果有时光机，我想听一听您那时候工作故事和那些作图技巧，还想去看看那些您曾经设计或建造的桥梁道路</p>
-<p>第二件，有一年过春节，爸爸给我买了枪（那个时候，男孩子过年好像都少不了这个礼物），然后到您的住的地方，您说这个样式不好，一连就在您家前门店家那里换了 3 次，我现在也记不清那是一把什么样的枪，好像记得一按斑鸠就会有音乐，在那个时候很高级的样子，如果有时光机，我想把那是我的玩具收藏进我的百宝箱里</p>
-<p>第三件，那时候我小学六年级还是刚上初中吧。那一年大姑，小姑带着弟弟，妹妹从上海回到老家，然后在我们在您的台球厅玩耍，我学会了小台球的游戏规则，没人的时候我们会一起玩耍，可我重来都没有赢过一场，看来我对这项运动没有任何天赋，如果有时光机，我想和您再打一场台球</p>
-<p>从我的视角来看，随着慢慢的长大到工作，相见机会越来越少，有时候一年也没有见上一面。刚开始工作后偶尔会打电话给你，到后来几乎没有再打过电话给你，因为每次电话我都是扯着嗓子在那喊，你说你才能听清我在说什么，其次本身自己是一个内向的人，话也很少，平时也没啥话可说，就这样渐渐几乎是失去了联系，每次也都是听父母的口中知道您的近况</p>
-<p>虽然在我的记忆里除了这些温暖的画面，还有不少您的负面形象，可现在这些都不重要了，毕竟这些也是你生命里的一部分。我没有经历过，我没有发言权，就让这些负面的内容随风而去吧。记着一个人的好好过记住一个人的坏，身在异地他乡的我不能及时的回到你身边为你送上最后的一程，深感惭愧😮‍💨</p>
-<p>爷爷您一路走好，愿天堂里没有病痛</p>
-]]></content>
-      <categories>
-        <category>纪念</category>
-      </categories>
-      <tags>
-        <tag>Top</tag>
       </tags>
   </entry>
   <entry>
@@ -5955,24 +5933,6 @@ TCK：Technology Compatibility Kit，技术兼容性套件（TCK）是一套测�
       </tags>
   </entry>
   <entry>
-    <title>第 100 篇原创文章</title>
-    <url>/2020/12/31/milepost1/</url>
-    <content><![CDATA[<p>未曾想过，居然能写到第 100 篇文章。虽然大部分文章都是线性流水操作，但全部是自己经过<strong>实践</strong>的总结；虽然没有精彩的故事，但都是自己成长的<strong>思考</strong>；虽然有时一篇文章需要要长达一个多月的反复核对，但还是能默默<strong>坚持</strong>。只是这第 100 篇来的有点晚，断断续续大概有 3 年的时间，时间是个坏老头，把我给你写情话，悄悄的改成了谎话！</p>
-<span id="more"></span>
-<p>回想起之前写文章主要是为了记录一些操作步骤和一些知识点，方便遇到类似问题，快速定位，解决问题。但随着文章的越写越多，包含的内容也越来越多，需要去了解的知识也越来越多，真的是有一种 “你知道的越多，你不知道的越多” 的感觉，这种感觉让我对待每个知识点都能有往深去深挖的动力，对每一个知识点用自己文字将它讲出来时有一种让我欲罢不能成就感，这或许就是上瘾吧</p>
-<p>总结下第一个里程碑，主要是平时接触到领域算是一些入门级别的一些文章，以及一些比较粗浅的见闻，缺乏深层次的剖析和思考，这也是第二个里程碑首要做的事情，把每个接触到的知识点进行深挖，打通自己的技术栈。技术领域能不能走得远，很大程度上并不是你的技能宽度，而是深度，是在一个方向上的深耕，并且对于底层的技能也是要有足够的涉猎，只有这样就算是技术的花样任它怎么去变，你都能以不变应万变（透过现象找到本质）；第二点是是对第一阶段内容完善补充；第三点就是打磨自己的语言表达能力，让文章更加的通俗易懂；第四点就是不能太拖拉，要保持高效的内容输出</p>
-<p>这一阶段，对开源项目贡献评价最高的是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoeC9yYXAyLWRlbG9zL2lzc3Vlcy8xMTk=">rap2-delos<i class="fa fa-external-link-alt"></i></span> 项目了。努力在接下来的里程中，提高质量和参与度，争取早日在大型项目中做到 Committer</p>
-<p>很感谢这一路走来，大伙对我的认可和期待以及赞赏，下一个里程碑我们见~</p>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1611485411/blog/milepost1-admire.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>Milepost</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【译】• 微服务</title>
     <url>/2019/06/01/microservices/</url>
     <content><![CDATA[<p>这是第一篇翻译文章，用于学习近些年火热的微服务，这篇是<code>微服务</code>概念是由 <code>James Lewis</code> 所著，虽然官网已有<span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3MvY2xiUlFaNi01WW9YNjhNendCZlFfUQ==">中文翻译<i class="fa fa-external-link-alt"></i></span>，但是在学习过程中，应该应该动手输出，这样有助于对知识的理解和记忆，废话不多说，开始翻译</p>
@@ -6301,91 +6261,21 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
       </tags>
   </entry>
   <entry>
-    <title>OSS 之 Minio 初体验</title>
-    <url>/2021/03/16/minio/</url>
-    <content><![CDATA[<p>MinIO 是一个基于 Apache License v2.0 开源协议使用 Go 语言开发的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。MinIO 是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
+    <title>第 100 篇原创文章</title>
+    <url>/2020/12/31/milepost1/</url>
+    <content><![CDATA[<p>未曾想过，居然能写到第 100 篇文章。虽然大部分文章都是线性流水操作，但全部是自己经过<strong>实践</strong>的总结；虽然没有精彩的故事，但都是自己成长的<strong>思考</strong>；虽然有时一篇文章需要要长达一个多月的反复核对，但还是能默默<strong>坚持</strong>。只是这第 100 篇来的有点晚，断断续续大概有 3 年的时间，时间是个坏老头，把我给你写情话，悄悄的改成了谎话！</p>
 <span id="more"></span>
-<p>MinIO 包含 MinIO Server, MinIO Client 以及方便开发基于不同编程语言使用的 MinIO SDK，这三部分组成，使用步骤也很简单，在服务器上安装 MinIO Server 应用，在项目中集成对应的 MinIO SDK，然后按照你的业务情况编写相应的实现即可，在开始前，我们先看看为什么我选择 MiniIO 作为自建的 OSS 服务</p>
-<ol>
-<li>MinIO 由良好的存储机制</li>
-<li>兼容 Amason 的 S3 分布式存储</li>
-<li>天然的支持云原生</li>
-<li><mark>支持私有部署</mark>，可分布式，可单机，100%开源</li>
-<li>友好简单的部署方式，提供管理页面</li>
-<li>还可以配合其他的健康管理工具进行监控，比如 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL2hvdy10by1tb25pdG9yLW1pbmlvLXVzaW5nLXByb21ldGhldXMuaHRtbA==">Prometheus<i class="fa fa-external-link-alt"></i></span></li>
-</ol>
-<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
-<p>由于 MinIO Server 已经提供了 Docker 的安装镜像，那我们就以 Docker 安装为例，其他安装方式可参考官方教程 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL21pbmlvLXF1aWNrc3RhcnQtZ3VpZGUuaHRtbA==">MinIO Quickstart Guide<i class="fa fa-external-link-alt"></i></span></p>
-<p>关于 Docker 的安装这里不再赘述，Docker 相关详细的使用等知识，可参考我之前的文章 <a href="">Docker（一）</a></p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 拉取 minio docker 镜像</span></span><br><span class="line">docker pull minio/minio</span><br><span class="line"><span class="comment"># 2. 运行 minio 服务</span></span><br><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -p 9000:9000 --name minio \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/data:/data \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/config:/root/.minio \</span></span><br><span class="line"><span class="language-bash">  -d --restart=always \</span></span><br><span class="line"><span class="language-bash">  -d minio/minio server /data</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里简单说一下命令的含义，应用命名为 minio ，运行服务在 9000 端口，同时将容器的相关路径文件映射到宿主机的 <code>/opt/docker/minio</code> 路径，开机自启</p>
-</blockquote>
-<p>成功运行服务，可查看日志</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Endpoint: http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Browser Access:</span><br><span class="line">http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Object API (Amazon S3 compatible):</span><br><span class="line">Go: https://docs.min.io/docs/golang-client-quickstart-guide</span><br><span class="line">Java: https://docs.min.io/docs/java-client-quickstart-guide</span><br><span class="line">Python: https://docs.min.io/docs/python-client-quickstart-guide</span><br><span class="line">JavaScript: https://docs.min.io/docs/javascript-client-quickstart-guide</span><br><span class="line">.NET: https://docs.min.io/docs/dotnet-client-quickstart-guide</span><br><span class="line">Detected default credentials &#x27;minioadmin:minioadmin&#x27;, please change the credentials immediately using &#x27;MINIO_ROOT_USER&#x27; and &#x27;MINIO_ROOT_PASSWORD&#x27;</span><br></pre></td></tr></table></figure>
-<p>安装完成后，我们就可以通过 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo5MDAw">http://localhost:9000<i class="fa fa-external-link-alt"></i></span> 访问 MinIO 服务，默认用户名和密码分别为: <mark>minioadmin</mark>, <mark>minioadmin</mark></p>
-<h2 id="使用"><a class="header-anchor" href="#使用"></a>使用</h2>
-<h3 id="页面操作"><a class="header-anchor" href="#页面操作"></a>页面操作</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617090692/blog/minio-web.png" alt=""></p>
-<p>我们直接看图，输入账号密码后，可以看到 MinIO 的管理页面，我们就可以上传文件，是不是很方便。第一次上传必须先要创建一个 bucket 后，才可以上传，如下图操作结果</p>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617091291/blog/minio-upload.png" alt=""></p>
-<h3 id="Client-操作"><a class="header-anchor" href="#Client-操作"></a>Client 操作</h3>
-<h3 id="SDK-操作"><a class="header-anchor" href="#SDK-操作"></a>SDK 操作</h3>
-<div class="note warning"><p>这里以 Java 语言为例，查看官方文档时，一定要查看英文文档，中文文档已年久失修落后很多，其他的语言实现请参考官方文档</p>
-</div>
-<h4 id="导入依赖"><a class="header-anchor" href="#导入依赖"></a>导入依赖</h4>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  implementation <span class="string">&quot;io.minio:minio:8.1.0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="功能实现"><a class="header-anchor" href="#功能实现"></a>功能实现</h4>
-<p>由于我这里是 SpringBoot 项目，为了方便在应用的 <code>application.yml</code> 文件中配置了 MinIO 相关的参数</p>
-<h4 id="配置文件"><a class="header-anchor" href="#配置文件"></a>配置文件</h4>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">minio:</span></span><br><span class="line">  <span class="comment"># minio 服务运行的地址</span></span><br><span class="line">  <span class="attr">endpoint:</span> <span class="string">http://127.0.0.1</span></span><br><span class="line">  <span class="comment"># minio 服务运行的端口</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9000</span></span><br><span class="line">  <span class="comment"># minio 服务登录账号</span></span><br><span class="line">  <span class="attr">accessKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 服务登录密码</span></span><br><span class="line">  <span class="attr">secretKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 设置上传默认存放桶</span></span><br><span class="line">  <span class="attr">bucketName:</span> <span class="string">cpe-manager-test</span></span><br></pre></td></tr></table></figure>
-<h4 id="工具类"><a class="header-anchor" href="#工具类"></a>工具类</h4>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 资源上传工具类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> : Jerry xu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> : 2021/3/18  14:05</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MinioUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * minio:</span></span><br><span class="line"><span class="comment">     * endpoint: http://192.168.1.163</span></span><br><span class="line"><span class="comment">     * port: 9000</span></span><br><span class="line"><span class="comment">     * accessKey: minioadmin</span></span><br><span class="line"><span class="comment">     * secretKey: minioadmin</span></span><br><span class="line"><span class="comment">     * bucketName: cpe-manager-test</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.endpoint&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ENDPOINT</span> <span class="operator">=</span> <span class="string">&quot;http://192.168.1.163&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.port&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Integer</span> <span class="variable">PORT</span> <span class="operator">=</span> <span class="number">19000</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.accessKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ACCESS_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.secretKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SECRET_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.bucketName&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">BUCKET_NAME</span> <span class="operator">=</span> <span class="string">&quot;cpe-manager-test&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MinioClient minioClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MinioClient <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (minioClient == <span class="literal">null</span>) &#123;</span><br><span class="line">            minioClient = MinioClient.builder().endpoint(ENDPOINT, PORT, <span class="literal">false</span>).credentials(ACCESS_KEY, SECRET_KEY).build();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minioClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取minio所有的桶</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.util.List&lt;io.minio.messages.Bucket&gt;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Bucket&gt; <span class="title function_">getAllBucket</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 获取minio中所以的 bucket</span></span><br><span class="line">        List&lt;Bucket&gt; buckets = getInstance().listBuckets();</span><br><span class="line">        <span class="keyword">for</span> (Bucket bucket : buckets) &#123;</span><br><span class="line">            log.info(<span class="string">&quot;bucket 名称:  &#123;&#125;      bucket 创建时间: &#123;&#125;&quot;</span>, bucket.name(), bucket.creationDate());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> buckets;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName  自定义存储桶</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName, String bucketName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(bucketName)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器，默认存放在 cpe-manager-test 桶内</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(BUCKET_NAME)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据指定的objectName获取下载链接，需要bucket设置可下载的策略</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName 对象的名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getUrlByObjectName</span><span class="params">(String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> getInstance().getPresignedObjectUrl(</span><br><span class="line">                    GetPresignedObjectUrlArgs.builder()</span><br><span class="line">                            .method(Method.GET)</span><br><span class="line">                            .bucket(BUCKET_NAME)</span><br><span class="line">                            .object(objectName)</span><br><span class="line">                            <span class="comment">// 过期策略【默认有效期7天】</span></span><br><span class="line"><span class="comment">//                            .expiry(2, TimeUnit.HOURS)</span></span><br><span class="line">                            .build());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据objectName从minio中下载文件到指定的目录</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName minio上的文件名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileName   下载生成的文件名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir        文件目录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">downloadFromMinioToFile</span><span class="params">(String objectName, String fileName, String dir)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">GetObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> GetObjectArgs.builder()</span><br><span class="line">                .bucket(BUCKET_NAME)</span><br><span class="line">                .object(objectName)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(dir);</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.mkdirs()) &#123;</span><br><span class="line">                log.error(<span class="string">&quot;创建失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> getInstance().getObject(objectArgs);</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(dir, fileName.substring(fileName.lastIndexOf(<span class="string">&quot;/&quot;</span>) + <span class="number">1</span>)));</span><br><span class="line">        <span class="type">int</span> length;</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">while</span> ((length = inputStream.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            outputStream.write(buffer, <span class="number">0</span>, length);</span><br><span class="line">        &#125;</span><br><span class="line">        outputStream.close();</span><br><span class="line">        inputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据文件名批量删除（默认删除 BUCKET_NAME 下的文件）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> listFile 文件名(含后缀)列表，例如：demo.png</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 成功返回为null， 失败返回Map&lt;objectName, failMessage&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, String&gt; <span class="title function_">removeObjects</span><span class="params">(List&lt;String&gt; listFile)</span> &#123;</span><br><span class="line">        List&lt;DeleteObject&gt; objects = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        Map&lt;String, String&gt; resultMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        listFile.forEach(t -&gt; objects.add(<span class="keyword">new</span> <span class="title class_">DeleteObject</span>(t)));</span><br><span class="line">        Iterable&lt;Result&lt;DeleteError&gt;&gt; results =</span><br><span class="line">                getInstance().removeObjects(</span><br><span class="line">                        RemoveObjectsArgs.builder()</span><br><span class="line">                                .bucket(BUCKET_NAME)</span><br><span class="line">                                .objects(objects)</span><br><span class="line">                                .build());</span><br><span class="line">        <span class="keyword">for</span> (Result&lt;DeleteError&gt; result : results) &#123;</span><br><span class="line">            <span class="type">DeleteError</span> <span class="variable">error</span> <span class="operator">=</span> result.get();</span><br><span class="line">            resultMap.put(error.objectName(), error.message());</span><br><span class="line">            log.error(<span class="string">&quot;Error in deleting:&#123;&#125;, message&#123;&#125;&quot;</span>, error.objectName(), error.message());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="上传接口"><a class="header-anchor" href="#上传接口"></a>上传接口</h4>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostMapping(value = &quot;/upload&quot;, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;文件上传&quot;, notes = &quot;支持多文件上传&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title function_">uploadTest</span><span class="params">(<span class="meta">@ApiParam(value = &quot;文件&quot;)</span> <span class="meta">@RequestParam(&quot;file&quot;)</span> List&lt;MultipartFile&gt; file)</span> &#123;</span><br><span class="line">    <span class="comment">// 上传的图片地址</span></span><br><span class="line">    List&lt;String&gt; successFile = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(file.size());</span><br><span class="line">    file.forEach(t -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> MinioUtils.uploadToMinio(t.getInputStream(), t.getOriginalFilename());</span><br><span class="line">            log.info(<span class="string">&quot;图片地址&#123;&#125;&quot;</span>, url);</span><br><span class="line">            successFile.add(url);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> successFile;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="测试"><a class="header-anchor" href="#测试"></a>测试</h4>
-<h2 id="问题"><a class="header-anchor" href="#问题"></a>问题</h2>
-<h3 id="bucket命名"><a class="header-anchor" href="#bucket命名"></a>bucket命名</h3>
-<p>创建 bucket 时，命名不可以使用下划线符号 “<font color="red">_</font>”</p>
-<h3 id="账号密码修改"><a class="header-anchor" href="#账号密码修改"></a>账号密码修改</h3>
-<p>通过网页管理页面修改登录账号及密码，提示 “Credentials of this user cannot be updated through MinIO Browser.” ，原因是安装应用时，并未显示的指定用户名和密码，可在运行启动时添加如下配置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-e <span class="string">&quot;MINIO_ROOT_USER=admin&quot;</span> \</span><br><span class="line">-e <span class="string">&quot;MINIO_ROOT_PASSWORD=admin123456&quot;</span> \</span><br></pre></td></tr></table></figure>
-<h3 id="最长7天有效"><a class="header-anchor" href="#最长7天有效"></a>最长7天有效</h3>
-<p>通过网页管理页面共享图片或者是使用 SDK 上传图片得到的图片 URL 地址，有效期最长为7天</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mc config host add minio http://192.168.1.163:19000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/cpe-manager-test</span><br><span class="line"></span><br><span class="line">mc config host add minio http://127.0.0.1:9000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/bucket (bucket修改成你自己的名字)</span><br></pre></td></tr></table></figure>
-<h3 id="图片无法查看"><a class="header-anchor" href="#图片无法查看"></a>图片无法查看</h3>
-<ol>
-<li>使用 SDK 上传时，需要注意设置content-type信息</li>
-<li>无权限查看</li>
-</ol>
-<h2 id="小结"><a class="header-anchor" href="#小结"></a>小结</h2>
-<p>关于 MinIO 还有很多知识点，本片只是站在使用者角度，把一些使用过程和问题进行了汇总，谈不上深度</p>
-<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
-<ol>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9jbi9taW5pby1xdWlja3N0YXJ0LWd1aWRlLmh0bWw=">Minio 手册<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pbmlvL21pbmlvLWphdmEvdHJlZS9yZWxlYXNl">Minio 示例<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhbms5OXRhbmsvYXJ0aWNsZS9kZXRhaWxzLzEwOTQ2NDMyNQ==">Minio 修改密码<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC82OGFjMDQ3NzI5MWQ=">Minio<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZ2FvaG9uZ3l1L3AvMTM5ODY5NjQuaHRtbA==">Minio 安装以及使用<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1d1Smlhbmdhbmc1MTEyL2FydGljbGUvZGV0YWlscy8xMTI5ODgwNzQ=">Minio 设置文件链接永久有效<i class="fa fa-external-link-alt"></i></span></li>
-</ol>
+<p>回想起之前写文章主要是为了记录一些操作步骤和一些知识点，方便遇到类似问题，快速定位，解决问题。但随着文章的越写越多，包含的内容也越来越多，需要去了解的知识也越来越多，真的是有一种 “你知道的越多，你不知道的越多” 的感觉，这种感觉让我对待每个知识点都能有往深去深挖的动力，对每一个知识点用自己文字将它讲出来时有一种让我欲罢不能成就感，这或许就是上瘾吧</p>
+<p>总结下第一个里程碑，主要是平时接触到领域算是一些入门级别的一些文章，以及一些比较粗浅的见闻，缺乏深层次的剖析和思考，这也是第二个里程碑首要做的事情，把每个接触到的知识点进行深挖，打通自己的技术栈。技术领域能不能走得远，很大程度上并不是你的技能宽度，而是深度，是在一个方向上的深耕，并且对于底层的技能也是要有足够的涉猎，只有这样就算是技术的花样任它怎么去变，你都能以不变应万变（透过现象找到本质）；第二点是是对第一阶段内容完善补充；第三点就是打磨自己的语言表达能力，让文章更加的通俗易懂；第四点就是不能太拖拉，要保持高效的内容输出</p>
+<p>这一阶段，对开源项目贡献评价最高的是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoeC9yYXAyLWRlbG9zL2lzc3Vlcy8xMTk=">rap2-delos<i class="fa fa-external-link-alt"></i></span> 项目了。努力在接下来的里程中，提高质量和参与度，争取早日在大型项目中做到 Committer</p>
+<p>很感谢这一路走来，大伙对我的认可和期待以及赞赏，下一个里程碑我们见~</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1611485411/blog/milepost1-admire.png" alt=""></p>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>Milepost</category>
       </categories>
       <tags>
-        <tag>FileUpdate</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MQ 系列 — RabbitMQ（一）环境搭建</title>
-    <url>/2020/11/10/mq-rabbit1/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>MQ</category>
-      </categories>
-      <tags>
-        <tag>RabbitMQ</tag>
+        <tag>note</tag>
       </tags>
   </entry>
   <entry>
@@ -6416,6 +6306,17 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
       </categories>
       <tags>
         <tag>激战</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MQ 系列 — RabbitMQ（一）环境搭建</title>
+    <url>/2020/11/10/mq-rabbit1/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>MQ</category>
+      </categories>
+      <tags>
+        <tag>RabbitMQ</tag>
       </tags>
   </entry>
   <entry>
@@ -6506,6 +6407,83 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
       </categories>
       <tags>
         <tag>RocketMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OSS 之 Minio 初体验</title>
+    <url>/2021/03/16/minio/</url>
+    <content><![CDATA[<p>MinIO 是一个基于 Apache License v2.0 开源协议使用 Go 语言开发的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。MinIO 是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
+<span id="more"></span>
+<p>MinIO 包含 MinIO Server, MinIO Client 以及方便开发基于不同编程语言使用的 MinIO SDK，这三部分组成，使用步骤也很简单，在服务器上安装 MinIO Server 应用，在项目中集成对应的 MinIO SDK，然后按照你的业务情况编写相应的实现即可，在开始前，我们先看看为什么我选择 MiniIO 作为自建的 OSS 服务</p>
+<ol>
+<li>MinIO 由良好的存储机制</li>
+<li>兼容 Amason 的 S3 分布式存储</li>
+<li>天然的支持云原生</li>
+<li><mark>支持私有部署</mark>，可分布式，可单机，100%开源</li>
+<li>友好简单的部署方式，提供管理页面</li>
+<li>还可以配合其他的健康管理工具进行监控，比如 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL2hvdy10by1tb25pdG9yLW1pbmlvLXVzaW5nLXByb21ldGhldXMuaHRtbA==">Prometheus<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
+<p>由于 MinIO Server 已经提供了 Docker 的安装镜像，那我们就以 Docker 安装为例，其他安装方式可参考官方教程 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL21pbmlvLXF1aWNrc3RhcnQtZ3VpZGUuaHRtbA==">MinIO Quickstart Guide<i class="fa fa-external-link-alt"></i></span></p>
+<p>关于 Docker 的安装这里不再赘述，Docker 相关详细的使用等知识，可参考我之前的文章 <a href="">Docker（一）</a></p>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 拉取 minio docker 镜像</span></span><br><span class="line">docker pull minio/minio</span><br><span class="line"><span class="comment"># 2. 运行 minio 服务</span></span><br><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -p 9000:9000 --name minio \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/data:/data \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/config:/root/.minio \</span></span><br><span class="line"><span class="language-bash">  -d --restart=always \</span></span><br><span class="line"><span class="language-bash">  -d minio/minio server /data</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里简单说一下命令的含义，应用命名为 minio ，运行服务在 9000 端口，同时将容器的相关路径文件映射到宿主机的 <code>/opt/docker/minio</code> 路径，开机自启</p>
+</blockquote>
+<p>成功运行服务，可查看日志</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Endpoint: http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Browser Access:</span><br><span class="line">http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Object API (Amazon S3 compatible):</span><br><span class="line">Go: https://docs.min.io/docs/golang-client-quickstart-guide</span><br><span class="line">Java: https://docs.min.io/docs/java-client-quickstart-guide</span><br><span class="line">Python: https://docs.min.io/docs/python-client-quickstart-guide</span><br><span class="line">JavaScript: https://docs.min.io/docs/javascript-client-quickstart-guide</span><br><span class="line">.NET: https://docs.min.io/docs/dotnet-client-quickstart-guide</span><br><span class="line">Detected default credentials &#x27;minioadmin:minioadmin&#x27;, please change the credentials immediately using &#x27;MINIO_ROOT_USER&#x27; and &#x27;MINIO_ROOT_PASSWORD&#x27;</span><br></pre></td></tr></table></figure>
+<p>安装完成后，我们就可以通过 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo5MDAw">http://localhost:9000<i class="fa fa-external-link-alt"></i></span> 访问 MinIO 服务，默认用户名和密码分别为: <mark>minioadmin</mark>, <mark>minioadmin</mark></p>
+<h2 id="使用"><a class="header-anchor" href="#使用"></a>使用</h2>
+<h3 id="页面操作"><a class="header-anchor" href="#页面操作"></a>页面操作</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617090692/blog/minio-web.png" alt=""></p>
+<p>我们直接看图，输入账号密码后，可以看到 MinIO 的管理页面，我们就可以上传文件，是不是很方便。第一次上传必须先要创建一个 bucket 后，才可以上传，如下图操作结果</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617091291/blog/minio-upload.png" alt=""></p>
+<h3 id="Client-操作"><a class="header-anchor" href="#Client-操作"></a>Client 操作</h3>
+<h3 id="SDK-操作"><a class="header-anchor" href="#SDK-操作"></a>SDK 操作</h3>
+<div class="note warning"><p>这里以 Java 语言为例，查看官方文档时，一定要查看英文文档，中文文档已年久失修落后很多，其他的语言实现请参考官方文档</p>
+</div>
+<h4 id="导入依赖"><a class="header-anchor" href="#导入依赖"></a>导入依赖</h4>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  implementation <span class="string">&quot;io.minio:minio:8.1.0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="功能实现"><a class="header-anchor" href="#功能实现"></a>功能实现</h4>
+<p>由于我这里是 SpringBoot 项目，为了方便在应用的 <code>application.yml</code> 文件中配置了 MinIO 相关的参数</p>
+<h4 id="配置文件"><a class="header-anchor" href="#配置文件"></a>配置文件</h4>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">minio:</span></span><br><span class="line">  <span class="comment"># minio 服务运行的地址</span></span><br><span class="line">  <span class="attr">endpoint:</span> <span class="string">http://127.0.0.1</span></span><br><span class="line">  <span class="comment"># minio 服务运行的端口</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9000</span></span><br><span class="line">  <span class="comment"># minio 服务登录账号</span></span><br><span class="line">  <span class="attr">accessKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 服务登录密码</span></span><br><span class="line">  <span class="attr">secretKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 设置上传默认存放桶</span></span><br><span class="line">  <span class="attr">bucketName:</span> <span class="string">cpe-manager-test</span></span><br></pre></td></tr></table></figure>
+<h4 id="工具类"><a class="header-anchor" href="#工具类"></a>工具类</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 资源上传工具类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> : Jerry xu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> : 2021/3/18  14:05</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MinioUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * minio:</span></span><br><span class="line"><span class="comment">     * endpoint: http://192.168.1.163</span></span><br><span class="line"><span class="comment">     * port: 9000</span></span><br><span class="line"><span class="comment">     * accessKey: minioadmin</span></span><br><span class="line"><span class="comment">     * secretKey: minioadmin</span></span><br><span class="line"><span class="comment">     * bucketName: cpe-manager-test</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.endpoint&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ENDPOINT</span> <span class="operator">=</span> <span class="string">&quot;http://192.168.1.163&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.port&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Integer</span> <span class="variable">PORT</span> <span class="operator">=</span> <span class="number">19000</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.accessKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ACCESS_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.secretKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SECRET_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.bucketName&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">BUCKET_NAME</span> <span class="operator">=</span> <span class="string">&quot;cpe-manager-test&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MinioClient minioClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MinioClient <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (minioClient == <span class="literal">null</span>) &#123;</span><br><span class="line">            minioClient = MinioClient.builder().endpoint(ENDPOINT, PORT, <span class="literal">false</span>).credentials(ACCESS_KEY, SECRET_KEY).build();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minioClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取minio所有的桶</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.util.List&lt;io.minio.messages.Bucket&gt;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Bucket&gt; <span class="title function_">getAllBucket</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 获取minio中所以的 bucket</span></span><br><span class="line">        List&lt;Bucket&gt; buckets = getInstance().listBuckets();</span><br><span class="line">        <span class="keyword">for</span> (Bucket bucket : buckets) &#123;</span><br><span class="line">            log.info(<span class="string">&quot;bucket 名称:  &#123;&#125;      bucket 创建时间: &#123;&#125;&quot;</span>, bucket.name(), bucket.creationDate());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> buckets;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName  自定义存储桶</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName, String bucketName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(bucketName)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器，默认存放在 cpe-manager-test 桶内</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(BUCKET_NAME)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据指定的objectName获取下载链接，需要bucket设置可下载的策略</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName 对象的名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getUrlByObjectName</span><span class="params">(String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> getInstance().getPresignedObjectUrl(</span><br><span class="line">                    GetPresignedObjectUrlArgs.builder()</span><br><span class="line">                            .method(Method.GET)</span><br><span class="line">                            .bucket(BUCKET_NAME)</span><br><span class="line">                            .object(objectName)</span><br><span class="line">                            <span class="comment">// 过期策略【默认有效期7天】</span></span><br><span class="line"><span class="comment">//                            .expiry(2, TimeUnit.HOURS)</span></span><br><span class="line">                            .build());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据objectName从minio中下载文件到指定的目录</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName minio上的文件名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileName   下载生成的文件名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir        文件目录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">downloadFromMinioToFile</span><span class="params">(String objectName, String fileName, String dir)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">GetObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> GetObjectArgs.builder()</span><br><span class="line">                .bucket(BUCKET_NAME)</span><br><span class="line">                .object(objectName)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(dir);</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.mkdirs()) &#123;</span><br><span class="line">                log.error(<span class="string">&quot;创建失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> getInstance().getObject(objectArgs);</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(dir, fileName.substring(fileName.lastIndexOf(<span class="string">&quot;/&quot;</span>) + <span class="number">1</span>)));</span><br><span class="line">        <span class="type">int</span> length;</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">while</span> ((length = inputStream.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            outputStream.write(buffer, <span class="number">0</span>, length);</span><br><span class="line">        &#125;</span><br><span class="line">        outputStream.close();</span><br><span class="line">        inputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据文件名批量删除（默认删除 BUCKET_NAME 下的文件）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> listFile 文件名(含后缀)列表，例如：demo.png</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 成功返回为null， 失败返回Map&lt;objectName, failMessage&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, String&gt; <span class="title function_">removeObjects</span><span class="params">(List&lt;String&gt; listFile)</span> &#123;</span><br><span class="line">        List&lt;DeleteObject&gt; objects = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        Map&lt;String, String&gt; resultMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        listFile.forEach(t -&gt; objects.add(<span class="keyword">new</span> <span class="title class_">DeleteObject</span>(t)));</span><br><span class="line">        Iterable&lt;Result&lt;DeleteError&gt;&gt; results =</span><br><span class="line">                getInstance().removeObjects(</span><br><span class="line">                        RemoveObjectsArgs.builder()</span><br><span class="line">                                .bucket(BUCKET_NAME)</span><br><span class="line">                                .objects(objects)</span><br><span class="line">                                .build());</span><br><span class="line">        <span class="keyword">for</span> (Result&lt;DeleteError&gt; result : results) &#123;</span><br><span class="line">            <span class="type">DeleteError</span> <span class="variable">error</span> <span class="operator">=</span> result.get();</span><br><span class="line">            resultMap.put(error.objectName(), error.message());</span><br><span class="line">            log.error(<span class="string">&quot;Error in deleting:&#123;&#125;, message&#123;&#125;&quot;</span>, error.objectName(), error.message());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="上传接口"><a class="header-anchor" href="#上传接口"></a>上传接口</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostMapping(value = &quot;/upload&quot;, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;文件上传&quot;, notes = &quot;支持多文件上传&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title function_">uploadTest</span><span class="params">(<span class="meta">@ApiParam(value = &quot;文件&quot;)</span> <span class="meta">@RequestParam(&quot;file&quot;)</span> List&lt;MultipartFile&gt; file)</span> &#123;</span><br><span class="line">    <span class="comment">// 上传的图片地址</span></span><br><span class="line">    List&lt;String&gt; successFile = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(file.size());</span><br><span class="line">    file.forEach(t -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> MinioUtils.uploadToMinio(t.getInputStream(), t.getOriginalFilename());</span><br><span class="line">            log.info(<span class="string">&quot;图片地址&#123;&#125;&quot;</span>, url);</span><br><span class="line">            successFile.add(url);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> successFile;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="测试"><a class="header-anchor" href="#测试"></a>测试</h4>
+<h2 id="问题"><a class="header-anchor" href="#问题"></a>问题</h2>
+<h3 id="bucket命名"><a class="header-anchor" href="#bucket命名"></a>bucket命名</h3>
+<p>创建 bucket 时，命名不可以使用下划线符号 “<font color="red">_</font>”</p>
+<h3 id="账号密码修改"><a class="header-anchor" href="#账号密码修改"></a>账号密码修改</h3>
+<p>通过网页管理页面修改登录账号及密码，提示 “Credentials of this user cannot be updated through MinIO Browser.” ，原因是安装应用时，并未显示的指定用户名和密码，可在运行启动时添加如下配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-e <span class="string">&quot;MINIO_ROOT_USER=admin&quot;</span> \</span><br><span class="line">-e <span class="string">&quot;MINIO_ROOT_PASSWORD=admin123456&quot;</span> \</span><br></pre></td></tr></table></figure>
+<h3 id="最长7天有效"><a class="header-anchor" href="#最长7天有效"></a>最长7天有效</h3>
+<p>通过网页管理页面共享图片或者是使用 SDK 上传图片得到的图片 URL 地址，有效期最长为7天</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mc config host add minio http://192.168.1.163:19000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/cpe-manager-test</span><br><span class="line"></span><br><span class="line">mc config host add minio http://127.0.0.1:9000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/bucket (bucket修改成你自己的名字)</span><br></pre></td></tr></table></figure>
+<h3 id="图片无法查看"><a class="header-anchor" href="#图片无法查看"></a>图片无法查看</h3>
+<ol>
+<li>使用 SDK 上传时，需要注意设置content-type信息</li>
+<li>无权限查看</li>
+</ol>
+<h2 id="小结"><a class="header-anchor" href="#小结"></a>小结</h2>
+<p>关于 MinIO 还有很多知识点，本片只是站在使用者角度，把一些使用过程和问题进行了汇总，谈不上深度</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9jbi9taW5pby1xdWlja3N0YXJ0LWd1aWRlLmh0bWw=">Minio 手册<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pbmlvL21pbmlvLWphdmEvdHJlZS9yZWxlYXNl">Minio 示例<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhbms5OXRhbmsvYXJ0aWNsZS9kZXRhaWxzLzEwOTQ2NDMyNQ==">Minio 修改密码<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC82OGFjMDQ3NzI5MWQ=">Minio<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZ2FvaG9uZ3l1L3AvMTM5ODY5NjQuaHRtbA==">Minio 安装以及使用<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1d1Smlhbmdhbmc1MTEyL2FydGljbGUvZGV0YWlscy8xMTI5ODgwNzQ=">Minio 设置文件链接永久有效<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>FileUpdate</tag>
       </tags>
   </entry>
   <entry>
@@ -8488,113 +8466,6 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
       </tags>
   </entry>
   <entry>
-    <title>SpringBoot（一） 初识</title>
-    <url>/2019/06/23/springboot1/</url>
-    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg" alt=""></p>
-<span id="more"></span>
-<p>从本篇文章开始，记录学习 SpringBoot 框架在实践，源码方面的知识，本节是第一篇，因此不涉及相关复杂知识的学习。众所周知，随着微服务的广泛流行，Spring 系列的 SpringBoot 和 SpringCloud 的应用也更受欢迎，那么请跟随我的脚本来一步步解开 SpringBoot 她神秘的面纱</p>
-<p>熟悉后端服务开发的小伙伴，在使用 SpringBoot 时一定会有这样的感受，咦，以前繁琐的配置，现在都不用再去配置一大堆东西了，以前跑起来一个 demo，感觉真是千辛万苦，错一步就 game over，以前服务基本都是已 war 包的形式运行在 Tomcat 中，而现在，你基本不需要手动写太多的代码，一个应用服务就可以运行起来，其次现在应用基本已 jar 包方式直接运行，虽然本质还是运行在 Tomcat 中，但现在 jar 包中已经有了服务运行的基础环境，可以直接使用 jar 相关的运行命令就可以运行起服务。好了，废话了这么多，先看看我们如何运行起一个 DEMO 应用。</p>
-<h2 id="环境及版本"><a class="header-anchor" href="#环境及版本"></a>环境及版本</h2>
-<ul>
-<li>SpringBoot Version：2.1.6.RELEASE</li>
-<li>System：macOS Mojave</li>
-<li>JDK Version：1.8</li>
-<li>Gradle：5.4.1</li>
-<li>IDE：IntelliJ IDEA</li>
-</ul>
-<blockquote>
-<p>本系列应用使用如上环境，其次应用包管理，小伙伴可以选择自己熟悉的 Maven 进行管理，而这里都使用 Gradle 进行管理</p>
-</blockquote>
-<h2 id="Demo"><a class="header-anchor" href="#Demo"></a>Demo</h2>
-<h3 id="Spring-Initializr"><a class="header-anchor" href="#Spring-Initializr"></a><span class="exturl" data-url="aHR0cHM6Ly9zdGFydC5zcHJpbmcuaW8=">Spring Initializr<i class="fa fa-external-link-alt"></i></span></h3>
-<p>为了让开发者快速上手，官方提供了一建生成 SpringBoot 项目，你按需选择你需要的依赖即可。操作步骤如下截图<br>
-<img src="https://res.cloudinary.com/incoder/image/upload/v1561906733/blog/spring-initializr.png" alt="spring-initializ"></p>
-<h3 id="IDEA-Init"><a class="header-anchor" href="#IDEA-Init"></a>IDEA Init</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616526451/blog/spring-init.png" alt=""></p>
-<p>IDEA分为四步完成初始</p>
-<ol>
-<li>选择 Spring Initializr 初始化向导</li>
-<li>填写项目坐标信息，构建工具，版本，报名等</li>
-<li>选择需要的组件（会自动添加依赖）</li>
-<li>选择项目存放路径</li>
-</ol>
-<h2 id="Spring-运行"><a class="header-anchor" href="#Spring-运行"></a>Spring 运行</h2>
-<h3 id="命令"><a class="header-anchor" href="#命令"></a>命令</h3>
-<h4 id="macOS-or-Linux"><a class="header-anchor" href="#macOS-or-Linux"></a>macOS or Linux</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">gradlew bootRun</span><br></pre></td></tr></table></figure>
-<h4 id="Windows"><a class="header-anchor" href="#Windows"></a>Windows</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">./gradlew bootRun</span><br></pre></td></tr></table></figure>
-<h3 id="运行说明"><a class="header-anchor" href="#运行说明"></a>运行说明</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png" alt="spring-running-logo"></p>
-<h2 id="Spring-打包"><a class="header-anchor" href="#Spring-打包"></a>Spring 打包</h2>
-<h3 id="jar-分析"><a class="header-anchor" href="#jar-分析"></a>jar 分析</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561259381/blog/springboot-deploy-jar-unzip.png" alt="springboot-deploy-jar-unzip"></p>
-<p>目录说明</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">project/</span><br><span class="line">├── BOOT-INF/                                                                   </span><br><span class="line">│   ├── classes                                 # 当前项目结果文件放置在 classes 路径下</span><br><span class="line">│   │   │   └── application.properties          # 项目中配置文件</span><br><span class="line">│   │   ├── org/                                # 项目中 java 路径下，编译成 class 文件路径</span><br><span class="line">│   │   ├── static/                             # 项目中 resources 路径下的静态文件夹</span><br><span class="line">│   │   └── templates/                          # 项目中 resources 路径下的模板文件夹</span><br><span class="line">│   └── lib/                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）</span><br><span class="line">├── META-INF/                                                                   </span><br><span class="line">│   └── MANIFEST.MF                             # 清单文件，用于描述可执行 jar 的一些基本信息</span><br><span class="line">└── org/springframework/boot/loader/            # jar 包启动相关的引导</span><br><span class="line">    ├── archive/</span><br><span class="line">    ├── data</span><br><span class="line">    ├── ExectableArchiveLauncher.class</span><br><span class="line">    ├── jar/</span><br><span class="line">    ├── JarLauncher.class</span><br><span class="line">    ├── LaunchedURLClassLoader.class</span><br><span class="line">    ├── LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class</span><br><span class="line">    ├── Launcher.class</span><br><span class="line">    ├── MainMethodRunner.class</span><br><span class="line">    ├── PropertiesLauncher.class</span><br><span class="line">    ├── PropertiesLauncher$1.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── PropertiesLauncher$PrefixMatchingArchiveFilter.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── util/</span><br><span class="line">    └── WarLauncher.class</span><br></pre></td></tr></table></figure>
-<h4 id="MANIFEST-MF"><a class="header-anchor" href="#MANIFEST-MF"></a>MANIFEST.MF</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manifest-Version: 1.0                                       # 清单版本号</span><br><span class="line">Start-Class: org.incoder.start.SpringbootStartApplication   # 项目 main 方法所在的类</span><br><span class="line">Spring-Boot-Classes: BOOT-INF/classes/                      # 项目相关代码在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Lib: BOOT-INF/lib/                              # 项目中所依赖的第三方 jar 在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Version: 2.1.6.RELEASE                          # 项目  SpringBoot 版本</span><br><span class="line">Main-Class: org.springframework.boot.loader.JarLauncher     # 当前 jar 文件的执行入口类（main 方法所在的类）</span><br><span class="line">回车换行（在清单文件中，必须有，否则会出错）</span><br></pre></td></tr></table></figure>
-<h4 id="org-springframework-……目录"><a class="header-anchor" href="#org-springframework-……目录"></a>org/springframework/……目录</h4>
-<p>项目中引入的第三方 jar 中并不包含<code>org/springframework/boot/loader</code>内容，那这个目录是从哪里来的呢？</p>
-<p>寻找最终发现是项目中我们的<code>build.gradle</code>文件中，引入的<code>org.springframework.boot:spring-boot-gradle-plugin</code>依赖，而这个依赖位于<code>classpath</code>下，说明引入的这个插件 <strong>仅仅</strong> 是在项目构建时才起作用，当项目进行打包后，并不会把插件包打入到项目的依赖库中，也就是<code>BOOT-INF/lib/</code>路径下</p>
-<p>如何去研究在<code>org/springframework/boot/loader</code>下的源码内容呢？<br>
-最好的方式是在项目的依赖中导入<code>org.springframework.boot:spring-boot-loader</code>依赖</p>
-<blockquote>
-<p>原则上，在项目开发过程中是不需要引入<code>org.springframework.boot:spring-boot-loader</code>依赖，这里只是为了方便阅读源码进行学习</p>
-</blockquote>
-<h2 id="Spring-其他"><a class="header-anchor" href="#Spring-其他"></a>Spring 其他</h2>
-<h3 id="配置文件格式"><a class="header-anchor" href="#配置文件格式"></a>配置文件格式</h3>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvLnByb3BlcnRpZXM=">properties<i class="fa fa-external-link-alt"></i></span></li>
-<li><strong>推荐</strong> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvWUFNTA==">yml<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-<blockquote>
-<p>配置文件学习可参考 <a href="https://incoder.org/2019/07/28/springboot4/">SpringBoot（四）配置文件</a></p>
-</blockquote>
-<h3 id="常用命令"><a class="header-anchor" href="#常用命令"></a>常用命令</h3>
-<h4 id="gradle-tasks"><a class="header-anchor" href="#gradle-tasks"></a>gradle tasks</h4>
-<p>表示获取当前工程可用的 gradle tasks 命令</p>
-<h5 id="Application-tasks"><a class="header-anchor" href="#Application-tasks"></a>Application tasks</h5>
-<ul>
-<li>bootRun：Runs this project as a Spring Boot application.（以 bootJar 的形式运行当前项目）</li>
-</ul>
-<h5 id="Build-tasks"><a class="header-anchor" href="#Build-tasks"></a>Build tasks</h5>
-<ul>
-<li>bootJar：Assembles an executable jar archive containing the main classes and their dependencies.（装配一个可执行的 jar（自包含的 jar 包，不依赖其他容器） 归档，这个归档 jar 中包含了所需的依赖以及主类等）</li>
-</ul>
-<h5 id="Run-jar"><a class="header-anchor" href="#Run-jar"></a>Run jar</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar jar-name.jar</span><br></pre></td></tr></table></figure>
-<h5 id="Other"><a class="header-anchor" href="#Other"></a>Other</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 解压 jar 到当前 start 目录下</span></span><br><span class="line">unzip start-0.0.1-SNAPSHOT.jar -d ./start</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot（十）Mybatis 常用标签</title>
-    <url>/2020/03/24/springboot10/</url>
-    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585186336/blog/MyBatis.jpg" alt=""></p>
-<span id="more"></span>
-<p>关于 Mybatis 作为在国内普遍使用的 ORM 框架，我们在使用上要掌握常用的标签</p>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585238573/blog/mybatis-label.png" alt="mybatis-label"></p>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvc3FsbWFwLXhtbC5odG1s">官方教程《XML 映射器》<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvZHluYW1pYy1zcWwuaHRtbA==">官方教程《动态 SQL》<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vempmamF2YS9wLzg4ODY0MzIuaHRtbA==">Mybatis常用标签<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Mybatis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【译】• 面向服务的架构</title>
     <url>/2019/06/19/soa/</url>
     <content><![CDATA[<p>在学习过程中，我们首先需要将学习知识的基本概念搞清楚，而搞清楚概念最权威的方式是查阅 <strong><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3Jn">英文版 • 维基百科<i class="fa fa-external-link-alt"></i></span></strong> ，或者是对应知识的官方文档上面查找相关的知识。这样学习才能学习到知识的精华，而不是阅读经过别人转译过的文章。因此，这篇文章仅是本人在学习 SOA 基本概念时，对维基百科知识的一个汇总翻译记录，<font color=#FF0000>不建议朋友把这篇文章当做你的学习资料</font>，具体请查阅<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9hcmNoaXRlY3R1cmU=">Service-oriented architecture<i class="fa fa-external-link-alt"></i></span>。</p>
@@ -8832,6 +8703,113 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
       <tags>
         <tag>SpringBoot</tag>
         <tag>SOA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot（一） 初识</title>
+    <url>/2019/06/23/springboot1/</url>
+    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg" alt=""></p>
+<span id="more"></span>
+<p>从本篇文章开始，记录学习 SpringBoot 框架在实践，源码方面的知识，本节是第一篇，因此不涉及相关复杂知识的学习。众所周知，随着微服务的广泛流行，Spring 系列的 SpringBoot 和 SpringCloud 的应用也更受欢迎，那么请跟随我的脚本来一步步解开 SpringBoot 她神秘的面纱</p>
+<p>熟悉后端服务开发的小伙伴，在使用 SpringBoot 时一定会有这样的感受，咦，以前繁琐的配置，现在都不用再去配置一大堆东西了，以前跑起来一个 demo，感觉真是千辛万苦，错一步就 game over，以前服务基本都是已 war 包的形式运行在 Tomcat 中，而现在，你基本不需要手动写太多的代码，一个应用服务就可以运行起来，其次现在应用基本已 jar 包方式直接运行，虽然本质还是运行在 Tomcat 中，但现在 jar 包中已经有了服务运行的基础环境，可以直接使用 jar 相关的运行命令就可以运行起服务。好了，废话了这么多，先看看我们如何运行起一个 DEMO 应用。</p>
+<h2 id="环境及版本"><a class="header-anchor" href="#环境及版本"></a>环境及版本</h2>
+<ul>
+<li>SpringBoot Version：2.1.6.RELEASE</li>
+<li>System：macOS Mojave</li>
+<li>JDK Version：1.8</li>
+<li>Gradle：5.4.1</li>
+<li>IDE：IntelliJ IDEA</li>
+</ul>
+<blockquote>
+<p>本系列应用使用如上环境，其次应用包管理，小伙伴可以选择自己熟悉的 Maven 进行管理，而这里都使用 Gradle 进行管理</p>
+</blockquote>
+<h2 id="Demo"><a class="header-anchor" href="#Demo"></a>Demo</h2>
+<h3 id="Spring-Initializr"><a class="header-anchor" href="#Spring-Initializr"></a><span class="exturl" data-url="aHR0cHM6Ly9zdGFydC5zcHJpbmcuaW8=">Spring Initializr<i class="fa fa-external-link-alt"></i></span></h3>
+<p>为了让开发者快速上手，官方提供了一建生成 SpringBoot 项目，你按需选择你需要的依赖即可。操作步骤如下截图<br>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1561906733/blog/spring-initializr.png" alt="spring-initializ"></p>
+<h3 id="IDEA-Init"><a class="header-anchor" href="#IDEA-Init"></a>IDEA Init</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616526451/blog/spring-init.png" alt=""></p>
+<p>IDEA分为四步完成初始</p>
+<ol>
+<li>选择 Spring Initializr 初始化向导</li>
+<li>填写项目坐标信息，构建工具，版本，报名等</li>
+<li>选择需要的组件（会自动添加依赖）</li>
+<li>选择项目存放路径</li>
+</ol>
+<h2 id="Spring-运行"><a class="header-anchor" href="#Spring-运行"></a>Spring 运行</h2>
+<h3 id="命令"><a class="header-anchor" href="#命令"></a>命令</h3>
+<h4 id="macOS-or-Linux"><a class="header-anchor" href="#macOS-or-Linux"></a>macOS or Linux</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">gradlew bootRun</span><br></pre></td></tr></table></figure>
+<h4 id="Windows"><a class="header-anchor" href="#Windows"></a>Windows</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">./gradlew bootRun</span><br></pre></td></tr></table></figure>
+<h3 id="运行说明"><a class="header-anchor" href="#运行说明"></a>运行说明</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png" alt="spring-running-logo"></p>
+<h2 id="Spring-打包"><a class="header-anchor" href="#Spring-打包"></a>Spring 打包</h2>
+<h3 id="jar-分析"><a class="header-anchor" href="#jar-分析"></a>jar 分析</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561259381/blog/springboot-deploy-jar-unzip.png" alt="springboot-deploy-jar-unzip"></p>
+<p>目录说明</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">project/</span><br><span class="line">├── BOOT-INF/                                                                   </span><br><span class="line">│   ├── classes                                 # 当前项目结果文件放置在 classes 路径下</span><br><span class="line">│   │   │   └── application.properties          # 项目中配置文件</span><br><span class="line">│   │   ├── org/                                # 项目中 java 路径下，编译成 class 文件路径</span><br><span class="line">│   │   ├── static/                             # 项目中 resources 路径下的静态文件夹</span><br><span class="line">│   │   └── templates/                          # 项目中 resources 路径下的模板文件夹</span><br><span class="line">│   └── lib/                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）</span><br><span class="line">├── META-INF/                                                                   </span><br><span class="line">│   └── MANIFEST.MF                             # 清单文件，用于描述可执行 jar 的一些基本信息</span><br><span class="line">└── org/springframework/boot/loader/            # jar 包启动相关的引导</span><br><span class="line">    ├── archive/</span><br><span class="line">    ├── data</span><br><span class="line">    ├── ExectableArchiveLauncher.class</span><br><span class="line">    ├── jar/</span><br><span class="line">    ├── JarLauncher.class</span><br><span class="line">    ├── LaunchedURLClassLoader.class</span><br><span class="line">    ├── LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class</span><br><span class="line">    ├── Launcher.class</span><br><span class="line">    ├── MainMethodRunner.class</span><br><span class="line">    ├── PropertiesLauncher.class</span><br><span class="line">    ├── PropertiesLauncher$1.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── PropertiesLauncher$PrefixMatchingArchiveFilter.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── util/</span><br><span class="line">    └── WarLauncher.class</span><br></pre></td></tr></table></figure>
+<h4 id="MANIFEST-MF"><a class="header-anchor" href="#MANIFEST-MF"></a>MANIFEST.MF</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manifest-Version: 1.0                                       # 清单版本号</span><br><span class="line">Start-Class: org.incoder.start.SpringbootStartApplication   # 项目 main 方法所在的类</span><br><span class="line">Spring-Boot-Classes: BOOT-INF/classes/                      # 项目相关代码在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Lib: BOOT-INF/lib/                              # 项目中所依赖的第三方 jar 在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Version: 2.1.6.RELEASE                          # 项目  SpringBoot 版本</span><br><span class="line">Main-Class: org.springframework.boot.loader.JarLauncher     # 当前 jar 文件的执行入口类（main 方法所在的类）</span><br><span class="line">回车换行（在清单文件中，必须有，否则会出错）</span><br></pre></td></tr></table></figure>
+<h4 id="org-springframework-……目录"><a class="header-anchor" href="#org-springframework-……目录"></a>org/springframework/……目录</h4>
+<p>项目中引入的第三方 jar 中并不包含<code>org/springframework/boot/loader</code>内容，那这个目录是从哪里来的呢？</p>
+<p>寻找最终发现是项目中我们的<code>build.gradle</code>文件中，引入的<code>org.springframework.boot:spring-boot-gradle-plugin</code>依赖，而这个依赖位于<code>classpath</code>下，说明引入的这个插件 <strong>仅仅</strong> 是在项目构建时才起作用，当项目进行打包后，并不会把插件包打入到项目的依赖库中，也就是<code>BOOT-INF/lib/</code>路径下</p>
+<p>如何去研究在<code>org/springframework/boot/loader</code>下的源码内容呢？<br>
+最好的方式是在项目的依赖中导入<code>org.springframework.boot:spring-boot-loader</code>依赖</p>
+<blockquote>
+<p>原则上，在项目开发过程中是不需要引入<code>org.springframework.boot:spring-boot-loader</code>依赖，这里只是为了方便阅读源码进行学习</p>
+</blockquote>
+<h2 id="Spring-其他"><a class="header-anchor" href="#Spring-其他"></a>Spring 其他</h2>
+<h3 id="配置文件格式"><a class="header-anchor" href="#配置文件格式"></a>配置文件格式</h3>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvLnByb3BlcnRpZXM=">properties<i class="fa fa-external-link-alt"></i></span></li>
+<li><strong>推荐</strong> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvWUFNTA==">yml<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<blockquote>
+<p>配置文件学习可参考 <a href="https://incoder.org/2019/07/28/springboot4/">SpringBoot（四）配置文件</a></p>
+</blockquote>
+<h3 id="常用命令"><a class="header-anchor" href="#常用命令"></a>常用命令</h3>
+<h4 id="gradle-tasks"><a class="header-anchor" href="#gradle-tasks"></a>gradle tasks</h4>
+<p>表示获取当前工程可用的 gradle tasks 命令</p>
+<h5 id="Application-tasks"><a class="header-anchor" href="#Application-tasks"></a>Application tasks</h5>
+<ul>
+<li>bootRun：Runs this project as a Spring Boot application.（以 bootJar 的形式运行当前项目）</li>
+</ul>
+<h5 id="Build-tasks"><a class="header-anchor" href="#Build-tasks"></a>Build tasks</h5>
+<ul>
+<li>bootJar：Assembles an executable jar archive containing the main classes and their dependencies.（装配一个可执行的 jar（自包含的 jar 包，不依赖其他容器） 归档，这个归档 jar 中包含了所需的依赖以及主类等）</li>
+</ul>
+<h5 id="Run-jar"><a class="header-anchor" href="#Run-jar"></a>Run jar</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar jar-name.jar</span><br></pre></td></tr></table></figure>
+<h5 id="Other"><a class="header-anchor" href="#Other"></a>Other</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 解压 jar 到当前 start 目录下</span></span><br><span class="line">unzip start-0.0.1-SNAPSHOT.jar -d ./start</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot（十）Mybatis 常用标签</title>
+    <url>/2020/03/24/springboot10/</url>
+    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585186336/blog/MyBatis.jpg" alt=""></p>
+<span id="more"></span>
+<p>关于 Mybatis 作为在国内普遍使用的 ORM 框架，我们在使用上要掌握常用的标签</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585238573/blog/mybatis-label.png" alt="mybatis-label"></p>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvc3FsbWFwLXhtbC5odG1s">官方教程《XML 映射器》<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvZHluYW1pYy1zcWwuaHRtbA==">官方教程《动态 SQL》<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vempmamF2YS9wLzg4ODY0MzIuaHRtbA==">Mybatis常用标签<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>Mybatis</tag>
       </tags>
   </entry>
   <entry>
