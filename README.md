@@ -2,15 +2,13 @@
     <a href="https://www.incoder.org">BladeCode</a>
 </h2>
 
-![BladeCode](https://travis-ci.com/BladeCode/BladeCode.github.io.svg?branch=dev)
-
 ![BladeCode](https://github.com/BladeCode/BladeCode.github.io/actions/workflows/action.yml/badge.svg?branch=dev)
 
 ## Thanks
 
 1. [Node](https://nodejs.org)
 2. [Hexo](https://hexo.io)
-3. [Next](https://github.com/theme-next/hexo-theme-next)
+3. [Next](https://github.com/next-theme/hexo-theme-next)
 
 ## Upgrade
 

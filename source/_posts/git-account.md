@@ -12,12 +12,14 @@ tag: [git account]
 <!-- more -->
 
 ## 环境
+
 * Windows 10 x64
 * Git version 2.16.0
 
->这里Git的安装不在赘述
+> 这里Git的安装不在赘述
 
 ## 生成对应账号的密钥
+
 ```sh
 # 进入到`your_pc_name/.ssh`,
 cd .ssh
@@ -26,18 +28,22 @@ ssh-keygen -t rsa -C "Jerry.x@outlook.com"
 # 命名文件名称或指定文件存放路径等
 # 其它可以回车键进行确认，进行下一步
 ```
+
 ![git-account](https://res.cloudinary.com/incoder/image/upload/v1538887180/blog/git-account.png)
 
->完成后，将会生成`id_rsa_company.pub`（存放公钥）与`id_rsa_company`（存放私钥）两个文件
+>完成后，将会生成 `id_rsa_company.pub`（存放公钥）与 `id_rsa_company`（存放私钥）两个文件
 
 ## 添加公钥到托管平台
-* 在`.ssh`路径下，用文本编辑器打开`id_rsa_company.pub`文件，复制内容
-* 在托管平台上添加ssh public key
-以下以GitHub添加为例，其它平台类似
+
+* 在 `.ssh` 路径下，用文本编辑器打开 `id_rsa_company.pub` 文件，复制内容
+* 在托管平台上添加 ssh public key
+
+以下以 GitHub 添加为例，其它平台类似
 ![git-add-key](https://res.cloudinary.com/incoder/image/upload/v1538887180/blog/git-add-key.png)
 
 ## 添加配置文件
-在`.ssh`路径下，创建`config`文件，无文件后缀名，如下示例
+
+在 `.ssh` 路径下，创建 `config` 文件，无文件后缀名，如下示例
 
 ```sh
 # 配置github.com
@@ -57,16 +63,18 @@ Host company.domain.com
 
 * `Host`：的名字可以取为自己喜欢的名字
 * `HostName`：这个是真实的域名地址  
-例如：https://<font color=red>github.com</font>/BladeCode/BladeCode.github.io.git，红色标注字段
+    例如：https://<mark>github.com</mark>/BladeCode/BladeCode.github.io.git，红色标注字段
 * `IdentityFile`：这里是id_rsa的地址
 * `PreferredAuthentications`：配置登录时用什么权限认证
-可设为publickey，password publickey，keyboard-interactive等
+    可设为publickey，password publickey，keyboard-interactive 等
 * `User`：配置使用用户名
 
 ## 测试
+
 ```sh
 ssh -T git@github.com
 ```
+
 ![git-test](https://res.cloudinary.com/incoder/image/upload/v1538887180/blog/git-test.png)
 
->git@<font color=red>github.com</font>，github.com就是上一步中`config`文件中配置的`HostName`字段内容
+> git@<font color=red>github.com</font>，github.com 就是上一步中 `config` 文件中配置的 `HostName` 字段内容

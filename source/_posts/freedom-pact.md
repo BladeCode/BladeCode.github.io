@@ -1,11 +1,11 @@
 ---
 title: 评论不自由，赞美无意义
-date: 2021-03-05 12:30:10
+date: 2021-05-05 12:30:10
 categories: Agent
 tag: [VPN]
 ---
 
-就像文章标题所述。每到三，五月这个时间，网络变得异常脆弱。各种“奇怪”的网站访问起来很费劲。对于一个技术人员，这些问题可以解决，但是每次都需要花费一定的时间和精力来应对这些，而且随着 [GFW](https://baike.baidu.com/item/GWF) 的不断升级和加强，应对的策略和技术也是在不断的迭代，前前后后已经出现了多种技术，本篇就以这个契机，梳理截止到 2021-03-05 所了解到关于 “代理” 相关的知识。现在主流的科学上网技术有 VPN、SS、SSR、V2Ray、Trojan、Trojan-Go，小众的 WireGuard、Brook、Snell 和 NaiveProxy 等
+就像文章标题所述。每到三，五月这个时间，网络变得异常脆弱。各种“奇怪”的网站访问起来很费劲。对于一个技术人员，这些问题可以解决，但是每次都需要花费一定的时间和精力来应对这些，而且随着 [GFW](https://baike.baidu.com/item/GWF) 的不断升级和加强，应对的策略和技术也是在不断迭代，前前后后已经出现了多种技术，本篇就以这个契机，梳理截止到 2021-05-05 所了解到关于 “代理” 相关的知识。现在主流的科学上网技术有 VPN、SS、SSR、V2Ray、Trojan、Trojan-Go，小众的 WireGuard、Brook、Snell 和 NaiveProxy 等
 
 <!-- more -->
 
@@ -22,14 +22,19 @@ VPN 只是一个统称，它有多种具体实现。比如：
 * PPTP（点对点隧道协议：Point to Point Tunneling Protocol）;
 * L2TP（第二层隧道协议：Layer Two Tunneling Protocol）;
 * IPsec（互联网安全协议：Internet Protocol Security）;
-* SSL VPN;
-* WireGuard;
-* OpenVPN;
+* WireGuard（一种协议）;
+* OpenVPN（一种虚拟专用网络 **V**irtual **P**rivate **N**etwork（VPN）系统）;
 * IKEv2（因特网密钥交换：Internet Key Exchange） 等
 
-其中 WireGuard 是最新的协议实现（在 2020 年，WireGuard 协议已被添加到 Linux 和 Android 内核中，从而为 VPN 提供商所采用。默认情况下，WireGuard 使用 Curve25519 进行秘钥交换，并使用 ChaCha20 进行加密，但还具有客户端和服务器之间预共享对称秘钥的功能）
-
 ### WireGuard
+
+WireGuard 是由 Jason A. Donenfeld 开发，是最新的协议实现（在 2020 年，WireGuard 协议已被添加到 Linux 和 Android 内核中，从而为 VPN 提供商所采用。默认情况下，WireGuard 使用 Curve25519 进行秘钥交换，并使用 ChaCha20 进行加密，但还具有客户端和服务器之间预共享对称秘钥的功能）
+
+### OpenVPN
+
+OpenVPN 是由 James Yonan 编写，实现了在路由或桥接配置和远程访问设施中创建安全点对点或站点对站点连接的技术。它实现了客户端和服务器应用程序。它不与IPsec兼容
+
+OpenVPN 允许对等方使用预先共享的密钥、证书或用户名/密码相互验证。当在多客户端服务器配置中使用时，它允许服务器使用签名和证书颁发机构为每个客户端发布身份验证证书。
 
 ## SS
 
@@ -54,7 +59,7 @@ ShadowsocksR 的作者一开始曾有过违反 GPL 协议，在发布二进制�
 
 这里顺带科普一下 Socks5，Socks5 代理的原理是把你的网络数据请求先发送到你的代理服务器，然后由代理服务器转发给目标；如果目标有反馈发送到代理服务器，那么代理服务器会将数据包直接传回到你的本地网络，整个过程只需要数据的二次传输，并没有额外的处理。
 
->示例：现在呢在深圳，你的代理服务器在香港，如果你想要访问 Google，那么你首先需要把数据请求通过本地 Socks5 代理客户端发给在你在香港的服务器上的 Socks5 代理服务端，然后你在香港的服务器将数据请求发送给 Google，再把 Google 反馈的结果传到你香港的代理服务器，然后通过 Socks5 服务端回传到本地的 Socks5 客户端，这样就可以绕开 GFW 的检测而实现科学上网
+> 示例：现在呢在深圳，你的代理服务器在香港，如果你想要访问 Google，那么你首先需要把数据请求通过本地 Socks5 代理客户端发给在你在香港的服务器上的 Socks5 代理服务端，然后你在香港的服务器将数据请求发送给 Google，再把 Google 反馈的结果传到你香港的代理服务器，然后通过 Socks5 服务端回传到本地的 Socks5 客户端，这样就可以绕开 GFW 的检测而实现科学上网
 
 显而易见，Socks5 代理的所有数据走的任然是公网，而且在公网传输过程中，没有对数据进行任何加密和混淆，这跟 VPN 在公网建立虚拟专用通道传输过程中，对数据高强度加密的方式完全不同。Shadowsocks 和 ShadowsocksR 只在客户端和服务器端对数据做了简单加密和认证，主要功能是流量转发，过强才是主要目的。虽然 ShadowsocksR 已经停止更新很久了，而 Shadowsocks 仍处于社区人员的更新和维护之中，不断修复漏洞并增加新功能，所以现在 Shadowsocks 比 ShadowsocksR 更强大
 

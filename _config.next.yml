@@ -43,7 +43,7 @@ scheme: Mist
 #scheme: Gemini
 
 # Dark Mode
-darkmode: false
+darkmode: true
 
 
 # ---------------------------------------------------------------
@@ -168,7 +168,7 @@ social:
   GitHub: https://github.com/BladeCode || fab fa-github
   E-Mail: mailto:incoder.xu@gmail.com || fa fa-envelope
   Weibo: https://weibo.com/onblade || fab fa-weibo
-  Twitter: https://twitter.com/_incoder || fab fa-twitter
+  Twitter: https://twitter.com/_incoder || fa-brands fa-x-twitter
   Medium: https://medium.com/@incoder || fab fa-medium
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
   #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
@@ -375,8 +375,8 @@ codeblock:
   # Code Highlight theme
   # All available themes: https://theme-next.js.org/highlight/
   theme:
-    light: stackoverflow-light
-    dark: stackoverflow-dark
+    light: base16/humanoid-light
+    dark: base16/humanoid-dark
   prism:
     light: prism
     dark: prism-dark

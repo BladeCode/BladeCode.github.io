@@ -16,7 +16,7 @@ sticky: 1
 
 1. [incoder.org](https://www.incoder.org): 作为分享生活、感悟、个人状态为主的地方，偶尔汇总某些技术等的综合性文章
 2. [backend.incoder.org](https://backend.incoder.org): 记录以 Java 为基础的后端开发生态技术领域
-3. [mobile.incoder.org](https://backend.incoder.org): 记录以原生开发为基础的移动端开发生态技术
+3. [mobile.incoder.org](https://mobile.incoder.org): 记录以原生开发为基础的移动端开发生态技术
 4. [incoder.app](https://incoder.app): 记录个人开源应用
 
 {% note info %}
