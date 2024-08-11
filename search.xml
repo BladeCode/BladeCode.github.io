@@ -2069,6 +2069,34 @@ macOS 可以使用 IDEA 查看 maven 的路径，<code>/usr/local/Cellar/maven/3
       </tags>
   </entry>
   <entry>
+    <title>Flowable（二）Modeler-UI 集成</title>
+    <url>/2019/10/24/flowable2/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
+      <categories>
+        <category>Flowable</category>
+      </categories>
+      <tags>
+        <tag>Flowable</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flowable（三）流程图绘制异常问题</title>
+    <url>/2020/07/01/flowable3/</url>
+    <content><![CDATA[<span id="more"></span>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC91LzM3NTkzNTcvYmxvZy80MjgxMTEw">HttpMediaTypeNotAcceptableException<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFlbGR1bmcuY29tL3NwcmluZy1odHRwbWVkaWF0eXBlbm90YWNjZXB0YWJsZQ==">HttpMediaTypeNotAcceptableException in Spring MVC<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Flowable</category>
+      </categories>
+      <tags>
+        <tag>Flowable</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Flowable（一）初识</title>
     <url>/2019/09/25/flowable1/</url>
     <content><![CDATA[<p>Flowable是一个使用Java编写的轻量级业务流程引擎。Flowable流程引擎可用于部署BPMN 2.0流程定义（用于定义流程的行业XML标准）， 创建这些流程定义的流程实例，进行查询，访问运行中或历史的流程实例与相关数据等，众所周知，Flowable是Activit的一个分叉，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmZsb3dhYmxlLm9yZy8yMDE2LzEwLzEzL2Zsb3dhYmxlLTUtMjItMC1yZWxlYXNlLw==">Flowable的第一个版本（5.22.0）是基于Activit（5.21.0）<i class="fa fa-external-link-alt"></i></span>，关于为什么Flowable会从Activit分叉，感兴趣可以查看Flowable官方的文章<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmZsb3dhYmxlLm9yZy8yMDE2LzEwLzEyL2Zsb3dhYmxlLWFuZC1hY3Rpdml0aS13aGF0LXRoZS1mb3JrLw==">Flowable and Activiti: What the Fork?!<i class="fa fa-external-link-alt"></i></span>，这里不在赘述这些内容</p>
@@ -2137,34 +2165,6 @@ macOS 可以使用 IDEA 查看 maven 的路径，<code>/usr/local/Cellar/maven/3
 <img src="https://res.cloudinary.com/incoder/image/upload/v1569556130/blog/flowable-aleady-bind.png" alt="flowable-aleady-bind"></p>
 <p>解决方法：查找占用端口进程<code>netstat -ano|findstr 端口号</code>，并kill它<code>taskkill -PID 进程号 -F</code><br>
 <img src="https://res.cloudinary.com/incoder/image/upload/v1569556500/blog/flowable-kill-task.png" alt="flowable-kill-task"></p>
-]]></content>
-      <categories>
-        <category>Flowable</category>
-      </categories>
-      <tags>
-        <tag>Flowable</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flowable（二）Modeler-UI 集成</title>
-    <url>/2019/10/24/flowable2/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>Flowable</category>
-      </categories>
-      <tags>
-        <tag>Flowable</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flowable（三）流程图绘制异常问题</title>
-    <url>/2020/07/01/flowable3/</url>
-    <content><![CDATA[<span id="more"></span>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9teS5vc2NoaW5hLm5ldC91LzM3NTkzNTcvYmxvZy80MjgxMTEw">HttpMediaTypeNotAcceptableException<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFlbGR1bmcuY29tL3NwcmluZy1odHRwbWVkaWF0eXBlbm90YWNjZXB0YWJsZQ==">HttpMediaTypeNotAcceptableException in Spring MVC<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
 ]]></content>
       <categories>
         <category>Flowable</category>
@@ -2283,8 +2283,8 @@ macOS 可以使用 IDEA 查看 maven 的路径，<code>/usr/local/Cellar/maven/3
   </entry>
   <entry>
     <title>评论不自由，赞美无意义</title>
-    <url>/2021/03/05/freedom-pact/</url>
-    <content><![CDATA[<p>就像文章标题所述。每到三，五月这个时间，网络变得异常脆弱。各种“奇怪”的网站访问起来很费劲。对于一个技术人员，这些问题可以解决，但是每次都需要花费一定的时间和精力来应对这些，而且随着 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9HV0Y=">GFW<i class="fa fa-external-link-alt"></i></span> 的不断升级和加强，应对的策略和技术也是在不断的迭代，前前后后已经出现了多种技术，本篇就以这个契机，梳理截止到 2021-03-05 所了解到关于 “代理” 相关的知识。现在主流的科学上网技术有 VPN、SS、SSR、V2Ray、Trojan、Trojan-Go，小众的 WireGuard、Brook、Snell 和 NaiveProxy 等</p>
+    <url>/2021/05/05/freedom-pact/</url>
+    <content><![CDATA[<p>就像文章标题所述。每到三，五月这个时间，网络变得异常脆弱。各种“奇怪”的网站访问起来很费劲。对于一个技术人员，这些问题可以解决，但是每次都需要花费一定的时间和精力来应对这些，而且随着 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9HV0Y=">GFW<i class="fa fa-external-link-alt"></i></span> 的不断升级和加强，应对的策略和技术也是在不断迭代，前前后后已经出现了多种技术，本篇就以这个契机，梳理截止到 2021-05-05 所了解到关于 “代理” 相关的知识。现在主流的科学上网技术有 VPN、SS、SSR、V2Ray、Trojan、Trojan-Go，小众的 WireGuard、Brook、Snell 和 NaiveProxy 等</p>
 <span id="more"></span>
 <div class="note info"><p>本篇文章大量使用了 <span class="exturl" data-url="aHR0cHM6Ly9peWlkZW5nLm5ldC9hYm91dC9teWhvbWUuaHRtbA==">一灯不是和尚<i class="fa fa-external-link-alt"></i></span> 作者发布 《<span class="exturl" data-url="aHR0cHM6Ly9peWlkZW5nLm5ldC9ibGFjay10ZWNobm9sb2d5L2NnZncvdnBuLXNzLXNzci12MnJheS10cm9qYW4td2lyZWd1YXJkLWJ5cGFzcy1nZncuaHRtbA==">科学上网工具哪个好？<i class="fa fa-external-link-alt"></i></span> 》文章中的内容，在此感谢作者对各技术的汇总以及经验总结，本篇文章是在原文章的基础上进行的扩展补充</p>
 </div>
@@ -2295,13 +2295,15 @@ macOS 可以使用 IDEA 查看 maven 的路径，<code>/usr/local/Cellar/maven/3
 <li>PPTP（点对点隧道协议：Point to Point Tunneling Protocol）;</li>
 <li>L2TP（第二层隧道协议：Layer Two Tunneling Protocol）;</li>
 <li>IPsec（互联网安全协议：Internet Protocol Security）;</li>
-<li>SSL VPN;</li>
-<li>WireGuard;</li>
-<li>OpenVPN;</li>
+<li>WireGuard（一种协议）;</li>
+<li>OpenVPN（一种虚拟专用网络 <strong>V</strong>irtual <strong>P</strong>rivate <strong>N</strong>etwork（VPN）系统）;</li>
 <li>IKEv2（因特网密钥交换：Internet Key Exchange） 等</li>
 </ul>
-<p>其中 WireGuard 是最新的协议实现（在 2020 年，WireGuard 协议已被添加到 Linux 和 Android 内核中，从而为 VPN 提供商所采用。默认情况下，WireGuard 使用 Curve25519 进行秘钥交换，并使用 ChaCha20 进行加密，但还具有客户端和服务器之间预共享对称秘钥的功能）</p>
 <h3 id="WireGuard"><a class="header-anchor" href="#WireGuard"></a>WireGuard</h3>
+<p>WireGuard 是由 Jason A. Donenfeld 开发，是最新的协议实现（在 2020 年，WireGuard 协议已被添加到 Linux 和 Android 内核中，从而为 VPN 提供商所采用。默认情况下，WireGuard 使用 Curve25519 进行秘钥交换，并使用 ChaCha20 进行加密，但还具有客户端和服务器之间预共享对称秘钥的功能）</p>
+<h3 id="OpenVPN"><a class="header-anchor" href="#OpenVPN"></a>OpenVPN</h3>
+<p>OpenVPN 是由 James Yonan 编写，实现了在路由或桥接配置和远程访问设施中创建安全点对点或站点对站点连接的技术。它实现了客户端和服务器应用程序。它不与IPsec兼容</p>
+<p>OpenVPN 允许对等方使用预先共享的密钥、证书或用户名/密码相互验证。当在多客户端服务器配置中使用时，它允许服务器使用签名和证书颁发机构为每个客户端发布身份验证证书。</p>
 <h2 id="SS"><a class="header-anchor" href="#SS"></a>SS</h2>
 <p>SS 是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoYWRvd3NvY2tz">Shadowsocks<i class="fa fa-external-link-alt"></i></span> 的缩写，中文名为影梭，为了避免关键词过滤，网友喜欢将 Shadowsocks 称为 “酸酸”，是一种基于 Socks5 代理方式的加密传输协议，也可以指定实现这个协议的各种开发包。Shadowsocks 是由 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Nsb3d3aW5keQ==">Clowwindy<i class="fa fa-external-link-alt"></i></span> 为了自己使用谷歌查资料而编写；Shadowsocks 分为服务端和客户端，在使用之前，需要先将服务器端程序部署到服务器上面，然后通过客户端连接并创建本地代理。后来，他觉得这个东西非常好用，速度也很快，于是将源码提交到了 GitHub。由于其优秀的使用体验，Shadowsocks 被广泛传播，导致作者被某部门请去 “喝茶”。迫于压力 Clowwindy 于 2015-08-22 宣布停止维护此项目，并移除其个人页面所存储的源代码，而且保证永不再参与维护更新</p>
 <p>虽然 Clowwindy 被迫放弃了 Shadowsocks，但开源界没有放弃，各路大神依旧在为 Shadowsocks 添砖加瓦，这就是开源的力量，倒下一个 Clowwindy，会有千千万万个 “Clowwindy” 站出来</p>
@@ -2607,32 +2609,32 @@ Gradle 腾讯镜像：<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmNsb3V
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入到`your_pc_name/.ssh`,</span></span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line"><span class="comment"># Jerry.x@outlook.com 是我的Github的邮箱，这里需要替换成自己的邮箱</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;Jerry.x@outlook.com&quot;</span></span><br><span class="line"><span class="comment"># 命名文件名称或指定文件存放路径等</span></span><br><span class="line"><span class="comment"># 其它可以回车键进行确认，进行下一步</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://res.cloudinary.com/incoder/image/upload/v1538887180/blog/git-account.png" alt="git-account"></p>
 <blockquote>
-<p>完成后，将会生成<code>id_rsa_company.pub</code>（存放公钥）与<code>id_rsa_company</code>（存放私钥）两个文件</p>
+<p>完成后，将会生成 <code>id_rsa_company.pub</code>（存放公钥）与 <code>id_rsa_company</code>（存放私钥）两个文件</p>
 </blockquote>
 <h2 id="添加公钥到托管平台"><a class="header-anchor" href="#添加公钥到托管平台"></a>添加公钥到托管平台</h2>
 <ul>
-<li>在<code>.ssh</code>路径下，用文本编辑器打开<code>id_rsa_company.pub</code>文件，复制内容</li>
-<li>在托管平台上添加ssh public key<br>
-以下以GitHub添加为例，其它平台类似<br>
-<img src="https://res.cloudinary.com/incoder/image/upload/v1538887180/blog/git-add-key.png" alt="git-add-key"></li>
+<li>在 <code>.ssh</code> 路径下，用文本编辑器打开 <code>id_rsa_company.pub</code> 文件，复制内容</li>
+<li>在托管平台上添加 ssh public key</li>
 </ul>
+<p>以下以 GitHub 添加为例，其它平台类似<br>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1538887180/blog/git-add-key.png" alt="git-add-key"></p>
 <h2 id="添加配置文件"><a class="header-anchor" href="#添加配置文件"></a>添加配置文件</h2>
-<p>在<code>.ssh</code>路径下，创建<code>config</code>文件，无文件后缀名，如下示例</p>
+<p>在 <code>.ssh</code> 路径下，创建 <code>config</code> 文件，无文件后缀名，如下示例</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置github.com</span></span><br><span class="line">Host github.com                 </span><br><span class="line">    HostName github.com</span><br><span class="line">    IdentityFile C:\\Users\\Jerry\\.ssh\\id_rsa</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User BladeCode</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 company.domain.com</span></span><br><span class="line">Host company.domain.com</span><br><span class="line">    HostName company.domain.com</span><br><span class="line">    IdentityFile C:\\Users\\Jerry\\.ssh\\id_rsa_company</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User Jerry xu</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>Host</code>：的名字可以取为自己喜欢的名字</li>
 <li><code>HostName</code>：这个是真实的域名地址<br>
-例如：https://<font color=red><span class="exturl" data-url="aHR0cDovL2dpdGh1Yi5jb20=">github.com<i class="fa fa-external-link-alt"></i></span></font>/BladeCode/BladeCode.github.io.git，红色标注字段</li>
+例如：https://<mark><span class="exturl" data-url="aHR0cDovL2dpdGh1Yi5jb20=">github.com<i class="fa fa-external-link-alt"></i></span></mark>/BladeCode/BladeCode.github.io.git，红色标注字段</li>
 <li><code>IdentityFile</code>：这里是id_rsa的地址</li>
 <li><code>PreferredAuthentications</code>：配置登录时用什么权限认证<br>
-可设为publickey，password publickey，keyboard-interactive等</li>
+可设为publickey，password publickey，keyboard-interactive 等</li>
 <li><code>User</code>：配置使用用户名</li>
 </ul>
 <h2 id="测试"><a class="header-anchor" href="#测试"></a>测试</h2>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p><img src="https://res.cloudinary.com/incoder/image/upload/v1538887180/blog/git-test.png" alt="git-test"></p>
 <blockquote>
-<p>git@<font color=red><span class="exturl" data-url="aHR0cDovL2dpdGh1Yi5jb20=">github.com<i class="fa fa-external-link-alt"></i></span></font>，github.com就是上一步中<code>config</code>文件中配置的<code>HostName</code>字段内容</p>
+<p>git@<font color=red><span class="exturl" data-url="aHR0cDovL2dpdGh1Yi5jb20=">github.com<i class="fa fa-external-link-alt"></i></span></font>，<span class="exturl" data-url="aHR0cDovL2dpdGh1Yi5jb20=">github.com<i class="fa fa-external-link-alt"></i></span> 就是上一步中 <code>config</code> 文件中配置的 <code>HostName</code> 字段内容</p>
 </blockquote>
 ]]></content>
       <categories>
@@ -2741,6 +2743,192 @@ Gradle 腾讯镜像：<span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmNsb3V
       </categories>
       <tags>
         <tag>git bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 签名</title>
+    <url>/2024/06/17/git-signature/</url>
+    <content><![CDATA[<p><img src="https://docs.github.com/assets/cb-17614/mw-1440/images/help/commits/verified-commit.webp" alt="verified-commit"></p>
+<p>通常 Push 代码到远程托管平台（GitHub，Gitlab，Gitee 等），需要提前在托管平台上传我们 Git 账户的公钥（*.pub），平台使用上传的公钥来验证身份（本地的 Git 私钥与平台上的公钥配对，以确保你有权限读写该仓库），该验证只会在 Push 时进行检查</p>
+<span id="more"></span>
+<h2 id="为什么要签名"><a class="header-anchor" href="#为什么要签名"></a>为什么要签名</h2>
+<p>虽然对 Push 做了检查，但依然不够安全，因为任何拥有该仓库权限的人，都可以在 commit/tag 时使用 <code>git config user.name &quot;假的用户名&quot;</code>, <code>git config user.email &quot;假的邮箱地址&quot;</code> 命令来伪造提交者用户信息，这样我们根本无法追溯提交者的身份，所以我们需要给 commit/tag 签名，签名的目的是确保提交的代码在传输和存储过程中没有被篡改，并验证提交者的身份，同时也保证代码的可追溯性</p>
+<p>commit 签名是在本地，在使用 <code>git commit</code> 命令时进行签名，push 时会将你的签名信息，原封不动 push 到远程仓库</p>
+<p>commit 签名只是用于验证这条 commit 来自于你本人，与是否有权限操作远程仓库无关</p>
+<h2 id="如何签名"><a class="header-anchor" href="#如何签名"></a>如何签名</h2>
+<p>可以使用 GPG、SSH 或 S/MIME，可以在本地对 commit/tag 进行签名。 这些 commit/tag 在 GitHub 上标示为已验证，便于其他人信任更改来自可信的来源</p>
+<h3 id="SSH、GPG、S-MIME-区别"><a class="header-anchor" href="#SSH、GPG、S-MIME-区别"></a>SSH、GPG、S/MIME 区别</h3>
+<ul>
+<li>SSH 签名是最容易生成的，甚至可以将现有身份验证密钥上传到 GitHub 以用作签名密钥</li>
+<li>生成 GPG 签名比生成 SSH 密钥复杂，但 GPG 具有 SSH 没有的功能，GPG 密钥可以在不使用时过期或撤销</li>
+<li>较大型组织的环境中通常需要 S/MIME 签名</li>
+</ul>
+<h3 id="👍-SSH（常用）"><a class="header-anchor" href="#👍-SSH（常用）"></a>👍 SSH（常用）</h3>
+<blockquote>
+<p>SSH 签名验证需 <font color=red>Git 2.3.4</font> 及以上版本</p>
+</blockquote>
+<h4 id="检查现有-SSH-密钥"><a class="header-anchor" href="#检查现有-SSH-密钥"></a>检查现有 SSH 密钥</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看本地 ~/.ssh 路径现有密钥</span></span><br><span class="line"><span class="built_in">ls</span> -al ~/.ssh</span><br><span class="line"><span class="comment"># 检查输出的列表</span></span><br></pre></td></tr></table></figure>
+<p>检查已有密钥列表已有 RSA 密钥，如果你已经有 <strong>SHA-2 算法生成 RSA 密钥</strong> 那么你可以 <font color=red>跳过</font> <code>生产新 SSH 密钥</code>，如果没有，为了安全，还是建议重新生成 SHA-2 算法生成 RSA 密钥</p>
+<h4 id="生产新-SSH-密钥"><a class="header-anchor" href="#生产新-SSH-密钥"></a>生产新 SSH 密钥</h4>
+<div class="note info"><ol>
+<li>2022.03.15
+<ul>
+<li>在该日期 GitHub 删除旧的、不安全的密钥类型来提高安全性</li>
+<li>自该日期起，<font color=red>不再支持</font> <strong>DSA 密钥</strong> (ssh-dss)。 <font color=red>无法</font> 在 <span class="exturl" data-url="aHR0cDovL2dpdGh1Yi5jb20=">github.com<i class="fa fa-external-link-alt"></i></span> 上向个人帐户添加新的 <strong>DSA 密钥</strong></li>
+</ul>
+</li>
+<li>2021.11.02
+<ul>
+<li>在该日期 <strong>之前</strong> 带有 valid_after 的 <strong>RSA 密钥</strong> (ssh-rsa) 可以继续使用任何签名算法</li>
+<li>在该日期 <strong>之后</strong> 生成的 RSA 密钥 <font color=red>必须</font> 使用 <strong>SHA-2 签名算法</strong>。 一些较旧的客户端可能需要升级才能使用 SHA-2 签名</li>
+</ul>
+</li>
+</ol>
+</div>
+<p>在生成 SSH 密钥时，我们可以给 SSH 密钥添加密码，也可以不添加密码，这里根据需要选择是否添加密码</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1722773384/blog/git-ssh-keygen.png" alt="git-ssh-keygen"></p>
+<ol>
+<li>执行 <code>ssh-keygen -t ed25519 -C &quot;Jerry.x@outlook.com&quot;</code> 命令，这里的邮箱换成你的 GitHub 邮箱</li>
+<li>确认密钥存放位置
+<ul>
+<li>如果不需调整（默认：<code>/User/blade/.ssh/id_ed25519</code>），可 Enter 键进入下一步</li>
+<li>这里我重命名了密钥 <code>/User/blade/.ssh/id_ed25519_test</code></li>
+</ul>
+</li>
+<li>给密钥设置密码
+<ul>
+<li>如果无需设置，可 Enter 键进入下一步</li>
+<li>如果需设置，输入密码即可</li>
+</ul>
+</li>
+<li>确认输入的密钥密码，和上一步输入内容一致</li>
+<li>提示生成的密钥存放位置和指纹信息</li>
+</ol>
+<details class="note primary"><summary><p>如果密钥 <strong>设置了密码</strong>，需要将 SSH 密钥添加到 ssh-agent</p>
+</summary>
+<p>在向 ssh-agent 添加新的 SSH 密钥管理密钥前，应该检查现有 SSH 密钥并生成新的 SSH 密钥</p>
+<div class="tabs" id="sixth-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#sixth-unique-name-1"><i class="fa-brands fa-windows"></i>Windows</a></li><li class="tab"><a href="#sixth-unique-name-2"><i class="fa-brands fa-apple"></i>macOS</a></li><li class="tab"><a href="#sixth-unique-name-3"><i class="fa-brands fa-linux"></i>Linux</a></li></ul><div class="tab-content"><div class="tab-pane active" id="sixth-unique-name-1"><blockquote>
+<p>如果已安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FwcHMvZGVza3RvcA==">GitHub Desktop<i class="fa fa-external-link-alt"></i></span>，可使用它克隆存储库，而无需处理 SSH 密钥</p>
+</blockquote>
+<ol>
+<li>
+<p>在新的“管理员提升”__ PowerShell 窗口中，确保 ssh-agent 正在运行。 可以使用“使用 SSH 密钥密码”中的“自动启动 ssh agent”说明，或者手动启动它</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># start the ssh-agent in the background</span></span><br><span class="line">Get-Service -Name ssh-agent | Set-Service -StartupType Manual</span><br><span class="line">Start-Service ssh-agent</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在无提升权限的终端窗口中，将 SSH 私钥添加到 ssh-agent。 如果使用其他名称创建了密钥，或要添加具有其他名称的现有密钥，请将命令中的 id_ed25519 替换为私钥文件的名称</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-add c:/Users/YOU/.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div><div class="tab-pane" id="sixth-unique-name-2"><blockquote>
+<p>将 SSH 密钥添加到该代理时，应使用默认的 macOS ssh-add 命令，而不是使用通过 macports、homebrew 或某些其他外部来源安装的应用程序</p>
+</blockquote>
+<ol>
+<li>
+<p>在后台启动 ssh 代理</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(ssh-agent -s)</span>&quot;</span></span><br><span class="line">&gt; Agent pid 59566</span><br></pre></td></tr></table></figure>
+<p>根据您的环境，您可能需要使用不同的命令。 例如，在启动 <code>ssh-agent</code> 之前，你可能需要通过运行 <code>sudo -s -H</code> 根访问，或者可能需要使用 <code>exec ssh-agent bash</code> 或 <code>exec ssh-agent zsh</code> 运行 <code>ssh-agent</code></p>
+</li>
+<li>
+<p>如果你使用的是 macOS Sierra <strong>10.12.2</strong> 或更高版本，则需要修改 <code>~/.ssh/config</code> 文件以自动将密钥加载到 <code>ssh-agent</code> 中并在密钥链中存储密码</p>
+<ul>
+<li>
+<p>检查你的 <code>~/.ssh/config</code> 文件是否在默认位置</p>
+</li>
+<li>
+<p>如果文件不存在，请创建该文件</p>
+</li>
+<li>
+<p>打开你的 <code>~/.ssh/config</code> 文件，然后修改文件以包含以下行。 如果您的 SSH 密钥文件与示例代码具有不同的名称或路径，请修改文件名或路径以匹配您当前的设置</p>
+   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  <span class="comment"># 如果看到了 Bad configuration option: usekeychain 错误，</span></span><br><span class="line">  <span class="comment"># 取消下一行注释，使用 IgnoreUnknown 配置</span></span><br><span class="line">  <span class="comment"># IgnoreUnknown UseKeychain</span></span><br><span class="line">  AddKeysToAgent <span class="built_in">yes</span></span><br><span class="line">  <span class="comment"># 如果你选择不向密钥添加密码，应该省略 UseKeychain 行</span></span><br><span class="line">  UseKeychain <span class="built_in">yes</span></span><br><span class="line">  IdentityFile ~/.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>将 SSH 私钥添加到 <code>ssh-agent</code> 并将密码存储在密钥链中。 如果使用其他名称创建了密钥，或要添加具有其他名称的现有密钥，请将命令中的 <strong>id_ed25519</strong> 替换为私钥文件的名称</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-add --apple-use-keychain ~/.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<details class="note warning no-icon"><summary><p>注意</p>
+</summary>
+<ol>
+<li>当你将 SSH 密钥添加到 ssh-agent 时，<code>--apple-use-keychain</code> 选项会将密码存储在你的密钥链中。 如果选择不向密钥添加密码，请运行命令，而不使用 <code>--apple-use-keychain</code> 选项</li>
+<li>选项 <code>--apple-use-keychain</code> 位于 Apple 的 ssh-add 标准版本中。 在 Monterey (12.0) 之前的 macOS 版本中，<code>--apple-use-keychain</code> 和 <code>--apple-load-keychain</code> 标志分别使用语法 <mark class="label ">-K</mark> 和 <mark class="label ">-A</mark></li>
+<li>如果您没有安装 Apple 的 ssh-add 标准版本，可能会收到错误消息。 有关详细信息，请参阅 “<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vemgvYXV0aGVudGljYXRpb24vdHJvdWJsZXNob290aW5nLXNzaC9lcnJvci1zc2gtYWRkLWlsbGVnYWwtb3B0aW9uLS0tLWFwcGxlLXVzZS1rZXljaGFpbg==">错误：ssh-add：非法选项 – apple-use-keychain<i class="fa fa-external-link-alt"></i></span>”</li>
+<li>如果系统继续提示你输入密码，则可能需要将命令添加到 <code>~/.zshrc</code> 文件（或 bash 对应的 <code>~/.bashrc</code> 文件）</li>
+</ol>
+</details></div><div class="tab-pane" id="sixth-unique-name-3"><ol>
+<li>
+<p>在后台启动 ssh 代理</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(ssh-agent -s)</span>&quot;</span></span><br><span class="line">&gt; Agent pid 59566</span><br></pre></td></tr></table></figure>
+<p>根据您的环境，您可能需要使用不同的命令。 例如，在启动 <code>ssh-agent</code> 之前，你可能需要通过运行 <code>sudo -s -H</code> 根访问，或者可能需要使用 <code>exec ssh-agent bash</code> 或 <code>exec ssh-agent zsh</code> 运行 <code>ssh-agent</code></p>
+</li>
+<li>
+<p>将 SSH 私钥添加到 ssh-agent</p>
+<p>如果使用其他名称创建了密钥，或要添加具有其他名称的现有密钥，请将命令中的 <strong>id_ed25519</strong> 替换为私钥文件的名称</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div></div></div>
+</details>
+<p>除了上述的方式生成密钥，还有 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vemgvYXV0aGVudGljYXRpb24vY29ubmVjdGluZy10by1naXRodWItd2l0aC1zc2gvZ2VuZXJhdGluZy1hLW5ldy1zc2gta2V5LWFuZC1hZGRpbmctaXQtdG8tdGhlLXNzaC1hZ2VudCNnZW5lcmF0aW5nLWEtbmV3LXNzaC1rZXktZm9yLWEtaGFyZHdhcmUtc2VjdXJpdHkta2V5">为硬件安全密钥生成新的 SSH 密钥<i class="fa fa-external-link-alt"></i></span> 方式，这里不做说明，可以移步官方文档查看</p>
+<h4 id="将-SSH-密钥添加到-GitHub-账户"><a class="header-anchor" href="#将-SSH-密钥添加到-GitHub-账户"></a>将 SSH 密钥添加到 GitHub 账户</h4>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1722781365/blog/github-ssh-add.png" alt="github-ssh-add"></p>
+<blockquote>
+<p>其他更多设置可参考官方文档 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vemgvYXV0aGVudGljYXRpb24vY29ubmVjdGluZy10by1naXRodWItd2l0aC1zc2gvYWRkaW5nLWEtbmV3LXNzaC1rZXktdG8teW91ci1naXRodWItYWNjb3VudA==">新增 SSH 密钥到 GitHub 帐户<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h4 id="将签名密钥告诉-Git"><a class="header-anchor" href="#将签名密钥告诉-Git"></a>将签名密钥告诉 Git</h4>
+<div class="note warning"><ul>
+<li>如需全局配置：添加 <code>--global</code> 参数</li>
+<li>如果你有多个 Git 账号，推荐 <font color=red>按照不同的账号分别进行配置</font>，具体可参考 <a href="git-account.md#%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">Git 多账号配置</a> 这篇文章</li>
+</ul>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 配置 Git 使用 SSH 对提交和标记签名</span></span><br><span class="line">git config gpg.format ssh</span><br><span class="line"><span class="comment"># 2. 配置指定 SSH 签名密钥</span></span><br><span class="line"><span class="comment">#    将 ~/.ssh/id_ed25519 替换为要使用的公钥路径</span></span><br><span class="line">git config user.signingkey ~/.ssh/id_ed25519.pub</span><br><span class="line"><span class="comment"># commit 开启自动签名</span></span><br><span class="line">git config commit.gpgsign <span class="literal">true</span></span><br><span class="line"><span class="comment"># tag 开启自动签名</span></span><br><span class="line">git config tag.gpgsign <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h4 id="配置可信公钥列表"><a class="header-anchor" href="#配置可信公钥列表"></a>配置可信公钥列表</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p ~/.config/git</span><br><span class="line"><span class="built_in">touch</span> ~/.config/git/allowed_signers</span><br><span class="line"><span class="comment"># 将指定的密钥文件（~/.ssh/id_ed25519）内容复制到 allowed_signers 文件中</span></span><br><span class="line"><span class="comment"># 如果是继续追加, 将 &gt; 替换为 &gt;&gt;</span></span><br><span class="line"><span class="built_in">cat</span> ~/.ssh/id_ed25519.pub &gt; ~/.config/git/allowed_signers</span><br><span class="line"><span class="comment"># 配置可信公钥</span></span><br><span class="line">git config gpg.ssh.allowedSignersFile <span class="string">&quot;~/.config/git/allowed_signers&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="对-commit-签名"><a class="header-anchor" href="#对-commit-签名"></a>对 commit 签名</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 当本地分支中的提交更改时，请将 -S 标志添加到 git commit 命令</span></span><br><span class="line">git commit -S -m <span class="string">&quot;YOUR_COMMIT_MESSAGE&quot;</span></span><br><span class="line"><span class="comment"># 2. 在本地完成创建提交后，将其推送到 GitHub 上的远程仓库</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h4 id="对-tag-签名"><a class="header-anchor" href="#对-tag-签名"></a>对 tag 签名</h4>
+<blockquote>
+<p>注意：如果 Git 客户端配置为默认对提交进行签名，GitHub Desktop 仅支持提交签名</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 若要对标记进行签名，请将 -s 添加到 git tag 命令</span></span><br><span class="line">git tag -s MYTAG</span><br><span class="line"><span class="comment"># 2. 通过运行 git tag -v [tag-name] 验证已签名的标记</span></span><br><span class="line">git tag -v MYTAG</span><br></pre></td></tr></table></figure>
+<h3 id="GPG"><a class="header-anchor" href="#GPG"></a>GPG</h3>
+<blockquote>
+<p>具体实践可参考官方文档 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vemgvYXV0aGVudGljYXRpb24vbWFuYWdpbmctY29tbWl0LXNpZ25hdHVyZS12ZXJpZmljYXRpb24vYWJvdXQtY29tbWl0LXNpZ25hdHVyZS12ZXJpZmljYXRpb24jZ3BnLWNvbW1pdC1zaWduYXR1cmUtdmVyaWZpY2F0aW9u">GPG 提交签名验证<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<h3 id="S-MIME"><a class="header-anchor" href="#S-MIME"></a>S/MIME</h3>
+<blockquote>
+<p>S/MIME 签名验证需 Git 2.19 及以上版本</p>
+</blockquote>
+<p>由于 S/MIME 用的比较少，这里就不做具体的演示，可参考 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vemgvYXV0aGVudGljYXRpb24vbWFuYWdpbmctY29tbWl0LXNpZ25hdHVyZS12ZXJpZmljYXRpb24vYWJvdXQtY29tbWl0LXNpZ25hdHVyZS12ZXJpZmljYXRpb24jc21pbWUtY29tbWl0LXNpZ25hdHVyZS12ZXJpZmljYXRpb24=">官方文档<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="验证签名"><a class="header-anchor" href="#验证签名"></a>验证签名</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看一下本地签名信息</span></span><br><span class="line"><span class="comment"># 正常情况，在 commit 提交号下</span></span><br><span class="line"><span class="comment"># good &quot;git&quot; signature for $(email) with $(publicKey)</span></span><br><span class="line">git <span class="built_in">log</span> --show-signature</span><br></pre></td></tr></table></figure>
+<h2 id="问题"><a class="header-anchor" href="#问题"></a>问题</h2>
+<h3 id="验证签名提示异常"><a class="header-anchor" href="#验证签名提示异常"></a>验证签名提示异常</h3>
+<div class="tabs" id="signature-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#signature-unique-name-1">No signature</a></li><li class="tab"><a href="#signature-unique-name-2">No principal matched</a></li><li class="tab"><a href="#signature-unique-name-3">invalid key</a></li></ul><div class="tab-content"><div class="tab-pane active" id="signature-unique-name-1"><p>No signature:</p>
+<ul>
+<li>表示 Git 不知道要信任哪些 SSH 密钥</li>
+<li>解决方法：配置<a href="#%E9%85%8D%E7%BD%AE%E5%8F%AF%E4%BF%A1%E5%85%AC%E9%92%A5%E5%88%97%E8%A1%A8">可信公钥列表</a></li>
+</ul>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1723359614/blog/git-no-signature.png" alt="no-signature"></p></div><div class="tab-pane" id="signature-unique-name-2"><p>No principal matched</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1723359614/blog/git-no-principal.png" alt="no-principal"></p></div><div class="tab-pane" id="signature-unique-name-3"><p>invalid key</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1723359614/blog/git-invalid-key.png" alt="invalid-key"></p></div></div></div>
+<h3 id="如何给现有密钥更新密码"><a class="header-anchor" href="#如何给现有密钥更新密码"></a>如何给现有密钥更新密码</h3>
+<p>通过输入以下命令，您可以 <font color="red">更改</font> <strong>现有私钥</strong> 的密码而无需重新生成密钥对</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 修改 id_ed25519 密钥密码</span></span><br><span class="line">$ ssh-keygen -p -f ~/.ssh/id_ed25519</span><br><span class="line">&gt; Enter old passphrase: [Type old passphrase]</span><br><span class="line">&gt; Key has comment <span class="string">&#x27;your_email@example.com&#x27;</span></span><br><span class="line">&gt; Enter new passphrase (empty <span class="keyword">for</span> no passphrase): [Type new passphrase]</span><br><span class="line">&gt; Enter same passphrase again: [Repeat the new passphrase]</span><br><span class="line">&gt; Your identification has been saved with the new passphrase.</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9waWFvaHVhLmdpdGh1Yi5pby9wb3N0L2dpdC8yMDIzMDYyNC1naXQtc3NoLWdwZy8=">Git 提交使用 SSH 签名和 GPG 签名验证<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9scnVpaGFvLmNuL3Bvc3RzL3NzaC1zaWduLw==">SSH 提交签名验证<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9heWsubW9lL2FydGljbGVzL2NvbW1pdC1zaWduYXR1cmUtZ3VpZGUvaW5kZXguaHRtbA==">GitHub commit 签名指南<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC83MjY4NTkzNTY5NzgyMzAwNzI3">维护代码的尊严：GPG签名让你的Git commit不再裸奔<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>git signature</tag>
       </tags>
   </entry>
   <entry>
@@ -5785,113 +5973,6 @@ TCK：Technology Compatibility Kit，技术兼容性套件（TCK）是一套测�
       </tags>
   </entry>
   <entry>
-    <title>OSS 之 Minio 初体验</title>
-    <url>/2021/03/16/minio/</url>
-    <content><![CDATA[<p>MinIO 是一个基于 Apache License v2.0 开源协议使用 Go 语言开发的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。MinIO 是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
-<span id="more"></span>
-<p>MinIO 包含 MinIO Server, MinIO Client 以及方便开发基于不同编程语言使用的 MinIO SDK，这三部分组成，使用步骤也很简单，在服务器上安装 MinIO Server 应用，在项目中集成对应的 MinIO SDK，然后按照你的业务情况编写相应的实现即可，在开始前，我们先看看为什么我选择 MiniIO 作为自建的 OSS 服务</p>
-<ol>
-<li>MinIO 由良好的存储机制</li>
-<li>兼容 Amason 的 S3 分布式存储</li>
-<li>天然的支持云原生</li>
-<li><mark>支持私有部署</mark>，可分布式，可单机，100%开源</li>
-<li>友好简单的部署方式，提供管理页面</li>
-<li>还可以配合其他的健康管理工具进行监控，比如 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL2hvdy10by1tb25pdG9yLW1pbmlvLXVzaW5nLXByb21ldGhldXMuaHRtbA==">Prometheus<i class="fa fa-external-link-alt"></i></span></li>
-</ol>
-<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
-<p>由于 MinIO Server 已经提供了 Docker 的安装镜像，那我们就以 Docker 安装为例，其他安装方式可参考官方教程 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL21pbmlvLXF1aWNrc3RhcnQtZ3VpZGUuaHRtbA==">MinIO Quickstart Guide<i class="fa fa-external-link-alt"></i></span></p>
-<p>关于 Docker 的安装这里不再赘述，Docker 相关详细的使用等知识，可参考我之前的文章 <a href="">Docker（一）</a></p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 拉取 minio docker 镜像</span></span><br><span class="line">docker pull minio/minio</span><br><span class="line"><span class="comment"># 2. 运行 minio 服务</span></span><br><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -p 9000:9000 --name minio \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/data:/data \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/config:/root/.minio \</span></span><br><span class="line"><span class="language-bash">  -d --restart=always \</span></span><br><span class="line"><span class="language-bash">  -d minio/minio server /data</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里简单说一下命令的含义，应用命名为 minio ，运行服务在 9000 端口，同时将容器的相关路径文件映射到宿主机的 <code>/opt/docker/minio</code> 路径，开机自启</p>
-</blockquote>
-<p>成功运行服务，可查看日志</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Endpoint: http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Browser Access:</span><br><span class="line">http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Object API (Amazon S3 compatible):</span><br><span class="line">Go: https://docs.min.io/docs/golang-client-quickstart-guide</span><br><span class="line">Java: https://docs.min.io/docs/java-client-quickstart-guide</span><br><span class="line">Python: https://docs.min.io/docs/python-client-quickstart-guide</span><br><span class="line">JavaScript: https://docs.min.io/docs/javascript-client-quickstart-guide</span><br><span class="line">.NET: https://docs.min.io/docs/dotnet-client-quickstart-guide</span><br><span class="line">Detected default credentials &#x27;minioadmin:minioadmin&#x27;, please change the credentials immediately using &#x27;MINIO_ROOT_USER&#x27; and &#x27;MINIO_ROOT_PASSWORD&#x27;</span><br></pre></td></tr></table></figure>
-<p>安装完成后，我们就可以通过 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo5MDAw">http://localhost:9000<i class="fa fa-external-link-alt"></i></span> 访问 MinIO 服务，默认用户名和密码分别为: <mark>minioadmin</mark>, <mark>minioadmin</mark></p>
-<h2 id="使用"><a class="header-anchor" href="#使用"></a>使用</h2>
-<h3 id="页面操作"><a class="header-anchor" href="#页面操作"></a>页面操作</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617090692/blog/minio-web.png" alt=""></p>
-<p>我们直接看图，输入账号密码后，可以看到 MinIO 的管理页面，我们就可以上传文件，是不是很方便。第一次上传必须先要创建一个 bucket 后，才可以上传，如下图操作结果</p>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617091291/blog/minio-upload.png" alt=""></p>
-<h3 id="Client-操作"><a class="header-anchor" href="#Client-操作"></a>Client 操作</h3>
-<h3 id="SDK-操作"><a class="header-anchor" href="#SDK-操作"></a>SDK 操作</h3>
-<div class="note warning"><p>这里以 Java 语言为例，查看官方文档时，一定要查看英文文档，中文文档已年久失修落后很多，其他的语言实现请参考官方文档</p>
-</div>
-<h4 id="导入依赖"><a class="header-anchor" href="#导入依赖"></a>导入依赖</h4>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  implementation <span class="string">&quot;io.minio:minio:8.1.0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="功能实现"><a class="header-anchor" href="#功能实现"></a>功能实现</h4>
-<p>由于我这里是 SpringBoot 项目，为了方便在应用的 <code>application.yml</code> 文件中配置了 MinIO 相关的参数</p>
-<h4 id="配置文件"><a class="header-anchor" href="#配置文件"></a>配置文件</h4>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">minio:</span></span><br><span class="line">  <span class="comment"># minio 服务运行的地址</span></span><br><span class="line">  <span class="attr">endpoint:</span> <span class="string">http://127.0.0.1</span></span><br><span class="line">  <span class="comment"># minio 服务运行的端口</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9000</span></span><br><span class="line">  <span class="comment"># minio 服务登录账号</span></span><br><span class="line">  <span class="attr">accessKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 服务登录密码</span></span><br><span class="line">  <span class="attr">secretKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 设置上传默认存放桶</span></span><br><span class="line">  <span class="attr">bucketName:</span> <span class="string">cpe-manager-test</span></span><br></pre></td></tr></table></figure>
-<h4 id="工具类"><a class="header-anchor" href="#工具类"></a>工具类</h4>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 资源上传工具类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> : Jerry xu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> : 2021/3/18  14:05</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MinioUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * minio:</span></span><br><span class="line"><span class="comment">     * endpoint: http://192.168.1.163</span></span><br><span class="line"><span class="comment">     * port: 9000</span></span><br><span class="line"><span class="comment">     * accessKey: minioadmin</span></span><br><span class="line"><span class="comment">     * secretKey: minioadmin</span></span><br><span class="line"><span class="comment">     * bucketName: cpe-manager-test</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.endpoint&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ENDPOINT</span> <span class="operator">=</span> <span class="string">&quot;http://192.168.1.163&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.port&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Integer</span> <span class="variable">PORT</span> <span class="operator">=</span> <span class="number">19000</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.accessKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ACCESS_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.secretKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SECRET_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.bucketName&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">BUCKET_NAME</span> <span class="operator">=</span> <span class="string">&quot;cpe-manager-test&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MinioClient minioClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MinioClient <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (minioClient == <span class="literal">null</span>) &#123;</span><br><span class="line">            minioClient = MinioClient.builder().endpoint(ENDPOINT, PORT, <span class="literal">false</span>).credentials(ACCESS_KEY, SECRET_KEY).build();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minioClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取minio所有的桶</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.util.List&lt;io.minio.messages.Bucket&gt;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Bucket&gt; <span class="title function_">getAllBucket</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 获取minio中所以的 bucket</span></span><br><span class="line">        List&lt;Bucket&gt; buckets = getInstance().listBuckets();</span><br><span class="line">        <span class="keyword">for</span> (Bucket bucket : buckets) &#123;</span><br><span class="line">            log.info(<span class="string">&quot;bucket 名称:  &#123;&#125;      bucket 创建时间: &#123;&#125;&quot;</span>, bucket.name(), bucket.creationDate());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> buckets;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName  自定义存储桶</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName, String bucketName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(bucketName)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器，默认存放在 cpe-manager-test 桶内</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(BUCKET_NAME)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据指定的objectName获取下载链接，需要bucket设置可下载的策略</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName 对象的名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getUrlByObjectName</span><span class="params">(String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> getInstance().getPresignedObjectUrl(</span><br><span class="line">                    GetPresignedObjectUrlArgs.builder()</span><br><span class="line">                            .method(Method.GET)</span><br><span class="line">                            .bucket(BUCKET_NAME)</span><br><span class="line">                            .object(objectName)</span><br><span class="line">                            <span class="comment">// 过期策略【默认有效期7天】</span></span><br><span class="line"><span class="comment">//                            .expiry(2, TimeUnit.HOURS)</span></span><br><span class="line">                            .build());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据objectName从minio中下载文件到指定的目录</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName minio上的文件名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileName   下载生成的文件名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir        文件目录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">downloadFromMinioToFile</span><span class="params">(String objectName, String fileName, String dir)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">GetObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> GetObjectArgs.builder()</span><br><span class="line">                .bucket(BUCKET_NAME)</span><br><span class="line">                .object(objectName)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(dir);</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.mkdirs()) &#123;</span><br><span class="line">                log.error(<span class="string">&quot;创建失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> getInstance().getObject(objectArgs);</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(dir, fileName.substring(fileName.lastIndexOf(<span class="string">&quot;/&quot;</span>) + <span class="number">1</span>)));</span><br><span class="line">        <span class="type">int</span> length;</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">while</span> ((length = inputStream.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            outputStream.write(buffer, <span class="number">0</span>, length);</span><br><span class="line">        &#125;</span><br><span class="line">        outputStream.close();</span><br><span class="line">        inputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据文件名批量删除（默认删除 BUCKET_NAME 下的文件）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> listFile 文件名(含后缀)列表，例如：demo.png</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 成功返回为null， 失败返回Map&lt;objectName, failMessage&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, String&gt; <span class="title function_">removeObjects</span><span class="params">(List&lt;String&gt; listFile)</span> &#123;</span><br><span class="line">        List&lt;DeleteObject&gt; objects = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        Map&lt;String, String&gt; resultMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        listFile.forEach(t -&gt; objects.add(<span class="keyword">new</span> <span class="title class_">DeleteObject</span>(t)));</span><br><span class="line">        Iterable&lt;Result&lt;DeleteError&gt;&gt; results =</span><br><span class="line">                getInstance().removeObjects(</span><br><span class="line">                        RemoveObjectsArgs.builder()</span><br><span class="line">                                .bucket(BUCKET_NAME)</span><br><span class="line">                                .objects(objects)</span><br><span class="line">                                .build());</span><br><span class="line">        <span class="keyword">for</span> (Result&lt;DeleteError&gt; result : results) &#123;</span><br><span class="line">            <span class="type">DeleteError</span> <span class="variable">error</span> <span class="operator">=</span> result.get();</span><br><span class="line">            resultMap.put(error.objectName(), error.message());</span><br><span class="line">            log.error(<span class="string">&quot;Error in deleting:&#123;&#125;, message&#123;&#125;&quot;</span>, error.objectName(), error.message());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="上传接口"><a class="header-anchor" href="#上传接口"></a>上传接口</h4>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostMapping(value = &quot;/upload&quot;, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;文件上传&quot;, notes = &quot;支持多文件上传&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title function_">uploadTest</span><span class="params">(<span class="meta">@ApiParam(value = &quot;文件&quot;)</span> <span class="meta">@RequestParam(&quot;file&quot;)</span> List&lt;MultipartFile&gt; file)</span> &#123;</span><br><span class="line">    <span class="comment">// 上传的图片地址</span></span><br><span class="line">    List&lt;String&gt; successFile = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(file.size());</span><br><span class="line">    file.forEach(t -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> MinioUtils.uploadToMinio(t.getInputStream(), t.getOriginalFilename());</span><br><span class="line">            log.info(<span class="string">&quot;图片地址&#123;&#125;&quot;</span>, url);</span><br><span class="line">            successFile.add(url);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> successFile;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="测试"><a class="header-anchor" href="#测试"></a>测试</h4>
-<h2 id="问题"><a class="header-anchor" href="#问题"></a>问题</h2>
-<h3 id="bucket命名"><a class="header-anchor" href="#bucket命名"></a>bucket命名</h3>
-<p>创建 bucket 时，命名不可以使用下划线符号 “<font color="red">_</font>”</p>
-<h3 id="账号密码修改"><a class="header-anchor" href="#账号密码修改"></a>账号密码修改</h3>
-<p>通过网页管理页面修改登录账号及密码，提示 “Credentials of this user cannot be updated through MinIO Browser.” ，原因是安装应用时，并未显示的指定用户名和密码，可在运行启动时添加如下配置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-e <span class="string">&quot;MINIO_ROOT_USER=admin&quot;</span> \</span><br><span class="line">-e <span class="string">&quot;MINIO_ROOT_PASSWORD=admin123456&quot;</span> \</span><br></pre></td></tr></table></figure>
-<h3 id="最长7天有效"><a class="header-anchor" href="#最长7天有效"></a>最长7天有效</h3>
-<p>通过网页管理页面共享图片或者是使用 SDK 上传图片得到的图片 URL 地址，有效期最长为7天</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mc config host add minio http://192.168.1.163:19000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/cpe-manager-test</span><br><span class="line"></span><br><span class="line">mc config host add minio http://127.0.0.1:9000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/bucket (bucket修改成你自己的名字)</span><br></pre></td></tr></table></figure>
-<h3 id="图片无法查看"><a class="header-anchor" href="#图片无法查看"></a>图片无法查看</h3>
-<ol>
-<li>使用 SDK 上传时，需要注意设置content-type信息</li>
-<li>无权限查看</li>
-</ol>
-<h2 id="小结"><a class="header-anchor" href="#小结"></a>小结</h2>
-<p>关于 MinIO 还有很多知识点，本片只是站在使用者角度，把一些使用过程和问题进行了汇总，谈不上深度</p>
-<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
-<ol>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9jbi9taW5pby1xdWlja3N0YXJ0LWd1aWRlLmh0bWw=">Minio 手册<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pbmlvL21pbmlvLWphdmEvdHJlZS9yZWxlYXNl">Minio 示例<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhbms5OXRhbmsvYXJ0aWNsZS9kZXRhaWxzLzEwOTQ2NDMyNQ==">Minio 修改密码<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC82OGFjMDQ3NzI5MWQ=">Minio<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZ2FvaG9uZ3l1L3AvMTM5ODY5NjQuaHRtbA==">Minio 安装以及使用<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1d1Smlhbmdhbmc1MTEyL2FydGljbGUvZGV0YWlscy8xMTI5ODgwNzQ=">Minio 设置文件链接永久有效<i class="fa fa-external-link-alt"></i></span></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>FileUpdate</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《激战》</title>
-    <url>/2018/10/03/movie-fierce/</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-<p>怕，你就会输一辈子</p>
-
-</blockquote>
-<p>喜欢其中的一些台词，大伙共勉</p>
-<ul>
-<li>其实，我每次上台都很怕的，不过每次我都会跟自己说，我能做到</li>
-<li>这场比赛我可能会跌倒，但我一定会站起来</li>
-<li>怕，你就会输一辈子</li>
-</ul>
-<span id="more"></span>
-<p>自己的一些感触：<br>
-其实很多时候，道理都懂，但却不能坚持下去，但这些道理都在自己生活中一点点的用生活感悟出来，那这些道理会更浓烈，更让人刻骨铭心</p>
-<ul>
-<li>尊重和珍惜，那些愿意为你去花时间的人</li>
-<li>要和自己志同道合，有共同目标的伙伴去互相较劲</li>
-<li>从哪里跌倒就要从哪里爬起来</li>
-<li>一路跌跌撞撞走下去，中间的酸甜苦辣是最美的味道</li>
-</ul>
-<iframe src="//player.bilibili.com/player.html?aid=18575495&cid=30305453&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>]]></content>
-      <categories>
-        <category>Movie</category>
-      </categories>
-      <tags>
-        <tag>激战</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【译】• 微服务</title>
     <url>/2019/06/01/microservices/</url>
     <content><![CDATA[<p>这是第一篇翻译文章，用于学习近些年火热的微服务，这篇是<code>微服务</code>概念是由 <code>James Lewis</code> 所著，虽然官网已有<span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3MvY2xiUlFaNi01WW9YNjhNendCZlFfUQ==">中文翻译<i class="fa fa-external-link-alt"></i></span>，但是在学习过程中，应该应该动手输出，这样有助于对知识的理解和记忆，废话不多说，开始翻译</p>
@@ -6220,6 +6301,83 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
       </tags>
   </entry>
   <entry>
+    <title>OSS 之 Minio 初体验</title>
+    <url>/2021/03/16/minio/</url>
+    <content><![CDATA[<p>MinIO 是一个基于 Apache License v2.0 开源协议使用 Go 语言开发的对象存储服务。它兼容亚马逊 S3 云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几 kb 到最大 5T 不等。MinIO 是一个非常轻量的服务,可以很简单的和其他应用的结合，类似 NodeJS, Redis 或者 MySQL。</p>
+<span id="more"></span>
+<p>MinIO 包含 MinIO Server, MinIO Client 以及方便开发基于不同编程语言使用的 MinIO SDK，这三部分组成，使用步骤也很简单，在服务器上安装 MinIO Server 应用，在项目中集成对应的 MinIO SDK，然后按照你的业务情况编写相应的实现即可，在开始前，我们先看看为什么我选择 MiniIO 作为自建的 OSS 服务</p>
+<ol>
+<li>MinIO 由良好的存储机制</li>
+<li>兼容 Amason 的 S3 分布式存储</li>
+<li>天然的支持云原生</li>
+<li><mark>支持私有部署</mark>，可分布式，可单机，100%开源</li>
+<li>友好简单的部署方式，提供管理页面</li>
+<li>还可以配合其他的健康管理工具进行监控，比如 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL2hvdy10by1tb25pdG9yLW1pbmlvLXVzaW5nLXByb21ldGhldXMuaHRtbA==">Prometheus<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+<h2 id="安装"><a class="header-anchor" href="#安装"></a>安装</h2>
+<p>由于 MinIO Server 已经提供了 Docker 的安装镜像，那我们就以 Docker 安装为例，其他安装方式可参考官方教程 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9kb2NzL21pbmlvLXF1aWNrc3RhcnQtZ3VpZGUuaHRtbA==">MinIO Quickstart Guide<i class="fa fa-external-link-alt"></i></span></p>
+<p>关于 Docker 的安装这里不再赘述，Docker 相关详细的使用等知识，可参考我之前的文章 <a href="">Docker（一）</a></p>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 拉取 minio docker 镜像</span></span><br><span class="line">docker pull minio/minio</span><br><span class="line"><span class="comment"># 2. 运行 minio 服务</span></span><br><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -p 9000:9000 --name minio \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/data:/data \</span></span><br><span class="line"><span class="language-bash">  -v /opt/docker/minio/config:/root/.minio \</span></span><br><span class="line"><span class="language-bash">  -d --restart=always \</span></span><br><span class="line"><span class="language-bash">  -d minio/minio server /data</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里简单说一下命令的含义，应用命名为 minio ，运行服务在 9000 端口，同时将容器的相关路径文件映射到宿主机的 <code>/opt/docker/minio</code> 路径，开机自启</p>
+</blockquote>
+<p>成功运行服务，可查看日志</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Endpoint: http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Browser Access:</span><br><span class="line">http://172.17.0.2:9000 http://127.0.0.1:9000</span><br><span class="line">Object API (Amazon S3 compatible):</span><br><span class="line">Go: https://docs.min.io/docs/golang-client-quickstart-guide</span><br><span class="line">Java: https://docs.min.io/docs/java-client-quickstart-guide</span><br><span class="line">Python: https://docs.min.io/docs/python-client-quickstart-guide</span><br><span class="line">JavaScript: https://docs.min.io/docs/javascript-client-quickstart-guide</span><br><span class="line">.NET: https://docs.min.io/docs/dotnet-client-quickstart-guide</span><br><span class="line">Detected default credentials &#x27;minioadmin:minioadmin&#x27;, please change the credentials immediately using &#x27;MINIO_ROOT_USER&#x27; and &#x27;MINIO_ROOT_PASSWORD&#x27;</span><br></pre></td></tr></table></figure>
+<p>安装完成后，我们就可以通过 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo5MDAw">http://localhost:9000<i class="fa fa-external-link-alt"></i></span> 访问 MinIO 服务，默认用户名和密码分别为: <mark>minioadmin</mark>, <mark>minioadmin</mark></p>
+<h2 id="使用"><a class="header-anchor" href="#使用"></a>使用</h2>
+<h3 id="页面操作"><a class="header-anchor" href="#页面操作"></a>页面操作</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617090692/blog/minio-web.png" alt=""></p>
+<p>我们直接看图，输入账号密码后，可以看到 MinIO 的管理页面，我们就可以上传文件，是不是很方便。第一次上传必须先要创建一个 bucket 后，才可以上传，如下图操作结果</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1617091291/blog/minio-upload.png" alt=""></p>
+<h3 id="Client-操作"><a class="header-anchor" href="#Client-操作"></a>Client 操作</h3>
+<h3 id="SDK-操作"><a class="header-anchor" href="#SDK-操作"></a>SDK 操作</h3>
+<div class="note warning"><p>这里以 Java 语言为例，查看官方文档时，一定要查看英文文档，中文文档已年久失修落后很多，其他的语言实现请参考官方文档</p>
+</div>
+<h4 id="导入依赖"><a class="header-anchor" href="#导入依赖"></a>导入依赖</h4>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  implementation <span class="string">&quot;io.minio:minio:8.1.0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="功能实现"><a class="header-anchor" href="#功能实现"></a>功能实现</h4>
+<p>由于我这里是 SpringBoot 项目，为了方便在应用的 <code>application.yml</code> 文件中配置了 MinIO 相关的参数</p>
+<h4 id="配置文件"><a class="header-anchor" href="#配置文件"></a>配置文件</h4>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">minio:</span></span><br><span class="line">  <span class="comment"># minio 服务运行的地址</span></span><br><span class="line">  <span class="attr">endpoint:</span> <span class="string">http://127.0.0.1</span></span><br><span class="line">  <span class="comment"># minio 服务运行的端口</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9000</span></span><br><span class="line">  <span class="comment"># minio 服务登录账号</span></span><br><span class="line">  <span class="attr">accessKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 服务登录密码</span></span><br><span class="line">  <span class="attr">secretKey:</span> <span class="string">minioadmin</span></span><br><span class="line">  <span class="comment"># minio 设置上传默认存放桶</span></span><br><span class="line">  <span class="attr">bucketName:</span> <span class="string">cpe-manager-test</span></span><br></pre></td></tr></table></figure>
+<h4 id="工具类"><a class="header-anchor" href="#工具类"></a>工具类</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 资源上传工具类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> : Jerry xu</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> : 2021/3/18  14:05</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MinioUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * minio:</span></span><br><span class="line"><span class="comment">     * endpoint: http://192.168.1.163</span></span><br><span class="line"><span class="comment">     * port: 9000</span></span><br><span class="line"><span class="comment">     * accessKey: minioadmin</span></span><br><span class="line"><span class="comment">     * secretKey: minioadmin</span></span><br><span class="line"><span class="comment">     * bucketName: cpe-manager-test</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.endpoint&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ENDPOINT</span> <span class="operator">=</span> <span class="string">&quot;http://192.168.1.163&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.port&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Integer</span> <span class="variable">PORT</span> <span class="operator">=</span> <span class="number">19000</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.accessKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ACCESS_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.secretKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SECRET_KEY</span> <span class="operator">=</span> <span class="string">&quot;minioadmin&quot;</span>;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;minio.bucketName&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">BUCKET_NAME</span> <span class="operator">=</span> <span class="string">&quot;cpe-manager-test&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MinioClient minioClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> MinioClient <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (minioClient == <span class="literal">null</span>) &#123;</span><br><span class="line">            minioClient = MinioClient.builder().endpoint(ENDPOINT, PORT, <span class="literal">false</span>).credentials(ACCESS_KEY, SECRET_KEY).build();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minioClient;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取minio所有的桶</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.util.List&lt;io.minio.messages.Bucket&gt;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Bucket&gt; <span class="title function_">getAllBucket</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="comment">// 获取minio中所以的 bucket</span></span><br><span class="line">        List&lt;Bucket&gt; buckets = getInstance().listBuckets();</span><br><span class="line">        <span class="keyword">for</span> (Bucket bucket : buckets) &#123;</span><br><span class="line">            log.info(<span class="string">&quot;bucket 名称:  &#123;&#125;      bucket 创建时间: &#123;&#125;&quot;</span>, bucket.name(), bucket.creationDate());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> buckets;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName  自定义存储桶</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName, String bucketName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(bucketName)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将图片上传到minio服务器，默认存放在 cpe-manager-test 桶内</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputStream 输入流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName  存储的文件名称，必须包含后缀</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadToMinio</span><span class="params">(InputStream inputStream, String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取文件后缀</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">fileSuffix</span> <span class="operator">=</span> Objects.requireNonNull(objectName).substring(objectName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">            <span class="type">String</span> <span class="variable">contentType</span> <span class="operator">=</span> FileType.getContentType(fileSuffix);</span><br><span class="line"><span class="comment">//            // 重新生成文件名，避免重复</span></span><br><span class="line"><span class="comment">//            String objectName = UUID.randomUUID().toString() + fileSuffix;</span></span><br><span class="line">            <span class="type">long</span> <span class="variable">size</span> <span class="operator">=</span> inputStream.available();</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">putObjectArgs</span> <span class="operator">=</span> PutObjectArgs.builder()</span><br><span class="line">                    .bucket(BUCKET_NAME)</span><br><span class="line">                    .object(objectName)</span><br><span class="line">                    .stream(inputStream, size, -<span class="number">1</span>)</span><br><span class="line">                    .contentType(contentType)</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="comment">// 上传到minio</span></span><br><span class="line">            <span class="type">ObjectWriteResponse</span> <span class="variable">objectWriteResponse</span> <span class="operator">=</span> getInstance().putObject(putObjectArgs);</span><br><span class="line">            inputStream.close();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(objectWriteResponse.etag())) &#123;</span><br><span class="line">                <span class="comment">// 返回上传获取到的地址</span></span><br><span class="line">                <span class="keyword">return</span> getUrlByObjectName(objectName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据指定的objectName获取下载链接，需要bucket设置可下载的策略</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName 对象的名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getUrlByObjectName</span><span class="params">(String objectName)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> getInstance().getPresignedObjectUrl(</span><br><span class="line">                    GetPresignedObjectUrlArgs.builder()</span><br><span class="line">                            .method(Method.GET)</span><br><span class="line">                            .bucket(BUCKET_NAME)</span><br><span class="line">                            .object(objectName)</span><br><span class="line">                            <span class="comment">// 过期策略【默认有效期7天】</span></span><br><span class="line"><span class="comment">//                            .expiry(2, TimeUnit.HOURS)</span></span><br><span class="line">                            .build());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getMessage());</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据objectName从minio中下载文件到指定的目录</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName minio上的文件名称</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileName   下载生成的文件名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir        文件目录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">downloadFromMinioToFile</span><span class="params">(String objectName, String fileName, String dir)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">GetObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> GetObjectArgs.builder()</span><br><span class="line">                .bucket(BUCKET_NAME)</span><br><span class="line">                .object(objectName)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(dir);</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.mkdirs()) &#123;</span><br><span class="line">                log.error(<span class="string">&quot;创建失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> getInstance().getObject(objectArgs);</span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(dir, fileName.substring(fileName.lastIndexOf(<span class="string">&quot;/&quot;</span>) + <span class="number">1</span>)));</span><br><span class="line">        <span class="type">int</span> length;</span><br><span class="line">        <span class="type">byte</span>[] buffer = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">while</span> ((length = inputStream.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            outputStream.write(buffer, <span class="number">0</span>, length);</span><br><span class="line">        &#125;</span><br><span class="line">        outputStream.close();</span><br><span class="line">        inputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据文件名批量删除（默认删除 BUCKET_NAME 下的文件）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> listFile 文件名(含后缀)列表，例如：demo.png</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 成功返回为null， 失败返回Map&lt;objectName, failMessage&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, String&gt; <span class="title function_">removeObjects</span><span class="params">(List&lt;String&gt; listFile)</span> &#123;</span><br><span class="line">        List&lt;DeleteObject&gt; objects = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        Map&lt;String, String&gt; resultMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        listFile.forEach(t -&gt; objects.add(<span class="keyword">new</span> <span class="title class_">DeleteObject</span>(t)));</span><br><span class="line">        Iterable&lt;Result&lt;DeleteError&gt;&gt; results =</span><br><span class="line">                getInstance().removeObjects(</span><br><span class="line">                        RemoveObjectsArgs.builder()</span><br><span class="line">                                .bucket(BUCKET_NAME)</span><br><span class="line">                                .objects(objects)</span><br><span class="line">                                .build());</span><br><span class="line">        <span class="keyword">for</span> (Result&lt;DeleteError&gt; result : results) &#123;</span><br><span class="line">            <span class="type">DeleteError</span> <span class="variable">error</span> <span class="operator">=</span> result.get();</span><br><span class="line">            resultMap.put(error.objectName(), error.message());</span><br><span class="line">            log.error(<span class="string">&quot;Error in deleting:&#123;&#125;, message&#123;&#125;&quot;</span>, error.objectName(), error.message());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultMap;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="上传接口"><a class="header-anchor" href="#上传接口"></a>上传接口</h4>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@PostMapping(value = &quot;/upload&quot;, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;文件上传&quot;, notes = &quot;支持多文件上传&quot;)</span></span><br><span class="line"><span class="keyword">public</span> List&lt;String&gt; <span class="title function_">uploadTest</span><span class="params">(<span class="meta">@ApiParam(value = &quot;文件&quot;)</span> <span class="meta">@RequestParam(&quot;file&quot;)</span> List&lt;MultipartFile&gt; file)</span> &#123;</span><br><span class="line">    <span class="comment">// 上传的图片地址</span></span><br><span class="line">    List&lt;String&gt; successFile = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(file.size());</span><br><span class="line">    file.forEach(t -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> MinioUtils.uploadToMinio(t.getInputStream(), t.getOriginalFilename());</span><br><span class="line">            log.info(<span class="string">&quot;图片地址&#123;&#125;&quot;</span>, url);</span><br><span class="line">            successFile.add(url);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> successFile;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="测试"><a class="header-anchor" href="#测试"></a>测试</h4>
+<h2 id="问题"><a class="header-anchor" href="#问题"></a>问题</h2>
+<h3 id="bucket命名"><a class="header-anchor" href="#bucket命名"></a>bucket命名</h3>
+<p>创建 bucket 时，命名不可以使用下划线符号 “<font color="red">_</font>”</p>
+<h3 id="账号密码修改"><a class="header-anchor" href="#账号密码修改"></a>账号密码修改</h3>
+<p>通过网页管理页面修改登录账号及密码，提示 “Credentials of this user cannot be updated through MinIO Browser.” ，原因是安装应用时，并未显示的指定用户名和密码，可在运行启动时添加如下配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">-e <span class="string">&quot;MINIO_ROOT_USER=admin&quot;</span> \</span><br><span class="line">-e <span class="string">&quot;MINIO_ROOT_PASSWORD=admin123456&quot;</span> \</span><br></pre></td></tr></table></figure>
+<h3 id="最长7天有效"><a class="header-anchor" href="#最长7天有效"></a>最长7天有效</h3>
+<p>通过网页管理页面共享图片或者是使用 SDK 上传图片得到的图片 URL 地址，有效期最长为7天</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mc config host add minio http://192.168.1.163:19000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/cpe-manager-test</span><br><span class="line"></span><br><span class="line">mc config host add minio http://127.0.0.1:9000 minioadmin minioadmin --api S3v4</span><br><span class="line">mc policy set public minio/bucket (bucket修改成你自己的名字)</span><br></pre></td></tr></table></figure>
+<h3 id="图片无法查看"><a class="header-anchor" href="#图片无法查看"></a>图片无法查看</h3>
+<ol>
+<li>使用 SDK 上传时，需要注意设置content-type信息</li>
+<li>无权限查看</li>
+</ol>
+<h2 id="小结"><a class="header-anchor" href="#小结"></a>小结</h2>
+<p>关于 MinIO 还有很多知识点，本片只是站在使用者角度，把一些使用过程和问题进行了汇总，谈不上深度</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pbi5pby9jbi9taW5pby1xdWlja3N0YXJ0LWd1aWRlLmh0bWw=">Minio 手册<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pbmlvL21pbmlvLWphdmEvdHJlZS9yZWxlYXNl">Minio 示例<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Rhbms5OXRhbmsvYXJ0aWNsZS9kZXRhaWxzLzEwOTQ2NDMyNQ==">Minio 修改密码<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC82OGFjMDQ3NzI5MWQ=">Minio<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZ2FvaG9uZ3l1L3AvMTM5ODY5NjQuaHRtbA==">Minio 安装以及使用<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1d1Smlhbmdhbmc1MTEyL2FydGljbGUvZGV0YWlscy8xMTI5ODgwNzQ=">Minio 设置文件链接永久有效<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>FileUpdate</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MQ 系列 — RabbitMQ（一）环境搭建</title>
     <url>/2020/11/10/mq-rabbit1/</url>
     <content><![CDATA[<span id="more"></span>]]></content>
@@ -6228,6 +6386,36 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
       </categories>
       <tags>
         <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《激战》</title>
+    <url>/2018/10/03/movie-fierce/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+<p>怕，你就会输一辈子</p>
+
+</blockquote>
+<p>喜欢其中的一些台词，大伙共勉</p>
+<ul>
+<li>其实，我每次上台都很怕的，不过每次我都会跟自己说，我能做到</li>
+<li>这场比赛我可能会跌倒，但我一定会站起来</li>
+<li>怕，你就会输一辈子</li>
+</ul>
+<span id="more"></span>
+<p>自己的一些感触：<br>
+其实很多时候，道理都懂，但却不能坚持下去，但这些道理都在自己生活中一点点的用生活感悟出来，那这些道理会更浓烈，更让人刻骨铭心</p>
+<ul>
+<li>尊重和珍惜，那些愿意为你去花时间的人</li>
+<li>要和自己志同道合，有共同目标的伙伴去互相较劲</li>
+<li>从哪里跌倒就要从哪里爬起来</li>
+<li>一路跌跌撞撞走下去，中间的酸甜苦辣是最美的味道</li>
+</ul>
+<iframe src="//player.bilibili.com/player.html?aid=18575495&cid=30305453&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>]]></content>
+      <categories>
+        <category>Movie</category>
+      </categories>
+      <tags>
+        <tag>激战</tag>
       </tags>
   </entry>
   <entry>
@@ -6318,31 +6506,6 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
       </categories>
       <tags>
         <tag>RocketMQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Netty（四）之 gRPC</title>
-    <url>/2020/04/12/netty-grpc/</url>
-    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1586693547/blog/grpc.png" alt=""></p>
-<span id="more"></span>
-<p><span class="exturl" data-url="aHR0cHM6Ly9ncnBjLmlvLw==">gRPC<i class="fa fa-external-link-alt"></i></span> is a modern open source high performance RPC framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.</p>
-<p>gPRC 是高性能，开源通用RPC框架，可以运行在任何环境中，它是可插拔的并且支持负载均衡，跟踪，运行状况检查和身份校验，从而有效地连接数据中心和跨数据中心的服务，它也适用于分布式计算的最后一段，以将设备，移动应用和浏览器连接到后端的服务</p>
-<p>gRPC 可以使用 Protocol buffers 作为接口定义语言（IDL：Interface Definition Language）和基础的消息交换格式，通常来说，你可以使用 proto2 这个版本，但是我们建议你使用 proto3 这个版本和 gRPC 一起使用，支持完整的语言，同时避免客户端和服务端版本不一致出现的其他问题</p>
-<h2 id="gRPC"><a class="header-anchor" href="#gRPC"></a>gRPC</h2>
-<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vcHJvdG9jb2wtYnVmZmVycy9kb2NzL3Byb3RvMw==">proto3 语言官方使用手册<i class="fa fa-external-link-alt"></i></span></p>
-<h3 id="proto3-指南"><a class="header-anchor" href="#proto3-指南"></a>proto3 指南</h3>
-<h3 id=""><a class="header-anchor" href="#"></a></h3>
-<h2 id="gRPC实践"><a class="header-anchor" href="#gRPC实践"></a>gRPC实践</h2>
-<h3 id="gRPC下载"><a class="header-anchor" href="#gRPC下载"></a>gRPC下载</h3>
-<h3 id="编译器安装"><a class="header-anchor" href="#编译器安装"></a>编译器安装</h3>
-<h3 id="编写-proto-文件"><a class="header-anchor" href="#编写-proto-文件"></a>编写.proto 文件</h3>
-]]></content>
-      <categories>
-        <category>Netty</category>
-      </categories>
-      <tags>
-        <tag>Netty</tag>
-        <tag>gRPC</tag>
       </tags>
   </entry>
   <entry>
@@ -6450,6 +6613,31 @@ JVM 作为平台的发展只是在一个通用平台中混合语言的最新例�
       </categories>
       <tags>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Netty（四）之 gRPC</title>
+    <url>/2020/04/12/netty-grpc/</url>
+    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1586693547/blog/grpc.png" alt=""></p>
+<span id="more"></span>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ncnBjLmlvLw==">gRPC<i class="fa fa-external-link-alt"></i></span> is a modern open source high performance RPC framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.</p>
+<p>gPRC 是高性能，开源通用RPC框架，可以运行在任何环境中，它是可插拔的并且支持负载均衡，跟踪，运行状况检查和身份校验，从而有效地连接数据中心和跨数据中心的服务，它也适用于分布式计算的最后一段，以将设备，移动应用和浏览器连接到后端的服务</p>
+<p>gRPC 可以使用 Protocol buffers 作为接口定义语言（IDL：Interface Definition Language）和基础的消息交换格式，通常来说，你可以使用 proto2 这个版本，但是我们建议你使用 proto3 这个版本和 gRPC 一起使用，支持完整的语言，同时避免客户端和服务端版本不一致出现的其他问题</p>
+<h2 id="gRPC"><a class="header-anchor" href="#gRPC"></a>gRPC</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vcHJvdG9jb2wtYnVmZmVycy9kb2NzL3Byb3RvMw==">proto3 语言官方使用手册<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="proto3-指南"><a class="header-anchor" href="#proto3-指南"></a>proto3 指南</h3>
+<h3 id=""><a class="header-anchor" href="#"></a></h3>
+<h2 id="gRPC实践"><a class="header-anchor" href="#gRPC实践"></a>gRPC实践</h2>
+<h3 id="gRPC下载"><a class="header-anchor" href="#gRPC下载"></a>gRPC下载</h3>
+<h3 id="编译器安装"><a class="header-anchor" href="#编译器安装"></a>编译器安装</h3>
+<h3 id="编写-proto-文件"><a class="header-anchor" href="#编写-proto-文件"></a>编写.proto 文件</h3>
+]]></content>
+      <categories>
+        <category>Netty</category>
+      </categories>
+      <tags>
+        <tag>Netty</tag>
+        <tag>gRPC</tag>
       </tags>
   </entry>
   <entry>
@@ -7085,57 +7273,6 @@ Okhttp同步(<code>enqueue(Callback responseCallback)</code>)：Schedules the re
       </tags>
   </entry>
   <entry>
-    <title>开源协议，该如何选择</title>
-    <url>/2020/11/25/open-license/</url>
-    <content><![CDATA[<p>现如今软件行业的发展完全离不开开源社区，很多优秀的软件应用、技术都能看到开源软件的影子，我们都是站在巨人的肩膀上。对于软件行业的从业者，能为开源项目贡献自己的力量，或是将自己对某一个细分领域所做的研究实践开源出来，这是一件非常值得骄傲的事情。而要参与一个大型的开源项目，你除了需要该项目涉及的核心技术知识外，还需要了解一定的开源项目运转方式等，对于如何参与开源项目，这里暂不做过多的介绍，有兴趣的可以移步 Gitee 发起的《<span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vZ2l0ZWUtY29tbXVuaXR5L29wZW5zb3VyY2UtZ3VpZGU=">开源指北<i class="fa fa-external-link-alt"></i></span>》项目，该项目中详细介绍了如何参与开源项目。本篇文章也不啰嗦这一点，仅仅围绕开源协议，我们应该清楚的常识和注意的点</p>
-<span id="more"></span>
-<p>在软件开发中<strong>通常</strong>有两种情况我们需要考虑软件的开源协议或者使用协议</p>
-<ol>
-<li>我们需要使用到业界的一些优秀的软件包来提高我们开发的效率，避免了重复早轮子，所选择的这些软件包我们不但考虑功能的同时，也要考虑软件包的授权协议</li>
-<li>我们需要将自己的经验或者软件产品需要开源时，为了保护自己的权益，我们也需要选择一个合适的开源协议</li>
-</ol>
-<p>我这里还是引用比较经典 <span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTEvMDUvaG93X3RvX2Nob29zZV9mcmVlX3NvZnR3YXJlX2xpY2Vuc2VzLmh0bWw=">阮一峰<i class="fa fa-external-link-alt"></i></span> 文章中所绘制关于如何选择开源协议的图<br>
-<img src="http://www.ruanyifeng.com/blogimg/asset/201105/free_software_licenses.png" alt=""><br>
-图中已经很清楚的表示了如何去选择 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9MR1BM">LGPL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cubW96aWxsYS5vcmcvZW4tVVMvTVBMLw==">Mozilla<i class="fa fa-external-link-alt"></i></span>, <a href="">GPL</a>, <a href="">BSD</a>, <a href="">MIT</a>, <a href="">Apache</a> 这 6 种协议</p>
-<h2 id="常用协议"><a class="header-anchor" href="#常用协议"></a>常用协议</h2>
-<p>这里我们通过表格的形式介绍下这 6 种协议，当然除了表中列出的这些协议之外还有很多协议，我们就挨个来简单对他们有一个了解和认识</p>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1609258585/blog/license.png" alt=""></p>
-<h2 id="其他协议"><a class="header-anchor" href="#其他协议"></a>其他协议</h2>
-<h3 id="BY-NC-SA"><a class="header-anchor" href="#BY-NC-SA"></a>BY-NC-SA</h3>
-<p>你会发现每篇文章下面都有申明版权，这里使用的是 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fab fa-creative-commons"></i> BY-NC-SA</a> 4.0 的协议，他们的含义如下</p>
-<ul>
-<li><i class="fab fa-creative-commons"></i>：知识共享（CreativeCommons）</li>
-<li>NC：非商业性使用（NonCommercial），您不得将本作品用于商业目的</li>
-<li>SA：相同方式共享（ShareAlike），如果您再混合、转换或者基于本作品进行创作，您必须基于与原先许可协议相同的许可协议 分发您贡献的作品</li>
-</ul>
-<p>使用此协议，您可以自由地</p>
-<ol>
-<li>共享 — 在任何媒介以任何形式复制、发行本作品</li>
-<li>演绎 — 修改、转换或以本作品为基础进行创作</li>
-</ol>
-<blockquote>
-<p>只要你遵守许可协议条款，许可人就无法收回你的这些权利</p>
-</blockquote>
-<h2 id="选择"><a class="header-anchor" href="#选择"></a>选择</h2>
-<p>上面说了那么多，有些协议并没有展开来说可能并不适用你当前的所需要选择的协议，那么你可以根据实际情况去筛选，可通过 <span class="exturl" data-url="aHR0cHM6Ly9jaG9vc2VhbGljZW5zZS5jb20=">https://choosealicense.com<i class="fa fa-external-link-alt"></i></span>,  <span class="exturl" data-url="aHR0cHM6Ly9rYWl5dWFuc2hlLmNuL2xpY2Vuc2UtdG9vbA==">https://kaiyuanshe.cn/license-tool<i class="fa fa-external-link-alt"></i></span> 这两个网站按照步骤去选择，最终确定协议即可</p>
-<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
-<ol>
-<li><span class="exturl" data-url="aHR0cHM6Ly9rYWl5dWFuc2hlLmNuL2xpY2Vuc2UtdG9vbC8=">开源许可证选择器<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9jaG9vc2VhbGljZW5zZS5jb20v">Choose an open source license<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAyMjk3MzEwNQ==">博云违反 Apache 2.0 开源协议被要求整改，开源协议到底应该如何遵守？<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cDovL2MuYmlhbmNoZW5nLm5ldC92aWV3LzI5NDcuaHRtbA==">开源协议是什么？有哪些？如何选择？<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vV2F5b3UvcC9ob3dfdG9fY2hvb3NlX2FfbGljZW5zZS5odG1s">如何为你的代码选择一个开源协议<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vZ2l0ZWUtY29tbXVuaXR5L29wZW5zb3VyY2UtZ3VpZGU=">开源指北 Gitee<i class="fa fa-external-link-alt"></i></span></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Open Source</category>
-      </categories>
-      <tags>
-        <tag>License</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OOAD 与 UML</title>
     <url>/2019/05/27/ooad-uml/</url>
     <content><![CDATA[<p>OOAD（Object Oriented Analysis and Desigin） 是根据 OO 的方法学，对软件系统进行分析和设计的过程</p>
@@ -7389,6 +7526,57 @@ Okhttp同步(<code>enqueue(Callback responseCallback)</code>)：Schedules the re
       <tags>
         <tag>OOAD</tag>
         <tag>UML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开源协议，该如何选择</title>
+    <url>/2020/11/25/open-license/</url>
+    <content><![CDATA[<p>现如今软件行业的发展完全离不开开源社区，很多优秀的软件应用、技术都能看到开源软件的影子，我们都是站在巨人的肩膀上。对于软件行业的从业者，能为开源项目贡献自己的力量，或是将自己对某一个细分领域所做的研究实践开源出来，这是一件非常值得骄傲的事情。而要参与一个大型的开源项目，你除了需要该项目涉及的核心技术知识外，还需要了解一定的开源项目运转方式等，对于如何参与开源项目，这里暂不做过多的介绍，有兴趣的可以移步 Gitee 发起的《<span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vZ2l0ZWUtY29tbXVuaXR5L29wZW5zb3VyY2UtZ3VpZGU=">开源指北<i class="fa fa-external-link-alt"></i></span>》项目，该项目中详细介绍了如何参与开源项目。本篇文章也不啰嗦这一点，仅仅围绕开源协议，我们应该清楚的常识和注意的点</p>
+<span id="more"></span>
+<p>在软件开发中<strong>通常</strong>有两种情况我们需要考虑软件的开源协议或者使用协议</p>
+<ol>
+<li>我们需要使用到业界的一些优秀的软件包来提高我们开发的效率，避免了重复早轮子，所选择的这些软件包我们不但考虑功能的同时，也要考虑软件包的授权协议</li>
+<li>我们需要将自己的经验或者软件产品需要开源时，为了保护自己的权益，我们也需要选择一个合适的开源协议</li>
+</ol>
+<p>我这里还是引用比较经典 <span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTEvMDUvaG93X3RvX2Nob29zZV9mcmVlX3NvZnR3YXJlX2xpY2Vuc2VzLmh0bWw=">阮一峰<i class="fa fa-external-link-alt"></i></span> 文章中所绘制关于如何选择开源协议的图<br>
+<img src="http://www.ruanyifeng.com/blogimg/asset/201105/free_software_licenses.png" alt=""><br>
+图中已经很清楚的表示了如何去选择 <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9MR1BM">LGPL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cubW96aWxsYS5vcmcvZW4tVVMvTVBMLw==">Mozilla<i class="fa fa-external-link-alt"></i></span>, <a href="">GPL</a>, <a href="">BSD</a>, <a href="">MIT</a>, <a href="">Apache</a> 这 6 种协议</p>
+<h2 id="常用协议"><a class="header-anchor" href="#常用协议"></a>常用协议</h2>
+<p>这里我们通过表格的形式介绍下这 6 种协议，当然除了表中列出的这些协议之外还有很多协议，我们就挨个来简单对他们有一个了解和认识</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1609258585/blog/license.png" alt=""></p>
+<h2 id="其他协议"><a class="header-anchor" href="#其他协议"></a>其他协议</h2>
+<h3 id="BY-NC-SA"><a class="header-anchor" href="#BY-NC-SA"></a>BY-NC-SA</h3>
+<p>你会发现每篇文章下面都有申明版权，这里使用的是 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fab fa-creative-commons"></i> BY-NC-SA</a> 4.0 的协议，他们的含义如下</p>
+<ul>
+<li><i class="fab fa-creative-commons"></i>：知识共享（CreativeCommons）</li>
+<li>NC：非商业性使用（NonCommercial），您不得将本作品用于商业目的</li>
+<li>SA：相同方式共享（ShareAlike），如果您再混合、转换或者基于本作品进行创作，您必须基于与原先许可协议相同的许可协议 分发您贡献的作品</li>
+</ul>
+<p>使用此协议，您可以自由地</p>
+<ol>
+<li>共享 — 在任何媒介以任何形式复制、发行本作品</li>
+<li>演绎 — 修改、转换或以本作品为基础进行创作</li>
+</ol>
+<blockquote>
+<p>只要你遵守许可协议条款，许可人就无法收回你的这些权利</p>
+</blockquote>
+<h2 id="选择"><a class="header-anchor" href="#选择"></a>选择</h2>
+<p>上面说了那么多，有些协议并没有展开来说可能并不适用你当前的所需要选择的协议，那么你可以根据实际情况去筛选，可通过 <span class="exturl" data-url="aHR0cHM6Ly9jaG9vc2VhbGljZW5zZS5jb20=">https://choosealicense.com<i class="fa fa-external-link-alt"></i></span>,  <span class="exturl" data-url="aHR0cHM6Ly9rYWl5dWFuc2hlLmNuL2xpY2Vuc2UtdG9vbA==">https://kaiyuanshe.cn/license-tool<i class="fa fa-external-link-alt"></i></span> 这两个网站按照步骤去选择，最终确定协议即可</p>
+<h2 id="参考"><a class="header-anchor" href="#参考"></a>参考</h2>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9rYWl5dWFuc2hlLmNuL2xpY2Vuc2UtdG9vbC8=">开源许可证选择器<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jaG9vc2VhbGljZW5zZS5jb20v">Choose an open source license<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAyMjk3MzEwNQ==">博云违反 Apache 2.0 开源协议被要求整改，开源协议到底应该如何遵守？<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2MuYmlhbmNoZW5nLm5ldC92aWV3LzI5NDcuaHRtbA==">开源协议是什么？有哪些？如何选择？<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vV2F5b3UvcC9ob3dfdG9fY2hvb3NlX2FfbGljZW5zZS5odG1s">如何为你的代码选择一个开源协议<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vZ2l0ZWUtY29tbXVuaXR5L29wZW5zb3VyY2UtZ3VpZGU=">开源指北 Gitee<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Open Source</category>
+      </categories>
+      <tags>
+        <tag>License</tag>
       </tags>
   </entry>
   <entry>
@@ -8300,6 +8488,113 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
       </tags>
   </entry>
   <entry>
+    <title>SpringBoot（一） 初识</title>
+    <url>/2019/06/23/springboot1/</url>
+    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg" alt=""></p>
+<span id="more"></span>
+<p>从本篇文章开始，记录学习 SpringBoot 框架在实践，源码方面的知识，本节是第一篇，因此不涉及相关复杂知识的学习。众所周知，随着微服务的广泛流行，Spring 系列的 SpringBoot 和 SpringCloud 的应用也更受欢迎，那么请跟随我的脚本来一步步解开 SpringBoot 她神秘的面纱</p>
+<p>熟悉后端服务开发的小伙伴，在使用 SpringBoot 时一定会有这样的感受，咦，以前繁琐的配置，现在都不用再去配置一大堆东西了，以前跑起来一个 demo，感觉真是千辛万苦，错一步就 game over，以前服务基本都是已 war 包的形式运行在 Tomcat 中，而现在，你基本不需要手动写太多的代码，一个应用服务就可以运行起来，其次现在应用基本已 jar 包方式直接运行，虽然本质还是运行在 Tomcat 中，但现在 jar 包中已经有了服务运行的基础环境，可以直接使用 jar 相关的运行命令就可以运行起服务。好了，废话了这么多，先看看我们如何运行起一个 DEMO 应用。</p>
+<h2 id="环境及版本"><a class="header-anchor" href="#环境及版本"></a>环境及版本</h2>
+<ul>
+<li>SpringBoot Version：2.1.6.RELEASE</li>
+<li>System：macOS Mojave</li>
+<li>JDK Version：1.8</li>
+<li>Gradle：5.4.1</li>
+<li>IDE：IntelliJ IDEA</li>
+</ul>
+<blockquote>
+<p>本系列应用使用如上环境，其次应用包管理，小伙伴可以选择自己熟悉的 Maven 进行管理，而这里都使用 Gradle 进行管理</p>
+</blockquote>
+<h2 id="Demo"><a class="header-anchor" href="#Demo"></a>Demo</h2>
+<h3 id="Spring-Initializr"><a class="header-anchor" href="#Spring-Initializr"></a><span class="exturl" data-url="aHR0cHM6Ly9zdGFydC5zcHJpbmcuaW8=">Spring Initializr<i class="fa fa-external-link-alt"></i></span></h3>
+<p>为了让开发者快速上手，官方提供了一建生成 SpringBoot 项目，你按需选择你需要的依赖即可。操作步骤如下截图<br>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1561906733/blog/spring-initializr.png" alt="spring-initializ"></p>
+<h3 id="IDEA-Init"><a class="header-anchor" href="#IDEA-Init"></a>IDEA Init</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616526451/blog/spring-init.png" alt=""></p>
+<p>IDEA分为四步完成初始</p>
+<ol>
+<li>选择 Spring Initializr 初始化向导</li>
+<li>填写项目坐标信息，构建工具，版本，报名等</li>
+<li>选择需要的组件（会自动添加依赖）</li>
+<li>选择项目存放路径</li>
+</ol>
+<h2 id="Spring-运行"><a class="header-anchor" href="#Spring-运行"></a>Spring 运行</h2>
+<h3 id="命令"><a class="header-anchor" href="#命令"></a>命令</h3>
+<h4 id="macOS-or-Linux"><a class="header-anchor" href="#macOS-or-Linux"></a>macOS or Linux</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">gradlew bootRun</span><br></pre></td></tr></table></figure>
+<h4 id="Windows"><a class="header-anchor" href="#Windows"></a>Windows</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">./gradlew bootRun</span><br></pre></td></tr></table></figure>
+<h3 id="运行说明"><a class="header-anchor" href="#运行说明"></a>运行说明</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png" alt="spring-running-logo"></p>
+<h2 id="Spring-打包"><a class="header-anchor" href="#Spring-打包"></a>Spring 打包</h2>
+<h3 id="jar-分析"><a class="header-anchor" href="#jar-分析"></a>jar 分析</h3>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561259381/blog/springboot-deploy-jar-unzip.png" alt="springboot-deploy-jar-unzip"></p>
+<p>目录说明</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">project/</span><br><span class="line">├── BOOT-INF/                                                                   </span><br><span class="line">│   ├── classes                                 # 当前项目结果文件放置在 classes 路径下</span><br><span class="line">│   │   │   └── application.properties          # 项目中配置文件</span><br><span class="line">│   │   ├── org/                                # 项目中 java 路径下，编译成 class 文件路径</span><br><span class="line">│   │   ├── static/                             # 项目中 resources 路径下的静态文件夹</span><br><span class="line">│   │   └── templates/                          # 项目中 resources 路径下的模板文件夹</span><br><span class="line">│   └── lib/                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）</span><br><span class="line">├── META-INF/                                                                   </span><br><span class="line">│   └── MANIFEST.MF                             # 清单文件，用于描述可执行 jar 的一些基本信息</span><br><span class="line">└── org/springframework/boot/loader/            # jar 包启动相关的引导</span><br><span class="line">    ├── archive/</span><br><span class="line">    ├── data</span><br><span class="line">    ├── ExectableArchiveLauncher.class</span><br><span class="line">    ├── jar/</span><br><span class="line">    ├── JarLauncher.class</span><br><span class="line">    ├── LaunchedURLClassLoader.class</span><br><span class="line">    ├── LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class</span><br><span class="line">    ├── Launcher.class</span><br><span class="line">    ├── MainMethodRunner.class</span><br><span class="line">    ├── PropertiesLauncher.class</span><br><span class="line">    ├── PropertiesLauncher$1.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── PropertiesLauncher$PrefixMatchingArchiveFilter.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── util/</span><br><span class="line">    └── WarLauncher.class</span><br></pre></td></tr></table></figure>
+<h4 id="MANIFEST-MF"><a class="header-anchor" href="#MANIFEST-MF"></a>MANIFEST.MF</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manifest-Version: 1.0                                       # 清单版本号</span><br><span class="line">Start-Class: org.incoder.start.SpringbootStartApplication   # 项目 main 方法所在的类</span><br><span class="line">Spring-Boot-Classes: BOOT-INF/classes/                      # 项目相关代码在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Lib: BOOT-INF/lib/                              # 项目中所依赖的第三方 jar 在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Version: 2.1.6.RELEASE                          # 项目  SpringBoot 版本</span><br><span class="line">Main-Class: org.springframework.boot.loader.JarLauncher     # 当前 jar 文件的执行入口类（main 方法所在的类）</span><br><span class="line">回车换行（在清单文件中，必须有，否则会出错）</span><br></pre></td></tr></table></figure>
+<h4 id="org-springframework-……目录"><a class="header-anchor" href="#org-springframework-……目录"></a>org/springframework/……目录</h4>
+<p>项目中引入的第三方 jar 中并不包含<code>org/springframework/boot/loader</code>内容，那这个目录是从哪里来的呢？</p>
+<p>寻找最终发现是项目中我们的<code>build.gradle</code>文件中，引入的<code>org.springframework.boot:spring-boot-gradle-plugin</code>依赖，而这个依赖位于<code>classpath</code>下，说明引入的这个插件 <strong>仅仅</strong> 是在项目构建时才起作用，当项目进行打包后，并不会把插件包打入到项目的依赖库中，也就是<code>BOOT-INF/lib/</code>路径下</p>
+<p>如何去研究在<code>org/springframework/boot/loader</code>下的源码内容呢？<br>
+最好的方式是在项目的依赖中导入<code>org.springframework.boot:spring-boot-loader</code>依赖</p>
+<blockquote>
+<p>原则上，在项目开发过程中是不需要引入<code>org.springframework.boot:spring-boot-loader</code>依赖，这里只是为了方便阅读源码进行学习</p>
+</blockquote>
+<h2 id="Spring-其他"><a class="header-anchor" href="#Spring-其他"></a>Spring 其他</h2>
+<h3 id="配置文件格式"><a class="header-anchor" href="#配置文件格式"></a>配置文件格式</h3>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvLnByb3BlcnRpZXM=">properties<i class="fa fa-external-link-alt"></i></span></li>
+<li><strong>推荐</strong> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvWUFNTA==">yml<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<blockquote>
+<p>配置文件学习可参考 <a href="https://incoder.org/2019/07/28/springboot4/">SpringBoot（四）配置文件</a></p>
+</blockquote>
+<h3 id="常用命令"><a class="header-anchor" href="#常用命令"></a>常用命令</h3>
+<h4 id="gradle-tasks"><a class="header-anchor" href="#gradle-tasks"></a>gradle tasks</h4>
+<p>表示获取当前工程可用的 gradle tasks 命令</p>
+<h5 id="Application-tasks"><a class="header-anchor" href="#Application-tasks"></a>Application tasks</h5>
+<ul>
+<li>bootRun：Runs this project as a Spring Boot application.（以 bootJar 的形式运行当前项目）</li>
+</ul>
+<h5 id="Build-tasks"><a class="header-anchor" href="#Build-tasks"></a>Build tasks</h5>
+<ul>
+<li>bootJar：Assembles an executable jar archive containing the main classes and their dependencies.（装配一个可执行的 jar（自包含的 jar 包，不依赖其他容器） 归档，这个归档 jar 中包含了所需的依赖以及主类等）</li>
+</ul>
+<h5 id="Run-jar"><a class="header-anchor" href="#Run-jar"></a>Run jar</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar jar-name.jar</span><br></pre></td></tr></table></figure>
+<h5 id="Other"><a class="header-anchor" href="#Other"></a>Other</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 解压 jar 到当前 start 目录下</span></span><br><span class="line">unzip start-0.0.1-SNAPSHOT.jar -d ./start</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot（十）Mybatis 常用标签</title>
+    <url>/2020/03/24/springboot10/</url>
+    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585186336/blog/MyBatis.jpg" alt=""></p>
+<span id="more"></span>
+<p>关于 Mybatis 作为在国内普遍使用的 ORM 框架，我们在使用上要掌握常用的标签</p>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585238573/blog/mybatis-label.png" alt="mybatis-label"></p>
+<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvc3FsbWFwLXhtbC5odG1s">官方教程《XML 映射器》<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvZHluYW1pYy1zcWwuaHRtbA==">官方教程《动态 SQL》<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vempmamF2YS9wLzg4ODY0MzIuaHRtbA==">Mybatis常用标签<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>Mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【译】• 面向服务的架构</title>
     <url>/2019/06/19/soa/</url>
     <content><![CDATA[<p>在学习过程中，我们首先需要将学习知识的基本概念搞清楚，而搞清楚概念最权威的方式是查阅 <strong><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3Jn">英文版 • 维基百科<i class="fa fa-external-link-alt"></i></span></strong> ，或者是对应知识的官方文档上面查找相关的知识。这样学习才能学习到知识的精华，而不是阅读经过别人转译过的文章。因此，这篇文章仅是本人在学习 SOA 基本概念时，对维基百科知识的一个汇总翻译记录，<font color=#FF0000>不建议朋友把这篇文章当做你的学习资料</font>，具体请查阅<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2VydmljZS1vcmllbnRlZF9hcmNoaXRlY3R1cmU=">Service-oriented architecture<i class="fa fa-external-link-alt"></i></span>。</p>
@@ -8540,113 +8835,6 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
       </tags>
   </entry>
   <entry>
-    <title>SpringBoot（十）Mybatis 常用标签</title>
-    <url>/2020/03/24/springboot10/</url>
-    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585186336/blog/MyBatis.jpg" alt=""></p>
-<span id="more"></span>
-<p>关于 Mybatis 作为在国内普遍使用的 ORM 框架，我们在使用上要掌握常用的标签</p>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1585238573/blog/mybatis-label.png" alt="mybatis-label"></p>
-<h2 id="附录"><a class="header-anchor" href="#附录"></a>附录</h2>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvc3FsbWFwLXhtbC5odG1s">官方教程《XML 映射器》<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9teWJhdGlzLm9yZy9teWJhdGlzLTMvemgvZHluYW1pYy1zcWwuaHRtbA==">官方教程《动态 SQL》<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vempmamF2YS9wLzg4ODY0MzIuaHRtbA==">Mybatis常用标签<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>Mybatis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot（一） 初识</title>
-    <url>/2019/06/23/springboot1/</url>
-    <content><![CDATA[<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561900597/blog/springboot.jpg" alt=""></p>
-<span id="more"></span>
-<p>从本篇文章开始，记录学习 SpringBoot 框架在实践，源码方面的知识，本节是第一篇，因此不涉及相关复杂知识的学习。众所周知，随着微服务的广泛流行，Spring 系列的 SpringBoot 和 SpringCloud 的应用也更受欢迎，那么请跟随我的脚本来一步步解开 SpringBoot 她神秘的面纱</p>
-<p>熟悉后端服务开发的小伙伴，在使用 SpringBoot 时一定会有这样的感受，咦，以前繁琐的配置，现在都不用再去配置一大堆东西了，以前跑起来一个 demo，感觉真是千辛万苦，错一步就 game over，以前服务基本都是已 war 包的形式运行在 Tomcat 中，而现在，你基本不需要手动写太多的代码，一个应用服务就可以运行起来，其次现在应用基本已 jar 包方式直接运行，虽然本质还是运行在 Tomcat 中，但现在 jar 包中已经有了服务运行的基础环境，可以直接使用 jar 相关的运行命令就可以运行起服务。好了，废话了这么多，先看看我们如何运行起一个 DEMO 应用。</p>
-<h2 id="环境及版本"><a class="header-anchor" href="#环境及版本"></a>环境及版本</h2>
-<ul>
-<li>SpringBoot Version：2.1.6.RELEASE</li>
-<li>System：macOS Mojave</li>
-<li>JDK Version：1.8</li>
-<li>Gradle：5.4.1</li>
-<li>IDE：IntelliJ IDEA</li>
-</ul>
-<blockquote>
-<p>本系列应用使用如上环境，其次应用包管理，小伙伴可以选择自己熟悉的 Maven 进行管理，而这里都使用 Gradle 进行管理</p>
-</blockquote>
-<h2 id="Demo"><a class="header-anchor" href="#Demo"></a>Demo</h2>
-<h3 id="Spring-Initializr"><a class="header-anchor" href="#Spring-Initializr"></a><span class="exturl" data-url="aHR0cHM6Ly9zdGFydC5zcHJpbmcuaW8=">Spring Initializr<i class="fa fa-external-link-alt"></i></span></h3>
-<p>为了让开发者快速上手，官方提供了一建生成 SpringBoot 项目，你按需选择你需要的依赖即可。操作步骤如下截图<br>
-<img src="https://res.cloudinary.com/incoder/image/upload/v1561906733/blog/spring-initializr.png" alt="spring-initializ"></p>
-<h3 id="IDEA-Init"><a class="header-anchor" href="#IDEA-Init"></a>IDEA Init</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1616526451/blog/spring-init.png" alt=""></p>
-<p>IDEA分为四步完成初始</p>
-<ol>
-<li>选择 Spring Initializr 初始化向导</li>
-<li>填写项目坐标信息，构建工具，版本，报名等</li>
-<li>选择需要的组件（会自动添加依赖）</li>
-<li>选择项目存放路径</li>
-</ol>
-<h2 id="Spring-运行"><a class="header-anchor" href="#Spring-运行"></a>Spring 运行</h2>
-<h3 id="命令"><a class="header-anchor" href="#命令"></a>命令</h3>
-<h4 id="macOS-or-Linux"><a class="header-anchor" href="#macOS-or-Linux"></a>macOS or Linux</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">gradlew bootRun</span><br></pre></td></tr></table></figure>
-<h4 id="Windows"><a class="header-anchor" href="#Windows"></a>Windows</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 项目路径下(spring-start)</span></span><br><span class="line">./gradlew bootRun</span><br></pre></td></tr></table></figure>
-<h3 id="运行说明"><a class="header-anchor" href="#运行说明"></a>运行说明</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1562167001/blog/spring-running-logo.png" alt="spring-running-logo"></p>
-<h2 id="Spring-打包"><a class="header-anchor" href="#Spring-打包"></a>Spring 打包</h2>
-<h3 id="jar-分析"><a class="header-anchor" href="#jar-分析"></a>jar 分析</h3>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1561259381/blog/springboot-deploy-jar-unzip.png" alt="springboot-deploy-jar-unzip"></p>
-<p>目录说明</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">project/</span><br><span class="line">├── BOOT-INF/                                                                   </span><br><span class="line">│   ├── classes                                 # 当前项目结果文件放置在 classes 路径下</span><br><span class="line">│   │   │   └── application.properties          # 项目中配置文件</span><br><span class="line">│   │   ├── org/                                # 项目中 java 路径下，编译成 class 文件路径</span><br><span class="line">│   │   ├── static/                             # 项目中 resources 路径下的静态文件夹</span><br><span class="line">│   │   └── templates/                          # 项目中 resources 路径下的模板文件夹</span><br><span class="line">│   └── lib/                                    # 项目所依赖的第三方 jar（Tomcat，SpringBoot 等）</span><br><span class="line">├── META-INF/                                                                   </span><br><span class="line">│   └── MANIFEST.MF                             # 清单文件，用于描述可执行 jar 的一些基本信息</span><br><span class="line">└── org/springframework/boot/loader/            # jar 包启动相关的引导</span><br><span class="line">    ├── archive/</span><br><span class="line">    ├── data</span><br><span class="line">    ├── ExectableArchiveLauncher.class</span><br><span class="line">    ├── jar/</span><br><span class="line">    ├── JarLauncher.class</span><br><span class="line">    ├── LaunchedURLClassLoader.class</span><br><span class="line">    ├── LaunchedURLClassLoader$UseFastConnectionExceptionsEnumeration.class</span><br><span class="line">    ├── Launcher.class</span><br><span class="line">    ├── MainMethodRunner.class</span><br><span class="line">    ├── PropertiesLauncher.class</span><br><span class="line">    ├── PropertiesLauncher$1.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── PropertiesLauncher$PrefixMatchingArchiveFilter.class</span><br><span class="line">    ├── PropertiesLauncher$ArchiveEntryFilter.class</span><br><span class="line">    ├── util/</span><br><span class="line">    └── WarLauncher.class</span><br></pre></td></tr></table></figure>
-<h4 id="MANIFEST-MF"><a class="header-anchor" href="#MANIFEST-MF"></a>MANIFEST.MF</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Manifest-Version: 1.0                                       # 清单版本号</span><br><span class="line">Start-Class: org.incoder.start.SpringbootStartApplication   # 项目 main 方法所在的类</span><br><span class="line">Spring-Boot-Classes: BOOT-INF/classes/                      # 项目相关代码在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Lib: BOOT-INF/lib/                              # 项目中所依赖的第三方 jar 在打包后 jar 中的路径</span><br><span class="line">Spring-Boot-Version: 2.1.6.RELEASE                          # 项目  SpringBoot 版本</span><br><span class="line">Main-Class: org.springframework.boot.loader.JarLauncher     # 当前 jar 文件的执行入口类（main 方法所在的类）</span><br><span class="line">回车换行（在清单文件中，必须有，否则会出错）</span><br></pre></td></tr></table></figure>
-<h4 id="org-springframework-……目录"><a class="header-anchor" href="#org-springframework-……目录"></a>org/springframework/……目录</h4>
-<p>项目中引入的第三方 jar 中并不包含<code>org/springframework/boot/loader</code>内容，那这个目录是从哪里来的呢？</p>
-<p>寻找最终发现是项目中我们的<code>build.gradle</code>文件中，引入的<code>org.springframework.boot:spring-boot-gradle-plugin</code>依赖，而这个依赖位于<code>classpath</code>下，说明引入的这个插件 <strong>仅仅</strong> 是在项目构建时才起作用，当项目进行打包后，并不会把插件包打入到项目的依赖库中，也就是<code>BOOT-INF/lib/</code>路径下</p>
-<p>如何去研究在<code>org/springframework/boot/loader</code>下的源码内容呢？<br>
-最好的方式是在项目的依赖中导入<code>org.springframework.boot:spring-boot-loader</code>依赖</p>
-<blockquote>
-<p>原则上，在项目开发过程中是不需要引入<code>org.springframework.boot:spring-boot-loader</code>依赖，这里只是为了方便阅读源码进行学习</p>
-</blockquote>
-<h2 id="Spring-其他"><a class="header-anchor" href="#Spring-其他"></a>Spring 其他</h2>
-<h3 id="配置文件格式"><a class="header-anchor" href="#配置文件格式"></a>配置文件格式</h3>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvLnByb3BlcnRpZXM=">properties<i class="fa fa-external-link-alt"></i></span></li>
-<li><strong>推荐</strong> <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvWUFNTA==">yml<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-<blockquote>
-<p>配置文件学习可参考 <a href="https://incoder.org/2019/07/28/springboot4/">SpringBoot（四）配置文件</a></p>
-</blockquote>
-<h3 id="常用命令"><a class="header-anchor" href="#常用命令"></a>常用命令</h3>
-<h4 id="gradle-tasks"><a class="header-anchor" href="#gradle-tasks"></a>gradle tasks</h4>
-<p>表示获取当前工程可用的 gradle tasks 命令</p>
-<h5 id="Application-tasks"><a class="header-anchor" href="#Application-tasks"></a>Application tasks</h5>
-<ul>
-<li>bootRun：Runs this project as a Spring Boot application.（以 bootJar 的形式运行当前项目）</li>
-</ul>
-<h5 id="Build-tasks"><a class="header-anchor" href="#Build-tasks"></a>Build tasks</h5>
-<ul>
-<li>bootJar：Assembles an executable jar archive containing the main classes and their dependencies.（装配一个可执行的 jar（自包含的 jar 包，不依赖其他容器） 归档，这个归档 jar 中包含了所需的依赖以及主类等）</li>
-</ul>
-<h5 id="Run-jar"><a class="header-anchor" href="#Run-jar"></a>Run jar</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -jar jar-name.jar</span><br></pre></td></tr></table></figure>
-<h5 id="Other"><a class="header-anchor" href="#Other"></a>Other</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 解压 jar 到当前 start 目录下</span></span><br><span class="line">unzip start-0.0.1-SNAPSHOT.jar -d ./start</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringBoot 源码构建</title>
     <url>/2020/12/31/springboot11/</url>
     <content><![CDATA[<p>前两天刚刚学习了 Gradle 构建 SpringBoot 项目，再查看官方文档时，得知 SpringBoot 从 <span class="exturl" data-url="aHR0cHM6Ly9zcHJpbmcuaW8vYmxvZy8yMDIwLzA2LzA4L21pZ3JhdGluZy1zcHJpbmctYm9vdC1zLWJ1aWxkLXRvLWdyYWRsZQ==">Spring Boot 2.3.0.M1<i class="fa fa-external-link-alt"></i></span> 版本开始完全切换到使用 Gradle 来构建项目，那么本篇文章就来实践，基于源码来编译构建 SpringBoot，话不多说，本次构建构建是 2020 年的最后一次发布的版本 2.4.1</p>
@@ -8670,27 +8858,6 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
       <tags>
         <tag>SpringBoot</tag>
         <tag>Gradle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot（三） JDWP远程调用</title>
-    <url>/2019/07/11/springboot3/</url>
-    <content><![CDATA[<p>在 SpringBoot 系列的第二篇文章中，已经详细分析了 SpringBoot 的启动过程，那么这篇文章，我们通过源码调试的方式来验证我们的分析，首先我们在控制台中输入 <code>java</code> 命令，可用输出 JDK 给我们提供了一些命令，其中<code>-agentlib</code>命令就是本篇文章所介绍，用于我们进行源码调试</p>
-<span id="more"></span>
-<p><img src="https://res.cloudinary.com/incoder/image/upload/v1562858657/blog/springboot-java-agentlib.png" alt="springboot-java-agentlib"><br>
-我们继续查看<code>-agentlib</code>详细的命令说明，输入<code>java -agentlib:jdwp=help</code> 查看帮助文档<br>
-<img src="https://res.cloudinary.com/incoder/image/upload/v1562859131/blog/springboot-java-agentlib-help.png" alt="springboot-java-agentlib-help"></p>
-<h2 id="远程"><a class="header-anchor" href="#远程"></a>远程</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"># 在远程机器上添加代理模式的方式启动</span><br><span class="line"># 使用 socket 协议来进行远程调试，当服务启动就开始在 <span class="number">6666</span> 端口等待连接</span><br><span class="line">java -agentlib:jdwp=transport=dt_socket,server=y,address=<span class="number">6666</span> -jar start-<span class="number">1.0</span>-SNAPSHOT.jar</span><br></pre></td></tr></table></figure>
-<h2 id="本机"><a class="header-anchor" href="#本机"></a>本机</h2>
-<p>在本机上，我们直接使用 IDEA 编辑器，新建一个 Remote 应用服务，运行，创建步骤如下 9 步骤<br>
-<img src="https://res.cloudinary.com/incoder/image/upload/v1562860397/blog/springboot-java-remote.png" alt="springboot-java-remote"></p>
-]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -8772,6 +8939,27 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
 <li><span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZy8yMDE5LzA2LzA3L3NwcmluZ19ib290X2FuZF9jbG91ZC9zcHJpbmdfYm9vdF9jbG91ZCgyKVNwcmluZ19Cb290JUU2JTg5JTkzJUU1JThDJTg1JUU2JTk2JTg3JUU0JUJCJUI2JUU3JUJCJTkzJUU2JTlFJTg0JUU2JUI3JUIxJUU1JTg1JUE1JUU1JTg4JTg2JUU2JTlFJTkwJUU2JUJBJTkwJUU3JUEwJTgxJUU4JUFFJUIyJUU4JUE3JUEzLw==">spring_boot_cloud(2)Spring_Boot打包文件结构深入分析源码讲解<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9jZWFzZXIud2FuZy8=">校验者•CeaserWang<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot（三） JDWP远程调用</title>
+    <url>/2019/07/11/springboot3/</url>
+    <content><![CDATA[<p>在 SpringBoot 系列的第二篇文章中，已经详细分析了 SpringBoot 的启动过程，那么这篇文章，我们通过源码调试的方式来验证我们的分析，首先我们在控制台中输入 <code>java</code> 命令，可用输出 JDK 给我们提供了一些命令，其中<code>-agentlib</code>命令就是本篇文章所介绍，用于我们进行源码调试</p>
+<span id="more"></span>
+<p><img src="https://res.cloudinary.com/incoder/image/upload/v1562858657/blog/springboot-java-agentlib.png" alt="springboot-java-agentlib"><br>
+我们继续查看<code>-agentlib</code>详细的命令说明，输入<code>java -agentlib:jdwp=help</code> 查看帮助文档<br>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1562859131/blog/springboot-java-agentlib-help.png" alt="springboot-java-agentlib-help"></p>
+<h2 id="远程"><a class="header-anchor" href="#远程"></a>远程</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"># 在远程机器上添加代理模式的方式启动</span><br><span class="line"># 使用 socket 协议来进行远程调试，当服务启动就开始在 <span class="number">6666</span> 端口等待连接</span><br><span class="line">java -agentlib:jdwp=transport=dt_socket,server=y,address=<span class="number">6666</span> -jar start-<span class="number">1.0</span>-SNAPSHOT.jar</span><br></pre></td></tr></table></figure>
+<h2 id="本机"><a class="header-anchor" href="#本机"></a>本机</h2>
+<p>在本机上，我们直接使用 IDEA 编辑器，新建一个 Remote 应用服务，运行，创建步骤如下 9 步骤<br>
+<img src="https://res.cloudinary.com/incoder/image/upload/v1562860397/blog/springboot-java-remote.png" alt="springboot-java-remote"></p>
 ]]></content>
       <categories>
         <category>SpringBoot</category>
@@ -9430,18 +9618,6 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
       </tags>
   </entry>
   <entry>
-    <title>SpringCloud（三）Security OAuth2 源码分析</title>
-    <url>/2020/07/25/springcloud3/</url>
-    <content><![CDATA[<span id="more"></span>]]></content>
-      <categories>
-        <category>SpringCloud</category>
-      </categories>
-      <tags>
-        <tag>SpringCloud</tag>
-        <tag>OAuth2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringCloud（二）Security OAuth2 的 四种授权模式</title>
     <url>/2020/07/12/springcloud2/</url>
     <content><![CDATA[<p>在上一篇文章中，我们了解了 Security OAuth2 相关的一些基础知识，和整个四种授权模式的交互过程，那么本篇是对四种模式的实践，废话不多说，我们直接开始，SpringCloud 相关的实践代码均托管在<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Jvb3RDbHVzdGVyL3JjLWNsdXN0ZXItc3ByaW5nY2xvdWQ=">rc-cluster-springcloud<i class="fa fa-external-link-alt"></i></span>项目的中，项目使用的一些依赖版本如下</p>
@@ -9574,6 +9750,18 @@ Redis 最好用<strong>非安全</strong>模式启动</p>
 <li><span class="exturl" data-url="aHR0cDovL2xpbnlpc2h1aS50b3AvMjAxOTExMTcwMS5odG1s">Spring Security OAuth2<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>SpringCloud</category>
+      </categories>
+      <tags>
+        <tag>SpringCloud</tag>
+        <tag>OAuth2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringCloud（三）Security OAuth2 源码分析</title>
+    <url>/2020/07/25/springcloud3/</url>
+    <content><![CDATA[<span id="more"></span>]]></content>
       <categories>
         <category>SpringCloud</category>
       </categories>
@@ -10215,11 +10403,12 @@ attr修改和读取自定义属性的值</p>
 <ol>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5jb2Rlci5vcmc=">incoder.org<i class="fa fa-external-link-alt"></i></span>: 作为分享生活、感悟、个人状态为主的地方，偶尔汇总某些技术等的综合性文章</li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9iYWNrZW5kLmluY29kZXIub3Jn">backend.incoder.org<i class="fa fa-external-link-alt"></i></span>: 记录以 Java 为基础的后端开发生态技术领域</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9iYWNrZW5kLmluY29kZXIub3Jn">mobile.incoder.org<i class="fa fa-external-link-alt"></i></span>: 记录以原生开发为基础的移动端开发生态技术</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tb2JpbGUuaW5jb2Rlci5vcmc=">mobile.incoder.org<i class="fa fa-external-link-alt"></i></span>: 记录以原生开发为基础的移动端开发生态技术</li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9pbmNvZGVyLmFwcA==">incoder.app<i class="fa fa-external-link-alt"></i></span>: 记录个人开源应用</li>
 </ol>
 <div class="note info"><p>后续会迁移本站点部分文章到具体的领域站点</p>
-</div>]]></content>
+</div>
+]]></content>
       <categories>
         <category>Top</category>
       </categories>
