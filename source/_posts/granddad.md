@@ -2,7 +2,7 @@
 title: 愿天堂没有病痛
 date: 2022-06-15 06:15:00
 categories: 纪念
-hide: true
+hidden: true
 tag: [Top]
 ---
 
